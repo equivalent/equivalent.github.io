@@ -7,18 +7,20 @@ footer
   text-shadow: 2px 2px black
   background:
     color: #513e0c
-    image: url("/assets/site-style-img/footer-bg1-5f94d47eca3a80cc915bca0d029fd8275676bd56c9b579008d50cd5d7ec5a4d9.png")
+    image: url("/assets/site-style-img/footer-bg1-5f94d47eca3a80cc915bca0d029fd8275676bd56c9b579008d50cd5d7ec5a4d9.jpg")
     repeat: repeat-x, repeat
   border-top: 3px solid #006400
   display: block
   margin:
-    top: 500px
-  min-height: 300px
+    top: 400px
+  min-height: 200px
 
   a
     color: #CC9900
     &:hover, &:focus
       color: gold
+    &:visited
+      color: #CC9900
 
   h2
     display: none
@@ -27,6 +29,16 @@ footer
   .wrapper
     margin:
       top: -200px
+
+  .social-media-list
+    a
+      .hover-icon
+        display: none
+    a
+      &:hover
+        .hover-icon
+          display: inline
+
 
   #person
     text-align: center
