@@ -19,6 +19,8 @@ author: EquiValent - Tomas Valent
 description:
   Ruby, Ruby on Rails, Elixir fullstack developer, DevOps and code philosopher.
 
+comments: true
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: equivalent8
@@ -27,6 +29,9 @@ stackoverflow_username: equivalent
 stackoverflow_url: "https://stackoverflow.com/users/473040/equivalent8"
 
 linkedin_username: tomasvalent
+
+disqus:
+  shortname: eq8
 
 # Build settings
 markdown: kramdown

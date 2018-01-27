@@ -4,7 +4,7 @@
     {% assign default_paths = site.pages | map: "path" %}
     {% assign page_paths = site.header_pages | default: default_paths %}
     <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
-  
+
     {% if page_paths %}
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -18,6 +18,7 @@
           </span>
         </label>
 
+
         <div class="trigger">
           {% for path in page_paths %}
             {% assign my_page = site.pages | where: "path", path | first %}
@@ -25,6 +26,7 @@
             <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.short_title | escape }}</a>
             {% endif %}
           {% endfor %}
+
         </div>
       </nav>
     {% endif %}
