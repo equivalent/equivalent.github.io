@@ -1,4 +1,14 @@
-# Simple Authentication for one user in Rails
+---
+layout: article_post
+categories: article
+title:  "Simple Authentication for one user in Rails"
+disq_id: 31
+description:
+  "In this article we will bulid simple session based authentication for one user for Rails from scratch."
+redirect_from:
+  - "/blogs/31"
+  - "/blogs/31-simple-authentication-for-one-user-in-rails"
+---
 
 Let say you are building really simple website where admin is just one
 person. Using authentication gem like

@@ -1,4 +1,13 @@
-# RSpec be_within matcher
+---
+layout: article_post
+categories: article
+title:  "RSpec be_within matcher"
+disq_id: 27
+description:
+  RSpec 3 be_within matcher for comparing values in delta range
+redirect_from:
+  - "/blogs/27"
+---
 
 [![Open Thanks](https://thawing-falls-79026.herokuapp.com/images/thanks-1.svg)](https://thawing-falls-79026.herokuapp.com/r/locyfspz)
 
@@ -183,6 +192,6 @@ Resouces used in this article:
 
 * Ruby lang v 2.3.0
 * [RSpec](https://github.com/rspec/rspec) v 3.4
-* https://www.relishapp.com/rspec/rspec-expectations/v/2-8/docs/built-in-matchers/be-within-matcher
-* https://gist.github.com/equivalent/faa2928e93056842e62c8d00f15b48ba
+* <https://www.relishapp.com/rspec/rspec-expectations/v/2-8/docs/built-in-matchers/be-within-matcher>
+* <https://gist.github.com/equivalent/faa2928e93056842e62c8d00f15b48ba>
 

@@ -1,4 +1,13 @@
-# Spring Cleaning for WebDevelopers
+---
+layout: article_post
+categories: article
+title:  "Spring Cleaning for WebDevelopers"
+disq_id: 23
+description:
+  After while our machine, Github, server, ... gets piled with old unneeded stuff, here are sme tricks & commands I use for Spring Cleaning in my machine.
+redirect_from:
+  - "/blogs/23"
+---
 
 After some time WebDevelopers local machine (as well as server) gets
 full of stuff not needed, here are some commands that I use to erase
@@ -211,8 +220,8 @@ old_live_branches
 
 source of info:
 
-* http://ruby-on-rails-eq8.blogspot.co.uk/2016/03/removing-old-release-branches.html
-* https://github.com/equivalent/scrapbook2/blob/master/archive/mini-blogs/2016-03-02-removing-old-remote-branches-in-bulk.md
+* <http://ruby-on-rails-eq8.blogspot.co.uk/2016/03/removing-old-release-branches.html>
+* <https://github.com/equivalent/scrapbook2/blob/master/archive/mini-blogs/2016-03-02-removing-old-remote-branches-in-bulk.md>
 
 
 ## Free up space on your Linux server
@@ -277,11 +286,11 @@ grep  -e '[0-9]' | xargs sudo apt-get -y purge
 
 Source of information:
 
-* http://askubuntu.com/questions/138026/how-do-i-delete-kernels-from-a-server
-* http://askubuntu.com/questions/5980/how-do-i-free-up-disk-space
-* http://ubuntuforums.org/showthread.php?t=2291788
-* https://github.com/equivalent/scrapbook2/blob/master/archive/mini-blogs/2015-01-28-free-up-space-on-your-linux-server.md
-* http://ruby-on-rails-eq8.blogspot.co.uk/2015/01/free-up-space-on-your-linux-ubuntu.html
+* <http://askubuntu.com/questions/138026/how-do-i-delete-kernels-from-a-server>
+* <http://askubuntu.com/questions/5980/how-do-i-free-up-disk-space>
+* <http://ubuntuforums.org/showthread.php?t=2291788>
+* <https://github.com/equivalent/scrapbook2/blob/master/archive/mini-blogs/2015-01-28-free-up-space-on-your-linux-server.md>
+* <http://ruby-on-rails-eq8.blogspot.co.uk/2015/01/free-up-space-on-your-linux-ubuntu.html>
 
 
 ## When stuff goes wrong

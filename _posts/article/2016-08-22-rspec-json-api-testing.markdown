@@ -1,4 +1,14 @@
-# Pure RSpec JSON API testing
+---
+layout: article_post
+categories: article
+title:  "Pure RSpec JSON API testing"
+disq_id: 30
+description:
+  In Ruby on Rails there are many tools how to test your JSON API, but you don't necessary need to install any gems. RSpec provide really decent  tool set for many scenarios including APIs.
+redirect_from:
+  - "/blogs/30"
+  - "/blogs/30-pure-rspec-json-api-testing"
+---
 
 In this article we will have a look how to test JSON API in Ruby on
 Rails or in plain Ruby application with nothing

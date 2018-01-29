@@ -1,4 +1,15 @@
-# Various CORS issues related (not only to) Ruby on Rails
+---
+layout: article_post
+categories: article
+title:  "Various CORS issues related (not only to) Ruby on Rails"
+disq_id: 32
+description:
+  CORS may be bit tricky (not only) for Ruby on Rails application. In this article we will have a look on some problems and solutions I've dealt with.
+redirect_from:
+  - "/blogs/32"
+  - "/blogs/32-various-cors-issues-related-not-only-to-ruby-on-rails"
+---
+
 
 I'm writing this article after week full of CORS issues that I've
 stumbled upon. Truth is that topic of CORS is well documented, it's just
@@ -110,10 +121,10 @@ location /assets {
 Here are some other references if you need more complex Nginx examples
 
 
-* https://gist.github.com/equivalent/1dd25306eb28283fa83a920f3134e53e (mine)
-* http://enable-cors.org/server_nginx.html
-* https://nisdom.com/blog/2014/09/13/cors-font-issues-with-rails/
-* http://blog.bigbinary.com/2015/10/31/rails-5-allows-setting-custom-http-headers-for-assets.html
+* <https://gist.github.com/equivalent/1dd25306eb28283fa83a920f3134e53e> (mine)
+* <http://enable-cors.org/server_nginx.html>
+* <https://nisdom.com/blog/2014/09/13/cors-font-issues-with-rails/>
+* <http://blog.bigbinary.com/2015/10/31/rails-5-allows-setting-custom-http-headers-for-assets.html>
 
 
 #### Heroku Solution Rails 5
@@ -135,7 +146,7 @@ If you're dealing with Rails 5 application with Heroku server, then great. Set t
 
 > I guess `config.public_file_server.enabled` needs to be set to true.
 
-More info: http://blog.bigbinary.com/2015/10/31/rails-5-allows-setting-custom-http-headers-for-assets.html
+More info: <http://blog.bigbinary.com/2015/10/31/rails-5-allows-setting-custom-http-headers-for-assets.html>
 
 #### Heroku Solution Rails 4 and lower
 
@@ -148,7 +159,7 @@ worked for me**:
 
 ##### Rack CORS
 
-* https://github.com/cyu/rack-cors
+* <https://github.com/cyu/rack-cors>
 
 ##### Disable CDN for some assets
 
@@ -183,7 +194,7 @@ Another scenario that happened to me and my college was that one JS lib based on
 Step by step solution:
 
 1. Sign in to the AWS Management Console and open the Amazon S3 console
-at https://console.aws.amazon.com/s3/
+at <https://console.aws.amazon.com/s3/>
 2. In the Buckets list, open the bucket whose properties you want to
 view and click "add CORS configuration"
 
@@ -241,8 +252,8 @@ to wait a bit, or invalidate the cache in CDN to see the result)**
 
 ##### Sources
 
-* http://stackoverflow.com/questions/17533888/s3-access-control-allow-origin-header
-* http://stackoverflow.com/a/35278803/473040
+* <http://stackoverflow.com/questions/17533888/s3-access-control-allow-origin-header>
+* <http://stackoverflow.com/a/35278803/473040>
 
 
 ## CORS on uploaded files via Paperclip gem
@@ -316,12 +327,12 @@ Well please don't !
 Use `*` only for debugging. Once you prove concept, ensure that you set
 correct full `subdomain.domain.tld` setup.
 
-To read more why: https://www.viget.com/articles/cors-youre-doing-it-wrong
+To read more why: <https://www.viget.com/articles/cors-youre-doing-it-wrong>
 
 
 ## Alternative definition of CORS
 
-stolen from  http://stackoverflow.com/a/17570351
+stolen from  <http://stackoverflow.com/a/17570351>
 
 > CORS provides a mechanism for servers to tell the browser it is OK for
 > requesting domain A to read data coming from domain B. It is done by
@@ -336,19 +347,19 @@ stolen from  http://stackoverflow.com/a/17570351
 
 ## Unsorted resources:
 
-* https://www.w3.org/TR/cors/#access-control-allow-origin-response-header
-* http://stackoverflow.com/questions/14003332/access-control-allow-origin-wildcard-subdomains-ports-and-protocols
-* https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image
-* http://blog.bigbinary.com/2015/10/31/rails-5-allows-setting-custom-http-headers-for-assets.html
-* https://github.com/rails/rails/pull/19135
-* http://stackoverflow.com/questions/25945419/how-do-i-configure-access-control-allow-origin-with-rails-and-nginx
-* http://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html
-* http://www.html5rocks.com/en/tutorials/cors/
-* https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image
-* http://enable-cors.org/server_nginx.html
-* https://www.viget.com/articles/cors-youre-doing-it-wrong
-* https://www.w3.org/TR/cors/#access-control-allow-origin-response-header
-* https://aws.amazon.com/blogs/aws/amazon-s3-cross-origin-resource-sharing/
-* http://stackoverflow.com/questions/20518524/no-access-control-allow-origin-header-is-present-on-the-requested-resource-or#comment30675068_20518524
-* http://stackoverflow.com/a/17570351
+* <https://www.w3.org/TR/cors/#access-control-allow-origin-response-header>
+* <http://stackoverflow.com/questions/14003332/access-control-allow-origin-wildcard-subdomains-ports-and-protocols>
+* <https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image>
+* <http://blog.bigbinary.com/2015/10/31/rails-5-allows-setting-custom-http-headers-for-assets.html>
+* <https://github.com/rails/rails/pull/19135>
+* <http://stackoverflow.com/questions/25945419/how-do-i-configure-access-control-allow-origin-with-rails-and-nginx>
+* <http://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html>
+* <http://www.html5rocks.com/en/tutorials/cors/>
+* <https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image>
+* <http://enable-cors.org/server_nginx.html>
+* <https://www.viget.com/articles/cors-youre-doing-it-wrong>
+* <https://www.w3.org/TR/cors/#access-control-allow-origin-response-header>
+* <https://aws.amazon.com/blogs/aws/amazon-s3-cross-origin-resource-sharing/>
+* <http://stackoverflow.com/questions/20518524/no-access-control-allow-origin-header-is-present-on-the-requested-resource-or#comment30675068_20518524>
+* <http://stackoverflow.com/a/17570351>
 

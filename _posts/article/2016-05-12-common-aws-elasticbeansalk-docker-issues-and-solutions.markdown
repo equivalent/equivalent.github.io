@@ -1,4 +1,13 @@
-# Common AWS Elastic Beanstalk Docker issues and solutions.
+---
+layout: article_post
+categories: article
+title:  "Common AWS Elastic Beanstalk Docker issues and solutions."
+disq_id: 25
+description:
+  Several debugging tricks for AWS Elastic Beanstalk runing Docker
+redirect_from:
+  - "/blogs/25"
+---
 
 In this article I will be writing about common issues that I've stumble
 upon using AWS Elastic Beanstalk running Docker environment.
@@ -30,7 +39,7 @@ CONTAINER           CPU %               MEM USAGE/LIMIT     MEM %     NET I/O
 8eff1959c23c        0.02%               44.16 MiB/300 MiB   14.72%    278.5 MiB/62.68 MiB
 ```
 
-Read more https://docs.docker.com/engine/reference/commandline/stats/
+Read more <https://docs.docker.com/engine/reference/commandline/stats/>
 
 #### Overal Docker stats / info
 
@@ -65,7 +74,7 @@ sudo docker info
 # ID: MJVD:KSNK:3VLH:JYXK:HRXT:UVA2:JKLZ:FFK7:HXYL:7ZEU:DCHZ:JT2R
 ```
 
-read more https://docs.docker.com/engine/reference/commandline/info/
+read more <https://docs.docker.com/engine/reference/commandline/info/>
 
 
 #### eb console
@@ -234,7 +243,7 @@ sudo docker rmi -f $(sudo docker images | grep "<none>" | awk "{print\$3}") # Ge
 ```
 
 > I'm recommending to check
-> http://www.eq8.eu/blogs/23-spring-cleaning-for-webdevelopers 
+> <http://www.eq8.eu/blogs/23-spring-cleaning-for-webdevelopers>
 
 #### Image doesn't exist
 

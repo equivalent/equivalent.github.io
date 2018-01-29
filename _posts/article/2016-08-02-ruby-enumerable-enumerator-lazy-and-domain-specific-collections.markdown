@@ -1,6 +1,16 @@
-# Ruby Enumerable, Enumerator, Lazy and domain specific collection objects
+---
+layout: article_post
+categories: article
+title:  "Ruby Enumerable, Enumerator, Lazy and domain specific collection objects"
+disq_id: 28
+description:
+  Ruby has couple of nifty tricks  up its sleeves to deal with collection objects so that they map your domain. In this article we will look on Enumerator, Lazy Enumerator and Enumerable and how to implement API collection objects in Plain Ruby so that they can be used in similar way as you would use Rails scopes
+redirect_from:
+  - "/blogs/28"
+---
 
-> Entire source code can be found here: https://gist.github.com/equivalent/70d82d228ca957b21a4d968353f367b8 ([mirror](https://github.com/equivalent/scrapbook2/blob/master/archive/blogs_gist/enumerables_enumerators_and_lazynes.rb))
+
+> Entire source code can be found here: <https://gist.github.com/equivalent/70d82d228ca957b21a4d968353f367b8> ([mirror](https://github.com/equivalent/scrapbook2/blob/master/archive/blogs_gist/enumerables_enumerators_and_lazynes.rb))
 
 In this article I'm trying to explain Ruby Eumerator, Lazy Enumerator and Enumerable
 module but mainly show some examples how to implement them in a real Application
@@ -548,9 +558,9 @@ I'm hoping that this gave you some overview how Lazy Enumerator work. I
 wont go into more details as this article is way over limit, plus there
 are already good articles that covers this topic:
 
-* http://ruby-doc.org/core-2.0.0/Enumerator/Lazy.html#method-i-lazy
-* https://www.sitepoint.com/implementing-lazy-enumerables-in-ruby/
-* http://patshaughnessy.net/2013/4/3/ruby-2-0-works-hard-so-you-can-be-lazy
+* <http://ruby-doc.org/core-2.0.0/Enumerator/Lazy.html#method-i-lazy>
+* <https://www.sitepoint.com/implementing-lazy-enumerables-in-ruby/>
+* <http://patshaughnessy.net/2013/4/3/ruby-2-0-works-hard-so-you-can-be-lazy>
 
 ## Domain specific collection object respecting Lazynes
 
@@ -561,7 +571,7 @@ interface around it.
 But we were ignoring the fact that enumerator is object of it's own
 right too. We can pass it to our collection and delegate other methods to it.
 
-> More on this topic from different angle http://blog.arkency.com/2014/01/ruby-to-enum-for-enumerator/
+> More on this topic from different angle <http://blog.arkency.com/2014/01/ruby-to-enum-for-enumerator/>
 
 Whether you agree or disagree, my opinion is that object composition is the most
 cleanest and most flexible form of communication between objects and this is exactly

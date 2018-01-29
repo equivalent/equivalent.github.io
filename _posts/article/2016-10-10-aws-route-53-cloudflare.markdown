@@ -1,4 +1,15 @@
-# How to configure Route 53 to Cloudflare
+---
+layout: article_post
+categories: article
+title:  "How to configure Route 53 to Cloudflare"
+disq_id: 33
+description:
+  How to properly set up Cloudflare with Route 53
+redirect_from:
+  - "/blogs/33"
+  - "/blogs/33-how-to-configure-route-53-to-cloudflare"
+---
+
 
 [Cloudflare](https://www.cloudflare.com) is a DNS level CDN.
 All you need to do is change your Domain name server to theirs and their
@@ -16,7 +27,7 @@ Most of us configure the NS in "Hosted Zones"
 But you also need to go to your Registered Domains, click the domain you want to
 modify, and then Add/Edit the name servers there.
 
-> Article is based on solution http://serverfault.com/a/704577 . Thanks
+> Article is based on solution <http://serverfault.com/a/704577> . Thanks
 > [Oblio](http://serverfault.com/users/133223/oblio) ! 
 
 

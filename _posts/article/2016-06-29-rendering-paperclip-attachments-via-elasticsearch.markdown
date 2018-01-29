@@ -1,4 +1,13 @@
-# Rendering Paperclip url via Elasticsearch without making calls to ActiveRecord DB
+---
+layout: article_post
+categories: article
+title:  "Rendering Paperclip url via Elasticsearch without making calls to ActiveRecord DB"
+disq_id: 26
+description:
+  Rendering Paperclip attachments / urls vith Elasticsearch without ActiveRecord calls.
+redirect_from:
+  - "/blogs/26"
+---
 
 Resources this article is dealing with:
 
@@ -22,7 +31,7 @@ if you want to generate server side HTML via ERB, Slim, Haml, ...
 
 ## Relational DB example first
 
-We will setup Paperclip standard setup as described in https://github.com/thoughtbot/paperclip#models
+We will setup Paperclip standard setup as described in <https://github.com/thoughtbot/paperclip#models>
 on our `Image` model mounting Paperclip on
 `attachement` with two styles `thumb` and `screen`.
 
@@ -203,7 +212,7 @@ gem 'paperclip'
 ```
 
 ...and to the model we want to search (as described in
-https://github.com/elastic/elasticsearch-rails#usage)
+<https://github.com/elastic/elasticsearch-rails#usage>)
 
 We will be searching only on `Property` model and we will use image
 attributes in it's Document/Index
@@ -387,6 +396,6 @@ curl localhost:3000/properties?q=cool
 
 ## Other Elasticsearch examples:
 
-* https://github.com/elastic/elasticsearch-rails/tree/master/elasticsearch-model/examples
-* https://gist.github.com/equivalent/ba7835e07fabc4ba103008f553dc2e3a
-* https://gist.github.com/equivalent/310a948f9d6b4ade0ce1cb243e995569
+* <https://github.com/elastic/elasticsearch-rails/tree/master/elasticsearch-model/examples>
+* <https://gist.github.com/equivalent/ba7835e07fabc4ba103008f553dc2e3a>
+* <https://gist.github.com/equivalent/310a948f9d6b4ade0ce1cb243e995569>

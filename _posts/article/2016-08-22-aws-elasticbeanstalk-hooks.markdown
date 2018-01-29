@@ -1,4 +1,14 @@
-# AWS ElasticBeanstalk deployment hooks
+---
+layout: article_post
+categories: article
+title:  "AWS ElasticBeanstalk deployment hooks"
+disq_id: 29
+description:
+  How to run post and pre deployment scripts on AWS Elastic Beanstalk running (not only) Docker environment
+redirect_from:
+  - "/blogs/29"
+  - "/blogs/29-aws-elasticbeanstalk-deployment-hooks"
+---
 
 ...or: How to run a script after Elastic Beanstalk deployment finishes.
 
@@ -60,9 +70,9 @@ not in `.ebextensions` folder.
 
 Related articles that contains more info:
 
-* http://www.dannemanne.com/posts/post-deployment_script_on_elastic_beanstalk_restart_delayed_job
-* http://junkheap.net/blog/2013/05/20/elastic-beanstalk-post-deployment-scripts/
-* http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/ebextensions.html
+* <http://www.dannemanne.com/posts/post-deployment_script_on_elastic_beanstalk_restart_delayed_job>
+* <http://junkheap.net/blog/2013/05/20/elastic-beanstalk-post-deployment-scripts/>
+* <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/ebextensions.html>
 
 
 ## Direct .ebextension command enxecution
@@ -101,7 +111,7 @@ So if you need something  after deployment is finished you won't be able to do t
 
 Related articles
 
-* http://stackoverflow.com/questions/14077095/aws-elastic-beanstalk-running-a-cronjob
+* <http://stackoverflow.com/questions/14077095/aws-elastic-beanstalk-running-a-cronjob>
 
 
 ## Execution only on one instance.
@@ -126,8 +136,8 @@ container_commands:
 > or [this](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features-managing-env-tiers.html) and [this](https://medium.com/@joelennon/running-cron-jobs-on-amazon-web-services-aws-elastic-beanstalk-a41d91d1c571#.7cywqjukt) article for how to do it with Worker instance.
 
 
-* http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers-ec2.html  search for leader_only
-* http://stackoverflow.com/questions/14077095/aws-elastic-beanstalk-running-a-cronjob
+* <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers-ec2.html  search for leader_only>
+* <http://stackoverflow.com/questions/14077095/aws-elastic-beanstalk-running-a-cronjob>
 
 ## Many possible hooks
 

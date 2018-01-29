@@ -1,10 +1,19 @@
-# Some debugging tips for Ruby on Rails
+---
+layout: article_post
+categories: article
+title:  "Some debugging tips for Ruby on Rails"
+disq_id: 24
+description:
+  Several debugging tricks for Ruby and  Ruby or Rails developers
+redirect_from:
+  - "/blogs/24"
+---
 
 This article will be  updated on regular bases.  
 
 ## Pry
 
-http://pryrepl.org/
+<http://pryrepl.org/>
 
 Pry is awesome console tool. Onece installed you can run `rails c` and
 you can inspect objects (e.g.: `ls User.last`)
@@ -118,7 +127,7 @@ bundle exec ruby -e 'require "active_record"; require "yaml"; require "erb"; Act
 
 Other sources:
 
-* https://github.com/rails/rails/tree/master/activerecord
+* <https://github.com/rails/rails/tree/master/activerecord>
 
 ## Establish connection with Redis
 

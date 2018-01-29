@@ -1,4 +1,14 @@
-# Different ways how to do contextual Rails validations
+---
+layout: article_post
+categories: article
+title:  "Different ways how to do contextual Rails validations"
+disq_id: 22
+description:
+  Ruby on Rails has a decent way how to ensure that invalid params won't end up in DB. Problem with Rails Validators is that they are bound to a class rather than Instance object. In this article we will have a look on few workarounds to do context validations.
+redirect_from:
+  - "/blogs/22"
+---
+
 
 Last weeks I stumble upon a discussion on "[How to add validations to a
 specific instance of an active record object?][5]" and I was trying to
@@ -162,8 +172,8 @@ end
 ```
 
 > You can read more about validation contexts here:
-> *  http://blog.arkency.com/2014/04/mastering-rails-validations-contexts/
-> *  http://guides.rubyonrails.org/active_record_validations.html#on
+> *  <http://blog.arkency.com/2014/04/mastering-rails-validations-contexts/>
+> *  <http://guides.rubyonrails.org/active_record_validations.html#on>
 
 The problem however is that this can get out of hand, and if your model
 is fat, it will make it even larger.
