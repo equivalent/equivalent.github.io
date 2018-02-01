@@ -1,4 +1,0 @@
-location /tils/39* {
-  return       301 https://blog.eq8.eu/til/find-duplicate-email-records-with-rails.html;
-  break;
-}
