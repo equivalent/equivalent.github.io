@@ -1,4 +1,12 @@
-# Phoenix increase timeout when debugging with IEx.pry in ExUnit
+---
+layout: til_post
+title:  "Phoenix increase timeout when debugging with IEx.pry in ExUnit"
+categories: til
+redirect_from:
+  - "/tils/25"
+  - "/tils/25-phoenix-increase-timeout-when-debugging-with-iex-pry-in-exunit"
+---
+
 
 Phoenix, Ecto and ExUnit have some
 default timeouts. So once you start debugging you have maybe 10 or 15

@@ -1,4 +1,11 @@
-# Exclude tags when running ExUnit tests
+---
+layout: til_post
+title:  "Exclude tags when running ExUnit tests"
+categories: til
+redirect_from: 
+  - "/tils/28"
+  - "/tils/28-exclude-tags-when-running-exunit-tests"
+---
 
 Let say you have tests that trigger real HTTP calls (e.g.: contracts).
 And you want those to be excluded from the default test run.
@@ -34,4 +41,4 @@ mix test --only twitter_api
 
 Source:
 
-* http://blog.plataformatec.com.br/2015/10/mocks-and-explicit-contracts/
+* <http://blog.plataformatec.com.br/2015/10/mocks-and-explicit-contracts/>

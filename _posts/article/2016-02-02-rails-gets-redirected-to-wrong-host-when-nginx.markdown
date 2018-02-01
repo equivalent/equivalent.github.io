@@ -1,4 +1,14 @@
-# Rails redirects to wrong host (NginX `HTTP_X_FORWARDED_HOST`)
+---
+layout: article_post
+categories: article
+title:  "Rails redirects to wrong host (NginX HTTP_X_FORWARDED_HOST)"
+disq_id: 21
+description:
+  Problem I had where NginX was passing wrong HTTP_X_FORWARDED_HOST to Rails and me spend several hours debugging.
+redirect_from:
+  - "/blogs/21"
+---
+
 
 The other day I noticed a problem on our beta server
 (let's call it `qa.ourapplication.it`): Some controllers were redirecting
@@ -34,7 +44,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-http://apidock.com/rails/ActionController/Base/default_url_options
+<http://apidock.com/rails/ActionController/Base/default_url_options>
 
 
 > Note: Configuring  this in a controller is ok
@@ -125,7 +135,7 @@ This make sense, `X-Forwarded-Host` is being passed for the first
 server of our NginX configuration `www.ourapplication.com` and Rails is using this header to
 change the default host.
 
-http://calvincorreli.com/2005/12/05/what-s-with-http_x_forwarded_host/comment-page-1/
+<http://calvincorreli.com/2005/12/05/what-s-with-http_x_forwarded_host/comment-page-1/>
 
 
 ### Solution

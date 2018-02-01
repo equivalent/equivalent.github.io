@@ -1,4 +1,12 @@
-# Selecting value from list of tuples Elixir
+---
+layout: til_post
+title:  "Selecting value from list of tuples Elixir"
+categories: til
+redirect_from: 
+  - "/tils/29"
+  - "/tils/29-selecting-value-from-list-of-tuples-elixir"
+---
+
 
 Elixir
 
@@ -62,6 +70,6 @@ document = %{}Document
 
 #### Source
 
-* https://stackoverflow.com/questions/44220937/selecting-value-from-list-of-tuples-elixir
+* <https://stackoverflow.com/questions/44220937/selecting-value-from-list-of-tuples-elixir>
 
 Special thank you to S. Pallen 

@@ -1,4 +1,13 @@
-# How to debug Phoenix / Elixir application
+---
+layout: til_post
+title:  "How to debug Phoenix / Elixir application"
+categories: til
+redirect_from:
+  - "/tils/24"
+  - "/tils/24-how-to-debug-phoenix-elixir-application"
+---
+
+
 
 ## How to debug ExUnit test:
 

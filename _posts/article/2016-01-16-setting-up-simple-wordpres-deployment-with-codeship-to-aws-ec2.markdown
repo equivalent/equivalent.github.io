@@ -1,4 +1,13 @@
-# Setting up simple Wordpress deployment with CodeShip to AWS EC2
+---
+layout: article_post
+categories: article
+title:  "Setting up simple Wordpress deployment with CodeShip to AWS EC2"
+disq_id: 19
+description:
+  This article will show you a simple way how to set up deployment of a WordPress website via CodeShip
+redirect_from:
+  - "/blogs/19"
+---
 
 The other day I was asked to set up deployment pipe for a blog
 website built in Wordpress. Although I was a PHP developer for a few years before I switched to Ruby, I've never worked with WordPress.
@@ -93,7 +102,7 @@ Ok now on push some change to project Github repo branch `live-20161101`. If con
 > **Note:** Be sure that you have your server firewall set up in a way
 > that it will enable CodeShip to SSH to you machine othevise the SSH
 > connection will Freeze
-> https://codeship.com/documentation/faq/enabling-access-to-servers/
+> <https://codeship.com/documentation/faq/enabling-access-to-servers/>
 
 [1]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-connect-to-instance-linux "Connect to EC2 instance"
 [2]: http://coenraets.org/blog/2012/01/setting-up-wordpress-on-amazon-ec2-in-5-minutes/ "Settup WordPress in EC2 instance"

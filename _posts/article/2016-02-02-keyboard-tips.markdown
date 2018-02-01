@@ -1,4 +1,14 @@
-# Ergonomics and faster typing practices for Web Developers
+---
+layout: article_post
+categories: article
+title:  "Ergonomics and faster typing practices for Web Developers"
+disq_id: 20
+description:
+  Ten Finger Typing Technique, Dvorak layout, Split Keyboards and Vim. All this are Techniques and Life Hacks that can improve your productivity and development experience.
+redirect_from:
+  - "/blogs/20"
+---
+
 
 As with any craft, there comes a natural need to improve our skills in
 Web Development methods. We teach ourself new coding patterns, we try

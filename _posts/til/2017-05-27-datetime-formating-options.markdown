@@ -1,4 +1,12 @@
-# Datetime formating options
+---
+layout: til_post
+title:  "Datetime formating options"
+categories: til
+redirect_from: 
+  - "/tils/26"
+  - "/tils/26-datetime-formating-options"
+---
+
 
 * Options for Ruby `strftime` https://apidock.com/ruby/DateTime/strftime
 * elixir `timex` https://github.com/bitwalker/timex

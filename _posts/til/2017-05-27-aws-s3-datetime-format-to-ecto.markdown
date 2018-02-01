@@ -1,4 +1,12 @@
-# AWS S3 SNS datetime fromat to ecto databse datetime
+---
+layout: til_post
+title:  "AWS S3 SNS datetime fromat to ecto databse datetime"
+categories: til
+redirect_from:
+  - "/tils/27"
+  - "/tils/27-aws-s3-sns-datetime-fromat-to-ecto-databse-datetime"
+---
+
 
 When you fetch metadata of S3 file with [ExAws](https://github.com/CargoSense/ex_aws)  `ExAws.S3.head_object2`
 you will get something like this:
@@ -33,7 +41,7 @@ document
 
 Now be careful. AWS is specifying zone as GMT while Ecto uses Etc/UTC
 
-https://www.timeanddate.com/time/gmt-utc-time.html
+<https://www.timeanddate.com/time/gmt-utc-time.html>
 
 * GMT is a time zone officially used in some European and African countries. The time can be displayed using both the 24-hour format (0 - 24) or the 12-hour format (1 - 12 am/pm).
 * UTC is not a time zone, but a time standard that is the basis for civil time and time zones worldwide. This means that no country or territory officially uses UTC as a local time

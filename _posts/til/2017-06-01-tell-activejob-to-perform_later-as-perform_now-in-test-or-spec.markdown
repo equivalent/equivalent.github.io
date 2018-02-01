@@ -1,4 +1,11 @@
-# Tell ActiveJob to perform_later as perform_now in Test or Spec
+---
+layout: til_post
+title:  "Tell ActiveJob to perform_later as perform_now in Test or Spec"
+categories: til
+redirect_from: 
+  - "/tils/30"
+  - "/tils/30-tell-activejob-to-perform_later-as-perform_now-in-test-or-spec"
+---
 
 Rails[ActiveJob](http://edgeguides.rubyonrails.org/active_job_basics.html)
 
@@ -38,7 +45,7 @@ for assertion tests
 What you can do is wrap the call in build in `ActiveJob::TestHelper` module
 method `perform_enqueued_jobs` block:
 
-* http://api.rubyonrails.org/v4.2/classes/ActiveJob/TestHelper.html#method-i-perform_enqueued_jobs
+* <http://api.rubyonrails.org/v4.2/classes/ActiveJob/TestHelper.html#method-i-perform_enqueued_jobs>
 
 ```ruby
 require 'spec_helper'
