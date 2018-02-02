@@ -7,4 +7,7 @@ redirect_from:
   - "/articles"
   - "/blogs"
   - "/blog"
+  - "/articles/"
+  - "/blogs/"
+  - "/blog/"
 ---
