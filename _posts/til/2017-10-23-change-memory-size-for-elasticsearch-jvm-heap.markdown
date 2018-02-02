@@ -2,7 +2,9 @@
 layout: til_post
 title:  "Change memory size for elasticsearch 5 JVM heap"
 categories: til
-redirect_from: "/tils/37-change-memory-size-for-elasticsearch-5-jvm-heap"
+redirect_from:
+  - "/tils/37"
+  - "/tils/37-change-memory-size-for-elasticsearch-5-jvm-heap"
 ---
 
 **Given**: your VM is on  ubuntu 16.04 

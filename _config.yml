@@ -59,9 +59,9 @@ highlighter: none
 markdown: kramdown
 kramdown:
   syntax_highlighter_opts:
-    disable : true   
+    disable : true
 
 
 
-permalink: /:categories/:title.html
+permalink: /:categories/:title
 
