@@ -4,8 +4,8 @@ title:  "Find duplicate email records with Rails"
 categories: til
 disq_id: til-39
 redirect_from: 
-  - "/tils/39-find-duplicate-email-records-with-rails"
-  - "/tils/39"
+  - "/tils/39-find-duplicate-email-records-with-rails/"
+  - "/tils/39/"
 ---
 
 Rails + SQL do the heavy lifting

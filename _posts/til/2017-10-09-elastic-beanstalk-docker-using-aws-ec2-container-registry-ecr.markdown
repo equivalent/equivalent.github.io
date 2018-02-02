@@ -4,8 +4,8 @@ title:  "Elastic Beanstalk Docker using AWS EC2 Container Registry (ECR)"
 categories: til
 disqus_id: 'blog-til-36'
 redirect_from:
-  - "/tils/36"
-  - "/tils/36-elastic-beanstalk-docker-using-aws-ec2-container-registry-ecr"
+  - "/tils/36/"
+  - "/tils/36-elastic-beanstalk-docker-using-aws-ec2-container-registry-ecr/"
 ---
 
 This T.I.L. note deals with topic of  Docker Registry credentials/authorization options when you use [AWS Elastic Beanstalk (EB)](https://aws.amazon.com/elasticbeanstalk/) as a [Multicontainer Docker](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecs.html#create_deploy_docker_ecs_platform). If you need more info check [this](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecs.html#create_deploy_docker_ecs_platform) article or FAQ links bellow.

@@ -3,8 +3,8 @@ layout: til_post
 title:  "How to get current enviroment name in Phoenix Elixir"
 categories: til
 redirect_from:
-  - "/tils/35-how-to-get-current-enviroment-name-in-phoenix-elixir"
-  - "/tils/35"
+  - "/tils/35-how-to-get-current-enviroment-name-in-phoenix-elixir/"
+  - "/tils/35/"
 ---
 
 

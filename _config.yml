@@ -63,5 +63,5 @@ kramdown:
 
 
 
-permalink: /:categories/:title
+permalink: /:categories/:title.html
 

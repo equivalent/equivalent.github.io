@@ -3,7 +3,8 @@ layout: til_post
 title:  "How to get ElasticSearch total count of items matching"
 categories: til
 redirect_from:
-  - "/tils/38-how-to-get-elasticsearch-total-count-of-items-matching"
+  - "/tils/38-how-to-get-elasticsearch-total-count-of-items-matching/"
+  - "/tils/38/"
 ---
 
 Using the [ElasticSearch Rails](https://github.com/elastic/elasticsearch-rails)

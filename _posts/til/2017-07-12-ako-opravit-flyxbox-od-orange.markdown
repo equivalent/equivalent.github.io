@@ -2,7 +2,9 @@
 layout: til_post
 title:  "Ako opravit Flybox od Orange"
 categories: til
-redirect_from: "/tils/34-ako-opravit-flybox-od-orange"
+redirect_from: 
+  - "/tils/34-ako-opravit-flybox-od-orange/"
+  - "/tils/34/"
 ---
 
 > This TIL blog I'm writing in Slovak language as it affects internet
