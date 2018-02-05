@@ -2,6 +2,7 @@
 layout: til_post
 title:  "Datetime formating options"
 categories: til
+disq_id: til-26
 redirect_from: 
   - "/tils/26"
   - "/tils/26-datetime-formating-options"

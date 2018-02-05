@@ -1,4 +1,13 @@
-# Ecto Phoenix - get last record in table
+---
+layout: til_post
+title:  "Ecto Phoenix - get last record in table"
+categories: til
+disq_id: til-20
+redirect_from:
+  - "/tils/20/"
+  - "/tils/20-ecto-phoenix-get-last-record-in-table/"
+---
+
 
 Given: I want last Document
 And: application name is MyApp

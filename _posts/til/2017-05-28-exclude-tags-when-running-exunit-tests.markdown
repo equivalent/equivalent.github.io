@@ -2,6 +2,7 @@
 layout: til_post
 title:  "Exclude tags when running ExUnit tests"
 categories: til
+disq_id: til-28
 redirect_from: 
   - "/tils/28"
   - "/tils/28-exclude-tags-when-running-exunit-tests"

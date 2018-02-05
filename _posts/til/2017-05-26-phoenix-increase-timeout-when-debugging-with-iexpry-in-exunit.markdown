@@ -2,6 +2,7 @@
 layout: til_post
 title:  "Phoenix increase timeout when debugging with IEx.pry in ExUnit"
 categories: til
+disq_id: til-25
 redirect_from:
   - "/tils/25"
   - "/tils/25-phoenix-increase-timeout-when-debugging-with-iex-pry-in-exunit"

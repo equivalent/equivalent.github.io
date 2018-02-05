@@ -1,4 +1,13 @@
-# Send files from Server
+---
+layout: til_post
+title:  "Send files from Server"
+categories: til
+disq_id: til-23
+redirect_from:
+  - "/tils/23"
+  - "/tils/23-send-files-from-server"
+---
+
 
 Sometimes you are on a server where you generate export file. It's easy
 to just `scp` the file from the server to your local machine.

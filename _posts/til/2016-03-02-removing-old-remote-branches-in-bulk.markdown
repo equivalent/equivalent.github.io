@@ -1,4 +1,14 @@
-# Removing old release branches
+---
+layout: til_post
+title:  "Removing old release branches"
+categories: til
+disq_id: til-18
+redirect_from:
+  - "/tils/18"
+  - "/tils/18-removing-old-release-branches"
+---
+
+
 
 After some time release branches piles up and we may want to clean up
 our Github from old `live-*` branches

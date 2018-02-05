@@ -1,4 +1,13 @@
-# Raspberry PI CIFS mount on boot
+---
+layout: til_post
+title:  "Raspberry PI CIFS mount on boot"
+categories: til
+disq_id: til-22
+redirect_from:
+  - "/tils/22"
+  - "/tils/22-raspberry-pi-cifs-mount-on-boot"
+---
+
 
 In order to mount NAS unit / network folder in linux / Raspbery PI
 place this in your `/etc/fstab`

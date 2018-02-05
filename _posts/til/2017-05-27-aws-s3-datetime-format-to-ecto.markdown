@@ -2,6 +2,7 @@
 layout: til_post
 title:  "AWS S3 SNS datetime fromat to ecto databse datetime"
 categories: til
+disq_id: til-27
 redirect_from:
   - "/tils/27"
   - "/tils/27-aws-s3-sns-datetime-fromat-to-ecto-databse-datetime"

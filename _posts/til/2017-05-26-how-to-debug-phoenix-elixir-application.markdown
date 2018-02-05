@@ -2,6 +2,7 @@
 layout: til_post
 title:  "How to debug Phoenix / Elixir application"
 categories: til
+disq_id: til-24
 redirect_from:
   - "/tils/24"
   - "/tils/24-how-to-debug-phoenix-elixir-application"

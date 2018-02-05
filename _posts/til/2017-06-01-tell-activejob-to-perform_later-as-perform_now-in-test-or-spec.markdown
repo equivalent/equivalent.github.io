@@ -2,6 +2,7 @@
 layout: til_post
 title:  "Tell ActiveJob to perform_later as perform_now in Test or Spec"
 categories: til
+disq_id: til-30
 redirect_from: 
   - "/tils/30"
   - "/tils/30-tell-activejob-to-perform_later-as-perform_now-in-test-or-spec"

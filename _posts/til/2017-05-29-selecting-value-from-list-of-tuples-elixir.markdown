@@ -2,6 +2,7 @@
 layout: til_post
 title:  "Selecting value from list of tuples Elixir"
 categories: til
+disq_id: til-29
 redirect_from: 
   - "/tils/29"
   - "/tils/29-selecting-value-from-list-of-tuples-elixir"

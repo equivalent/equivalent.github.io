@@ -1,4 +1,13 @@
-# ExUnit - Wait for Genserver cast in test
+---
+layout: til_post
+title:  "ExUnit - Wait for Genserver cast in test"
+categories: til
+disq_id: til-19
+redirect_from:
+  - "/tils/19/"
+  - "/tils/19-exunit-wait-for-genserver-cast-in-test/"
+---
+
 
 I had a Phoenix ExUnit test of a Genserver where I cast method. I
 wanted to evalate the result in the test. With `call` you have feedback
