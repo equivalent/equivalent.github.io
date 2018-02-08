@@ -76,47 +76,6 @@
     "description":"How to pass JSON to HTML element data attribute",
     "created_at":"2015-02-20"
   },
-  {
-    "id":13,
-    "version": 1,
-    "github_file_name":"2015-04-23-ruby-ancestors-descendants-and-other-ways-how-to-pull-relatives.md",
-    "description":"In Ruby is easy to pull \"ancestor\" classes of a class. However once developer want to work with \"descendants\" he may find it's not that easy. This article is providing a way how to look at Ruby ancestor tree",
-    "created_at":"2015-04-23"
-  },
-  {
-    "id":14,
-    "version": 1,
-    "github_file_name":"2015-01-20-force_ssl_is_different_than_force_ssl.md",
-    "description":"Rails provide option force_ssl as a global seting and as a controller method. They act the same way in terms of redirect to https but have a huge security affect on cookie security.",
-    "created_at":"2015-05-08"
-  },
-  {
-    "id":15,
-    "version": 3,
-    "github_file_name":"2015-07-02-cronntab-rbenv-bundle-exec-rake-task.md",
-    "description":"Ruby provide so many easy ways how to create a scheduled job (Whenever gem, Daemons gem, ...) but what if you want to configure something really simple with plain cron along rbenv? ",
-    "created_at":"2015-07-02"
-  },
-  {
-    "id":16,
-    "version": 1,
-    "github_file_name":"2015-08-13-scissors-rule-in-coding.md",
-    "description":"In coding / software-developing world a rule called Scissors Rule exist several years. Funny enough I couldn't google single article about it :) . In this article I'm summarizing it's base principles ",
-    "created_at":"2015-08-13"
-  },
-  {
-    "id":17,
-    "version": 1,
-    "github_file_name":"2016-01-10-build-or-not-to-build-docker-images-in-the-cloud.md",
-    "description":"Docker images can be build either on local computer or via hosted build servers. Although we all are fans of cloud automation, should we really let hosted solutions build the images for us? Isn't that against Docker philosophy? ",
-    "created_at":"2016-01-10"
-  },
-  {
-    "id":18,
-    "version": 3,
-    "github_file_name":"2016-01-12-chromebook-for-web-developers.md",
-    "description":"You don't need expensive laptop to be a web-developer or sys-admin guy, all you need is an attitude to get things done. In this article I'll give you my experience on developing commercial web-application backend via chromebook",
-    "created_at":"2016-01-12"
-  },
+
 
 ]

@@ -1,4 +1,15 @@
-# Scissors Rule in coding
+---
+layout: article_post
+categories: article
+title:  "Scissors Rule in coding"
+disq_id: 16
+description:
+  In coding / software-developing world a rule called Scissors Rule exist several years. Funny enough I couldn't google single article about it :) . In this article I'm summarizing it's base principles 
+redirect_from:
+  - "/blogs/16/"
+  - "/blogs/16-scissors-rule-in-coding/"
+---
+
 
 The other day I was trying to google some articles on **Scissors Rule**
 so I could explain it in my [StackOwerflow comment][1] but I found out
@@ -387,8 +398,8 @@ end
 Thank you to all that joined the discussion on Reddit and reminded me of
 all the stuff I forgot to mention in the article.
 
-* https://www.reddit.com/r/ruby/comments/3gu51u/scissors_rule_in_coding_put_your_public_methods/
-* https://www.reddit.com/r/programming/comments/3gu1sc/scissors_rule_in_coding_put_your_public_methods/
+* <https://www.reddit.com/r/ruby/comments/3gu51u/scissors_rule_in_coding_put_your_public_methods/>
+* <https://www.reddit.com/r/programming/comments/3gu1sc/scissors_rule_in_coding_put_your_public_methods/>
 
 [1]: http://stackoverflow.com/a/31983564/473040
 [2]: https://cleancoders.com/

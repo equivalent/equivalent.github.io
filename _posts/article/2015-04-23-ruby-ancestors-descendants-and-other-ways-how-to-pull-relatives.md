@@ -1,4 +1,14 @@
-# Ruby Ancestors, Descendants and other annoying relatives
+---
+layout: article_post
+categories: article
+title:  "Ruby Ancestors, Descendants and other annoying relatives"
+disq_id: 13
+description:
+  In Ruby is easy to pull "ancestor" classes of a class. However once developer want to work with "descendants" he may find it's not that easy. This article is providing a way how to look at Ruby ancestor tree
+redirect_from:
+  - "/blogs/13/"
+  - "/blogs/13-ruby-ancestors-descendants-and-other-annoying-relatives"
+---
 
 
 > Updates:
@@ -88,7 +98,7 @@ Parent.descendants => [Child, GrandChild]
 Child.descendants = [GrandChild]
 ```
 
-(stolen from http://stackoverflow.com/questions/2393697/look-up-all-descendants-of-a-class-in-ruby)
+(stolen from <http://stackoverflow.com/questions/2393697/look-up-all-descendants-of-a-class-in-ruby>)
 
 ...however that could be bit slow if you have too many clases
 as you are looping through all Objects in ObjectSpace

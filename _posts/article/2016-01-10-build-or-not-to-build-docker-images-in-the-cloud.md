@@ -7,7 +7,7 @@ description:
   Docker images can be build either on local computer or via hosted build servers. Although we all are fans of cloud automation, should we really let hosted solutions build the images for us? Isn't that against Docker philosophy? 
 redirect_from:
   - "/blogs/17/"
-  - "/blogs/17-build-docker-images-on-your-machine-or-in-the-cloud"
+  - "/blogs/17-build-docker-images-on-your-machine-or-in-the-cloud/"
 ---
 
 ...or: There is no shame in not automating everything via a cool hosted tools.

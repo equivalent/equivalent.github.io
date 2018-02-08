@@ -1,4 +1,14 @@
-# cron rbenv bundle exec rake task
+---
+layout: article_post
+categories: article
+title:  "cron rbenv bundle exec rake task"
+disq_id: 15
+description:
+redirect_from:
+  - "/blogs/15/"
+  - "/blogs/15-cron-rbenv-bundle-exec-rake-task/"
+---
+
 
 keywords: cron, crontab, Ubuntu 14.04, rbenv, RACK_ENV, RAILS_ENV, Ruby
 2.2.2, Rails backgroud job
@@ -37,7 +47,7 @@ And we add:
 ```
 
 Obviously the  `* * * * *` is a crontab scheduling syntax (run something every minute) and you can learn
-abaut the values anywhere (e.g. http://kvz.io/blog/2007/07/29/schedule-tasks-on-linux-using-crontab/), this is outside the topic of our article.
+abaut the values anywhere (e.g. <http://kvz.io/blog/2007/07/29/schedule-tasks-on-linux-using-crontab/>), this is outside the topic of our article.
 
 But why all those command arguments ? Well it's tricky.
 
@@ -107,7 +117,7 @@ To check what ENV variables are actually set:
 PATH=/home/app/.rbenv/shims:/home/app/.rbenv/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/app/bin
 ```
 
-(read more here: http://www.relativkreativ.at/articles/running-ruby-scripts-from-within-a-cron-job-in-an-rbenv-environment)
+(read more here: <http://www.relativkreativ.at/articles/running-ruby-scripts-from-within-a-cron-job-in-an-rbenv-environment>)
 
 Just please remember to remove those lines when you're finished
 
@@ -118,13 +128,13 @@ I'm not an expert on Cron or Bash I'm just a Ruby developer trying to
 get stuff done. I may be wrong on some stuff mentioned in here, please
 correct me in comment or make a Pull Request to the article.
 
-https://github.com/equivalent/scrapbook2/blob/master/archive/blogs/2015-07-02-cronntab-rbenv-bundle-exec-rake-task.md
+<https://github.com/equivalent/scrapbook2/blob/master/archive/blogs/2015-07-02-cronntab-rbenv-bundle-exec-rake-task.md>
 
 ## Source of information
 
-* http://www.relativkreativ.at/articles/running-ruby-scripts-from-within-a-cron-job-in-an-rbenv-environment
-* http://stackoverflow.com/questions/8434922/ruby-script-using-rbenv-in-cron
-* http://tutorials.jumpstartlab.com/topics/systems/automation.html
-* https://help.ubuntu.com/community/CronHowto
-* http://askubuntu.com/questions/23009/reasons-why-crontab-does-not-work
-* http://askubuntu.com/questions/56683/where-is-the-cron-crontab-log
+* <http://www.relativkreativ.at/articles/running-ruby-scripts-from-within-a-cron-job-in-an-rbenv-environment>
+* <http://stackoverflow.com/questions/8434922/ruby-script-using-rbenv-in-cron>
+* <http://tutorials.jumpstartlab.com/topics/systems/automation.html>
+* <https://help.ubuntu.com/community/CronHowto>
+* <http://askubuntu.com/questions/23009/reasons-why-crontab-does-not-work>
+* <http://askubuntu.com/questions/56683/where-is-the-cron-crontab-log>

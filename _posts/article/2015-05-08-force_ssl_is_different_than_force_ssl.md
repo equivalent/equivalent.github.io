@@ -1,4 +1,15 @@
-# `config.force_ssl` is different than controller `force_ssl`
+---
+layout: article_post
+categories: article
+title:  "`config.force_ssl` is different than controller `force_ssl`"
+disq_id: 14
+description:
+  Rails provide option force_ssl as a global seting and as a controller method. They act the same way in terms of redirect to https but have a huge security affect on cookie security.
+redirect_from:
+  - "/blogs/14/"
+  - "/blogs/14-config-force_ssl-is-different-than-controller-force_ssl/"
+---
+
 
 ... or why my cookies don't have `secure` flag anymore
 
@@ -154,7 +165,7 @@ the implementation details as the article is not about this.
 
 Good example how to implement secure cookie is here:
 
-http://railscasts.com/episodes/356-dangers-of-session-hijacking
+<http://railscasts.com/episodes/356-dangers-of-session-hijacking>
 
 ```ruby
 # app/controllers/sessions_controller.rb
@@ -186,5 +197,5 @@ gem 'devise_ssl_session_verifiable'
 
 souces:
 
-* Discussion on Devise gem issues page https://github.com/plataformatec/devise/issues/3433
+* Discussion on Devise gem issues page <https://github.com/plataformatec/devise/issues/3433>
 
