@@ -1,4 +1,16 @@
-# Chromebook for Web Developers
+---
+layout: article_post
+categories: article
+title:  "Chromebook for Web Developers"
+disq_id: 18
+description:
+  You don't need expensive laptop to be a web-developer or sys-admin guy, all you need is an attitude to get things done. In this article I'll give you my experience on developing commercial web-application backend via chromebook
+redirect_from:
+  - "/blogs/18/"
+  - "/blogs/18-chromebook-for-web-developers/"
+---
+
+
 
 ![''](https://raw.githubusercontent.com/equivalent/scrapbook2/master/assets/images/2015/chromebook.jpg)
 
@@ -20,8 +32,8 @@ running tests, deploying the app from a brand new $200 - $300 Chromebook.
 There are already some articles on experience that Web-Developers had
 developing code on Chromebooks:
 
-* https://divshot.com/blog/tips/using-a-chromebook-for-web-development/
-* https://medium.com/@martinmalinda/ultimate-guide-for-web-development-on-chromebook-part-1-crouton-2ec2e6bb2a2d#.r7bn4vqpx
+* <https://divshot.com/blog/tips/using-a-chromebook-for-web-development/>
+* <https://medium.com/@martinmalinda/ultimate-guide-for-web-development-on-chromebook-part-1-crouton-2ec2e6bb2a2d#.r7bn4vqpx>
 
 ...I just though I'll bring to community another article with my experience from different angle.
 
@@ -105,7 +117,7 @@ range of pricing (therefore you can have a cheaper plan) than
 koding.com.
 
 For me Cloud9 and Codeanywhere feels more IDE focused and Pair programming
-focused (https://blog.codeanywhere.com/share-links-pair-programming/, https://www.youtube.com/watch?v=RLKEaMs1p10),
+focused (<https://blog.codeanywhere.com/share-links-pair-programming/>, <https://www.youtube.com/watch?v=RLKEaMs1p10>),
 accessibility focused (codeanywhere has a mobile app, so you can
 seriously code anywhere `:)` ) and Koding.com was giving you bigger VM and
 for some reason the web interface is faster on a poor network.
@@ -369,5 +381,5 @@ how new contracts are, they expect miracles from you the first day, that's
 why I switch to environment I'm familiar several years and I am the most
 productive (Ubuntu Linux).
 
-**UPDATE** New article on this released http://www.eq8.eu/blogs/43-deep-dive-to-cloud-coding
+**UPDATE** New article on this released <https://blog.eq8.eu/article/cloud-coding.html>
 
