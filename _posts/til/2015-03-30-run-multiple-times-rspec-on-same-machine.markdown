@@ -1,4 +1,12 @@
-# Run multiple instances of RSpec on same machine
+---
+layout: til_post
+title:  "Run multiple instances of RSpec on same machine"
+categories: til
+disq_id: til-12
+redirect_from:
+  - "/tils/12/"
+  - "/tils/12-run-multiple-instances-of-rspec-on-same-machine/"
+---
 
 Sime times you are stuck with realy badly written Rails project (or other application which comunicates
 with Database) which entire test suite takes ages to run.
@@ -37,4 +45,4 @@ test:
  TEST_ENV_NUMBER=2 rspec spec/
 ```
 
- If you are looking for solution how to run same test suite on multiple databases check https://github.com/grosser/parallel_tests
+ If you are looking for solution how to run same test suite on multiple databases check <https://github.com/grosser/parallel_tests>

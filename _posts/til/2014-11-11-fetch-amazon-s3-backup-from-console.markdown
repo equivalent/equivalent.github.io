@@ -1,4 +1,13 @@
-# Fetch Amazon s3 (aws) backup from console
+---
+layout: til_post
+title:  "Fetch Amazon s3 (aws) backup from console"
+categories: til
+disq_id: til-5
+redirect_from:
+  - "/tils/5/"
+  - "/tils/5-fetch-amazon-s3-aws-backup-from-console/"
+---
+
 
 If you are using [backup gem](https://github.com/meskyanichi/backup) for creating your backups to 
 s3 bucket (or any other gem) logging to your AWS console web interface each time you want to download
@@ -10,7 +19,7 @@ Much faster solution is to fetch the dump via console with [s3cmd](http://s3tool
 sudo apt-get install s3cmd
 ```
 
-First you need to create user http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_SettingUpUser.html and 
+First you need to create user <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_SettingUpUser.html> and 
 add him a role that will allow s3 access (e.g. S3FullAccess )
 
 Now that you have `Access Key ID` and `Secret Access Key` you can  configure s3cmd
@@ -19,7 +28,7 @@ Now that you have `Access Key ID` and `Secret Access Key` you can  configure s3c
 s3cmd --configure
 ```
 
-One thing you should avoid are special chars in passphraze http://stackoverflow.com/questions/16512312/s3cmd-incomplete-format-error/16714176#16714176
+One thing you should avoid are special chars in passphraze <http://stackoverflow.com/questions/16512312/s3cmd-incomplete-format-error/16714176#16714176>
 
 To try if it works do:
 

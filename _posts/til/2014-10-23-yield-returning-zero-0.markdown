@@ -1,4 +1,13 @@
-# Yield Haml block will return 0  (zero)
+---
+layout: til_post
+title:  "Yield Haml block will return 0  (zero)"
+categories: til
+disq_id: til-4
+redirect_from:
+  - "/tils/4/"
+  - "/tils/4-yield-haml-block-will-return-0-zero/"
+---
+
 
 I had a presenter-view code like this one:
 
@@ -41,5 +50,5 @@ if you then render that string with `=` that will make it work properly:
 
 source: 
 
-* http://stackoverflow.com/questions/3619699/haml-block-returning-0-on-yield
-* http://haml.info/docs/yardoc/Haml/Helpers.html#capture_haml-instance_method
+* <http://stackoverflow.com/questions/3619699/haml-block-returning-0-on-yield>
+* <http://haml.info/docs/yardoc/Haml/Helpers.html#capture_haml-instance_method>

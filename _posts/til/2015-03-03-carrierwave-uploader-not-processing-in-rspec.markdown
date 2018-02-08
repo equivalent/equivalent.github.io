@@ -1,4 +1,12 @@
-# Carrierwave uploader not triggering proces in RSpec
+---
+layout: til_post
+title:  "Carrierwave uploader not triggering proces in RSpec"
+categories: til
+disq_id: til-10
+redirect_from:
+  - "/tils/10/"
+  - "/tils/10-carrierwave-uploader-not-triggering-proces-in-rspec/"
+---
 
 processing is turn off for sake of test speed
 

@@ -1,4 +1,13 @@
-# Make private method public in Subclass in Ruby
+---
+layout: til_post
+title:  "Make private method public in Subclass in Ruby"
+categories: til
+disq_id: til-2
+redirect_from:
+  - "/tils/2/"
+  - "/tils/2-make-private-method-public-in-subclass-in-ruby/"
+---
+
 
 ```ruby
 class Foo
@@ -38,5 +47,5 @@ Bar.new.my_method
 
 source
 
-* http://ruby-doc.org/core-2.1.1/Module.html#method-i-private
-* http://stackoverflow.com/questions/2171743/make-instance-methods-private-in-runtime
+* <http://ruby-doc.org/core-2.1.1/Module.html#method-i-private>
+* <http://stackoverflow.com/questions/2171743/make-instance-methods-private-in-runtime>

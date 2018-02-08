@@ -1,6 +1,14 @@
-# Rails mysql gem (`>= 2.9.0`) throwing error `checking for mysql_query() in -lmysqlclient... no` 
+---
+layout: til_post
+title:  "Rails mysql gem (>= 2.9.0) throwing error `checking for mysql_query() in -lmysqlclient... no"
+categories: til
+disq_id: til-14
+redirect_from:
+  - "/tils/14/"
+  - "/tils/14-rails-mysql-gem-2-9-0-throwing-error-checking-for-mysql_query-in-lmysqlclient-no/"
+---
 
-My settup: 
+My settup:
 
 * Ubuntu 14.04
 * Rails 4.2.x

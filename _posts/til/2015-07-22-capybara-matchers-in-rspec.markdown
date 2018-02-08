@@ -1,4 +1,12 @@
-# how to include Capybara RSpec matchers in RSpec
+---
+layout: til_post
+title:  "How to include Capybara RSpec matchers in RSpec"
+categories: til
+disq_id: til-15
+redirect_from:
+  - "/tils/15"
+  - "/tils/15-how-to-include-capybara-rspec-matchers-in-rspec"
+---
 
 let say you want to use `have_content` and `have_selector` in spec 
 

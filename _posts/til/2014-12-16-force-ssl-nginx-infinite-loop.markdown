@@ -1,4 +1,13 @@
-# Rails force_ssl causing NginX infinite loop
+---
+layout: til_post
+title:  "Rails force_ssl causing NginX infinite loop"
+categories: til
+disq_id: til-7
+redirect_from:
+  - "/tils/7/"
+  - "/tils/7-rails-force_ssl-causing-nginx-infinite-loop/"
+---
+
 
 Today I was configuring some new security features on one of my employers
 websites. One of them was feature to always force ssl on application.
@@ -49,5 +58,5 @@ Rails recognize that "yes I'm on ssl"
 
 source:
 
-* http://simonecarletti.com/blog/2011/05/configuring-rails-3-https-ssl/
-* http://seaneshbaugh.com/posts/configuring-nginx-and-unicorn-for-force_ssl
+* <http://simonecarletti.com/blog/2011/05/configuring-rails-3-https-ssl/>
+* <http://seaneshbaugh.com/posts/configuring-nginx-and-unicorn-for-force_ssl>

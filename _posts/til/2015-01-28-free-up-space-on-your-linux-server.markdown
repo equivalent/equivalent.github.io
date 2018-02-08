@@ -1,4 +1,13 @@
-# Free up space on your Linux server
+---
+layout: til_post
+title:  "Free up space on your Linux server"
+categories: til
+disq_id: til-8
+redirect_from:
+  - "/tils/8/"
+  - "/tils/8-free-up-space-on-your-linux-serverwhen-stuff-goes-wrongsource-of-information/"
+---
+
 
 You can check your disk space usage with `df`, or particular folder `df -sh`.
 
@@ -125,6 +134,6 @@ sudo apt-get autoremove
 
 # source of information
 
-* http://askubuntu.com/questions/138026/how-do-i-delete-kernels-from-a-server
-* http://askubuntu.com/questions/5980/how-do-i-free-up-disk-space
-* http://ubuntuforums.org/showthread.php?t=2291788
+* <http://askubuntu.com/questions/138026/how-do-i-delete-kernels-from-a-server>
+* <http://askubuntu.com/questions/5980/how-do-i-free-up-disk-space>
+* <http://ubuntuforums.org/showthread.php?t=2291788>

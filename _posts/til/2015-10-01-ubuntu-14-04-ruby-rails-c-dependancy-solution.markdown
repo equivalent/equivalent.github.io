@@ -1,4 +1,13 @@
-# Ubuntu 14.04 Ruby Rails C dependancy solution
+---
+layout: til_post
+title:  "Ubuntu 14.04 Ruby Rails C dependancy solution"
+categories: til
+disq_id: til-17
+redirect_from:
+  - "/tils/17"
+  - "/tils/17-ubuntu-14-04-ruby-rails-c-dependancy-solution"
+---
+
 
 Given you are running Ubuntu 14.04 and you are installing/upgrading some Ruby gems
 (let sey Rails 4.2.4 gem, or RSpec, ...) and you get this error:
@@ -41,4 +50,4 @@ sudo apt-get install libgmp3-dev
 
 should solve the problem.
 
-* http://stackoverflow.com/questions/29317640/gem-install-rails-fails-on-ubuntu/32965803#32965803
+* <http://stackoverflow.com/questions/29317640/gem-install-rails-fails-on-ubuntu/32965803#32965803>

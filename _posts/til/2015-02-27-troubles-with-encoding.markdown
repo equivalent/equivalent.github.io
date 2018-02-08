@@ -1,4 +1,13 @@
-# Troubles with reqexp encoding
+---
+layout: til_post
+title:  "Troubles with reqexp encoding"
+categories: til
+disq_id: til-9
+redirect_from:
+  - "/tils/9/"
+  - "/tils/9-troubles-with-reqexp-encoding/"
+---
+
 
 Today friend of my shown me problem that he encounter while he was
 working on his [regexp-examples

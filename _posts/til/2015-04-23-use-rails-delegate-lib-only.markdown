@@ -1,4 +1,12 @@
-# Use Rails (ActiveSupport) delegation class in plain ruby
+---
+layout: til_post
+title:  "Use Rails (ActiveSupport) delegation class in plain ruby"
+categories: til
+disq_id: til-13
+redirect_from:
+  - "/tils/13/"
+  - "/tils/13-use-rails-activesupport-delegation-class-in-plain-ruby/"
+---
 
 ```ruby
 # Gemfile
@@ -22,4 +30,5 @@ Foo.new.call
 ```
 
 source:
-http://guides.rubyonrails.org/active_support_core_extensions.html#method-delegation`
+
+* <http://guides.rubyonrails.org/active_support_core_extensions.html#method-delegation>

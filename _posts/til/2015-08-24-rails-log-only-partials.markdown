@@ -1,4 +1,13 @@
-# Rails log - partials log only
+---
+layout: til_post
+title:  "Rails log - partials log only"
+categories: til
+disq_id: til-16
+redirect_from:
+  - "/tils/16"
+  - "/tils/16-rails-log-partials-log-only"
+---
+
 
 Let say your Rails log is doing to much and you just want to see which
 partials or layouts are beeing rendered.

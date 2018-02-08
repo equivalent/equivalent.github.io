@@ -1,4 +1,12 @@
-# Rails deliver mail to local file 
+---
+layout: til_post
+title:  "Rails deliver mail to local file"
+categories: til
+disq_id: til-3
+redirect_from:
+  - "/tils/3/"
+  - "/tils/3-rails-deliver-mail-to-local-file/"
+---
 
 If you want to debug mail deliveries in development mode and want to see what exactly will be sent
 you can tell Rails to "deliver" emails to local folder file instead of sending them via `sendmail` or `smtp`.
@@ -13,13 +21,13 @@ MyApp::Application.configure do
 ```
 
 In Rails 4.2 there is even better solution "Mail Previews" (... or `show_previews`)
-more info http://edgeguides.rubyonrails.org/4_2_release_notes.html#action-mailer
+more info <http://edgeguides.rubyonrails.org/4_2_release_notes.html#action-mailer>
 
 But still if you want ho have the raw mail output, this is still valid solution.
 
 source:
 
-* http://api.rubyonrails.org/classes/ActionMailer/Base.html
-* http://stackoverflow.com/questions/3763735/rails-mailer-sending-emails-to-a-local-file
+* <http://api.rubyonrails.org/classes/ActionMailer/Base.html>
+* <http://stackoverflow.com/questions/3763735/rails-mailer-sending-emails-to-a-local-file>
 
 keywords: Ruby on Rails 3, Rails 4, Rails 4.1, ActionMailer file

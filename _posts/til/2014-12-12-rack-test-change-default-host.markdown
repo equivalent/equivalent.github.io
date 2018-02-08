@@ -1,4 +1,13 @@
-# change Rack Test default host
+---
+layout: til_post
+title:  "Change Rack Test default host"
+categories: til
+disq_id: til-6
+redirect_from:
+  - "/tils/6/"
+  - "/tils/6-change-rack-test-default-host/"
+---
+
 
 If you're using [Rack Test](https://github.com/brynary/rack-test) to test requests on your Sinatra application
 you will notice that by default the host is `example.org`.
