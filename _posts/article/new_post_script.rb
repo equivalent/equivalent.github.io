@@ -11,11 +11,22 @@ filename = "#{@time.to_date}-#{sanitized_topic}.md"
 
 
 template = <<EOF
-# #{topic}
+---
+layout: article_post
+categories: article
+title:  "#{topic}"
+disq_id: 99
+description:
+  
+---
 
 ```elixir
 
 ```
+
+### sources
+
+* 
 
 EOF
 

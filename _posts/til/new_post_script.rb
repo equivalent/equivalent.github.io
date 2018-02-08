@@ -11,9 +11,14 @@ filename = "#{@time.to_date}-#{sanitized_topic}.md"
 
 
 template = <<EOF
-# #{topic}
+---
+layout: til_post
+title:  "#{topic}"
+categories: til
+disq_id: til-99
+---
 
-```elixir
+```ruby
 
 ```
 
