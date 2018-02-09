@@ -7,13 +7,6 @@
     "created_at":"2014-01-16"
   },
   {
-    "id":3,
-    "version": 1,
-    "github_file_name":"2014-02-instaling-nginx-1-4-4-on-ubuntu-from-source.md",
-    "description":"Step by step manual to install NginX on Ubuntu 12.04 (Precise) from source with SNI support without headache.",
-    "created_at":"2014-02-28"
-  },
-  {
     "id":4,
     "version": 1,
     "github_file_name":"2014-02-setting-up-rbenv.md",
@@ -40,20 +33,6 @@
     "github_file_name":"2014-03-render-images-with-rails-controller.md",
     "description":"How to stream images with Ruby on Rails controller so that you can fake that images are located on your server.",
     "created_at":"2014-05-19"
-  },
-  {
-    "id":8,
-    "version": 3,
-    "github_file_name":"2014-04-rspec-performance-improvement-with-before-all.md",
-    "description":"Improve your test-suite performance by properly using before(:all), after(:all) RSpec hooks so that you trigger less database queries.",
-    "created_at":"2014-05-19"
-  },
-  {
-    "id":9,
-    "version": 3,
-    "github_file_name":"2014-05-mail-interceptor-for-different-environments.md",
-    "description":"Rails mail interceptor to prevent sending emails from being sent for different environments using custom environment configuration options.",
-    "created_at":"2014-05-21"
   },
   {
     "id":10,

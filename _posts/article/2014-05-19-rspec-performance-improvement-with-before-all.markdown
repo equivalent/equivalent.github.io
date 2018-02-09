@@ -1,4 +1,15 @@
-# RSpec performance improvements with before all
+---
+layout: article_post
+categories: article
+title:  "RSpec performance improvements with before all"
+disq_id: 8
+description:
+  Improve your test-suite performance by properly using before(:all), after(:all) RSpec hooks so that you trigger less database queries.
+redirect_from:
+  - "/blogs/8"
+  - "/blogs/8-rspec-performance-improvements-with-before-allexample"
+---
+
 
 > Be aware that this is considered anti-pattern in many cases. Really
 > depends on what type of testing environment you are trying to achive
@@ -243,7 +254,7 @@ rspec --tag=~non-isolated-tests  #run isolated tests, skip "non-isolated" test
 rspec --tag=non-isolated-tests   #now run all tests that are not isolated
 ```
 
-https://www.relishapp.com/rspec/rspec-core/v/2-4/docs/command-line/tag-option
+<https://www.relishapp.com/rspec/rspec-core/v/2-4/docs/command-line/tag-option>
 
 I Do recommend to watch entire [Martin Fowler talk](https://www.youtube.com/watch?v=B_KIAmFZJz) to understand bottlenecks of bad test design.
 

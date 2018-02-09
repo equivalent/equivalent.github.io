@@ -1,4 +1,15 @@
-# Mail interceptor for different Rails environments
+---
+layout: article_post
+categories: article
+title:  "Mail interceptor for different Rails environments"
+disq_id: 9
+description:
+  Rails mail interceptor to prevent sending emails from being sent for different environments using custom environment configuration options.
+redirect_from:
+  - "/blogs/9/"
+  - "/blogs/9-mail-interceptor-for-different-rails-environments/"
+---
+ 
 
 > If you are not interested in this more complex solution and just googling for quick way how to
 > do Rails mailer interceptor then in the "Copy Paste solution" at the
@@ -323,11 +334,11 @@ it any way you want
 
 ### Meta
 
-Source: http://guides.rubyonrails.org/action_mailer_basics.html
+Source: <http://guides.rubyonrails.org/action_mailer_basics.html>
 
 Keywords: Rails 4.0.2, Ruby 2.1.1, own environment configuration, mail 
 interceptor, stop mails in staging
 
 Article updated: 2017-12-19
 
-Reddit discussion: https://www.reddit.com/r/ruby/comments/7kstz4/mail_interceptor_for_different_rails_environments/
+Reddit discussion: <https://www.reddit.com/r/ruby/comments/7kstz4/mail_interceptor_for_different_rails_environments/>

@@ -1,4 +1,15 @@
-# Installing Nginx 1.4.4 from source on Ubuntu 12.04 (Precise)
+---
+layout: article_post
+categories: article
+title:  "Installing Nginx 1.4.4 from source on Ubuntu 12.04 (Precise)"
+disq_id: 3
+description:
+  Step by step manual to install NginX on Ubuntu 12.04 (Precise) from source with SNI support without headache.
+redirect_from:
+  - "/blogs/3/"
+  - "/blogs/3-installing-nginx-1-4-4-from-source-on-ubuntu-12-04-precise/"
+---
+ 
 
 first one good recommendation: 
 
@@ -16,7 +27,7 @@ The reason for this is that the nginx ppa keeps NginX up to date. During the tim
 
 So there is no real point (unless you want to do some ninja stuff with NginX) to compile it on Ubuntu.
 
-http://wiki.nginx.org/Install#Ubuntu_PPA
+<http://wiki.nginx.org/Install#Ubuntu_PPA>
 
 
 ## Installing from source 
@@ -40,7 +51,7 @@ during running `./configure`, installing dependencies above will solve this.
 
 Now lets get the source files
 
-http://wiki.nginx.org/Install#Source_Releases
+<http://wiki.nginx.org/Install#Source_Releases>
 
 ```bash
 wget -P /tmp http://nginx.org/download/nginx-1.4.4.tar.gz  # fetch the release
@@ -89,7 +100,7 @@ nginx -V
 
 ### Recompiling
 
-check article http://extralogical.net/articles/howto-compile-nginx-passenger.html there are some useful information.
+check article <http://extralogical.net/articles/howto-compile-nginx-passenger.html> there are some useful information.
 
 Author is mentioning that when you do `nginx -V` you'll get virsion and list of all the options you passed
 during `.configure`. So you don't have to write down options, just copy them from the output and pass to `.configure` again
@@ -210,17 +221,17 @@ exit 0
 
 sources:
 
-* http://stackoverflow.com/questions/2263404/what-package-i-should-install-for-pcre-devel
-* https://www.digitalocean.com/community/articles/how-to-compile-nginx-from-source-on-an-centos-6-4-x64-vps
-* http://extralogical.net/articles/howto-compile-nginx-passenger.html
-* http://railscasts.com/episodes/335-deploying-to-a-vps 
-* https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+behind+an+NGinX+reverse+proxy
+* <http://stackoverflow.com/questions/2263404/what-package-i-should-install-for-pcre-devel>
+* <https://www.digitalocean.com/community/articles/how-to-compile-nginx-from-source-on-an-centos-6-4-x64-vps>
+* <http://extralogical.net/articles/howto-compile-nginx-passenger.html>
+* <http://railscasts.com/episodes/335-deploying-to-a-vps>
+* <https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+behind+an+NGinX+reverse+proxy>
 
 
 
 ## Related scrapbook links
 
-* https://github.com/equivalent/scrapbook2/blob/master/nginx.md
+* <https://github.com/equivalent/scrapbook2/blob/master/nginx.md>
 
 ## other related links
 
