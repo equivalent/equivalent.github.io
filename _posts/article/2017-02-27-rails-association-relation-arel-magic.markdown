@@ -514,7 +514,7 @@ class CommentPolicy::Scope
   attr_reader :scope, current_user
 
   def initialize(scope, current_user)
-    @scope = scope = scope
+    @scope = scope
     @current_user = current_user
   end
 
