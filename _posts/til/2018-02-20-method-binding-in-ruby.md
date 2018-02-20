@@ -61,5 +61,5 @@ puts account.public_methods(false)  # => [:state]
 
 ```
 
-> Note! this is still experimental feature in Ruby and too fast.
+> Note! this is still experimental feature in Ruby and NOT too fast.
 
