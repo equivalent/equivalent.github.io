@@ -10,21 +10,28 @@ disq_id: til-40
 
 
 ```ruby
-class Foo
-  delegate(:public_x, :public_y, :to => :foo)
+class User < ActiveRecord::Base
+  has_one :profile
+  delegate :first_name, to: :profile
+
+  def age
+    Date.today.year - date_of_birth.year
+  end
 
   private
-  private *delegate(:foo, :bar, :to => :baz)
+  private *delegate(:date_of_birth, :religion, to: :profile)
 
-  def baz
-    Baz.new
+  def other_security_info
+    # ...
   end
 end
+
+User.new.age        # => 2
+User.new.first_name # => Tomas
+User.new.date_of_birth # NoMethodError: private method `date_of_birth' called for #<User:0x00000008221340>
+User.new.religion # NoMethodError: private method `religion' called for #<User:0x00000008221340>
+User.new.other_security_info # NoMethodError: private method `other_security_info' called for #<User:0x00000008221340>
 ```
-
-* public methods will be: `public_x` and `public_y`
-* public methods will be: `foo`, `bar`, `baz`
-
 
 source:
 
@@ -49,12 +56,19 @@ class User < ActiveRecord::Base
   def age
     Date.today.year - date_of_birth.year
   end
+
+  private
+
+  def other_security_info
+    # ...
+  end
 end
 
 User.new.age        # => 2
 User.new.first_name # => Tomas
 User.new.date_of_birth # NoMethodError: private method `date_of_birth' called for #<User:0x00000008221340>
 User.new.religion # NoMethodError: private method `religion' called for #<User:0x00000008221340>
+User.new.other_security_info # NoMethodError: private method `other_security_info' called for #<User:0x00000008221340>
 ```
 
 
@@ -72,7 +86,7 @@ class Bar
 end
 
 class Foo
-   # delegate after private
+   # plain delegate after private
    private
    delegate :car, to: :bar
 
