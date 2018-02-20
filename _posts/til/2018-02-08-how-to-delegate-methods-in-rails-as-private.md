@@ -42,7 +42,7 @@ source:
 ### After Rails 5.2
 
 
-After [https://github.com/rails/rails/pull/31944](this PR) in Rails 5.2
+After [this PR](https://github.com/rails/rails/pull/31944) in Rails 5.2
 you can do:
 
 
@@ -104,5 +104,5 @@ Foo.new.public_methods - Object.new.public_methods
 
 **As you can see this does not work !!!**
 
-Read more [here](https://github.com/rails/rails/pull/31944) why
+To learn more read <https://github.com/rails/rails/pull/31944>
 
