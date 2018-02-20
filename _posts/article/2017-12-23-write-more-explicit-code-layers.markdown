@@ -8,8 +8,8 @@ description:
   receiving from interface. We will have a look on how to design the code so that
   we will communicate our intentions better for our colegues
 redirect_from:
-  - "/blogs/47"
-  - "/blogs/47-write-more-explicit-code-layers"
+  - "/blogs/47/"
+  - "/blogs/47-write-more-explicit-code-layers/"
 ---
 
 

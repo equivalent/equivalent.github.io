@@ -1,10 +1,21 @@
-# Jenkins CI for Rails 4, RSpec, Cucumber, Selenium
+---
+layout: article_post
+categories: article
+title:  "Jenkins CI for Rails 4, RSpec, Cucumber, Selenium"
+disq_id: 6
+description:
+  Jenkins CI to test your Rails app with RSpec Cucumber (Spinach), Selenium and also doing tested deployments.
+redirect_from:
+  - "/blogs/6/"
+  - "/blogs/6-jenkins-ci-for-rails-4-rspec-cucumber-selenium/"
+---
+
 
 In this article we will setup CI system on fresh Ubuntu 12.04. I'm basing my manual a lot on 
 Dan Maclains blog on configuring Jenkins:
 
-* http://rails-jenkins.danmcclain.net/#1
-* http://danmcclain.net/blog/2011/11/22/using-jenkins-with-rails/
+* <http://rails-jenkins.danmcclain.net/#1>
+* <http://danmcclain.net/blog/2011/11/22/using-jenkins-with-rails/>
 
 ## Installation
 
@@ -168,7 +179,7 @@ sudo apt-get update
 sudo apt-get install postgresql-9.1 libpq-dev postgresql-contrib
 ```
 
-(if you have problems installing PostgreSQL have a look on my scrapbook on PostgreSQL https://github.com/equivalent/scrapbook2/blob/master/postgresql.md )
+(if you have problems installing PostgreSQL have a look on my scrapbook on PostgreSQL <https://github.com/equivalent/scrapbook2/blob/master/postgresql.md> )
 
 ### Setup database configuration file for Rails
 
@@ -439,8 +450,8 @@ This should fix it.
 
 sources:
 
-* https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+behind+an+NGinX+reverse+proxy
-* https://wiki.jenkins-ci.org/display/JENKINS/Disable+security
-* http://jenkins-ci.361315.n4.nabble.com/Cannot-Log-Into-Jenkins-td4096436.html
-* https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+behind+an+NGinX+reverse+proxy
+* <https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+behind+an+NGinX+reverse+proxy>
+* <https://wiki.jenkins-ci.org/display/JENKINS/Disable+security>
+* <http://jenkins-ci.361315.n4.nabble.com/Cannot-Log-Into-Jenkins-td4096436.html>
+* <https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+behind+an+NGinX+reverse+proxy>
 

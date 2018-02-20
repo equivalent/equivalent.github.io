@@ -1,4 +1,14 @@
-# JSON array in html element data attribute
+---
+layout: article_post
+categories: article
+title:  "JSON array in html element data attribute"
+disq_id: 12
+description:
+  How to pass JSON to HTML element data attribute
+redirect_from:
+  - "/blogs/12/"
+  - "/blogs/12-json-array-in-html-element-data-attribute/"
+---
 
 I was writing some view code today where jQuery would pick-up
 values of button data attribute (array of ids) and make Ajax
@@ -67,7 +77,7 @@ was like:
 It appears that jQuery is correctly translating the `&quot` to `"` and then
 parsing the JSON
 
-Try it here http://jsfiddle.net/estuqq26/1/  (tested with jQuery 1.9.1)
+Try it here <http://jsfiddle.net/estuqq26/1/>  (tested with jQuery 1.9.1)
 
 Code works, it seems reasonable (althought one my say it's rendering ugly HTML)
 
@@ -76,6 +86,6 @@ when I discover if it was a good idea or not
 
 ...anyway here are some references of people using it:
 
-* http://stackoverflow.com/questions/27940973/html5-data-attributes-how-to-modify-array-of-data-attached-to-dom-element
-* http://stackoverflow.com/questions/28443145/ruby-json-multi-word-strings-rendered-incorrectly-in-html
+* <http://stackoverflow.com/questions/27940973/html5-data-attributes-how-to-modify-array-of-data-attached-to-dom-element>
+* <http://stackoverflow.com/questions/28443145/ruby-json-multi-word-strings-rendered-incorrectly-in-html>
 

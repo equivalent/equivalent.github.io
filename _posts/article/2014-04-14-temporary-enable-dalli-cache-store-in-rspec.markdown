@@ -1,4 +1,15 @@
-# Temporary enable dalli store in RSpec specs
+---
+layout: article_post
+categories: article
+title:  "Temporary enable dalli store in RSpec specs"
+disq_id: 5
+description:
+  Ideally when you're running tests you don't want to cache anything, but there are some cases that you need to make sure stuff is working with caching enabled. This article will show you how to temporary enable Dalli cache for some of your specs 
+redirect_from:
+  - "/blogs/5/"
+  - "/blogs/5-temporary-enable-dalli-store-in-rspec-specs/"
+---
+
 
 When you writing tests/specs is good practice to have your test environment cache store set to `:null_store`.
 

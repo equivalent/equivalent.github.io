@@ -1,7 +1,18 @@
-# Translating locales for Rails model errors
+---
+layout: article_post
+categories: article
+title:  "Translating locales for Rails model errors"
+disq_id: 10
+description:
+  Proper way how to translate Rails validation messages
+redirect_from:
+  - "/blogs/10/"
+  - "/blogs/10-translating-locales-for-rails-model-errors/"
+---
+
 
 As you may know you can specify own message for Rails model validation error
-like this: 
+like this:
 
 ```ruby
 # app/models/user.rb
@@ -130,8 +141,8 @@ en:
 
 source:
 
-* http://stackoverflow.com/questions/4451076/rails-internationalization-i18n-in-model-validations-possible-or-not
-* http://guides.rubyonrails.org/i18n.html#translations-for-active-record-models
+* <http://stackoverflow.com/questions/4451076/rails-internationalization-i18n-in-model-validations-possible-or-not>
+* <http://guides.rubyonrails.org/i18n.html#translations-for-active-record-models>
 
 published: 2014-05-29
 
