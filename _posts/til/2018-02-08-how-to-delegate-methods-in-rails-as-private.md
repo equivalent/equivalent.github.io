@@ -2,7 +2,7 @@
 layout: til_post
 title:  "How to delegate methods in Rails as private"
 categories: til
-disq_id: til-40
+disq_id: til-43
 ---
 
 
