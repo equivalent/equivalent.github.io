@@ -15,10 +15,13 @@
 
     {% include footer.html %}
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="{{ "/js/prism.js" | prepend: site.baseurl }}"></script>
+
     {% if jekyll.environment == 'production' %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-72596708-3"></script>
     {% include google-analytics.html %}
     {% endif %}
 
   </body>
-
 </html>
