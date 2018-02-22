@@ -32,7 +32,7 @@ linkedin_username: tomasvalent
 
 #disqus:
   #shortname: eq8
-
+  #
 # Build settings
 markdown: kramdown
 #theme: minima
