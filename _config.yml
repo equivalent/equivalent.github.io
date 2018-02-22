@@ -22,7 +22,7 @@ description:
 comments: true
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://blog.eq8.eu" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: equivalent8
 github_username:  equivalent
 stackoverflow_username: equivalent
@@ -39,6 +39,7 @@ markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
