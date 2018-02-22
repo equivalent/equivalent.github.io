@@ -51,6 +51,7 @@
 
 ### Serverless
 
+https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4
 * 
 
 
