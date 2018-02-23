@@ -20,7 +20,7 @@ just ping me an email `equivalent@eq8.eu`
 
 Thank you ^_^
 
-> Recruiters please be advised: I"m not responding to recruitment emails
+> Recruiters please be advised: I'm not responding to recruitment emails
 > unless I specificly contacted you first ;)
 
 
@@ -30,7 +30,7 @@ The code repo and articles within it are licensed with [MIT License](https://git
 
 That means do whatever you want with the **articles** (e.g. fork the repo and
 deploy it as your teams internal WiKi) just mention
-me as author of the articles and don't hold me liable if something goes wrong ;)
+me as the author of the articles and don't hold me liable if something goes wrong ;)
 
 > I'm NOT an author of the blogging library Jekyll which this blog runs on. Authors can be found
 > [here](https://github.com/jekyll/jekyll/graphs/contributors) Read
