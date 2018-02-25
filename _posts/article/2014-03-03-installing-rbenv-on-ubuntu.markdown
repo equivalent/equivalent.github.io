@@ -1,7 +1,7 @@
 ---
 layout: article_post
 categories: article
-title:  "Temporary enable dalli store in RSpec specs"
+title:  "Installing rbenv on Ubuntu machine"
 disq_id: 4
 description:
   Set up rbenv on Ubuntu 
