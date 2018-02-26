@@ -16,7 +16,7 @@ Great :hamster: !
 If you want to contribute, please fork this repo and alter the
 specific article located [here](https://github.com/equivalent/equivalent.github.io/tree/master/_posts).
 
-If you don't want to waste time with fork pls just drop me a comment in Disqus section
+If you don't want to waste time with a fork, please just drop me a comment in Disqus section
 for that specific article, submit a [Github
 Issue](https://github.com/equivalent/equivalent.github.io/issues) or
 just ping me an email `equivalent@eq8.eu`
@@ -30,10 +30,9 @@ Thank you ^_^
 ### Other locations
 
 * Old website Articles source:
-  https://github.com/equivalent/scrapbook2/tree/master/archive
-* Old bloging website
-  http://eq8.herokuapp.com  (it may take while to load)
-
+  https://github.com/equivalent/scrapbook2/tree/master/archive (note: they were transfered to this repo too)
+* Old blog website
+  http://eq8.herokuapp.com  (it may take a while to load)
 * New blog website: https://blog.eq8.eu
 
 
