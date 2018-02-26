@@ -39,7 +39,7 @@ That is important as EB will execute the scripts in order of names and some AWS 
 and you don't want them to be skipped with your script
 
 
-Now if you don't have to write a script manually to every EC2 instance, all you have to do is to create file in `.ebextension` folder
+Now if you don't have to write a script manually to every EC2 instance, all you have to do is to create file in `.ebextensions` folder
 in the folder from which you are executing `eb deploy`: 
 
 
