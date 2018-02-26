@@ -262,6 +262,6 @@ RailsAdmin.config do |config|
 
 ## Sources and Other reading
 
-* https://www.reinteractive.net/posts/158-form-objects-in-rails
-* http://railscasts.com/episodes/250-authentication-from-scratch
+* <https://www.reinteractive.net/posts/158-form-objects-in-rails>
+* <http://railscasts.com/episodes/250-authentication-from-scratch>
 

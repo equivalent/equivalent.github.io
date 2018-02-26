@@ -6,8 +6,8 @@ disq_id: 46
 description:
   Ruby is all about Objects. But in this article we will have a look on how your Ruby and Ruby on Rails application team can benefit from more more functional flavor of programming.
 redirect_from:
-  - "/blogs/46"
-  - "/blogs/46-lesson-learned-after-trying-functional-programming-as-a-ruby-developer"
+  - "/blogs/46/"
+  - "/blogs/46-lesson-learned-after-trying-functional-programming-as-a-ruby-developer/"
 ---
 
 

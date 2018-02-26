@@ -6,7 +6,7 @@ disq_id: 24
 description:
   Several debugging tricks for Ruby and  Ruby or Rails developers
 redirect_from:
-  - "/blogs/24"
+  - "/blogs/24/"
 ---
 
 This article will be  updated on regular bases.  

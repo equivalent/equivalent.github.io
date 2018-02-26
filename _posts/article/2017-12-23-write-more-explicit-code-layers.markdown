@@ -541,4 +541,4 @@ Help others to understand application communication.
 
 Reddit discussion
 
-* https://www.reddit.com/r/ruby/comments/7ls1pt/write_more_explicit_code_layers/
+* <https://www.reddit.com/r/ruby/comments/7ls1pt/write_more_explicit_code_layers/>
