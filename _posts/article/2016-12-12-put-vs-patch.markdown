@@ -8,6 +8,7 @@ description:
 redirect_from:
   - "/blogs/36"
   - "/blogs/36-patch-vs-put-and-the-patch-json-syntax-war"
+  - "/article/put-vs-patch-vs-your-firewall.html;"
 ---
 
 
