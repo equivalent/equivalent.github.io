@@ -6,7 +6,7 @@ disq_id: til-42
 ---
 
 
-How to do method binding in Ruby
+How to do method binding (or re-binding) in Ruby
 
 ...or how to decorate object so that it can be undecorated:
 
@@ -62,4 +62,12 @@ puts account.public_methods(false)  # => [:state]
 ```
 
 > Note! this is still experimental feature in Ruby and NOT too fast.
+
+### Sources
+
+* <https://www.rubytapas.com/2013/05/01/episode-091-ruby-2-0-rebinding-methods/>
+
+### Discussion to this article:
+
+* <https://www.reddit.com/r/ruby/comments/80cu8y/method_binding_in_ruby/>
 
