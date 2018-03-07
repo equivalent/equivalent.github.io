@@ -1,65 +1,52 @@
 # Architecture
 
-### Outline:
+* [Slides](https://docs.google.com/presentation/d/15-o7Cos6UAmYn0AW0lfyBvyyC3_LdE7kF6TnxXBE3p0/edit)
+  (short link <https://bit.ly/arch-lrug-slides>)
 
-* monolith
-* microservices
-* serverless
+## Resources
 
 
 ### Monolith
 
-* Single codebase
-* My be FE BE split but operates as single unit
-
-
-* Unicorn
-* Puma
-* Event Machine
-
-* distributed systems - phoenix
-* how elixir & phoenix tackles problem of monolith
-
-
-
-
 * [DHH - Majestic Monolith](https://m.signalvnoise.com/the-majestic-monolith-29166d022228)
+
+### Monolith with Bounded Contexts
+
+* [Elixir Phoenix 1.3 by Chris McCord](https://youtu.be/tMO28ar0lW8?t=15m31s) - good
+  resource explaining Bound Contexts although in functional
+  programming language Elixir (Phoenix framework).
+* [Bounded Context by Martin Fowler](https://martinfowler.com/bliki/BoundedContext.html)
+* [Modular monolith with Rails engines](https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4)
 
 ### Microservices
 
-* Multiple “services” (micro-applications) doing one thing. Together
-  they form the application
-* Like cells in your body
-* Difference between SOA is that every Microservice has their own DB
-* They communicate via common interface - JSON API
+Articles:
 
+* [Two pizza teams](http://blog.idonethis.com/two-pizza-team/)
+* [Is EC2 Container Service the Right Choice on AWS?](https://medium.com/containermind/is-ec2-container-service-the-right-choice-on-aws-3d419d96a390)
 
+Talks:
 
-
-
-* the cost is big issue
-
+* [Mastering Chaos - A Netflix Guide to Microservices by Josh Evans](https://www.youtube.com/watch?v=CZ3wIuvmHeM)
+* [Microservices by Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
+* [Containerized Micro Services on AWS](https://www.youtube.com/watch?v=rcjXQxRgMj0)
 * [Chad Fowler -  From Homogeneous Monolith to Heterogeneous Microservices Architecture](https://www.youtube.com/watch?v=sAsRtZEGMMQ)
 
+Books:
 
-* https://www.youtube.com/watch?v=rcjXQxRgMj0 [Containerized Micro Services on AWS]
-
-* Two pizza team http://blog.idonethis.com/two-pizza-team/
-
-* netflix https://www.youtube.com/watch?v=CZ3wIuvmHeM
-* [Is EC2 Container Service the Right Choice on AWS?](https://medium.com/containermind/is-ec2-container-service-the-right-choice-on-aws-3d419d96a390)
+* [Building Microservices](http://shop.oreilly.com/product/0636920033158.do)
 
 ### Serverless
 
-https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4
-* 
 
+* [Serverless framework](https://serverless.com)
 
+Ruby as FaaS:
 
+* [AWS Lambda and Ruby](https://aws.amazon.com/blogs/compute/scripting-languages-for-aws-lambda-running-php-ruby-and-go#toc_10)
+* [Traveling Ruby](https://github.com/phusion/traveling-ruby)
 
+Books:
 
-
------------
-
-* https://www.youtube.com/watch?v=MMfYXEH9KsY José Valim - Idioms for building distributed fault-tolerant applications with Elixir
+* [Serverless Single Page Apps](https://pragprog.com/book/brapps/serverless-single-page-apps)
 
