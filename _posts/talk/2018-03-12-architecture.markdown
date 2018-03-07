@@ -1,4 +1,12 @@
-# Architecture
+---
+layout: talk_post
+categories: talk
+title:  "Architecture"
+description: "LRUG talk on Architecture in Web Applications. Monolith, Microservices and Serverless from perspective of Ruby developer."
+disq_id: talk-3
+---
+
+
 
 * [Slides](https://docs.google.com/presentation/d/15-o7Cos6UAmYn0AW0lfyBvyyC3_LdE7kF6TnxXBE3p0/edit)
   (short link <https://bit.ly/arch-lrug-slides>)
