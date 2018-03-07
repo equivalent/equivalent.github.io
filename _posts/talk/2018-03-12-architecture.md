@@ -7,7 +7,6 @@
 
 ## Resources
 
-
 ### Monolith
 
 * [DHH - Majestic Monolith](https://m.signalvnoise.com/the-majestic-monolith-29166d022228)
@@ -40,13 +39,16 @@ Books:
 
 ### Serverless
 
-
 * [Serverless framework](https://serverless.com)
 
 Ruby as FaaS:
 
 * [AWS Lambda and Ruby](https://aws.amazon.com/blogs/compute/scripting-languages-for-aws-lambda-running-php-ruby-and-go#toc_10)
 * [Traveling Ruby](https://github.com/phusion/traveling-ruby)
+
+AWS Lambda:
+
+* [Running Web Server on AWS Lambda (Express JS)](https://www.youtube.com/watch?v=Cuh_gtFX5gI) (I'm not recommending this approach)
 
 Books:
 
