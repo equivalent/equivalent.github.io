@@ -3,7 +3,7 @@ layout: article_post
 categories: article
 title:  "cron rbenv bundle exec rake task"
 disq_id: 15
-description:
+description: 'Ruby provide so many easy ways how to create a scheduled job (Whenever gem, Daemons gem, ...) but what if you want to configure something really simple with plain cron along rbenv?'
 redirect_from:
   - "/blogs/15/"
   - "/blogs/15-cron-rbenv-bundle-exec-rake-task/"
