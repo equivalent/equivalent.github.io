@@ -21,11 +21,17 @@ disq_id: talk-3
 
 ### Monolith with Bounded Contexts
 
-* [Elixir Phoenix 1.3 by Chris McCord](https://youtu.be/tMO28ar0lW8?t=15m31s) - good
-  resource explaining Bound Contexts although in functional
-  programming language Elixir (Phoenix framework).
+Articles:
+
 * [Bounded Context by Martin Fowler](https://martinfowler.com/bliki/BoundedContext.html)
 * [Modular monolith with Rails engines](https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4)
+
+
+Talks:
+
+* [Elixir Phoenix 1.3 by Chris McCord](https://youtu.be/tMO28ar0lW8?t=15m31s) - good
+  resource explaining Bound Contexts from a perspective of a functional
+  programming language Elixir (Phoenix framework).
 
 ### Microservices
 
