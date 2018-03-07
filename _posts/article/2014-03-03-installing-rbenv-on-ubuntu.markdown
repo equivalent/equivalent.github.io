@@ -1,4 +1,15 @@
-# Installing rbenv on Ubuntu machine
+---
+layout: article_post
+categories: article
+title:  "Installing rbenv on Ubuntu machine"
+disq_id: 4
+description:
+  Set up rbenv on Ubuntu 
+redirect_from:
+  - "/blogs/4/"
+  - "/blogs/4-installing-rbenv-on-ubuntu-machine/"
+---
+
 
 ...or basically any Linux machine
 
@@ -60,7 +71,7 @@ rbenv bootstrap-ubuntu-12-10
 
 This will install dependencies for ruby. You can check what the scripts are doing at:
 
-https://github.com/fesplugas/rbenv-bootstrap/tree/master/bin
+<https://github.com/fesplugas/rbenv-bootstrap/tree/master/bin>
 
 ...and you can install those dependencies for not listed Ubuntu versions (e.g.: 13.10)
 
@@ -152,16 +163,16 @@ rbenv uninstall 2.1.1
 
 source
 
-* http://railscasts.com/episodes/335-deploying-to-a-vps?view=comments
-* https://github.com/sstephenson/ruby-build
-* http://stackoverflow.com/questions/23702954/rbenv-install-list-does-not-list-version-2-1-2
+* <http://railscasts.com/episodes/335-deploying-to-a-vps?view=comments>
+* <https://github.com/sstephenson/ruby-build>
+* <http://stackoverflow.com/questions/23702954/rbenv-install-list-does-not-list-version-2-1-2>
 
 ## Recommendations
 
 ### eval bundle problem
 
 if your deployment with Capistrano or Mina fails on `bundle: not found` there is an easy solution mentioned here
-http://stackoverflow.com/questions/15379618/capistrano-deploy-failing-error-for-rails-bundle-not-found
+<http://stackoverflow.com/questions/15379618/capistrano-deploy-failing-error-for-rails-bundle-not-found>
 
 in your `.bashrc` file place :
 

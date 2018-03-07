@@ -1,15 +1,26 @@
-# RSpec matchers in db:seed file
+---
+layout: article_post
+categories: article
+title:  "RSpec matchers in db:seed file"
+disq_id: 11
+description:
+  There is overall confidence that seed files (rake db:seed) don't need any additional testing. But in this article I will show you easy way how to add simple layer of tests during the seed process.
+redirect_from:
+  - "/blogs/11/"
+  - "/blogs/11-rspec-matchers-in-db-seed-file/"
+---
+
 
 In my latest project I ended up with really complex `db/seeds.rb` file
 for different clients so that various scenarios can be demonstrated on
-a "demo" server. 
+a "demo" server.
 
 Ten minutes before meeting people were running crazy that
 they cannot log-in to the demo server. Within nine minutes I manage to
 locate the bug and fix it & deploy the fix. Well the bug was not even
-a bug, it was just a typo in `db/seeds.rb` file. 
+a bug, it was just a typo in `db/seeds.rb` file.
 
-This was kind of a revelation for me. Old mind-set that "db seed 
+This was kind of a revelation for me. Old mind-set that "db seed
 files don't need tests as they represent temporary state" was replaced
 with "yes they do need tests if they are subject to frequent change or
 dynamic business requirement"
@@ -17,7 +28,7 @@ dynamic business requirement"
 ## how to test db:seed
 
 The way how I'm testing my seed files is within the seed files at the
-end of reseed. Yes this may not be the best idea because to discover 
+end of reseed. Yes this may not be the best idea because to discover
 that something went wrong we are destroying old database values. But in my
 case (where I keep really good track of database dumps) it works for
 me.
@@ -27,7 +38,7 @@ me.
 
 # ...
 
-gem 'rspec-rails' 
+gem 'rspec-rails'
 
 # ...
 
@@ -42,7 +53,7 @@ when 'staging'
   # ...
 when 'demo'
   include RSpec::Matchers   # important !
-  
+
   # adding people & permissions
   carl = User.create email: 'carl@test.com'
   carl.add_permission :admin
@@ -60,7 +71,7 @@ something. I would rather let my `rake db:seed` task to take 2 seconds
 more than I would spend 20 minutes fixing db:seeds over weekend.
 Plus are just running them once or twice a week.
 
-Like I said this works for my requirement but I would recommend to have a look on 
+Like I said this works for my requirement but I would recommend to have a look on
 [this SO question](http://stackoverflow.com/questions/6004057/w-rspec-how-to-seed-the-database-on-load)
 for more suggestions. Especially if you need to seed database before
 running specs one interesting ide is this:
@@ -78,8 +89,8 @@ end
 
 ## Word on Gemfile
 
-I agree that it's stupid to have `RSpec` exposed for every enviroment 
-(production or staging env may not need them). Solution for this is easy: 
+I agree that it's stupid to have `RSpec` exposed for every enviroment
+(production or staging env may not need them). Solution for this is easy:
 
 ```ruby
 # Gemfile

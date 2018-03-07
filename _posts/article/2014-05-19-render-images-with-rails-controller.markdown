@@ -1,4 +1,14 @@
-# Render image with Rails controller
+---
+layout: article_post
+categories: article
+title:  "Render image with Rails controller"
+disq_id: 7
+description:
+  How to stream images with Ruby on Rails controller so that you can fake that images are located on your server.
+redirect_from:
+  - "/blogs/7/"
+  - "/blogs/7-render-image-with-rails-controller/"
+---
 
 Let say you want to be able to render dynamic logo on your page. The
 logo will be rendered depending on who will be logged in. Of course you
@@ -46,7 +56,7 @@ end
 for **Remote stored files**
 
 (according to
-http://api.rubyonrails.org/classes/ActionController/DataStreaming.html)
+<http://api.rubyonrails.org/classes/ActionController/DataStreaming.html>)
 
 ```ruby
 class BrandingController < ApplicationController
@@ -109,13 +119,13 @@ Rather store mime type in your database
 
 Sources:
 
-* http://stackoverflow.com/questions/12277971/using-send-file-to-download-a-file-from-amazon-s3
-* http://www.ruby-doc.org/stdlib-1.9.3/libdoc/open-uri/rdoc/OpenURI.html
-* http://stackoverflow.com/questions/299999/rendering-file-with-mime-type-in-rails
-* http://maxivak.com/rails-link_to-to-download-an-image-immediately-instead-of-opening-it-in-the-browser-send_file-and-remote-files/
-* http://api.rubyonrails.org/classes/ActionController/DataStreaming.html
-* http://stackoverflow.com/a/15028162 
-* https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/data_streaming.rb
+* <http://stackoverflow.com/questions/12277971/using-send-file-to-download-a-file-from-amazon-s3>
+* <http://www.ruby-doc.org/stdlib-1.9.3/libdoc/open-uri/rdoc/OpenURI.html>
+* <http://stackoverflow.com/questions/299999/rendering-file-with-mime-type-in-rails>
+* <http://maxivak.com/rails-link_to-to-download-an-image-immediately-instead-of-opening-it-in-the-browser-send_file-and-remote-files/>
+* <http://api.rubyonrails.org/classes/ActionController/DataStreaming.html>
+* <http://stackoverflow.com/a/15028162>
+* <https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/metal/data_streaming.rb>
 
 Keywords: Rails 4, Ruby 2, Data Streaming, CarrierWave, OpenURI, send
 image

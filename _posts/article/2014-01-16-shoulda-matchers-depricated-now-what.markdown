@@ -1,9 +1,20 @@
-# Shoulda matchers depricated. Now what ?
+---
+layout: article_post
+categories: article
+title:  "Shoulda matchers depricated. Now what ?"
+disq_id: 1
+description:
+  Thoughtbots team behind gem shoulda_matches have decide to depricate several matchers in version 2.0. Lot of people still find them useful. Read more to see alternatives.
+redirect_from:
+  - "/blogs/1/"
+  - "/blogs/1-shoulda-matchers-depricated-now-what/"
+---
+
 
 Referring to:
 
-* https://github.com/thoughtbot/shoulda-matchers/issues/186
-* https://github.com/thoughtbot/shoulda-matchers/issues/252 
+* <https://github.com/thoughtbot/shoulda-matchers/issues/186>
+* <https://github.com/thoughtbot/shoulda-matchers/issues/252>
 * [Thoughtbots article related to v 2.0 matcher deprecations](http://robots.thoughtbot.com/post/47031676783/shoulda-matchers-2-0)
 
 [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers) have removed several matchers:
@@ -81,7 +92,7 @@ end
 
 related links:
 
-* http://stackoverflow.com/questions/18760257/how-to-test-respond-with-content-type-when-its-depricated-in-shoulda-matches-2/18760258#18760258
+* <http://stackoverflow.com/questions/18760257/how-to-test-respond-with-content-type-when-its-depricated-in-shoulda-matches-2/18760258#18760258>
 
 published: 2013-09-12
 

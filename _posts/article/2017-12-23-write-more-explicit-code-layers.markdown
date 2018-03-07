@@ -8,8 +8,8 @@ description:
   receiving from interface. We will have a look on how to design the code so that
   we will communicate our intentions better for our colegues
 redirect_from:
-  - "/blogs/47"
-  - "/blogs/47-write-more-explicit-code-layers"
+  - "/blogs/47/"
+  - "/blogs/47-write-more-explicit-code-layers/"
 ---
 
 
@@ -541,4 +541,4 @@ Help others to understand application communication.
 
 Reddit discussion
 
-* https://www.reddit.com/r/ruby/comments/7ls1pt/write_more_explicit_code_layers/
+* <https://www.reddit.com/r/ruby/comments/7ls1pt/write_more_explicit_code_layers/>
