@@ -2,6 +2,8 @@
 
 * [Slides](https://docs.google.com/presentation/d/15-o7Cos6UAmYn0AW0lfyBvyyC3_LdE7kF6TnxXBE3p0/edit)
   (short link <https://bit.ly/arch-lrug-slides>)
+* [LRUG - March 2018 Meeting](http://lrug.org/meetings/2018/march/)
+* [Skillsmatter meeting](https://skillsmatter.com/meetups/10709-lrug-march)
 
 ## Resources
 
