@@ -1,41 +1,19 @@
-{% comment %}{% if page.comments != false  %}{% endcomment %}
-  {% comment %}<div id="disqus_thread"></div>{% endcomment %}
-  {% comment %}<script>{% endcomment %}
-    {% comment %}var disqus_config = function () {{% endcomment %}
-      {% comment %}this.page.url = '{{ page.disqus_url }}';{% endcomment %}
-      {% comment %}this.page.identifier = '{{ page.disqus_id }}';{% endcomment %}
-    {% comment %}};{% endcomment %}
+{% if page.comments != false  %}
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = '{{ page.disqus_url }}';
+      this.page.identifier = '{{ page.disqus_id }}';
+    };
 
-    {% comment %}(function() {{% endcomment %}
-      {% comment %}var d = document, s = d.createElement('script');{% endcomment %}
+    (function() {
+      var d = document, s = d.createElement('script');
 
-      {% comment %}s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';{% endcomment %}
+      s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
 
-      {% comment %}s.setAttribute('data-timestamp', +new Date());{% endcomment %}
-      {% comment %}(d.head || d.body).appendChild(s);{% endcomment %}
-    {% comment %}})();{% endcomment %}
-  {% comment %}</script>{% endcomment %}
-  {% comment %}<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>{% endcomment %}
-{% comment %}{% endif %}{% endcomment %}
-
-
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://eq8.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+{% endif %}
