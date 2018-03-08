@@ -2,7 +2,7 @@
 layout: til_post
 title:  "Elastic Beanstalk Docker using AWS EC2 Container Registry (ECR)"
 categories: til
-disqus_id: til-36
+disqus_id: blog-til-36
 redirect_from:
   - "/tils/36/"
   - "/tils/36-elastic-beanstalk-docker-using-aws-ec2-container-registry-ecr/"
