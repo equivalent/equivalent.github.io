@@ -30,8 +30,8 @@ stackoverflow_url: "https://stackoverflow.com/users/473040/equivalent8"
 
 linkedin_username: tomasvalent
 
-#disqus:
-  #shortname: eq8
+disqus:
+  shortname: eq8
   #
 # Build settings
 markdown: kramdown
