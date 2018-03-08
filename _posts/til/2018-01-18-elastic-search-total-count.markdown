@@ -1,6 +1,7 @@
 ---
 layout: til_post
 title:  "How to get ElasticSearch total count of items matching"
+disq_id: til-38
 categories: til
 redirect_from:
   - "/tils/38-how-to-get-elasticsearch-total-count-of-items-matching/"

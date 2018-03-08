@@ -2,6 +2,7 @@
 layout: til_post
 title:  "AWS Lambda to configure EC2 Security Group for CloudFront access"
 categories: til
+disq_id: til-31
 redirect_from: "/tils/31-aws-lambda-to-configure-ec2-security-group-for-cloudfront-access"
 ---
 

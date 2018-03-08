@@ -2,6 +2,7 @@
 layout: til_post
 title:  "Ako opravit Flybox od Orange"
 categories: til
+disq_id: til-34
 redirect_from: 
   - "/tils/34-ako-opravit-flybox-od-orange/"
   - "/tils/34/"

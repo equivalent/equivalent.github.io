@@ -2,6 +2,7 @@
 layout: til_post
 title:  "Web neutrality modal displayable only to USA IP addresses"
 categories: til
+disq_id: til-33
 redirect_from: "/tils/33-web-neutrality-modal-displayable-only-to-usa-ip-addresses"
 ---
 
