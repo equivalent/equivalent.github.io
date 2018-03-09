@@ -64,9 +64,11 @@ Books:
 Ruby as FaaS:
 
 * [AWS Lambda and Ruby](https://aws.amazon.com/blogs/compute/scripting-languages-for-aws-lambda-running-php-ruby-and-go#toc_10)
+* [Using Ruby in AWS Lambda](http://www.adomokos.com/2016/06/using-ruby-in-aws-lambda.html)
 * [Traveling Ruby](https://github.com/phusion/traveling-ruby)
+* [2017 RubyHACK, James Thompson: "Serverless" Ruby on AWS](https://www.youtube.com/watch?v=3NdFzhIvUQA)
 * [Serverless framework - Ruby](https://github.com/stewartlord/serverless-ruby)
-
+* [AWS Lambda JRuby](https://github.com/plainprogrammer/aws-lambda-jruby)
 
 AWS Lambda:
 
