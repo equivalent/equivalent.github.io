@@ -59,6 +59,7 @@ Books:
 ### Serverless
 
 * [Serverless framework](https://serverless.com)
+* [What is Serverless](https://martinfowler.com/articles/serverless.html)
 
 Ruby as FaaS:
 
