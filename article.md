@@ -10,4 +10,6 @@ redirect_from:
   - "/articles/"
   - "/blogs/"
   - "/blog/"
+  - "/new_blog/"
+  - "/why-new-blog/"
 ---
