@@ -33,6 +33,10 @@ Talks:
   resource explaining Bound Contexts from a perspective of a functional
   programming language Elixir (Phoenix framework).
 
+### JWT Token
+
+* [100% Stateless with JWT (JSON Web Token) by Hubert Sablonnière](https://www.youtube.com/watch?v=67mezK3NzpU)
+
 ### Microservices
 
 Articles:
@@ -60,19 +64,26 @@ Ruby as FaaS:
 
 * [AWS Lambda and Ruby](https://aws.amazon.com/blogs/compute/scripting-languages-for-aws-lambda-running-php-ruby-and-go#toc_10)
 * [Traveling Ruby](https://github.com/phusion/traveling-ruby)
+* [Serverless framework - Ruby](https://github.com/stewartlord/serverless-ruby)
 
-Please help request support Ruby for FaaS:
-
-* <https://bit.ly/ruby-azure>  [Direct link](https://forums.aws.amazon.com/thread.jspa?messageID=758159)
-* <https://bit.ly/ruby-lambda> [Direct link](https://github.com/Azure/Azure-Functions/issues/705)
-
-...please `:+1`
 
 AWS Lambda:
 
 * [Running Web Server on AWS Lambda (Express JS)](https://www.youtube.com/watch?v=Cuh_gtFX5gI) (I'm not recommending this approach)
+* [Build serverless app with AWS Lambda and Auth0](https://auth0.com/blog/building-serverless-apps-with-aws-lambda/)
 
 Books:
 
 * [Serverless Single Page Apps](https://pragprog.com/book/brapps/serverless-single-page-apps)
+
+
+### Please help request FaaS providers to support Ruby
+
+<https://www.serverless-ruby.org>
+
+Also please `:+1` these discussions if you can:
+
+* <https://bit.ly/ruby-azure>  [Direct link](https://forums.aws.amazon.com/thread.jspa?messageID=758159)
+* <https://bit.ly/ruby-lambda> [Direct link](https://github.com/Azure/Azure-Functions/issues/705)
+
 

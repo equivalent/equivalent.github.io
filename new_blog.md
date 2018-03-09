@@ -5,19 +5,16 @@ short_title: Why new blog?
 permalink: /why-new-blog/
 ---
 
-I'm in a process of transferring old blog `http://www.eq8.eu/blogs` to
-new blog located at `https://blog.eq8.eu`.
+In Feb. / March. 2018 I've manage to migrate old blog `http://www.eq8.eu/blogs` to
+new location  `https://blog.eq8.eu`.
 
-I promise that this transition will go smoothly and:
+Transition went smoothly:
 
 * all the old blog/talk/TILs links will be properly 301 redirected to new location
-* all the discussion stay alive (although Disqus comment section may be
-  disabled for few days during the process of transformation)
-* I will update all old links that I can (like Reddit discussions, SO answers) so
-  they point to new location
+* all the discussion comments were kept 
 
-> Trust me it's painful and slow process, but I'll get this right. No
-> links will be broken.
+> Trust me it was a painful and slow process but no links are broken.
+
 
 ## Why the transformation
 
@@ -56,3 +53,11 @@ And please let me know if you spot something wrong
 by emailing me: `equivalent@eq8.eu`
 
 Thank you
+
+## Old Blog
+
+You can still access old website at <http://eq8.herokuapp.com> or
+<https://old.eq8.eu>
+
+And old source codes are located
+<https://github.com/equivalent/scrapbook2/tree/master/archive/blogs>
