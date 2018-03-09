@@ -58,5 +58,5 @@
 #                  ╭∩╮（︶︿︶）╭∩╮
 
 User-agent: *
-Disallow: /why-new-blog/
+Disallow:
 
