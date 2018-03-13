@@ -175,7 +175,7 @@ Content of `.ebextensions/50_pull_ssl_certificates_files.config`
 
 ```bash
 files:
-  "/opt/elasticbeanstalk/hooks/appdeploy/post/50_pull_ssl_certificate_files.sh":
+  "/opt/elasticbeanstalk/hooks/appdeploy/pre/50_pull_ssl_certificate_files.sh":
     mode: "000755"
     owner: root
     group: root
