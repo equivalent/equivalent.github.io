@@ -18,9 +18,7 @@ layout: default
     {{ content }}
   </div>
 
-  <p class="notice">
-    All Talk notes can be forked from <a href="https://github.com/equivalent/equivalent.github.io/tree/master/_posts">this Github Repo</a>
-  </p>
+  {% include fork_notice.html %}
 
   {% if site.disqus.shortname %}
     {% include disqus_comments.html %}
