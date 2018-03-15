@@ -164,9 +164,9 @@ Also please `:+1` these discussions if you can:
 * <https://bit.ly/ruby-azure>  [Direct link](https://forums.aws.amazon.com/thread.jspa?messageID=758159)
 * <https://bit.ly/ruby-lambda> [Direct link](https://github.com/Azure/Azure-Functions/issues/705)
 
-### Serverless on Kubernetess
+### Serverless on Kubernetes
 
-If you want to be your own FaaS provider
+If you want to be your own FaaS provider. And yes you can run Ruby.
 
 * <https://github.com/kubeless/kubeless>
 * <https://www.youtube.com/watch?v=AxZuQIJUX4s>
