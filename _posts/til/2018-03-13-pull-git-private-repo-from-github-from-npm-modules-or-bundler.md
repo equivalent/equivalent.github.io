@@ -26,7 +26,7 @@ https://bot-user:xxxxxxxxxxxxxxxxxxxxxxxxxxx@github.com/equivalent/we_demand_ser
 So what you can do is create a new user that will be used **just as a bot**, 
 add only enough permissions that he can just read the repository you
 want to load in NPM modules and just have that directly in your
-`packages.json` / `Gemfile`
+`package.json` / `Gemfile`
 
 
 ```
@@ -47,11 +47,11 @@ You need to be sure to push this config **only to private repo**
 
 
 
-Then you can add this to your Gemfile  /  packages.json (bot-user is
+Then you can add this to your Gemfile  /  package.json (bot-user is
 name of user, xxxxxxxxx is the generated personal token)
 
 ```js
-// packages.json
+// package.json
 
 
 # ...
@@ -103,7 +103,7 @@ manually
 e.g.:
 
 ```ruby
-# packages.json.erb
+# package.json.erb
 
 {
   // ....
@@ -114,10 +114,10 @@ e.g.:
 ```
 
 and just configure your build script to generate this
-`packages.json.erb` to `packages.json` while evaluating those tokens in
+`package.json.erb` to `package.json` while evaluating those tokens in
 ENV variables.
 
-This way you don't have to commit your keys to codebase (`packages.json`
+This way you don't have to commit your keys to codebase (`package.json`
 will be in `.gitignore`) but you need to generate this config file each
 time you before  `npm install` run (pain in the a$$)
 
