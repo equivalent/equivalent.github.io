@@ -170,4 +170,5 @@ If you want to be your own FaaS provider. And yes you can run Ruby.
 
 * <https://github.com/kubeless/kubeless>
 * <https://www.youtube.com/watch?v=AxZuQIJUX4s>
+* <https://www.youtube.com/watch?v=1QZ6x_8h8qY>
 
