@@ -168,6 +168,6 @@ Also please `:+1` these discussions if you can:
 
 If you want to be your own FaaS provider
 
-* https://github.com/kubeless/kubeless
-* https://www.youtube.com/watch?v=AxZuQIJUX4s
+* <https://github.com/kubeless/kubeless>
+* <https://www.youtube.com/watch?v=AxZuQIJUX4s>
 
