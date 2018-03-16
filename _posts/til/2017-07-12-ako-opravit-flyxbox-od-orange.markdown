@@ -4,6 +4,7 @@ title:  "Ako opravit Flybox od Orange"
 categories: til
 disq_id: til-34
 redirect_from: 
+  - "/til/ako-opravit-flyxbox-od-orange/"
   - "/tils/34-ako-opravit-flybox-od-orange/"
   - "/tils/34/"
 ---
