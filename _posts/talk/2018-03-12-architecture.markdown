@@ -172,3 +172,9 @@ If you want to be your own FaaS provider. And yes you can run Ruby.
 * <https://www.youtube.com/watch?v=AxZuQIJUX4s>
 * <https://www.youtube.com/watch?v=1QZ6x_8h8qY>
 
+### Iron Functions
+
+<a href="http://open.iron.io">Iron Functions</a> is an OpenSource FaaS platform that supports Ruby! Problem is that you either provision it yourself
+or you will pay for monthly provisioning to Iron.io (It's not pay for
+what you execute as AWS Lambda has)
+
