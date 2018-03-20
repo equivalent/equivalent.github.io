@@ -178,3 +178,8 @@ If you want to be your own FaaS provider. And yes you can run Ruby.
 or you will pay for monthly provisioning to Iron.io (It's not pay for
 what you execute as AWS Lambda has)
 
+## Photos from the event
+
+![](/assets/2018/2018-03-lrug-architecuter-1.jpg)
+![](/assets/2018/2018-03-lrug-architecuter-2.jpg)
+![](/assets/2018/2018-03-lrug-architecuter-3.jpg)
