@@ -126,6 +126,7 @@ cd /tmp
 
 # for elasticseach 5.x
 echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 sudo apt-get update && sudo apt-get install elasticsearch
 sudo systemctl enable elasticsearch.service
 
