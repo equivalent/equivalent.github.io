@@ -98,6 +98,11 @@ really really massive difference to work on (coming form MacBook Air
 The laptop comes with i5 and i7 option. Go with i7. Those extra $200
 will do quite the difference.
 
+> Update 25.03.2018: [D. Klos](http://disq.us/p/1r88bqy) had good point
+> that i5 version will have better battery life and it's still 4
+> phisical cores. So  if battery life is priority and 
+>  you don't need dedicated graphical card then i5 version is good choice.
+
 ### Battery
 
 I was running integration tests (complex Ruby on Rails application with
@@ -115,6 +120,13 @@ on this laptop.
 
 One good feature of this laptop is that the screen is extended and
 starts 3cm from the base it will help you a bit not to hunch your back.
+
+> I use to do lot of cloud coding (
+> [ref1](https://blog.eq8.eu/article/cloud-coding.html),
+> [ref2](https://blog.eq8.eu/article/chromebook-for-web-developers.html)
+> )
+> but past few months I had situations where internet was not availible
+> therefore my machine was only way how to be productive.
 
 ### Ubuntu / Linux
 
