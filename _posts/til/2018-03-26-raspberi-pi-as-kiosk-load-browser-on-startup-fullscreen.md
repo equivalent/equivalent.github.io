@@ -9,9 +9,9 @@ disq_id: til-46
 
 
 This TIL note is basically just a mirror of
-http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/gui/auto-run-browser-on-startup
-but there were some alteration based on
-https://raspberrypi.stackexchange.com/questions/42633/raspberry-pi-autostart-of-lxde-does-not-work
+<http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/gui/auto-run-browser-on-startup>
+but there were some fixes based on
+<https://raspberrypi.stackexchange.com/questions/42633/raspberry-pi-autostart-of-lxde-does-not-work>
 
 
 #### Step 1 - boot to Desktop autologin
