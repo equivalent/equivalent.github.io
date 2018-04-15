@@ -70,6 +70,7 @@ RSpec.describe ArticlesController, type: :controller do
     it "response with JSON body containing expected Article attributes" do
       hash_body = nil
       expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+      expect(hash_body.keys).to match_array([:id, :title])
       expect(hash_body).to match({
         id: article.id,
         title: 'Hello World'
@@ -161,6 +162,7 @@ Now you can write:
     # ...
     it "response with JSON body containing expected Article attributes" do
       expect(response.body).to look_like_json
+      expect(body_as_json.keys).to match_array([:id, :title])
       expect(body_as_json).to match({
         id: article.id,
         title: 'Hello World'
@@ -234,6 +236,7 @@ RSpec.describe ArticleSerializer do
       let(:article_hash) { result.fetch(:article) }
 
       it 'should contain type and id' do
+        expect(article_hash.keys).to match_array([:id, :title, :attributes])
         expect(article_hash).to match({
           id: article.id.to_s,
           type: 'articles',
@@ -245,6 +248,7 @@ RSpec.describe ArticleSerializer do
         let(:article_hash_attributes) { article_hash.fetch(:attributes) }
 
         it do
+          expect(article_hash_attributes.keys).to match_array(:title)
           expect(article_hash_attributes).to match({
             title: /[Hh]orizon/,
           })
