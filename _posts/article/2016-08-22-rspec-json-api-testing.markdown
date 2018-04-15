@@ -92,7 +92,12 @@ variable `hash_body`.
 > HashWithIndifferentAccess is typo of hash that in which symbol keys
 > and string keys are considered same ( key `:id` is == key `"id"`)
 
-Then we are using built in `RSpec` `match` matcher that compares the
+Then we are using built in `RSpec` `match_array` matcher to check if
+expected keys are present. This is supper helpful to spot an early API
+change (e.g. if a field was removed). Unlike `eq` matcher the order of items is
+not important.
+
+Then we are using built in `RSpec` `match` matcher that compares
 the hash elements. Unlike `eq` matcher you can pass other matchers as
 arguments.
 
