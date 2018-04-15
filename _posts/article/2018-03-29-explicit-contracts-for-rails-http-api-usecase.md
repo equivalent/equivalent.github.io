@@ -6,7 +6,7 @@ disq_id: 99
 description:
   HTTP Explicit contracts are  straight forward way how to write fixtures
   like tests for
-  consuming 3rd party APIs. Unlike Mocks the can be easier to maintain and test if they are still valid.
+  consuming 3rd party APIs. They can be easier to maintain compare to mocks
 ---
 
 
@@ -38,7 +38,7 @@ looks like this:
   "students": [
     { "name": "Tomi", "age": "10" },
     { "name": "Zdenka", "age": "12" },
-    { "name": "Majko", "age": "15" }
+    { "name": "Majko", "age": "15" },
     # ... and more
   ]
 }
@@ -85,14 +85,14 @@ class StudentsController < ApplicationController
 end
 ```
 
-> Of course this can be Service Object or maybe a ActiveJob background
+> Of course this can be a Service Object or maybe a ActiveJob background
 > job, or anything really. The point is just that our Gateway module is only
 > responsible providing the data as a simple hash structure.
 
 
 How would we test this ?
 
-Well one idea would be lets **mock** the class:
+Well one idea would be to **mock** the Gateway class:
 
 ```ruby
 # spec/controllers/students_controller
@@ -106,8 +106,7 @@ RSpec.describe StudentsController do
     let(:mock_data_from_3rd_party) do
       "students" => [
         { "name" => "Tomi", "age"=> "10" },
-        { "name" => "Zdenka", "age" => "12" },
-        { "name"=> "Majko", "age"=> "15" }
+        { "name" => "Zdenka", "age" => "12" }
       ]
     end
 
@@ -189,7 +188,7 @@ end
 
 now we are able to call:
 
-```
+```ruby
 ThirdPartyGateway::Test.fetch_students  # data in our hash/file (like fixture)
 ThirdPartyGateway::HTTP.fetch_students  # real HTTP call
 ```
@@ -208,7 +207,7 @@ our Test environment to use Test Gateway.
 require 'lib/third_party_gateway/http.rb
 Rails.application.configure do
   # ...
- config.x.third_party_contract = ThirdPartyGateway::HTTP.fetch_students
+ config.x.third_party_contract = ThirdPartyGateway::HTTP
   # ...
 end
 ```
@@ -219,7 +218,7 @@ end
 require 'lib/third_party_gateway/http.rb
 Rails.application.configure do
   # ...
- config.x.third_party_contract = ThirdPartyGateway::HTTP.fetch_students
+ config.x.third_party_contract = ThirdPartyGateway::HTTP
   # ...
 end
 ```
@@ -230,7 +229,7 @@ end
 require 'lib/third_party_gateway/test.rb
 Rails.application.configure do
   # ...
- config.x.third_party_contract = ThirdPartyGateway::Test.fetch_students
+ config.x.third_party_contract = ThirdPartyGateway::Test
   # ...
 end
 ```
@@ -318,10 +317,12 @@ end
 > To learn more about JSON API testing with native RSpec you can read my
 > other article [Testing API with RSpec](https://blog.eq8.eu/article/rspec-json-api-testing.html)
 
-This will ensure that that the keys of the `student` fields didn't
-changed (maybe if a required key was not removed from 3rd party API)
+This will ensure that that the keys of the `students` fields didn't
+changed. It maybe a case where  required key was removed from 3rd party API that could
+cause our internal system serious damage (e.g. if ID is missing we are
+deleting rows in our DB)
 
-It's not bullet prove but better than blind mocks / request recordings
+It's a not bullet proof solution, but better than blind mocks / request recordings
 (discussed in "Other Solutions section)
 
 
@@ -398,9 +399,9 @@ RSpec.describe StudentsController do
 end
 ```
 
-How would you write a test for this with test contracts ?
+**How would you write a test for this with test contracts ?**
 
-Now remember these kind of tests are behaving similar way how would DB
+Now remember, contract tests tests behave similar way how would DB
 fixtures behave. That means that there are variants built within the
 contract:
 
@@ -492,8 +493,18 @@ end
 > create scenarios around HTTP status codes. So on success 201 or bad
 > request 400 you may raise exception from within contact and capture it
 > in the code. Really this is not the important part and it's really up
-> to you or your team what you need / like.
+> to you or your team/product definition what you need / like.
 
+
+### Conclusion (on Contracts)
+
+Contracts are much better representation of behavior of an external APIs.
+They may be bit inconvinient when dealing with several different
+scenarios but that's the whole point. Your application is consuming
+3rd party application => you are suddenly introducing "something" to
+your application that you have not full controll of. Mocks may be easier
+for writing but also easier to introduce a lie. Contracts are
+representation of this inflexible reality.
 
 ### Other Solutions
 
