@@ -172,16 +172,16 @@ end
 
 module ThirdPartyGateway
   module Test
+    extend self
 
-  extend self
-
-  def fetch_students
-    {
-      "students": [
-        { "name": "Tomi", "age": "10" },
-        { "name": "Zdenka", "age": "12" }
-      ]
-    }
+    def fetch_students
+      {
+        "students": [
+          { "name": "Tomi", "age": "10" },
+          { "name": "Zdenka", "age": "12" }
+        ]
+      }
+    end
   end
 end
 ```
