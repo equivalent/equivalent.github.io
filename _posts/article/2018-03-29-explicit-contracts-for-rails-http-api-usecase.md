@@ -524,3 +524,4 @@ when it comes to dealing with 3rd party API.
 
 * <http://blog.plataformatec.com.br/2015/10/mocks-and-explicit-contracts/>
 
+* [Reddit Discussion](https://www.reddit.com/r/ruby/comments/8cj4no/explicit_contracts_for_rspec_rails/)
