@@ -303,7 +303,7 @@ contract is valid.
 ```ruby
 # spec/lib/third_party_gateway
 
-RSpec.describe "ensure the test contract don't tell a lie' do
+RSpec.describe "ensure the test contract don't tell a lie" do
   it do
     http_student = ThirdPartyGateway::HTTP.fetch_student.fetch('students').first
     test_student = ThirdPartyGateway::Test.fetch_student.fetch('students').first
