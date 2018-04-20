@@ -194,6 +194,27 @@ are "accessible" with eb logs download feature
 > Note: EB is already aggregating your Docker containers STDIO to
 > `/var/log/containers/`
 
+## Load balancer issues
+
+When setting up new ElasticBeanstalk or when cloning Elastic beanstalk
+enviroment, AWS will copy the LoadBalancer setup. But this clonning is
+not perfect. Some time lot of security groups are not imported and
+sometimes new ones are introduced that may be totaly paranoid
+
+This happened to me recently while cloning EB enviroment. Clone
+loadbalancer had new security group that had Outband rule only for HTTP
+but not HTTPs. Due to this loadbalancer was saying no instances are
+healthy even though they were responding to healthcheck.
+
+Given admin `ssh` to instance (`eb ssh`)
+When curl loadbalancer healthcheck endpoint `localhost/heacheck`
+Then I get 200 response
+But Given I curl curl loadbalancer healthcheck endpoint on Elastic beanstalk dns endpoint `my-app.elasticbeanstalk.com/heacheck`
+Then I have no response
+
+So solution was to check not only Inbound rules of EC2 security groups
+but also Outbound rules of AWS Elastic Loadbalancer
+
 
 ## Common server issues when docker is not starting
 
