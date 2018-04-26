@@ -45,16 +45,12 @@ Pokial mate babku pouzivajucu internet ktora fakt nevie o co sa jedna,
 tak jej nastavte ze ked spusti browser, otvori jej to hompage (alebo prvu
 kartu) na tejto adrese.
 
-> Ak ste technicky skusenejsi, mozete nastavit Raspberi PI ktory spusti
-> cron task po restarte na `curl 192.168.1.1`. A potom pripojite Raspberi
-> PI do USB routeru, takze vzdy ked sa router zapne, Raspberi vysle
-> request.
 
 Dakujeme Orange za nezmyselne business technical decissions `O_o` !
 
-### Bonus pre IT maniakov
+### Bonus pre IT maniakov - Raspberi PI riesenie
 
-Ak mate doma navyse jeden [Raspberi PI zero w](https://www.raspberrypi.org/products/raspberry-pi-zero-w/)
+Ak mate doma navyse jedno [Raspberi PI zero w](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) (stoji cca $9)
 mozete nastavit podla [tohto
 clanku](https://www.raspberrypi.org/products/raspberry-pi-zero-w/)
 aby sa nacital Midori browser s adresov `http://192.168.1.1` a
@@ -72,6 +68,13 @@ Raspberi potom nehajte v USB zasuvke bezat 24 hodin denne 7 dni v
 tyzdni. Bude refreshovat stranku a nubudete musiet nic nastavovat ked sa
 router restartuje. Nebude Vam to tahat ani vela dat kedze refreshujete
 "localhost" stranku ktora je priamo v routeri.
+
+> Dovod preco CRON task ktory by vysielal `curl 192.168.1.1` kazdu minutu
+> nefunguje je ten ze stranka je SPA a nacitava vela veci cez
+> JavaScript. Ak hladate konzolove riesenie pre cron skuste nainstalovat
+> nejaky headless browser (napriklad chrome headless webkit). Ja som
+> stym neexperimentoval kedze nechcem stym stracat cas a toto riesenie
+> funguje bez problemov.
 
 ## Stary clanok a postup:
 
