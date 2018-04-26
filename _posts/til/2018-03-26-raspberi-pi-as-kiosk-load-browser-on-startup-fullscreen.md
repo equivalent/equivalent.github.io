@@ -50,6 +50,9 @@ This
 @midori -e Fullscreen -a http://google.com
 ```
 
+> If you need to refresh the page midori supports `-i` option to specify
+> number of secconds of inactivity to refresh the page `midori -e Fullscreen -a http://google.com -i 5`
+
 
 **note:**
 
