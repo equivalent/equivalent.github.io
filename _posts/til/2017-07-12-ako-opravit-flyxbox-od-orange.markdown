@@ -52,8 +52,31 @@ kartu) na tejto adrese.
 
 Dakujeme Orange za nezmyselne business technical decissions `O_o` !
 
+### Bonus pre IT maniakov
+
+Ak mate doma navyse jeden [Raspberi PI zero w](https://www.raspberrypi.org/products/raspberry-pi-zero-w/)
+mozete nastavit podla [tohto
+clanku](https://www.raspberrypi.org/products/raspberry-pi-zero-w/)
+aby sa nacital Midori browser s adresov `http://192.168.1.1` a
+refreshoval kazdych 10 sekund.
+
+```bash
+# bash
+midori -e Fullscreen -a http://192.168.1.1 -i 10
+
+# ldxe conf:
+@midori -e Fullscreen -a http://192.168.1.1 -i 10
+```
+
+Raspberi potom nehajte v USB zasuvke bezat 24 hodin denne 7 dni v
+tyzdni. Bude refreshovat stranku a nubudete musiet nic nastavovat ked sa
+router restartuje. Nebude Vam to tahat ani vela dat kedze refreshujete
+"localhost" stranku ktora je priamo v routeri.
 
 ## Stary clanok a postup:
+
+> Toto jo povodny clanok z leta 2017. Orange uz opravil tento konkretny
+> problem
 
 
 Ak ste si zobrali 4G internet Flybox od Orange isto casom spozorujete
