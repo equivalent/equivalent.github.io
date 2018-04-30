@@ -15,7 +15,7 @@ Then  I want to add it to Azure App Services load balancer
 Problem is Azure supports only `pfx` certificates not `pem` certificates
 so what you need to do is:
 
-1. join the root-chaing cert (PEM) and domain cert (PEM)
+### 1. join the root-chaing cert (PEM) and domain cert (PEM)
 
 ```
 -----BEGIN CERTIFICATE-----
@@ -28,7 +28,7 @@ so what you need to do is:
 -----END CERTIFICATE-----
 ```
 
-2. Generate `pfx` cert
+### 2. Generate `pfx` cert
 
 > This article was written 2018-04-25 and Azure don't support PEM certs those days (this may change in the future)
 > you need to covert the PEM certifictae to  PFX format
@@ -40,7 +40,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey private.key -in domain-and-root-
 You will be asked for a password. Password will be needed in the Azure
 portal interface
 
-3. Assign domain for your App service
+### 3. Assign domain for your App service
 
 this is crucial. If you don't do this you will be able to "upload"
 certificate but not able to assign that certificate to App Service
@@ -48,7 +48,7 @@ certificate but not able to assign that certificate to App Service
 
 Go to `App Services > "your application" > Custom Domains > Add Hostname > "your-url-for-which-you-have-sslcert.com"`
 
-4. Upload & assign certificate to App Service
+### 4. Upload & assign certificate to App Service
 
 Go to `App Services > "your application" > SSL Settings > In "Certificates" section "upload certificate" > type "private" PFX for the domain `
 
@@ -66,7 +66,7 @@ and now choose `"your-url-for-which-you-have-sslcert.com"` from
 dropdown and certificate for it "SNI SSL" and click button "Add Binding"
 
 
-Sources:
+### Sources:
 
 * <https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-ssl>
 * <https://www.sslshopper.com/ssl-converter.html>
