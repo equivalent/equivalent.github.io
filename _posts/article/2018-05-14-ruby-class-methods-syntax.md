@@ -4,7 +4,7 @@ categories: article
 title:  "Ruby class methods syntax"
 disq_id: 49
 description:
-  In ruby there are several ways how to define class methods. In this
+  In Ruby there are several ways how to define a class method. In this
   article I'll go trough 4 major ways and explain what class methods
   really are.
 
@@ -453,7 +453,7 @@ end
 And once they get out of hand all you need to do is to extract them to
 separate file:
 
-```
+```ruby
 # app/model/my_model.rb
 class MyModel
   extend MyModelKlassMethods
@@ -558,12 +558,19 @@ objects just so the models  are "clean". In reality you may actually create
 bigger mess if you move unrelated class method level stuff of different
 contexts.
 
-That's why I don't like using `class << self` as it's scope all class methods as if they were
-related. In reality they are different contexts that behave similar way.
+That's why I don't like using `class << self` as it will scope all class methods as if they were
+related.
 
-> One more thing: I actually maintain my instance methods similar way too (include MyModule)
+In reality your class methods are representing different contexts that just behave similar way.
+
+I hope you learned something new in this article. If not maybe you will
+consider to prefer `extend` over `class << self`.
+
+One more note: You can  maintain instance methods similar way too using `include` having a generic way
+how to write code for instance and class methods.
 
 ### sources
 
 * [The Ruby Object Model and Metaprogramming](https://pragprog.com/screencast/v-dtrubyom/the-ruby-object-model-and-metaprogramming)
+* [Rails concerns](http://api.rubyonrails.org/classes/ActiveSupport/Concern.html)
 
