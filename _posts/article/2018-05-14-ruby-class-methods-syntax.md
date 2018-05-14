@@ -557,6 +557,9 @@ The point is don't just blindly move class methods away from your
 objects just so they are "clean". In reality you may actually create
 bigger mess if you move unrelated class method level stuff.
 
+That's why I don't like using `class << self` as it's scope all class methods as if they were
+related. In reality they are different contexts that behave similar way.
+
 > One more thing: I actually maintain my instance methods similar way too (include MyModule)
 
 ### sources
