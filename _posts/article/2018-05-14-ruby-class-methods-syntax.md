@@ -573,4 +573,5 @@ how to write code for instance and class methods.
 
 * [The Ruby Object Model and Metaprogramming](https://pragprog.com/screencast/v-dtrubyom/the-ruby-object-model-and-metaprogramming)
 * [Rails concerns](http://api.rubyonrails.org/classes/ActiveSupport/Concern.html)
+* [Reddit Discussion](https://www.reddit.com/r/ruby/comments/8jblfm/ruby_class_methods_syntax/)
 
