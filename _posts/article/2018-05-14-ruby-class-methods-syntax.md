@@ -4,7 +4,10 @@ categories: article
 title:  "Ruby class methods syntax"
 disq_id: 49
 description:
-  
+  In ruby there are several ways how to define class methods. In this
+  article I'll go trough 4 major ways and explain what class methods
+  really are.
+
 ---
 
 In Ruby you are able to write class methods multiple ways.
