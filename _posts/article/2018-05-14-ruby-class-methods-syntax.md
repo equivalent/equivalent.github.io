@@ -569,6 +569,107 @@ consider to prefer `extend` over `class << self`.
 One more note: You can  maintain instance methods similar way too using `include` having a generic way
 how to write code for instance and class methods.
 
+### Modules
+
+One more important trick. When you are writing modules you can define
+"class methods" like this:
+
+```ruby
+module MyModule
+  def self.what_is_your_quest
+    "To find the Holly Grail"
+  end
+
+  def self.what_is_your_favorite_color(knight)
+    case knight
+    when "Lancelot"
+      "blue"
+    else
+      "blue, ...no red !"
+    end
+  end
+end
+
+MyModule.what_is_your_quest
+# => "To find the Holly Grail"
+
+MyModule.what_is_your_favorite_color('Lancelot')
+# => "blue"
+```
+
+but you can also do this:
+
+```ruby
+module MyModule
+  extend self
+
+  def what_is_your_quest
+    "To find the Holly Grail"
+  end
+
+  def what_is_your_favorite_color(knight)
+    case knight
+    when "Lancelot"
+      "blue"
+    else
+      "blue, ...no red !"
+    end
+  end
+end
+
+MyModule.what_is_your_quest
+# => "To find the Holly Grail"
+
+MyModule.what_is_your_favorite_color('Lancelot')
+# => "blue"
+```
+
+What the module will do it will extend itself with self so the module
+methods becomes "class methods"
+
+Now this is cool and all but you need to be carefull to do this only on
+modules where you are 100% sure everything will be class level (for
+example when you are writing functional programming module, as if you
+were writing code in Elixir lang)
+
+If you module should be exetending instances with `include` you may want
+to stick with `def self.method_name` or do something like this:
+
+```ruby
+module MyModule
+  module KlassMethods
+    def what_is_your_quest
+      "To find the Holly Grail"
+    end
+
+    def what_is_your_favorite_color(knight)
+      case knight
+      when "Lancelot"
+        "blue"
+      else
+        "blue, ...no red !"
+      end
+    end
+  end
+  extend KlassMethods
+
+  def instance_method_1
+    'this is instance method'
+  end
+end
+
+class Foo
+  include MyModule
+end
+
+Foo.new.instance_method_1
+# => 'this is instance method'
+
+MyModule.what_is_your_quest
+# => "To find the Holly Grail"
+```
+
+
 ### sources
 
 * [The Ruby Object Model and Metaprogramming](https://pragprog.com/screencast/v-dtrubyom/the-ruby-object-model-and-metaprogramming)
