@@ -1,4 +1,12 @@
-# Rails Bounded contexts - the simple way
+---
+layout: article_post
+categories: article
+title:  "Rails Bounded contexts - the simple way"
+disq_id: 50
+description:
+  Rails Bounded contexts via Value object interfaces
+  Article in progress
+---
 
 This article is not finished yet !!!
 
