@@ -26,7 +26,7 @@ Let's fix this in this article.
 ```
 Given I'm a user of my-bank.com
 And I'm signed in to my-bank.com (cookie session id / cookie JWT)
-When I click on a malicious link (email, `<img src="...">`, 3rd party website) with url `http://my-bank?transfer_all_my_money_to_user=1234`
+When I click on a malicious link (email, `<img src="...">`, 3rd party website) with url `https://my-bank?transfer_all_my_money_to_user=1234`
 Then all my money ends up transfered to hacker user 1234
 ```
 
@@ -173,13 +173,17 @@ Angular, React, ...) stores it somewhere(Cookie/Local storage) and send it with 
 > CSRF token in response:
 
 ```
-curl POST  /login.json  -d "{"email":'equivalent@eq8.eu", "password":"Hello"}"  -H 'ContentType: application/json'
+curl POST  https://api.my-app.com/login.json  -d "{"email":'equivalent@eq8.eu", "password":"Hello"}"  -H 'ContentType: application/json'
 
 # Cookie with session_id was set
 
 response:
 
 {  "login": "ok", "csrf": 'yyyyyyyyy" }
+
+next request:
+
+curl POST  https://api.my-app.com/transfer_my_money  -d "{"to_user_id:":"1234"}"  -H "ContentType: application/json" -H "X-CSRF-Token: yyyyyyyyy"
 ```
 
 #### Refresh CSRF on every request
@@ -194,7 +198,7 @@ request (a.k.a: [Non transferable tokens](https://github.com/equivalent/scrapboo
 create table of whitelisted per-user-tokens and either set that token  in another cookie or provide it with every response of any request:
 
 ```
-curl POST  /transfer_my_money  -d "{"to_user_id:":"1234"}"  -H "ContentType: application/json" -H "Prev-Token: yyyyyyy"
+curl POST  https://api.my-app.com/transfer_my_money  -d "{"to_user_id:":"1234"}"  -H "ContentType: application/json" -H "Prev-Token: yyyyyyy"
 
 response:
 {
@@ -268,9 +272,7 @@ issue it doesn't mean that Cross Site Scripting cannot steal this token !
 You just solved one of the security issues not all of them.
 
 Also remember that you need to have your trafic `https` only ! Never
-ever send your `Authentication` header over `http` connection.
-
-> [Enforcing HTTPs in Rails app](https://blog.eq8.eu/article/force_ssl_is_different_than_force_ssl.html)
+ever send your `Authentication` header over `http` connection (read more: [Enforcing HTTPs in Rails app](https://blog.eq8.eu/article/force_ssl_is_different_than_force_ssl.html)).
 
 ### Sources
 
@@ -296,3 +298,8 @@ asking me about
 topic. Answer was formed into this article.
 
 Related article: [CSRF protection on single page app API](https://blog.eq8.eu/article/csrf-protection-on-single-page-app-api.html)
+
+Related discussions:
+
+* <https://twitter.com/equivalent8/status/1007366289336291328>
+* <https://www.reddit.com/r/ruby/comments/8r55qf/rails_api_csrf_protection_for_spa/>
