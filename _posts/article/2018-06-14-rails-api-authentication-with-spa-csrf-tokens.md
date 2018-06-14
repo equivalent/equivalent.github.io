@@ -8,7 +8,7 @@ description:
 ---
 
 
-Topic of SPA (Single Page Applications like React) and Ruby on Rails as a API only is around for a while.
+Topic of SPA (Single Page Applications like React) and Ruby on Rails as an API only is around for a while.
 This Frontend & Backend split inspired lot of other technology
 approaches like JWT (JSON Web Tokens)
 
@@ -20,6 +20,13 @@ I've already wrote an article on the topic before why it is needed in SPA that u
 but really didn't provide any "how to" guide.
 
 Let's fix this in this article.
+
+> Special thanks goes to [johnunclesam](https://github.com/johnunclesam) for
+> asking me about
+> [this topic](https://github.com/equivalent/scrapbook2/issues/10#issuecomment-393104531)
+> My answer was formed into this article.
+
+
 
 ## recap on how CSRF works
 
@@ -51,8 +58,8 @@ Rails form as a hidden field therefore it's send automatically when HTML forms a
 ```
 
 Rails HTML render will also render the CSRF token in the  `<meta name="csrf-token" ...>` tag 
-so when it comes to AJAX  or Single page apps rendered from Rails we just
-configure to pick the meta CSRF token and send it with the AJAX request.
+so when it comes to AJAX  or SPA rendered from Rails we just
+configure them to pick up the CSRF token from `<meta>` tag and send it with the AJAX request.
 
 
 ```erb
@@ -114,9 +121,7 @@ if you store the CSRF token  in a cookie
 The SPA just needs to send the CSRF as a header `X-CSRF-Token`.
 
 Only way how the cookie CSRF store would be dangerous is if you write
-your own CSRF token validation that would look something like this:
-
-So don't do this!:
+your own CSRF token validation that would look something like this (**So don't do this!**):
 
 ```ruby
 class MyController < ApplicationControlle
@@ -165,7 +170,7 @@ next section.
 ## Session Id Cookie + CSRF as JSON API Body response
 
 Other way is to provide CSRF after login as a body of the response. Single page app
-Angular, React, ...) stores it somewhere(Cookie/Local storage) and send it with every request as header.
+Angular, React, ...) stores it somewhere(Cookie/Local storage) and send it with every request as a header.
 
 > If you use something like Devise for login, Devise will set session
 > cookie after login. What you can do is to override the sessions
@@ -291,11 +296,6 @@ ever send your `Authentication` header over `http` connection (read more: [Enfor
 * <https://security.stackexchange.com/questions/166724/should-i-use-csrf-protection-on-rest-api-endpoints/166798#166798>
 * <https://stackoverflow.com/questions/47723379/why-does-the-csrf-token-in-rails-not-prevent-multiple-tabs-from-working-properly>
 * <https://stackoverflow.com/questions/7744459/rails-csrf-tokens-do-they-expire>
-
-Special thank you to [johnunclesam](https://github.com/johnunclesam) for
-asking me about
-[this](https://github.com/equivalent/scrapbook2/issues/10#issuecomment-393104531)
-topic. Answer was formed into this article.
 
 Related article: [CSRF protection on single page app API](https://blog.eq8.eu/article/csrf-protection-on-single-page-app-api.html)
 
