@@ -137,3 +137,6 @@ requests. So if you by any chance have destructive action like `GET http://www.w
 >  prevention on them is pointless unless you are using Http verbs
 >  incorrectly (Thx [Reddit user horses_arent_friends](https://www.reddit.com/r/elixir/comments/75yqdm/csrf_protection_on_single_page_app_api/doa1gjg/) for remminding me that this would be good idea to explain)
 
+### Related Articles
+
+* [Implementing Rails CSRF protection for SPA](https://blog.eq8.eu/article/rails-api-authentication-with-spa-csrf-tokens.html)
