@@ -19,7 +19,9 @@ I've already wrote an article on the topic before why it is needed in SPA that u
 ( [CSRF protection on single page app API](https://blog.eq8.eu/article/csrf-protection-on-single-page-app-api.html) )
 but really didn't provide any "how to" guide.
 
-Let's fix this in this article.
+Let's fix this in this article. All the methods mentioned here are
+equally valid it just really depends on the usecase your application
+needs.
 
 > Special thanks goes to [johnunclesam](https://github.com/johnunclesam) for
 > asking me about
