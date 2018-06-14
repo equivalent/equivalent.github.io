@@ -28,7 +28,7 @@ Let's fix this in this article.
 
 
 
-## recap on how CSRF works
+## Recap on how CSRF works
 
 ```
 Given I'm a user of my-bank.com
