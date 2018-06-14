@@ -60,6 +60,9 @@ configure to pick the meta CSRF token and send it with the AJAX request.
     <%= csrf_meta_tags %>
 ```
 
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/rails-rendering-spa.png)
+
+
 So thin CSRF token is generated once and used trough out of lifecycle of session:
 
 > Rails will appear to generate a new CSRF token on every request, but it
@@ -72,8 +75,12 @@ So thin CSRF token is generated once and used trough out of lifecycle of session
 > source: https://stackoverflow.com/a/50225227/473040 
 
 
-When it comes to API only Ruby on Rails application we don't have this
+When it comes to API only Ruby on Rails application (where SPA is not
+redered by Rails) we don't have this
 luxury of `<mata>` tag .
+
+
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/spa-is-independent-of-rails-api.png)
 
 ### SPA scenario: Should I store CSRF in a cookie ?
 
