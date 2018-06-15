@@ -291,15 +291,47 @@ prevented to be read by JS and will be send over `https` only.
 * <http://guides.rubyonrails.org/security.html>
 * <https://www.owasp.org/index.php/HttpOnly>
 
-Ideally your API server should accept  `https` only !  (read more: [Enforcing HTTPs in Rails app](https://blog.eq8.eu/article/force_ssl_is_different_than_force_ssl.html)).
+Also you should specify domain for your cookie [more here](https://www.mxsasha.eu/blog/2014/03/04/definitive-guide-to-cookie-domains/) (article includes lot of information on session fixation attack, I recommend to read it)
 
-If you decide to store your JWT token in local storage you need to take
-extra care around XSS (Cross Site Scripting attack) in your FE
+```ruby
+# exapmle of super paranoid cookie:
+cookies['cookie_name'] = {
+  :value => 'xxxxxxxxxx',
+  :expires => 10.minutes.from_now,
+  :domain => 'www.example.com',
+  :httponly => true,
+  :secure => true
+}
+```
+
+> Use Chrome/Firefox inspector to see if this flags are truly set on
+> your cookies. Don't just blindly conclude this will work !
+
+In any case your API server should accept  `https` only !  (read more: [Enforcing HTTPs in Rails app](https://blog.eq8.eu/article/force_ssl_is_different_than_force_ssl.html)).
+
+In a case of header `Authentication` token API if you decide not to use
+cookies to store your JWT token in local storage you need to take
+extra care around XSS (Cross Site Scripting attack) in your FE.
+
+This will be problem even if you  consider to store tokens in a
+cookie set on  the FE side as that cookie cannot have `httponly` flag
+(as JS needs to interact with it)
 
 > Remember: just because you have no CSRF
 > issue it doesn't mean that Cross Site Scripting(XSS) cannot steal this token !
 
 * <https://stackoverflow.com/questions/35291573/csrf-protection-with-json-web-tokens>
+
+You need to realize that if the backend API is just accepting headers
+(and no cookies) there is more pressure on frontend SPA to be secure.
+
+Plus with token based solutions you should have whitelist of valid
+tokens (or at least blacklist of invalid tokens). So even with
+technology like JWT which suppose to be "stateless" you should have
+security state in order to do token revokation if there was a breach (or user reset his password) [more here](https://youtu.be/67mezK3NzpU?t=31m32s) 
+
+There is no silver bullet when it comes to security! Educate yourself
+before you implement something in production :)
 
 ### Sources
 
