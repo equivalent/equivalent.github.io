@@ -39,6 +39,8 @@ When I click on a malicious link (email, `<img src="...">`, 3rd party website) w
 Then all my money ends up transfered to hacker user 1234
 ```
 
+> You can watch demo video of this attack [here](https://www.youtube.com/watch?v=5joX1skQtVE)
+
 The whole point of CSRF token protection is that because of cookie
 session_id (or cookie with JWT) is sent on every request therefore we need one more
 information (CSRF token) that server will acknowledge as browser action
