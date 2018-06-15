@@ -274,16 +274,36 @@ There are also other benefits of not using cookie authentication:
   at request header `Authentication` for the token.
 * Cookies are Domain locked. If you need to create microservices
   that communicate with multi domain with same JWT you cannot do that with
-  cookies.
+  cookies (which is a good security thing in most cases but not so good
+  if you need to do more advanced stuff).
 
-But remember just one important thing. Just because you have no CSRF
-issue it doesn't mean that Cross Site Scripting cannot steal this token !
-You just solved one of the security issues not all of them.
+### Different kind of attacks
 
-Also remember that you need to have your trafic `https` only ! Never
-ever send your `Authentication` header over `http` connection (read more: [Enforcing HTTPs in Rails app](https://blog.eq8.eu/article/force_ssl_is_different_than_force_ssl.html)).
+You just solved one of the security issues not all of them. I will not
+go into details in this article, but here are some hints:
+
+If you decide to use session cookies, cookies should have
+been set to attribute `secure` and `httpOnly`. This way cookies are
+prevented to be read by JS and will be send over `https` only.
+
+> If you use Devise for authentication check [here](https://github.com/equivalent/scrapbook2/blob/master/security_notes.md#use-secure-cookies)
+
+* <http://guides.rubyonrails.org/security.html>
+* <https://www.owasp.org/index.php/HttpOnly>
+
+Ideally your API server should accept  `https` only !  (read more: [Enforcing HTTPs in Rails app](https://blog.eq8.eu/article/force_ssl_is_different_than_force_ssl.html)).
+
+If you decide to store your JWT token in local storage you need to take
+extra care around XSS (Cross Site Scripting attack) in your FE
+
+> Remember: just because you have no CSRF
+> issue it doesn't mean that Cross Site Scripting(XSS) cannot steal this token !
+
+* <https://stackoverflow.com/questions/35291573/csrf-protection-with-json-web-tokens>
 
 ### Sources
+
+Security is not easy.
 
 * <https://github.com/equivalent/scrapbook2/issues/10#issuecomment-393104531>
 * <https://stackoverflow.com/questions/50159847/single-page-application-and-csrf-token>
@@ -300,6 +320,8 @@ ever send your `Authentication` header over `http` connection (read more: [Enfor
 * <https://security.stackexchange.com/questions/166724/should-i-use-csrf-protection-on-rest-api-endpoints/166798#166798>
 * <https://stackoverflow.com/questions/47723379/why-does-the-csrf-token-in-rails-not-prevent-multiple-tabs-from-working-properly>
 * <https://stackoverflow.com/questions/7744459/rails-csrf-tokens-do-they-expire>
+* <https://www.mxsasha.eu/blog/2014/03/04/definitive-guide-to-cookie-domains/>
+* <http://michael-coates.blogspot.com/2010/07/html5-local-storage-and-xss.html>
 
 Related article: [CSRF protection on single page app API](https://blog.eq8.eu/article/csrf-protection-on-single-page-app-api.html)
 
