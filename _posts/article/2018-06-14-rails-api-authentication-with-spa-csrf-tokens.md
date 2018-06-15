@@ -3,8 +3,7 @@ layout: article_post
 categories: article
 title:  "Rails CSRF protection for SPA"
 disq_id: 51
-description:
-  How to secure Rails API for SPA with CSRF protection. Is it needed for token headers (e.g.: Bearer token, JWT) ? Or just for session cookies?
+description: "How to secure Rails API for SPA with CSRF protection. Is it needed for token headers (e.g.: Bearer token, JWT) ? Or just for session cookies?"
 ---
 
 
@@ -291,7 +290,8 @@ prevented to be read by JS and will be send over `https` only.
 * <http://guides.rubyonrails.org/security.html>
 * <https://www.owasp.org/index.php/HttpOnly>
 
-Also you should specify domain for your cookie [more here](https://www.mxsasha.eu/blog/2014/03/04/definitive-guide-to-cookie-domains/) (article includes lot of information on session fixation attack, I recommend to read it)
+Also you should specify domain for your cookie [more here](https://www.mxsasha.eu/blog/2014/03/04/definitive-guide-to-cookie-domains/)
+(article includes lot of information on session fixation attack, I recommend to read it)
 
 ```ruby
 # exapmle of super paranoid cookie:
