@@ -4,7 +4,7 @@ categories: article
 title:  "Rails CSRF protection for SPA"
 disq_id: 51
 description:
-  How to secure Rails API for SPA with CSRF protection. Is it needed for JWT ? Or just for session cookies?
+  How to secure Rails API for SPA with CSRF protection. Is it needed for token headers (e.g.: Bearer token, JWT) ? Or just for session cookies?
 ---
 
 
@@ -329,3 +329,4 @@ Related discussions:
 
 * <https://twitter.com/equivalent8/status/1007366289336291328>
 * <https://www.reddit.com/r/ruby/comments/8r55qf/rails_api_csrf_protection_for_spa/>
+* <https://www.reddit.com/r/AskNetsec/comments/8r9kkc/security_article_on_csrf_peer_review_request/>
