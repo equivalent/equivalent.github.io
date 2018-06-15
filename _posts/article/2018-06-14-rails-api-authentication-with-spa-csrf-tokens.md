@@ -309,11 +309,11 @@ cookies['cookie_name'] = {
 
 In any case your API server should accept  `https` only !  (read more: [Enforcing HTTPs in Rails app](https://blog.eq8.eu/article/force_ssl_is_different_than_force_ssl.html)).
 
-In a case of header `Authentication` token API if you decide not to use
-cookies to store your JWT token in local storage you need to take
+In case of header `Authentication` token API you need to store the token
+somewhere. If you use local storage (browser storage) you need to take
 extra care around XSS (Cross Site Scripting attack) in your FE.
 
-This will be problem even if you  consider to store tokens in a
+This will be a problem even if you  consider to store tokens in a
 cookie set on  the FE side as that cookie cannot have `httponly` flag
 (as JS needs to interact with it)
 
@@ -322,13 +322,15 @@ cookie set on  the FE side as that cookie cannot have `httponly` flag
 
 * <https://stackoverflow.com/questions/35291573/csrf-protection-with-json-web-tokens>
 
-You need to realize that if the backend API is just accepting headers
-(and no cookies) there is more pressure on frontend SPA to be secure.
+When backend API is just accepting headers
+(and no cookies) there is more pressure on the frontend SPA to be secure.
 
-Plus with token based solutions you should have whitelist of valid
-tokens (or at least blacklist of invalid tokens). So even with
-technology like JWT which suppose to be "stateless" you should have
-security state in order to do token revokation if there was a breach (or user reset his password) [more here](https://youtu.be/67mezK3NzpU?t=31m32s) 
+> With token based solutions you should have whitelist of valid
+> tokens (or at least blacklist of invalid tokens) on the Backend side
+> (e.g. inside Redis, or DB). This applies to even such technology as
+>  JWT which suppose to be "stateless". Imagine a scenario where you
+>  need to revoke certain tokens
+> if there was a breach (or user reset his password) [more here](https://youtu.be/67mezK3NzpU?t=31m32s) 
 
 There is no silver bullet when it comes to security! Educate yourself
 before you implement something in production :)
