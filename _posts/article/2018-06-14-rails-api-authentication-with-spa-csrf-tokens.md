@@ -131,7 +131,7 @@ class MyController < ApplicationControlle
   def transfer_all_my_money
     raise 'CSRF token invalid' unless valid_authenticity_token?(session, cookie[:csrf_token])  # seriously never do this !!!!
     # ....
-  en
+  end
 end
 ```
 
@@ -154,6 +154,9 @@ class LoginController < ApplicationController
 end
 ```
 
+> Note: this is less secuere as it may be subject to "CSRF Breach Attack"
+> described at the bottom of the article.
+
 Or after every Post action
 
 ```ruby
@@ -168,6 +171,7 @@ end
 ```
 
 I however prefer CSRF as JSON API Body response which I'll describe in
+the
 next section.
 
 ## Session Id Cookie + CSRF as JSON API Body response
@@ -192,7 +196,38 @@ response:
 next request:
 
 curl POST  https://api.my-app.com/transfer_my_money  -d "{"to_user_id:":"1234"}"  -H "ContentType: application/json" -H "X-CSRF-Token: yyyyyyyyy"
+
+response:
+
+{ ok: ok }
+
 ```
+
+But again due to "unchanging" nature of the token this may be subject to
+CSRF Breach Attack (described at bottom of the article)
+
+So providing fresh CSRF token on every response is better:
+
+
+```
+curl POST  https://api.my-app.com/login.json  -d "{"email":'equivalent@eq8.eu", "password":"Hello"}"  -H 'ContentType: application/json'
+
+# Cookie with session_id was set
+
+response:
+
+{  "login": "ok", "csrf": 'yyyyyyyyy" }
+
+next request:
+
+curl POST  https://api.my-app.com/transfer_my_money  -d "{"to_user_id:":"1234"}"  -H "ContentType: application/json" -H "X-CSRF-Token: yyyyyyyyy"
+
+response:
+
+{ ok: ok, "csrf": 'xxxxxxxxxx" }  # <-- important, fresh new token that SPA should update
+```
+
+> you can do this via `render json `{ ok: :ok, csrf: form_authenticity_token }` 
 
 #### Refresh CSRF on every request
 
@@ -276,6 +311,7 @@ There are also other benefits of not using cookie authentication:
   cookies (which is a good security thing in most cases but not so good
   if you need to do more advanced stuff).
 
+
 ### Different kind of attacks
 
 You just solved one of the security issues not all of them. I will not
@@ -332,7 +368,12 @@ When backend API is just accepting headers
 >  need to revoke certain tokens
 > if there was a breach (or user reset his password) [more here](https://youtu.be/67mezK3NzpU?t=31m32s) 
 
-Also there is CSRF Breach attack. Quoting [this](https://www.adweek.com/digital/breach-csrf/) and
+There is no silver bullet when it comes to security! Educate yourself
+before you implement something in production :)
+
+### CSRF Breach attack
+
+Quoting [this](https://www.adweek.com/digital/breach-csrf/) and
 [this](https://www.facebook.com/notes/protect-the-graph/preventing-a-breach-attack/1455331811373632)
 article:
 
@@ -356,10 +397,37 @@ compressed Web page. A smart attacker could use a few hundred carefully
 crafted Web requests to figure out the entire token from the size alone.
 ```
 
-Some of my thoughts on CSRF Breach attack & Rails are summarized [here](https://github.com/equivalent/scrapbook2/issues/10#issuecomment-400547708)
+So Given you use sessions and need CSRF
+in order to increase your security your Frontend (SPA) requests should be sending
+fresh CSRF tokens and Backend should be providing fresh CSRF tokens:
 
-There is no silver bullet when it comes to security! Educate yourself
-before you implement something in production :)
+
+```ruby
+class ApplicationController < ActionController::Base
+
+  after_action :set_csrf_cookie
+
+  def set_csrf_cookie
+    cookies["my_csrf_token"] = form_authenticity_token
+  end
+end
+```
+
+or
+
+
+```ruby
+class MyController < ApplicationController
+  def create
+    # ...
+    render json `{ ok: :ok, csrf: form_authenticity_token }
+  end
+end
+```
+
+> Some more of my thoughts on CSRF Breach attack & Rails are summarized [here](https://github.com/equivalent/scrapbook2/issues/10#issuecomment-400547708)
+
+
 
 ### Sources
 
