@@ -6,6 +6,7 @@ disq_id: 51
 description: "How to secure Rails API for SPA with CSRF protection. Is it needed for token headers (e.g.: Bearer token, JWT) ? Or just for session cookies?"
 ---
 
+**update 2018-06-27** Added section and updates around CSRF Breach Attack
 
 Topic of SPA (Single Page Applications like React) and Ruby on Rails as an API only is around for a while.
 This Frontend & Backend split inspired lot of other technology
@@ -154,7 +155,7 @@ class LoginController < ApplicationController
 end
 ```
 
-> Note: this is less secuere as it may be subject to "CSRF Breach Attack"
+> Note: this is less secure solution than example below as it may be subject to "CSRF Breach Attack"
 > described at the bottom of the article.
 
 Or after every Post action
@@ -169,6 +170,7 @@ class ApplicationController < ActionController::Base
   end
 end
 ```
+
 
 I however prefer CSRF as JSON API Body response which I'll describe in
 the
