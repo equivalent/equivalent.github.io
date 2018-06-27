@@ -334,7 +334,7 @@ When backend API is just accepting headers
 
 Also there is CSRF Breach attack. Quoting [this](https://www.adweek.com/digital/breach-csrf/) and
 [this](https://www.facebook.com/notes/protect-the-graph/preventing-a-breach-attack/1455331811373632)
-article.
+article:
 
 
 ```
