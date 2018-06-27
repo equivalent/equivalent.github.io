@@ -332,6 +332,32 @@ When backend API is just accepting headers
 >  need to revoke certain tokens
 > if there was a breach (or user reset his password) [more here](https://youtu.be/67mezK3NzpU?t=31m32s) 
 
+Also there is CSRF Breach attack. Quoting [this](https://www.adweek.com/digital/breach-csrf/) and
+[this](https://www.facebook.com/notes/protect-the-graph/preventing-a-breach-attack/1455331811373632)
+article.
+
+
+```
+Under certain circumstances, attackers could figure out a victim’s
+secret token even when the communication was encrypted. Specifically,
+the attacker could discover information about the token because of the
+way that a Web page gets compressed.
+
+Compression is a powerful way to speed up communication because repeated
+sections of text only need to get transmitted once. For example, if the
+word “Beetlejuice” is repeated three times in a Web page, the second and
+third instances get compressed into tiny shortcuts that refer to the
+first word. Similarly — and unfortunately — if any letters in the Web
+page match some of the letters in the CSRF token, compression makes the
+Web page smaller. This size difference is still present after the Web
+page is encrypted, and this effect could be used to reveal information
+about the CSRF token to any attackers who can see the size of the
+compressed Web page. A smart attacker could use a few hundred carefully
+crafted Web requests to figure out the entire token from the size alone.
+```
+
+Some of my thoughts on CSRF Breach attack & Rails are summarized [here](https://github.com/equivalent/scrapbook2/issues/10#issuecomment-400547708)
+
 There is no silver bullet when it comes to security! Educate yourself
 before you implement something in production :)
 
