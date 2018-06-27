@@ -422,7 +422,7 @@ or
 class MyController < ApplicationController
   def create
     # ...
-    render json `{ ok: :ok, csrf: form_authenticity_token }
+    render json: { ok: :ok, csrf: form_authenticity_token }
   end
 end
 ```
