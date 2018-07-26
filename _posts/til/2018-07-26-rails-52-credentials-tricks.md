@@ -184,5 +184,6 @@ files and regenerate fresh credentials file ([source](https://github.com/rails/r
 
 ### Discussion
 
-* https://www.reddit.com/r/ruby/comments/9211gs/rails_52_credentials_cheat_cheat/
-* http://www.rubyflow.com/p/8f86uq-rails-credentials-cheat-cheat
+* <https://www.reddit.com/r/ruby/comments/9211gs/rails_52_credentials_cheat_cheat/>
+* <http://www.rubyflow.com/p/8f86uq-rails-credentials-cheat-cheat>
+
