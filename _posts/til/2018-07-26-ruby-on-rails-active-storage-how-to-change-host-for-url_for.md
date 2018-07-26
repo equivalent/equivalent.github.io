@@ -57,3 +57,7 @@ source:
 * <http://tech.sasalog.net/2018/05/use-active-storage-with-rails-5.2/>
 * <https://edgeguides.rubyonrails.org/active_storage_overview.html>
 
+### discussion
+
+* <https://www.reddit.com/r/ruby/comments/92230l/rails_active_storage_how_to_change_host_for_url/)>
+* <http://www.rubyflow.com/p/jgb3vb-ruby-on-rails-active-storage-how-to-change-host-for-urlfor>
