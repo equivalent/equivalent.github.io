@@ -182,3 +182,7 @@ files and regenerate fresh credentials file ([source](https://github.com/rails/r
 > note! `EDITOR=vim rails credentials:edit` may not work if you require
 > credential value in some file (e.g. in config/database.yml`)
 
+### Discussion
+
+* https://www.reddit.com/r/ruby/comments/9211gs/rails_52_credentials_cheat_cheat/
+* http://www.rubyflow.com/p/8f86uq-rails-credentials-cheat-cheat
