@@ -5,12 +5,12 @@ categories: til
 disq_id: til-48
 ---
 
-Rails introduced "encrypted" credentials from rails version 5.2:
+Rails introduced "encrypted" credentials from Rails version 5.2:
 
-* https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2
-* https://guides.rubyonrails.org/5_2_release_notes.html
+* <https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2>
+* <https://guides.rubyonrails.org/5_2_release_notes.html>
 
-In order to use Rails credentials you need to have master key is
+In order to use Rails credentials you need to have master key in
 `config/master.key` or an environment variable `RAILS_MASTER_KEY`
 
 In order to open the credentials file:
@@ -22,9 +22,9 @@ EDITOR=vim rails credentials:edit
 RAILS_MASTER_KEY=xxxxxxxxxxxxxxxx EDITOR=vim rails credentials:edit
 ```
 
-### using inside Rails:
+### Usage inside application code:
 
-fetch root value; e.g when credentials look like:
+Fetch root value; e.g when credentials look like:
 
 ```
 # ....
@@ -96,9 +96,9 @@ rails credentials:help
 > Points here may seem obvious, but unfortunately I've already seen
 > people doing these mistakes
 
-##### Git
+#### Git
 
-It is ok to commit `config/credentials.yml.enc` to git (that is it
+It is ok to commit `config/credentials.yml.enc` to git (that is its
 purpose)
 
 * Never commit `config/master.key` to git!
@@ -107,10 +107,10 @@ purpose)
 If you did commit them at any point in the past, erase the git commits from git history or much better
 regenerate the master.key (section bellow **Regenerate key**)
 
-Make sure `config/master.key` is in your `.gitignore` or any file
-that reference `RAILS_MASTER_KEY` environment variable
+Make sure `config/master.key` is in your `.gitignore`. This apply for any file
+that reference `RAILS_MASTER_KEY` environment variable.
 
-##### Docker
+#### Docker
 
 Make sure `config/master.key` is in your `.dockerignore` or any file
 that reference `RAILS_MASTER_KEY` environment variable
@@ -118,7 +118,7 @@ that reference `RAILS_MASTER_KEY` environment variable
 You can pass environment variable to docker like:
 
 ```
-docker -e RAILS_MASTER_KEY=xxxxxxxxxxx run -it myimage bash
+docker run -e RAILS_MASTER_KEY=xxxxxxxxxxx -it myimage bash
 ```
 
 ...or link master key in docker-compose.yml :
@@ -149,15 +149,18 @@ services:
       RAILS_MASTER_KEY: 'xxxxxxxxxxxxxxxxxxx'
 ```
 
-##### CI & Servers
+#### CI & Servers
 
 * Never log value of `RAILS_MASTER_KEY` anywhere (e.g. Jenkins logs, CI logs)
 
-##### General concern
+#### General concern
 
-Yes Rails credentials are encrypted, that doesn't mean that file is non breakable if the file gets stolen.
+Yes Rails credentials are encrypted, that doesn't mean that file is non breakable if the file gets to the the wrong hands.
 It's ok to store some development or test configuration there. But never store anything that may do harm
 on production (e.g. production postgres database password)
+
+> use Enviroment variables on production server for critical passwords,
+> API keys, ...
 
 Think!
 
@@ -174,7 +177,7 @@ files and regenerate fresh credentials file ([source](https://github.com/rails/r
 `config/manter.key` away (`mv config/credentials.yml.enc ./tmp/ && mv config/master.key ./tmp/`)
 * step 3 run `EDITOR=vim rails credentials:edit`
 * step 4 paste copied values from original credentials
-* step 5 save && commit `config/credentials.yml.enc`
+* step 5 save and commit `config/credentials.yml.enc`
 
 > note! `EDITOR=vim rails credentials:edit` may not work if you require
 > credential value in some file (e.g. in config/database.yml`)
