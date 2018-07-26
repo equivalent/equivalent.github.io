@@ -50,3 +50,10 @@ app.rails_blob_url(a.avatar)
 ```
 
 > BTW there is also `rails_blob_path` helper to fetch path without host
+
+
+source:
+
+* <http://tech.sasalog.net/2018/05/use-active-storage-with-rails-5.2/>
+* <https://edgeguides.rubyonrails.org/active_storage_overview.html>
+
