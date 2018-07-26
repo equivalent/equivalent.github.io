@@ -71,6 +71,19 @@ pg_password = Rails.application.credentials.dig :postgres, :password, :staging
 pg_password = Rails.application.credentials.dig(:postgres, :password, Rails.env.to_sym)
 ```
 
+`config/database.yml` example:
+
+```ruby
+development:
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: <%= ENV['RAILS_PG_PASS'] || Rails.application.credentials.dig(:postgres, :password, :development)
+  host: <%= ENV['RAILS_PG_HOST'] || 'localhost' %>
+  port: 5432
+```
+
 
 ### More info:
 
@@ -140,6 +153,14 @@ services:
 
 * Never log value of `RAILS_MASTER_KEY` anywhere (e.g. Jenkins logs, CI logs)
 
+##### General concern
+
+Yes Rails credentials are encrypted, that doesn't mean that file is non breakable if the file gets stolen.
+It's ok to store some development or test configuration there. But never store anything that may do harm
+on production (e.g. production postgres database password)
+
+Think!
+
 ### Regenerate key
 
 Was your master key compromised? You want to generate new master.key?
@@ -155,4 +176,6 @@ files and regenerate fresh credentials file ([source](https://github.com/rails/r
 * step 4 paste copied values from original credentials
 * step 5 save && commit `config/credentials.yml.enc`
 
+> note! `EDITOR=vim rails credentials:edit` may not work if you require
+> credential value in some file (e.g. in config/database.yml`)
 
