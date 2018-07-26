@@ -33,6 +33,8 @@ secret_key_base: yyyyyyyyyyyyyyyyyyyyyyyyy
 ```
 
 ```ruby
+Rails.application.credentials.secret_key_base
+
 Rails.application.credentials.fetch(:secret_key_base) { raise "it seems you didn't configure credentials" }
 
 Rails.application.credentials[:secret_key_base] || "someDefaultValue"
