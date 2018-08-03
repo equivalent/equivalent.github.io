@@ -1,5 +1,5 @@
-layout: article_post
 ---
+layout: article_post
 categories: article
 title:  "Back to the primitive - testing with simplicity"
 disq_id: 52
