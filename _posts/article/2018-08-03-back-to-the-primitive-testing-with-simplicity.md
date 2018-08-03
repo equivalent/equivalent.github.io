@@ -325,3 +325,7 @@ maintain stable product. Really you should care about the product not
 just parts of it.
 
 
+### Discussion
+
+* https://www.reddit.com/r/ruby/comments/948ra9/back_to_the_primitive_testing_with_simplicity/
+* http://www.rubyflow.com/p/tymjvi-back-to-the-primitive-testing-with-simplicity
