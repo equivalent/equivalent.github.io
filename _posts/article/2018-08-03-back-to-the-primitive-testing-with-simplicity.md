@@ -321,6 +321,7 @@ Rails is hyperproductive web development framework for producing
 products, not a University experimentation utopian OOP framework.
 
 Therefore it's ok to take shortcuts when writing tests that make sense and help you
-maintain stable product.
+maintain stable product. Really you should care about the product not
+just parts of it.
 
 
