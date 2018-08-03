@@ -1,7 +1,7 @@
 ---
 layout: article_post
 categories: article
-title:  "Back to the primitive - testing with simplicity"
+title:  "Back to the primitive. Testing with simplicity"
 disq_id: 52
 description:
   Our tests (same as our code) needs to be maintained and clean.
@@ -114,7 +114,7 @@ helper method `user_path()`.
 
 Therefore if someone overrides the helper method:
 
-```
+```ruby
 # app/helpers/application_helper.rb
 module ApplicationHelper
   def user_path(*)
@@ -206,7 +206,7 @@ And yes it may lead to more "brittle tests" (tests that fail for minor changes) 
 > Would you just work with estimates: "We had sales around 1 000 000 and we needed to pay around 900 000 for material and 100 000 salaries, it should be fine")
 >
 > Or would you crunch real "simple" numbers: "1 001 923 credit, debit on
-> 900 999 material, 101 983 on salaries, Oh! Sh!7 ! This doesn't add up!
+> 900 999 material, 101 983 on salaries, Oh shit! This doesn't add up!
 
 Simplicity is good !
 
@@ -291,22 +291,26 @@ integers) and skip a layer or two of tests.
 
 ### Ecosystem of Rails ?
 
-Although I respect (and use) notion of object oriented decoupling,
+Although I use and respect notion of object oriented decoupling,
 mocking school of testing, re-usability of code (even within tests) unit
 testing, SOLID principles, etc;  the
-truth is lot of times it will leave your code like this:
+truth is lot of times if you don't fully understnad what you are doing it will leave your code like this:
 
 ![Unit tests pass, but application sinks](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/unit-test-titanic.png)
 
 ...especially with Rails.
 
 There are historic and architectural reasons around Ruby on Rails (not
-Ruby, just Rails !) where authors took shortcuts in favor of
+Ruby, just Rails !) where authors took "decouple OOP" shortcuts in favor of
 productivity. This also apply to mindset of developers working with it.
 
-* [RubyRouges podcast DHH on Rails development](https://player.fm/series/all-ruby-podcasts-by-devchattv/rr-342-rails-development-and-more-with-david-heinemeier-hansson)
-* [RailsConf 2014 - Keynote: Writing Software by David Heinemeier Hansson](https://www.youtube.com/watch?v=9LfmrkyP81M)
-* [DHH, M. Fawler, K. Beck; Is TDD dead?](https://www.youtube.com/watch?v=z9quxZsLcfo) + article [DHH TDD is dead](http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html)
+And that's good !
+
+> Some sources of this claim:
+>
+> * [RubyRouges podcast DHH on Rails development](https://player.fm/series/all-ruby-podcasts-by-devchattv/rr-342-rails-development-and-more-with-david-heinemeier-hansson)
+> * [RailsConf 2014 - Keynote: Writing Software by David Heinemeier Hansson](https://www.youtube.com/watch?v=9LfmrkyP81M)
+> * [DHH, M. Fawler, K. Beck; Is TDD dead?](https://www.youtube.com/watch?v=z9quxZsLcfo) + article [DHH TDD is dead](http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html)
 
 You are NOT dealing with perfect OOP framework where everything can be
 mocked, stubbed, reused, ...
