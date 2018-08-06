@@ -138,11 +138,11 @@ RSpec.describe V3::AccountsController, type: :controller do
 
     it 'should create the account' do
       expect { trigger }.to change{ Account.count }.by(1)
-			account = Account.last
+      account = Account.last
       expect(account.avatar).to be_attached
       expect(account.avatar.filename).to eq FilesTestHelper.png_name
       expect(account.name).to eq 'Zdenka'
-		end
+     end
 	end
 end
 ```
