@@ -85,22 +85,22 @@ module FilesTestHelper
   extend ActionDispatch::TestProcess
 
   def png_name; 'test-image.png' end
-  def png; upload(png_name) end
+  def png; upload(png_name, 'image/png') end
 
   def jpg_name; 'test-image.jpg' end
-  def jpg; upload(jpg_name) end
+  def jpg; upload(jpg_name, 'image/jpg') end
 
   def tiff_name; 'test-image.tiff' end
-  def tiff; upload(tiff_name) end
+  def tiff; upload(tiff_name, 'image/tiff') end
 
   def pdf_name; 'test.pdf' end
-  def pdf; upload(pdf_name) end
+  def pdf; upload(pdf_name, 'application/pdf') end
 
   private
 
-  def upload(name)
+  def upload(name, type)
     file_path = Rails.root.join('spec', 'support', 'assets', name)
-    fixture_file_upload(file_path, 'image/png')
+    fixture_file_upload(file_path, type)
   end
 end
 ```
