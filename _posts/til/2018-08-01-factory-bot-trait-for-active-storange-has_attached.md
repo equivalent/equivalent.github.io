@@ -146,3 +146,13 @@ RSpec.describe V3::AccountsController, type: :controller do
 	end
 end
 ```
+
+### Related articles:
+
+* <https://blog.eq8.eu/til/ruby-on-rails-active-storage-how-to-change-host-for-url_for.html>
+* <https://blog.eq8.eu/article/back-to-the-primitive-testing-with-simplicity.html>
+
+### Discussion:
+
+* <https://www.reddit.com/r/ruby/comments/950bni/factory_bot_trait_for_attaching_active_storange/>
+* <http://www.rubyflow.com/p/2wfssa-how-to-add-active-storage-attachement-as-a-factory-bot-or-factory-girl-trait> 
