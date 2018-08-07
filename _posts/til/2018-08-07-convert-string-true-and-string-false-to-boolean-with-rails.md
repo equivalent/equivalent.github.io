@@ -5,12 +5,6 @@ categories: til
 disq_id: til-51
 ---
 
-Imagine you wast to convert string `"true"` into boolean type `true`
-before storing to JSON store (postgresql) or before rendering the value in JSON API
-or before you apply logic in your code or if you are accepting checkbox
-vaule from Rails form helper
-
-
 ### Rails 5
 
 ```ruby
@@ -54,6 +48,64 @@ source
 
 * <https://github.com/equivalent/scrapbook2#checkbox-radio-input-value-to-boolean>
 * <https://gist.github.com/equivalent/3825916>
+
+
+### Why do you need to know about this ?
+
+The thing is `"false"` String is not the same as `false` Boolean. String `"false"` is
+actually truthy value:
+
+```ruby
+expect("false").to be_truthy  # this will pass
+expect(false).to be_falsey    # this will pass
+expect("false").to eq false   # this will fail !
+```
+
+This is highly dangerouse as:
+
+```
+# app/controllers/stupid_controller.rb
+class StupidController < ApplicationController
+  def create
+    user = User.create(email: params[:email])
+    if params[:make_him_admin]
+      user.make_him_an_admin!
+    end
+
+    render json: { result: 'ok' }
+  end
+end
+```
+
+Therefore if you submit:
+
+```json
+{
+  "email":"foo@bar.com",
+  "make_him_admin": "false"
+}
+```
+
+You will make him admin!
+
+`params['make_him_admin'] == "false"` and
+`"false" != false` but it's actually evaluated as a truthy value (non
+`false` and non `nil` means truthy) therefore that if statement pass !!
+
+
+If you are expecting String values `"false"` `"true"` (or maybe `"t"`,`"f"`, ...) from
+outside input I highly recommend to convert them to boolean before you
+pass them to your code or store in DB
+
+You should also consider doing this when:
+
+* before storing to JSON store (postgresql)
+* before rendering the value in JSON API
+* before you apply logic in your code
+* or if you are accepting checkbox value from Rails form helper
+* Etc...
+
+
 
 
 ### Discussion
