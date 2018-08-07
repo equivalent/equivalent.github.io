@@ -27,7 +27,7 @@ ActiveModel::Type::Boolean.new.cast(nil)     # => nil
 
 source:
 
-*https://stackoverflow.com/a/44322375/473040
+* <https://stackoverflow.com/a/44322375/473040>
 
 ### Rails 4.2
 
@@ -37,7 +37,7 @@ ActiveRecord::Type::Boolean.new.type_cast_from_database(value)
 
 source
 
-*https://github.com/equivalent/scrapbook2#checkbox-radio-input-value-to-boolean
+* <https://github.com/equivalent/scrapbook2#checkbox-radio-input-value-to-boolean>
 
 ### Rails 4.1 and bellow
 
@@ -52,5 +52,5 @@ ActiveRecord::ConnectionAdapters::Column.value_to_boolean nil  # => false
 
 source
 
-* https://github.com/equivalent/scrapbook2#checkbox-radio-input-value-to-boolean
-* https://gist.github.com/equivalent/3825916
+* <https://github.com/equivalent/scrapbook2#checkbox-radio-input-value-to-boolean>
+* <https://gist.github.com/equivalent/3825916>
