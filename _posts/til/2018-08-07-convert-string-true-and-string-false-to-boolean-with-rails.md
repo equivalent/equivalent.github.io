@@ -1,13 +1,15 @@
 ---
 layout: til_post
-title:  "convert string true and string false to boolean with Rails"
+title:  'Convert string "true" and string "false" to boolean with Rails'
 categories: til
 disq_id: til-51
 ---
 
 Imagine you wast to convert string `"true"` into boolean type `true`
 before storing to JSON store (postgresql) or before rendering the value in JSON API
-or before you apply logic in your code
+or before you apply logic in your code or if you are accepting checkbox
+vaule from Rails form helper
+
 
 ### Rails 5
 
