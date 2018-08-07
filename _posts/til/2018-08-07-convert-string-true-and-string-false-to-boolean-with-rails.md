@@ -54,3 +54,8 @@ source
 
 * <https://github.com/equivalent/scrapbook2#checkbox-radio-input-value-to-boolean>
 * <https://gist.github.com/equivalent/3825916>
+
+
+### Discussion
+
+* <https://www.reddit.com/r/ruby/comments/95casw/convert_string_true_to_boolean_true_with_rails/>
