@@ -56,13 +56,14 @@ group :development, :test do
   gem 'faker'
 end
 
+# ...
+
+```
+
 > It's critical to have this gems in `group :development, :test do` not just `group :test do` as
 > default commands like `rails generate ...` are running under  `development` environment, therefore
 > they will not pick up default config overrides by this gems unless you run: `RAILS_ENV=test rails generate ...`
 
-# ...
-
-```
 
 Now install the gems:
 
