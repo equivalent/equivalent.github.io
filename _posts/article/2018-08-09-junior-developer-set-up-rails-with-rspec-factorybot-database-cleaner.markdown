@@ -306,11 +306,10 @@ end
 
 ### Database cleaner
 
-To be sort [DatabaseCleaner](https://github.com/DatabaseCleaner/database_cleaner) is a gem
+[DatabaseCleaner](https://github.com/DatabaseCleaner/database_cleaner) is a gem
 that will help you keep your database without records before every
 test run.
 
-> Basically it will delete records from test DB  every test
 
 All you need to do is in `spec/rails_helper.rb` and add this lines inside the RSpec configuration
 block:
@@ -330,6 +329,8 @@ RSpec.configure do |config|
   end
 end
 ```
+
+> In our context it will delete records from test DB before every test
 
 There is more to this gem, there are different strategies so that the
 entire test suite is faster. Read more at <https://github.com/DatabaseCleaner/database_cleaner>
