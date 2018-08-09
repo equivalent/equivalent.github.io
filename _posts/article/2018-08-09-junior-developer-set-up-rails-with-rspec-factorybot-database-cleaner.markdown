@@ -286,7 +286,23 @@ Now these are just some stupid tests that will create a `Worker` in our
 database with some attributes and we just test if the attributes have
 those values.
 
+In reality you will be testing more complex logic with RSpec such as
 
+```ruby
+def trigger_money_transfer(account)
+  account.balance = account.balance + 800
+end
+
+# ...
+let(:bank_account) { create :account }
+
+it "should transfer buch of money to my Account" do
+  expect(bank_account.balance).to eq 0
+  trigger_money_transfer(bank_account)
+  expect(bank_account.balance).to eq 800
+end
+# ...
+```
 
 ### Database cleaner
 
