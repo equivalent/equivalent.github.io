@@ -335,3 +335,6 @@ end
 There is more to this gem, there are different strategies so that the
 entire test suite is faster. Read more at <https://github.com/DatabaseCleaner/database_cleaner>
 
+### Discussion
+
+* <https://blog.eq8.eu/article/junior-developer-set-up-rails-with-rspec-factorybot-database-cleaner.html>
