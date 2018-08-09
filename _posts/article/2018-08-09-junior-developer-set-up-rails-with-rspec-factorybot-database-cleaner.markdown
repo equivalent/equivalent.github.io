@@ -1,5 +1,12 @@
+---
+layout: article_post
+categories: article
+title:  "How to configure RSpec in Ruby on Rails"
+disq_id: 53
+description:
+  Step by step article for Junior Rails developers on how to configure RSpec in Ruby on Rails, Factory Bot and Database Cleaner
 
-# How to configure RSpec in Ruby on Rails
+---
 
 Article for Junior developers on how to set up:
 Rails 5.2, RSpec 3.7, Factory Bot, Database Cleaner
