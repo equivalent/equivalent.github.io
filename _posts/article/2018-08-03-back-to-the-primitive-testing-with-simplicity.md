@@ -118,7 +118,7 @@ Therefore if someone overrides the helper method:
 # app/helpers/application_helper.rb
 module ApplicationHelper
   def user_path(*)
-    "ha ha ha, your tests are Flaky !"
+    "ha ha ha, your tests are a lie !"
   end
 end
 ```
