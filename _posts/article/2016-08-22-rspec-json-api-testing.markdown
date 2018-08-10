@@ -419,8 +419,7 @@ RSpec.describe V2::ArticlesController do
     end
 
     it "correct article attributes are rendered" do
-      # we are not stubbing we will just make sure the Serializer is
-called
+      # we are not stubbing we will just make sure the Serializer is called
       expect_any_instance_of(ArticleSerializer)
         .to receive(:as_json)
         .and_call_original  # this will ensure the return value
