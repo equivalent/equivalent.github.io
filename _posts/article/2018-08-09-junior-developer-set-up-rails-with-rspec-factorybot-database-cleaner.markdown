@@ -13,8 +13,6 @@ Rails 5.2, RSpec 3.7, Factory Bot, Database Cleaner
 
 Article was written 2018-08-09 and applies for current versions of gems
 
-* <https://github.com/thoughtbot/factory_bot_rails>
-
 
 ### Configure fresh project
 
@@ -191,7 +189,9 @@ Don't worry about the "pending" test. You can remove those later.
 That means you have passing tests.
 
 
-### Working with Factories
+### Working with Factories (FactoryBot)
+
+<https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md>
 
 Book [Agile Web Development with Rails](https://pragprog.com/book/rails51/agile-web-development-with-rails-5-1)
 work with `Fixture` tests which valid way how to write tests but for purpouse of this and future tutorials we will use
@@ -304,6 +304,9 @@ end
 # ...
 ```
 
+> B.T.W. FactoryBot is a rewrite of older gem with the name [FactoryGirl](https://robots.thoughtbot.com/factory_bot)
+> If you stumble upon any FactoryGirl mentions on the internet most of the functionality will work on FactoryBot
+
 ### Database cleaner
 
 [DatabaseCleaner](https://github.com/DatabaseCleaner/database_cleaner) is a gem
@@ -334,6 +337,106 @@ end
 
 There is more to this gem, there are different strategies so that the
 entire test suite is faster. Read more at <https://github.com/DatabaseCleaner/database_cleaner>
+
+### Faker
+
+<https://github.com/stympy/faker>
+
+Sometimes you want to have random data in your tests (E.g. random email
+address) as that helps you discover problems you would normally spot
+only in production when real data starts pouring into your system.
+
+You can generate random data by using [FactoryBot sequence syntax](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#sequences):
+
+```ruby
+FactoryBot.define do
+  factory :worker do
+    sequence :name do |n|
+      "Ezo#{n}"
+    end
+
+    age 31
+  end
+end
+```
+
+That will produce:
+
+```
+Ezo1
+Ezo2
+Ezo3
+# ...
+```
+
+But still you will end up with pretty simmilar data in your system. There
+is a better way how to have truly random data with Faker gem:
+
+
+```ruby
+Faker::Name.first_name
+# => "Jonathan"
+Faker::Name.first_name
+#=> "Luigi"
+Faker::Name.first_name
+#=> "Crissy"
+Faker::Number.number(2)
+#=> "75"
+Faker::Number.number(2)
+#=> "48"
+```
+
+
+Faker offers lot of different "fake data" types. You can explore them [here](https://github.com/stympy/faker#contents).
+Try to play around with variations to see what feels right.
+
+What is common in Rails world
+is to combine Faker with Factory bot for generating random data:
+
+
+in `spec/factories/workers.rb`
+
+```ruby
+FactoryBot.define do
+  factory :worker do
+    name Faker::Name.first_name
+    age 31
+  end
+end
+```
+
+
+So our test could look like  (`spec/models/worker_spec.rb`)
+
+
+
+```ruby
+require 'rails_helper'
+
+RSpec.describe Worker, type: :model do
+
+  # ....
+
+  describe 'default worker details' do
+    let(:worker) { create :worker }
+
+    it 'should initialize worker with name and age' do
+      expect(worker.name).to be_kind_of(String)
+      expect(worker.name).to worker.name
+    end
+  end
+end
+```
+
+Now again this is useless test not helping the developer much, I just want to show you that when you are dealing
+with random data you cannot just compare whether the result equals a string. You
+need to check if the result equals the state and type of an object.
+
+
+> You don't want to have Random data all the time, I would even argue
+> that most of the time it's healthier to work with dereministic data.
+> To understand why pls read [this article](https://blog.eq8.eu/article/back-to-the-primitive-testing-with-simplicity.html)
+
 
 ### Discussion
 
