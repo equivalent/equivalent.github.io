@@ -311,6 +311,7 @@ And that's good !
 > * [RubyRouges podcast DHH on Rails development](https://player.fm/series/all-ruby-podcasts-by-devchattv/rr-342-rails-development-and-more-with-david-heinemeier-hansson)
 > * [RailsConf 2014 - Keynote: Writing Software by David Heinemeier Hansson](https://www.youtube.com/watch?v=9LfmrkyP81M)
 > * [DHH, M. Fawler, K. Beck; Is TDD dead?](https://www.youtube.com/watch?v=z9quxZsLcfo) + article [DHH TDD is dead](http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html)
+> * [DHH, exploratory QA](http://testandcode.com/45)
 
 You are NOT dealing with perfect OOP framework where everything can be
 mocked, stubbed, reused, ...
