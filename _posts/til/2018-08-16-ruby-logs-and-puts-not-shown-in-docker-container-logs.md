@@ -220,7 +220,7 @@ More on this: <https://github.com/moby/moby/issues/19616#issuecomment-174492543>
 
 #### Symlink `/dev/stdout` to proper location
 
-Theoretically this could work:
+Theoretically you could add this to your Dockerfile:
 
 ```bash
 ln -s -f /proc/1/fd/1  /dev/stdout
@@ -235,7 +235,7 @@ I'm not recommending this for development or production debugging mode
 as this will screw up your terminal output when typing. It works doh.
 This is just so you see what I mean in my explanation:
 
-```
+```ruby
 $stdout = IO.new(IO.sysopen("/proc/1/fd/1", "w"),"w")
 $stdout.sync = true
 STDOUT = $stdout
