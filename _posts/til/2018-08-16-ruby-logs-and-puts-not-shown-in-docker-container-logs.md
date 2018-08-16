@@ -308,3 +308,15 @@ and `docker-compose up` in development environment
 
 And if I need to print out someting to docker outside the logger I can
 do it with `MY_APPLICATION_LOG_OUTPUT.puts("Important statement")`
+
+### Discussion
+
+Note: I may have missed some better solution or may not fully explained
+reasons in full details. Any ideas or constructive criticism is
+welcome. You can open a [Pull Request for this
+article](https://github.com/equivalent/equivalent.github.io/blob/master/_posts/til/2018-08-16-ruby-logs-and-puts-not-shown-in-docker-container-logs.md)
+or drop a comment in the discussion:
+
+* <https://www.reddit.com/r/ruby/comments/97sofs/ruby_logs_and_puts_not_shown_in_docker_container/>
+* <https://www.reddit.com/r/docker/comments/97src6/application_output_to_docker_logs_works_only_when/>
+* <http://www.rubyflow.com/p/lmcfxq-ruby-logs-and-puts-not-shown-in-docker-container-logs>
