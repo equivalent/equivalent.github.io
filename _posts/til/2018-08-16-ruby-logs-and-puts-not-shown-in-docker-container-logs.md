@@ -5,7 +5,7 @@ categories: til
 disq_id: til-53
 ---
 
-> Capturing the Rails (or plain Ruby) logs to docker output is needed when you are configuring some log agregation tool like
+> Capturing  Rails (or plain Ruby) logs in Docker logs output is needed when you are configuring some log agregation tool like
 > Kibana that will proces logs directly from Docker container output.
 
 
@@ -40,6 +40,9 @@ Not even when you do:
 
 ```ruby
 docker logs -f xxxxxxxxx       # where x is docker container id
+
+# or
+
 docker-compose logs -f
 ```
 
@@ -47,6 +50,7 @@ Still nothing.
 
 ### Dead simple Rails Solution
 
+> I'll explain why whis works in next section of the article
 
 ```ruby
 # config/enviroments/production.rb
@@ -72,7 +76,7 @@ my_app_container  | this will also appear in Docker output!
 
 ### Advanced Solution
 
-> I'll explain why is this working in next section of the article
+> I'll explain why whis works in next section of the article
 
 ```ruby
 # irb
@@ -222,7 +226,7 @@ Theoretically this could work:
 ln -s -f /proc/1/fd/1  /dev/stdout
 ```
 
-...didn't try it personally doh as I don't like the idea of everything
+...didn't try it personally doh. I don't like the idea of everything
 beyond Ruby application that uses stdout would end up in my docker logs.
 
 #### overriding IO globally
@@ -294,9 +298,13 @@ Rails.application.configure do
   config.level = 1
   # ...
 end
+
+Rails.logger.warn "This will get captured in docker if the DOCKER_LOGS is set"
 ```
 
 All I need to do is configure docker compose to pass variable `DOCKER_LOGS="true"`
 to enable logs to `proc/1/fd/1`. This way I can use regular `rails c`
 and `docker-compose up` in development environment
 
+And if I need to print out someting to docker outside the logger I can
+do it with `MY_APPLICATION_LOG_OUTPUT.puts("Important statement")`
