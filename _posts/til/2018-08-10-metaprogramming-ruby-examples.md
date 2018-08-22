@@ -62,9 +62,7 @@ class Account
 		define_method("credit_#{i}".to_sym) do
 			self.state = state + i
 		end
-  end
 
-	(1..99).each do |i|
 		define_method("debit_#{i}".to_sym) do
 			self.state = state - i
 		end
