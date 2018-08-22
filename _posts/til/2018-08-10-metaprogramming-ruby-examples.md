@@ -7,8 +7,10 @@ disq_id: til-52
 
 This is a collection of Metaprogramming Ruby copy-paste examples.
 
-> article was wrote 2018-08-22 and examples were tried under Ruby
-> version 2.5.1
+> The definition of Metaprogramming is: code that defines/writes code.
+
+Article was published 2018-08-22 and examples were tried under Ruby
+version 2.5.1
 
 I'll be updating this article with more examples over the next couple of
 days.
@@ -247,7 +249,7 @@ account.public_methods(false)
 
 Therfore you cannot do method operations on it:
 
-```
+```ruby
 acount.respond_to?(:debit_19)
 # => false
 method = acount.public_method(:debit_19)
