@@ -9,11 +9,8 @@ This is a collection of Metaprogramming Ruby copy-paste examples.
 
 > Metaprogramming is gentle art of writing code that defines/writes other code.
 
-Article was published 2018-08-22 and examples were tried under Ruby
+Article was published 2018-08-23 and examples were tried under Ruby
 version 2.5.1
-
-I'll be updating this article with more examples over the next couple of
-days.
 
 ### Define method
 
@@ -23,15 +20,15 @@ days.
 class Account
   attr_accessor :state
 
-	(1..99).each do |i|
-		define_method("credit_#{i}".to_sym) do
-			self.state = state + i
-		end
+ (1..99).each do |i|
+ 	define_method("credit_#{i}".to_sym) do
+ 		self.state = state + i
+ 	end
 
-		define_method("debit_#{i}".to_sym) do
-			self.state = state - i
-		end
-	end
+ 	define_method("debit_#{i}".to_sym) do
+ 		self.state = state - i
+ 	end
+ end
 
   def initialize(state)
     @state = state
@@ -504,7 +501,9 @@ account.state                  # => 109
 account.public_methods(false)  # => [:state, :state=]
 ```
 
+### Discussion
+
+I'll try to add more in next couple of days as they pop to my mind. But
+if I forgot to add your favorite one pls ping me a comment
 
 
-
-To be continued ...
