@@ -455,9 +455,54 @@ account.transaction(5)
 account.state # => 21
 ```
 
+### Method re-binding
 
+Be aware! This is still experimental feature in Ruby and too fast.
 
+I've already wrote article about this [Method re-binding in Ruby](https://blog.eq8.eu/til/method-binding-in-ruby.html) if you want to learn more.
 
+```ruby
+class Account
+  attr_accessor :state
+
+  def initialize(state)
+    @state = state
+  end
+end
+
+module Debit
+  def transaction(amount)
+    self.state = state - amount
+  end
+end
+
+module Credit
+  def transaction(amount)
+    self.state = state + amount
+  end
+end
+
+account = Account.new(100)
+account.state                       # => 100
+puts account.public_methods(false)  # => [:state, :state=]
+
+debit = Debit.instance_method(:transaction)
+credit = Credit.instance_method(:transaction)
+
+# Lets do debit transactions
+transaction = debit.bind(account)
+transaction.call(6)
+
+account.state                       # => 94
+account.public_methods(false)  # => [:state, :state=]
+
+# Lets do credit transactions
+transaction = credit.bind(account)
+transaction.call(15)
+
+account.state                  # => 109
+account.public_methods(false)  # => [:state, :state=]
+```
 
 
 
