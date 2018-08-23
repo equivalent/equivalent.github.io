@@ -158,8 +158,8 @@ end
 ## will print:
 :one
 "two"
-{ foo: 'bar', car: 'dar' }
 [:three, 4, 5]
+{ foo: "bar", car: "dar" }
 'six'
 ```
 
