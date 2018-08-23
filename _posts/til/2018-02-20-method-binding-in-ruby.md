@@ -61,9 +61,9 @@ puts account.public_methods(false)  # => [:state]
 
 ```
 
-<<<<<<< HEAD
+
 > Note! this is still experimental feature in Ruby and too fast.
-=======
+
 So when you think about it, we manage to decorate the object with a
 method, called some logic that changed the state and then we were able
 to work with the original object (without that method)
@@ -103,8 +103,12 @@ object (bind/unbind).
 
 * <https://www.rubytapas.com/2013/05/01/episode-091-ruby-2-0-rebinding-methods/>
 
+### Related articles
+
+* [Ruby metaprogramming examples](https://blog.eq8.eu/til/metaprogramming-ruby-examples.html)
+
 ### Discussion to this article:
 
 * <https://www.reddit.com/r/ruby/comments/80cu8y/method_binding_in_ruby/>
->>>>>>> master
+
 
