@@ -1,56 +1,19 @@
 ---
 layout: til_post
-title:  "Metaprogramming Ruby examples"
+title:  "Metaprogramming Ruby cheatcheat"
 categories: til
 disq_id: til-52
 ---
 
 This is a collection of Metaprogramming Ruby copy-paste examples.
 
-> The definition of Metaprogramming is: code that defines/writes code.
+> Metaprogramming is gentle art of writing code that defines/writes other code.
 
 Article was published 2018-08-22 and examples were tried under Ruby
 version 2.5.1
 
 I'll be updating this article with more examples over the next couple of
 days.
-
-### Singleton Class object extend
-
-Inspired by article by [Benedikt Deicke - Changing the Way Ruby Creates Objects](https://blog.appsignal.com/2018/08/07/ruby-magic-changing-the-way-ruby-creates-objects.html)
-
-
-```ruby
-module Debit
-  def transaction(amount)
-    self.state = state - amount
-  end
-end
-
-module Credit
-  def transaction(amount)
-    self.state = state + amount
-  end
-end
-
-class Account
-  attr_accessor :state
-
-  def initialize(state)
-    @state = state
-  end
-end
-
-account = Account.new(20)
-account.state # => 20
-account.singleton_class.include(Debit)
-account.transaction(4)
-account.state # => 16
-
-account.singleton_class.include(Credit)
-account.transaction(5)
-account.state # => 21
-```
 
 ### Define method
 
@@ -263,5 +226,240 @@ Argument passing to `method_missing` apply similar way as for `define_method`:
     # ...
   end
 ```
+
+### Include / Extend (modules & mixins)
+
+```ruby
+module Debit
+  module ClassMethods
+    def is_awesome?
+      "is awesome"
+    end
+  end
+
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
+
+  def transaction(amount)
+    self.state = state - amount
+  end
+end
+
+class Account
+  include Debit
+
+  attr_accessor :state
+
+  def initialize(state)
+    @state = state
+  end
+end
+
+Account.is_awesome?
+# => "is Awesome"
+account = Account.new(20)
+account.state # => 20
+account.transaction(4)
+account.state # => 16
+```
+
+Ruby on Rails framework introduced [ActiveSupport::Concerns](https://api.rubyonrails.org/classes/ActiveSupport/Concern.html)
+that will make this even easier:
+
+```ruby
+# require 'active_support/concern'
+
+module Debit
+  extend ActiveSupport::Concern
+
+  included do
+    # scope :approved, -> { where(approved: true) }
+  end
+
+  class_methods do
+    def is_awesome?
+      "is awesome"
+    end
+  end
+
+  def transaction(amount)
+    self.state = state - amount
+  end
+end
+
+class Account
+  include Debit
+
+  attr_accessor :state
+
+  def initialize(state)
+    @state = state
+  end
+end
+
+Account.is_awesome?
+# => "is Awesome"
+account = Account.new(20)
+account.state # => 20
+account.transaction(4)
+account.state # => 16
+```
+
+You may want to use extend to widen your class methods:
+
+```ruby
+module Bar
+  def bar
+    "bar"
+  end
+end
+
+class Foo
+  extend Bar
+end
+
+Foo.bar  # => "bar"
+```
+
+But you may use same module for both extend and include
+
+```ruby
+module Bar
+  extend self  # `self` in this case is `Bar`, therefore you are doing equivalent of `extend Bar`
+
+  def bar
+    "bar"
+  end
+end
+
+class Foo
+  include Bar
+end
+
+Bar.bar      # => "bar"
+Foo.new.bar  # => "bar"
+```
+
+### Eval
+
+```ruby
+class Account
+  attr_accessor :state
+
+  def initialize(state)
+    @state = state
+  end
+end
+
+Account.instance_eval do
+  def is_awesome?
+    "it is truly awesome"
+  end
+end
+
+Account.class_eval do
+  def debit(amount)
+    self.state = state - amount
+  end
+end
+
+Account.is_awesome?
+# => "it is truly awesome"
+account = Account.new(20)
+account.debit(3)
+account.state
+# => 17
+
+
+account.instance_eval do
+  def credit(amount)
+    self.state = state + amount
+  end
+end
+
+account.credit(35)
+account.state
+# => 52
+
+# BUT ! If I initialize new Account instance, this method will not be there
+account = Account.new(6)
+account.credit(15)
+# NoMethodError (undefined method `credit' for #<Account:0x0000000000d259b0 @state=6>)
+
+# `instance_eval` is simmilar of doing:
+def account.other_version_of_credit(amount)
+  self.state = state + amount
+end
+
+account.other_version_of_credit(5)
+# => 11
+
+def Account.other_awesome
+  "still awesome"
+end
+
+Account.other_awesome
+# => "still awesome"
+```
+
+Now there also possibility to use kernel [eval](https://apidock.com/ruby/Kernel/eval)
+but I highly recommend to avoid it (security) unless you really know what you are
+doing.
+
+```ruby
+meaning_of_life = 42
+eval("def answer; #{meaning_of_life}; end")
+
+answer
+# => 42
+```
+
+> you will be able to achieve same results with other technique
+> mentioned in this post
+
+### Singleton Class object extend
+
+Inspired by article by [Benedikt Deicke - Changing the Way Ruby Creates Objects](https://blog.appsignal.com/2018/08/07/ruby-magic-changing-the-way-ruby-creates-objects.html)
+
+
+```ruby
+module Debit
+  def transaction(amount)
+    self.state = state - amount
+  end
+end
+
+module Credit
+  def transaction(amount)
+    self.state = state + amount
+  end
+end
+
+class Account
+  attr_accessor :state
+
+  def initialize(state)
+    @state = state
+  end
+end
+
+account = Account.new(20)
+account.state # => 20
+account.singleton_class.include(Debit)
+account.transaction(4)
+account.state # => 16
+
+account.singleton_class.include(Credit)
+account.transaction(5)
+account.state # => 21
+```
+
+
+
+
+
+
+
 
 To be continued ...
