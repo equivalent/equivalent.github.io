@@ -52,9 +52,9 @@ Methods will also appear on the public_methods list:
 ```ruby
 account.public_methods(false)
 # [ ... , :credit_83, :debit_83, :credit_84, :debit_84, ...]
-acount.respond_to?(:debit_19)
+account.respond_to?(:debit_19)
 # => true
-method = acount.public_method(:debit_19)
+method = account.public_method(:debit_19)
 # => #<Method: Account#debit_19> 
 ```
 
@@ -215,9 +215,9 @@ account.public_methods(false)
 Therfore you cannot do method operations on it:
 
 ```ruby
-acount.respond_to?(:debit_19)
+account.respond_to?(:debit_19)
 # => false
-method = acount.public_method(:debit_19)
+method = account.public_method(:debit_19)
 # => NameError (undefined method `debit_19' for class `Account')
 ```
 
