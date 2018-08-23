@@ -506,4 +506,6 @@ account.public_methods(false)  # => [:state, :state=]
 I'll try to add more in next couple of days as they pop to my mind. But
 if I forgot to add your favorite one pls ping me a comment
 
+* <https://www.reddit.com/r/ruby/comments/99lcsu/metaprogramming_ruby_cheatcheat/>
+* <http://www.rubyflow.com/p/cr5ze7-metaprogramming-ruby-cheatcheat>
 
