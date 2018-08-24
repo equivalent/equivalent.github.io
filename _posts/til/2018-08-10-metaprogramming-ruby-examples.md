@@ -12,7 +12,7 @@ This is a collection of Metaprogramming Ruby copy-paste examples.
 Article was published 2018-08-23 and examples were tried under Ruby
 version 2.5.1
 
-![Advisory](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/advisory.jpg)
+[![Advisory](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/advisory.jpg)](https://youtu.be/8EQbWVcG4sM)
 
 Please be aware that metaprogramming is handy but also dangerous.
 Right amount may make your library/gem awesome but overuse may lead your project hard to understand or debug.
