@@ -43,13 +43,15 @@ market for this technologies is really good ($$$).
 > Anyone who want to fight my opinions pleas read the entire article first.
 > Thank you.
 
-At the same time I would recommend to keep learning plain Ruby, Elixir, Phoenix and JavaScript as
-my side tools (so 80% Rails 20% side tools). I wouldn't spend too much time learning programming
-languages outside that list as you need more tools in your toolbox but too many tools may
-get your toolbox cluttered. Rather focus on underlying technologies an
-problems, like Databases, Caching, DevOps, team maintenance.
+I would focus on my primary tool (Rails) at the same time I would  keep learning plain Ruby, Elixir, Phoenix and JavaScript as my side tools (everyone can find 20 minutes a day).
 
-> you can learn new programming languages when you are senior developer.
+I wouldn't spend too much time learning programming
+languages outside that list as you need more tools in your toolbox but too many tools may
+get your toolbox cluttered and not really able to have the skill
+required to operate the tool. Rather learn underlying technologies an
+problems, like Databases, Caching, Coding practices, DevOps, team maintenance, testing, ...
+
+> You can learn new programming languages when you are senior developer.
 
 ### They are just tools
 
