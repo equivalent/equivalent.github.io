@@ -186,7 +186,7 @@ hundred-thousands of users.
 
 In highly competitive market survive those startups  that are able to adapt
 existing features to requirements or
-introduce new features quickly. Those that wont be able to keep up fade
+introduce new features quickly. Those that won't be able to keep up fade
 in time. Your customers and investors don't care that your application can potentially handle two million
 users if the application experience sucks so bad than only couple of
 hundred will use it.
@@ -252,7 +252,7 @@ My explanation sounds really similar but devil is in the details:
 #### Ruby
 
 More you will learn deeper concepts of object oriented programming (SOLID principles,
-object composition, object oriented decomposition and design, simple design, TDD, etc..)
+object composition, DCI, object oriented decomposition and design, simple design, bounded contexts, DDD, BDD, TDD, etc..)
 you will discover how well Ruby works with these concepts.
 
 My opinion is that Ruby is the best language to express
@@ -273,7 +273,7 @@ running Ruby and in Japan Ruby is quite a preferred language.
 
 Every now and then you can find an article that Ruby is dead but rarely those articles provide any evidence.
 Usually those articles are just developers personal opinions or personal experiences not tackling global data.
-Just because your one company decides to use other technology doesn't
+Just because one company decides to use other technology doesn't
 means that the entire language is dead.
 
 Ruby is very much alive:
@@ -387,7 +387,7 @@ properly you can get away with a lot.
 If you need mega traffic on your API (like millions of requests) then
 Elixir/Phoenix may be much better choice.
 
-> I heard a story in one podcast that in one USA city they had crime
+> I heard a story in one podcast that in one USA city had their crime
 > reporting software running on Rails on like 6 servers on average due
 > to heavy traffic. They
 > refactored it to Elixir and they have it on 2 servers. They really
