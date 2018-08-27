@@ -7,7 +7,6 @@ description:
   Is Ruby on Rails still relevant technology to learn in 2018 ?
 ---
 
-
 Few days ago I've received email where I was asked for an advice from a web
 developer who was considering switching from Ruby to something else. I
 was asked in the email:
@@ -23,12 +22,12 @@ quite long. So I've decided to turn it into an article.
 
 So for those interested on my take on this here it is.
 
-First I'll go trough some philosophical points of web-development, work life and then I'll
-shine some light on the technologies themself to better explain what they aim for.
+> First I'll go trough some philosophical points of web-development, work life and then I'll
+> shine some light on the technologies themself to better explain what they aim for.
 
 ### TL;DR ?
 
-To long to read ? Let me place the conclusion to the top of the article
+To long to read ? I'll  place the conclusion to the top of the article
 then and you don't have to read the rest.
 
 In retrospect I would choose "Ruby on Rails" as my primary technology again even in 2018.
@@ -43,7 +42,8 @@ market for this technologies is really good ($$$).
 > Anyone who want to fight my opinions pleas read the entire article first.
 > Thank you.
 
-I would focus on my primary tool (Rails) at the same time I would  keep learning plain Ruby, Elixir, Phoenix and JavaScript as my side tools (everyone can find 20 minutes a day).
+I would focus on my primary tool (Rails) at the same time I would  keep learning plain Ruby,
+Elixir, Phoenix and JavaScript as my side tools (everyone can find 20 minutes a day).
 
 I wouldn't spend too much time learning programming
 languages outside that list as you need more tools in your toolbox but too many tools may
@@ -61,6 +61,8 @@ coding rules: they are just tools.
 You may want to use hammer when you are nailing a nail to
 the wall, or maybe when you want to smash bricks you would use a bigger
 hammer. But using hammer to fix a car may not be good idea.
+
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/web-developer-is-a-lifestyle.jpg)
 
 Truth is that during your career you will be forced to use / try / learn
 multiple different technologies and different product development approaches.
@@ -102,8 +104,11 @@ If none of that is possible then you are probably not
 that decent web-developer after all and try work on your self improvement harder (then
 revisit this paragraph in couple of months.)
 
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/10-year-experience.jpg)
+
 > Working 10 years as a web-developer doesn't mean you have 10 year
 > experience. Maybe you just repeated the same year 10 times !
+
 
 ### No winners
 
@@ -114,6 +119,11 @@ Way to often I hear or read software developers dismiss languages like
 Ruby as too slow" not realizing that their strength was never the speed.
 Lot of times when you investigate background of those claims you will discover that
 someone was trying to fit couple of thousand request to non-[load balanced](https://en.wikipedia.org/wiki/Load_balancing_(computing)) server or had no idea what [caching](https://edgeguides.rubyonrails.org/caching_with_rails.html) is.
+
+> Developer need's to focus to optimize overall performance of
+> application with tools like [newrelic](https://newrelic.com) not
+> focus on how many loop cycles the language can handle. You are
+> building real life applications used by real people.
 
 Often I read developers complaining about languages like Java as too
 complex or non-pragmatic for real applications. Those languages were
@@ -134,7 +144,6 @@ chunks of application running on different servers.
 
 > more on [monolith vs microservice](https://blog.eq8.eu/talk/architecture.html)
 
-
 It's often to see some major companies move from one language to another
 simply because the language no longer make sense for their scenarios.
 Years ago Twitter moved away from Ruby because they became this giant
@@ -146,6 +155,8 @@ into what they are now.
 > This happens not only with programming languages, but also with databases (SQL vs NoSQL), or
 > storage solutions (Dropbox moved away from AWS S3), or.. pretty much anything ! It's only programming
 > languages people tend to freak out for some reason.
+
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/one-does-not-language.jpeg)
 
 It's perfectly normal to let go.
 
