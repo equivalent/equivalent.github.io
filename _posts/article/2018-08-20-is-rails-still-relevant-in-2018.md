@@ -550,3 +550,7 @@ Worst attitude developer can have is "I'm not going to learn in my free
 time, I'll just learn on the spot in my company". Web developer is a
 lifestyle not a job. Deal with it!
 
+### Discussion
+
+* [Reddit discussion](https://www.reddit.com/r/ruby/comments/9ap0nb/is_rails_still_relevant_in_2018/)
+* [Ruby Flow discussion](http://www.rubyflow.com/p/nr7ipi-is-rails-still-relevant-in-2018-)
