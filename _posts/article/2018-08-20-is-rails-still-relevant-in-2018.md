@@ -432,6 +432,8 @@ on all of them.
 > Functional programming languages don't mutate state that means no side effects.
 > (I'm explaining it in more depth [here](https://blog.eq8.eu/article/lessons-learned-from-functional-programming-as-a-ruby-developer.html))
 
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/state-mutations.jpg)
+
 So as Elixir is built upon Erlang this benefit is passed on to it too.
 
 Another important point is socket connections. You see any webserver can
@@ -460,8 +462,9 @@ That's 3 manual steps where in Rails you have in in one
 
 Now this 3 steps is much better practice from coding perspective. You
 are writing clean decoupled easy to test code. But it will definitely
-take more time than with Rails. Rails has no worse coding practice but
-focused on productivity faster implementation time.
+take more time than with Rails. Rails has worse coding practice but
+implementation is
+focused on productivity and faster implementation time.
 
 > It's not a design choice. Functional programming is more explicit way
 > of writing code, so you need to pass everything, therefore it
