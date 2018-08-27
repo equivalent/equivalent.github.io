@@ -479,7 +479,7 @@ train. Not to distract you but to get you more motivated and understand
 philosophy not just code. Here are two I recommend:
 
 * [Lonestar ElixirConf 2017- KEYNOTE: Phoenix 1.3 by Chris McCord](https://www.youtube.com/watch?v=tMO28ar0lW8)
-* [Jose Valim - Idioms for building distributed fault-tolerant applications with Elixir](https://www.youtube.com/watch?v=MMfYXEH9KsY]
+* [Jose Valim - Idioms for building distributed fault-tolerant applications with Elixir](https://www.youtube.com/watch?v=MMfYXEH9KsY)
 
 
 #### JavaScript
