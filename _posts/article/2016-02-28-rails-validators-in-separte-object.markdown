@@ -640,6 +640,10 @@ explain them here but there is a wonderful article going into depth: http://blog
 
 I've never used them but they are definitely interesting concept
 
+## Other
+
+* [Request model with validation on error model](https://gist.github.com/equivalent/cb5666f62b6e377f3f15853ec5eb49e5)
+
 ## Conclusion
 
 In normal situation in 80% to 90% of cases regular Rails validations on
