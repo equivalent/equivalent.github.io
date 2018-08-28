@@ -327,7 +327,7 @@ Only recently [Webpack](https://guides.rubyonrails.org/5_1_release_notes.html#op
 was introduced to Rails 5 as standard thing.
 Up till certain point Rails Asset pipeline (via ruby gems) render SPA lib was common thing.
 This created tension between Rails Backend developers and
-Frontend only developers that dislike this shotgun marriage of JS an Rails.
+Frontend only developers that dislike this shotgun marriage of JS and Rails.
 
 Another approach is to just generate Rails application as an [API only](https://edgeguides.rubyonrails.org/api_app.html)
 and just have SPA on a completely separate VM but that add extra step
@@ -336,7 +336,8 @@ building two different projects now.
 
 So the point is that Rails prefers not to use SPA but if you want to use
 SPA there is at least 3 different ways how to use them now days. This in my
-opinion sends a confusing message to Rails newcomers  and also
+opinion sends a confusing message to Rails newcomers that wont to
+learn  and also
 coding bootcamps that want to teach latest technology
 "trends" like SPA. So they just drop off Rails in favor plain JS backend.
 
