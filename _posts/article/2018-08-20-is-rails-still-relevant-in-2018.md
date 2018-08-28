@@ -555,3 +555,4 @@ lifestyle not a job. Deal with it!
 
 * [Reddit discussion](https://www.reddit.com/r/ruby/comments/9ap0nb/is_rails_still_relevant_in_2018/)
 * [Ruby Flow discussion](http://www.rubyflow.com/p/nr7ipi-is-rails-still-relevant-in-2018-)
+* [hacker news](https://news.ycombinator.com/item?id=17856314) (I've didn't start this discussion)
