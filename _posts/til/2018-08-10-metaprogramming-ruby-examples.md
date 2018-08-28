@@ -506,6 +506,10 @@ account.state                  # => 109
 account.public_methods(false)  # => [:state, :state=]
 ```
 
+### Related articles
+
+* [Ruby class methods explained](https://blog.eq8.eu/article/ruby-class-methods-syntax.html)
+
 ### Discussion
 
 I'll try to add more in next couple of days as they pop to my mind. But
