@@ -87,7 +87,7 @@ create supper slow application.
 You will work with that programming language 8-10 (maybe even 16) hours
 a day. **Don't underestimate the importance of "developer happiness"**
 
-If that what you work with (or the project you work for) doesn't make you happy then it's you that failed not
+If tools that you work with or the project that you work for doesn't make you happy then it's you that failed not
 the Programming language.
 
 I love my job because I've picked a job with the right set of technologies,
@@ -164,7 +164,7 @@ It's perfectly normal to let go.
 > refactored into microservices when they become too successful.
 
 If you are startup that has only couple of thousands in founding to develop a successful
-application from scratch you will burn that money before you ever lunch
+application from scratch you will burn that money before you ever launch
 the product if you choose something unnecessary complex like Java or even Elixir Phoenix
 
 > Yes Elixir & Phoenix is awesome and really really productive but lets be
@@ -174,7 +174,7 @@ When a brand new startups without previous web-development experience drafts out
 "revolutionary" project, almost always one of the requirements is: "it needs to
 support million users". Because it's obvious that the product will be overnight success.
 The ego plays huge role in downfall of many such companies.
-Six months after the lunch they will probably have couple of thousand users not more.
+Six months after the launch they will probably have couple of thousand users not more.
 It's ok to prepare for a larger traffic but honestly don't kid
 yourself.
 
