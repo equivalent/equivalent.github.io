@@ -39,6 +39,8 @@ To change the host name:
 Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 ```
 
+> Note: if you need to change http to https change `Rails.application.routes.default_url_options[:protocol] = 'https'`
+
 ```ruby
 # rails console
 
