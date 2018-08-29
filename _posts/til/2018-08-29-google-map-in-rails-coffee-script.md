@@ -44,7 +44,6 @@ disq_id: til-54
 # app/assets/javascript/my_maps.coffee
 window.initMap = ->
   if (document.getElementById('map1'))
-    # The location of Uluru
     map_element = $('#map')
     location =
       lat: map_element.data('lat')
@@ -77,7 +76,7 @@ window.initMap = ->
  </html>
 ```
 
-> the `&callback=initMap` part of <script> will ensure the function is
+> the `&callback=initMap` part of script tag src will ensure the function is
 > called
 
 #### With turbolinks:
@@ -139,6 +138,8 @@ window.initMap = ->
   return
 ```
 
+> stolen from <https://stackoverflow.com/a/46981340/473040>
+
 And be sure to add css class "maps" to the divs and make sure the id is
 different !
 
@@ -159,5 +160,6 @@ And make sure CSS will recognize class "maps" instead of hard id:
   width: 100%;
 }
 ```
+
 
 
