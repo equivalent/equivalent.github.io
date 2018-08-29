@@ -1,6 +1,6 @@
 ---
 layout: til_post
-title:  "Google Map in Rails Coffee Script"
+title:  "Google Maps in Rails with Coffee Script"
 categories: til
 disq_id: til-54
 ---
