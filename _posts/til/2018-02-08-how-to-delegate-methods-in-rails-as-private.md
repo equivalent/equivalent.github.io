@@ -6,7 +6,9 @@ disq_id: til-43
 ---
 
 
-### Rails before version 5.2
+### Rails before version 6
+
+> note Rails 6 is not released yet !!
 
 
 ```ruby
@@ -39,10 +41,11 @@ source:
 
 
 
-### After Rails 5.2
+### After Rails 6
 
+> note Rails 6 is not released yet !!
 
-After [this PR](https://github.com/rails/rails/pull/31944) in Rails 5.2
+After [this PR](https://github.com/rails/rails/pull/31944) in Rails 6.0
 you can do:
 
 
