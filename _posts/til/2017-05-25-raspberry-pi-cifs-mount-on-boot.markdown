@@ -14,6 +14,11 @@ place this in your `/etc/fstab`
 
 ```bash
 //192.168.1.150/Volume_1/  /mnt/mymount       cifs   uid=1000,gid=1000,rw,username=myusername,password=MyPAssWD      0       0
+
+
+# or if you use older samba version
+
+//192.168.1.150/Volume_1/  /mnt/mymount       cifs   uid=1000,gid=1000,vers=1.0,rw,username=myusername,password=MyPAssWD      0       0
 ```
 
 Now in order for Rasp PI to mount this on boot you need
