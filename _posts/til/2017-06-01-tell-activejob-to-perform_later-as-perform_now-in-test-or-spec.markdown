@@ -105,7 +105,7 @@ end
 
 ... or
 
-```
+```ruby
 # spec/rails_helper.rb or config/enviroments/test.rb
 Rails.application.config.active_job.queue_adapter = :inline
 ```
