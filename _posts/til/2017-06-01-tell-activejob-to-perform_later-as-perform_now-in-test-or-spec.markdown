@@ -40,8 +40,8 @@ Even if you set the queuing adapter to be`ActiveJob::Base.queue_adapter = :test`
 the second call may not be executed as ActiveJob is holding second call
 for assertion tests
 
-> note: there is alse `ActiveJob::Base.queue_adapter = :inline` that may
-> solve the issue
+> Global setting solution is described at the bottom section of this article
+
 
 What you can do is wrap the call in build in `ActiveJob::TestHelper` module
 method `perform_enqueued_jobs` block:
@@ -85,3 +85,37 @@ RSpec.describe Job1 do
   end
 end
 ```
+
+### Global setting
+
+This will ensure all the tests will execute Jobs imidietly (not queue)
+
+In `config/enviroments/test.rb` :
+
+
+```ruby
+# config/enviroments/test.rb
+
+Rails.application.configure do
+  # ...
+  config.active_job.queue_adapter = :inline
+  # ...
+end
+```
+
+... or
+
+```
+# spec/rails_helper.rb or config/enviroments/test.rb
+Rails.application.config.active_job.queue_adapter = :inline
+```
+
+if you want to revert to original setup where you queue jobs:
+
+```ruby
+Rails.application.config.active_job.queue_adapter = :async
+# or
+Rails.application.config.active_job.queue_adapter = :sidekiq
+```
+
+To lern more about [Active Job adapters](https://api.rubyonrails.org/classes/ActiveJob/QueueAdapters.html)
