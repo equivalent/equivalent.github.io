@@ -123,3 +123,29 @@ time you before  `npm install` run (pain in the a$$)
 
 > again you can do same thing for bundler Gemfile (evealuate the
 > template via system Ruby before `bundle install`) but it's not pretty.
+
+### FAQ:
+
+> So, is it safe to commit this personal access token, and use it in something like Travis CI [source](https://stackoverflow.com/questions/28728665/how-to-use-private-github-repo-as-npm-dependency/49258165?noredirect=1#comment93991790_49258165)
+
+
+Depends what level of security you are trying to achive. If you are a
+Bank then you are so security paranoid that you will not even use Github
+or TravisCI
+
+So I'm assuming you are regular startup that is building regular
+software:
+
+You never want to do this on public repo.
+
+If the project is a Github private repository and you have paid Travis CI that is running tests for this
+private Github project repo then yes, ...kindof, as you are not sharing your credentials publicly
+(There is still possibility someone will hack to GH or Travis CI == edgecase )
+
+Also big recommendation is not to use your personal account. What you want to do is to create and use credentials of new Github user
+that has only read access to this one  private repo (so called "bot user"  account)
+This account is  easier to lock in case of exposure (you just remove GH
+account from project) or amount of harm as he can access only 1 private
+repo.
+
+
