@@ -37,46 +37,51 @@ You pay only for the compute time you consume - there is no charge when your cod
 So what it means is you write Ruby script, you load the code to AWS Lamda and
 then when you trigger it. That will:
 
-1. spin up Lambda function (this is when you start being charged $$$)
+1. spin up Lambda function
 2. run your script code (e.g. write some record to DB, process some payment, send an email)
-3. kill Lamda (this is when you will stop being charged)
+3. spin down Lamda (after some time of inactivity)
+
+> Serverless folks will hate me for using the words "spin up". In reality YOU are not spinning up anything as the AWS Lamda function is Function as a Service (FaaS)
+> therefore provisioning is taken care of by AWS. All you need to do is invoke it. If no availible Lambda is not up it will spin up ("cold start") automatically.
+
 
 The price of execution depends of how much memory you allocate to the
-Lambda execution and how long it will took to finish. If **Lambda spin up + code execution + die** took 100 ms you will pay
-only  for 100ms (And we are talking like $0.0001 per execution, check [pricing](https://aws.amazon.com/lambda/pricing/))
+Lambda execution and how long it will took to finish your code
+execution. But generally we are talking about $0.000001 per execution.
 
-> Serverless folks will hate me for using the words "spin up". In reality you are not spinning up anything as the AWS Lamda function is Function as a Service (FaaS)
-> therefore provisioning is taken care of by AWS. What I mean by "spin up"  is trigger the lamda function.
->
-> BUT this "trigger" is more complex than "run a script". You see there
-> is a concept of "cold starts" of Lambda executions; meaning  the Lambda function
-> was not executed for a while, it will take bit longer to execute
-> compared to often executed Lambda functions. So it  really feels like Spin
-> up.
->
-> That's why I'll keep on using this term trough out the article in sense of special kind
-> of "trigger"
+> Duration is calculated from the time your code begins executing until it returns or otherwise terminates, rounded up to the nearest 100ms. The price depends on the amount of memory you allocate to  your function. [pricing](https://aws.amazon.com/lambda/pricing/)
 
-**If you need to run the same Lambda function 1000 times you have to
-trigger up 1000 separate Lamba executions** of the same functionality.
+**If you need to run the same Lambda function simultaneously 10 times you have to
+spin up 10 separate Lamba invocations** of the same functionality.
 
-> Imagine that if you wanted to do the same thing with VM servers, you would have to lunch 1000 VMs
-> and execute same one script on every one of those VMs and then kill the individual VMs after script finished. Lambda
-> is obviously much faster on spin up but principle of execution is
-> similar.
+However next execution of AWS lamda function will be executed on loaded
+AWS lamda (no spin up is necessary you just invoke code/params on span-up one that is
+not performing anything)
 
-The important part is that you are not able to cache anything in the memory
-for next execution (e.g. no point using Ruby memoize `||=`)
+1. spin up Lambda function
+2. call handler `#lambda_handler`- from this point is when you start being charged $$$
+3. run your code
+4. return value - from this point is when you stop being charged
+5. call handler  `#lambda_handler`- from this point is when you start being charged $$$
+6. run your code
+7. return value - from this point is when you stop being charged
+8. spin down Lamda (after some time of inactivity)
 
-Yes there is some level of "next Lambda execution will be faster"
-because first Lamda had a "cold start" but in principle you cannot rely
-on this. Good example what I'm talking about is described in article [AWS Lambda cold starts](https://theburningmonk.com/2018/01/im-afraid-youre-thinking-about-aws-lambda-cold-starts-all-wrong/)
+The important part is that you are not able guarantee that if you  cache something in the memory
+for next execution, it will get picked up. So if you load bunch of
+dependencies/configurations into the memory they may not be there for the next
+invocation.
 
-> Also this depends on what programming lang you use in AWS Lambda. Java
-> would would notice this far more than  Python or Ruby.
+Therefore "cold start" of AWS Lambda may take some time if your code is 
+too heavy.
+
+> Also this depends on what programming lang you use in AWS Lambda.
+> Java, C#  would notice slower cold starts far more than  Python or Ruby.
 
 Bare with me I'll get to the point why all this is important in a
 minute.
+
+> More details about this can be found in articles like [AWS Lambda cold starts](https://theburningmonk.com/2018/01/im-afraid-youre-thinking-about-aws-lambda-cold-starts-all-wrong/) or [keep your lambdas warm](https://serverless.com/blog/keep-your-lambdas-warm/)
 
 ### Plugging in API Gateway
 
@@ -141,9 +146,16 @@ That Brings us to the main point of how this works:
 
 ![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/2018-12-aws-sinatra-lambda.jpg)
 
-That means if this Sinatra app needs to receive 1000 requests, it will
-spin up 1000 AWS Lambda Functions.
 
+That means if this Sinatra app needs to receive 50 requests, it will
+spin up 50 AWS Lambda Functions.
+
+If there are 1000 requests concurrently, AWS will try to run 1000
+invocations for the same Lambda function. However, if it's 1000
+requests/second, and each request only needs 200 ms to process, there could
+only be 200 concurrent invocations at any point of time. [Reference](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html)
+
+> Thank you [Xiang Shen](https://github.com/aws-samples/serverless-sinatra-sample/pull/6#issuecomment-446622387) for pointing this out.
 
 
 ### Use case
@@ -299,6 +311,7 @@ This will be needed when you do `POST /api/feedback`
 * <https://aws.amazon.com/blogs/compute/announcing-ruby-support-for-aws-lambda/>
 * <https://github.com/aws-samples/serverless-sinatra-sample>
 * <https://www.serverless-ruby.org/>
+
 
 ### Discussion:
 
