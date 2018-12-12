@@ -42,20 +42,20 @@ then when you trigger it. That will:
 3. spin down Lamda (after some time of inactivity)
 
 > Serverless folks will hate me for using the words "spin up". In reality YOU are not spinning up anything as the AWS Lamda function is Function as a Service (FaaS)
-> therefore provisioning is taken care of by AWS. All you need to do is invoke it. If no availible Lambda is not up it will spin up ("cold start") automatically.
+> therefore provisioning is taken care of by AWS. All you need to do is invoke it. If no availible Lambda is up it will spin up ("cold start") automatically.
 
 
 The price of execution depends of how much memory you allocate to the
 Lambda execution and how long it will took to finish your code
-execution. But generally we are talking about $0.000001 per execution.
+execution. But generally we are talking about like $0.00001 per execution ([pricing](https://aws.amazon.com/lambda/pricing/))
 
-> Duration is calculated from the time your code begins executing until it returns or otherwise terminates, rounded up to the nearest 100ms. The price depends on the amount of memory you allocate to  your function. [pricing](https://aws.amazon.com/lambda/pricing/)
+> Duration is calculated from the time your code begins executing until it returns or otherwise terminates, rounded up to the nearest 100ms. The price depends on the amount of memory you allocate to  your function. 
 
 **If you need to run the same Lambda function simultaneously 10 times you have to
 spin up 10 separate Lamba invocations** of the same functionality.
 
-However next execution of AWS lamda function will be executed on loaded
-AWS lamda (no spin up is necessary you just invoke code/params on span-up one that is
+However next execution of AWS lamda function will be executed on waiting
+AWS Lambda (no spin up is necessary you just invoke code/params on span-up one that is
 not performing anything)
 
 1. spin up Lambda function
@@ -67,7 +67,7 @@ not performing anything)
 7. return value - from this point is when you stop being charged
 8. spin down Lamda (after some time of inactivity)
 
-The important part is that you are not able guarantee that if you  cache something in the memory
+The important part is that you are not able guarantee that if you load something in the memory
 for next execution, it will get picked up. So if you load bunch of
 dependencies/configurations into the memory they may not be there for the next
 invocation.
