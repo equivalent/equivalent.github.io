@@ -289,10 +289,14 @@ This will be needed when you do `POST /api/feedback`
    [here](https://github.com/equivalent/serverless-sinatra-sample/blob/2018-12-eq8article-sinatra-on-aws-lambda/lambda.rb#L68)
 
 
-### Links & Discussion
+### Links
 
 * [Monolith, Microservices & Serverless Ruby](https://www.youtube.com/watch?v=fn17nojYa-I) [Mirror](https://skillsmatter.com/skillscasts/11594-lrug-march)
 * <https://aws.amazon.com/blogs/compute/announcing-ruby-support-for-aws-lambda/>
 * <https://github.com/aws-samples/serverless-sinatra-sample>
 
+### Discussion:
+
+* <http://www.rubyflow.com/p/hbi870-ruby-sinatra-on-aws-lambda> 
+* <https://www.reddit.com/r/ruby/comments/a5f7as/sinatra_on_aws_lambda/>
 
