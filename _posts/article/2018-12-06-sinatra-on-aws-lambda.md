@@ -20,13 +20,13 @@ functions but also how to run [Sinatra](http://sinatrarb.com/)
 application on AWS Lambda with a code sample project [AWS Lambda - serverless Sinatra app example](https://github.com/aws-samples/serverless-sinatra-sample)
 
 In this article I will explain in more depth how this works and how it is even
-possible to run Sinatra rb (and other small Rack applications) on AWS Lambda
+possible to run Sinatra (and other small Rack applications) on AWS Lambda
 
 > Originally I wanted to create step by step Sinatra - AWS Lambda manual from
 > scratch but guys at AWS done really good job with the mentioned example repo. I couldn't produce
 > anything that would add more value.
 
-### How does AWS Lambda work
+### AWS Lambda - how it works
 
 [Lamda](https://aws.amazon.com/lambda/) is a product from AWS (Amazon
 Web Services) in which you run code without provisioning or managing servers.
@@ -99,9 +99,9 @@ But you can also configure proxy routes with `*` where anything
 
 So technically speaking you can have
 
-`* /users/*` pointing to one AWS Lambda 
-`* /products/*` pointing to another AWS Lambda 
-`* /cusstomer_support/*` pointing to another AWS Lambda 
+* `* /users/*` pointing to one AWS Lambda 
+* `* /products/*` pointing to another AWS Lambda 
+* `* /cusstomer_support/*` pointing to another AWS Lambda 
 
 ### Sinatra
 
@@ -167,16 +167,16 @@ And you can always mix and match with regular serverless flow of simple AWS Func
 
 e.g.:
 
-`post /users/` pointing to lambda function
-`put /users/123` pointing to different lambda function
-`* /products` pointing to one Sinatra Microservice on AWS Lambda function
-`* /basket` pointing to another Sinatra Microservice on AWS Lambda function
-`* /cusstomer_support` pointing to another Sinatra Microservice on AWS Lambda function
+* `post /users/` pointing to lambda function
+* `put /users/123` pointing to different lambda function
+* `* /products` pointing to one Sinatra Microservice on AWS Lambda function
+* `* /basket` pointing to another Sinatra Microservice on AWS Lambda function
+* `* /cusstomer_support` pointing to another Sinatra Microservice on AWS Lambda function
 
 
 This brings us to to next big question:
 
-### Can I run Ruby on Rails on AWS Lambda:
+### Can I run Ruby on Rails on AWS Lambda ?
 
 Sinatra is build on top of Rack. [Rails](https://rubyonrails.org/) is build on top Rack. So there should not be any problem running entire Ruby on Rails project on AWS Lambda right ?
 
