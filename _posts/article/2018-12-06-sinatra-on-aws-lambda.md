@@ -1,7 +1,7 @@
 ---
 layout: article_post
 categories: article
-title:  "Sinatra on AWS Lambda"
+title:  "Ruby Sinatra on AWS Lambda"
 disq_id: 55
 description:
   AWS Lambda now Supports Ruby natively. That means we can build
@@ -20,10 +20,10 @@ functions but also how to run [Sinatra](http://sinatrarb.com/)
 application on AWS Lambda with a code sample project [AWS Lambda - serverless Sinatra app example](https://github.com/aws-samples/serverless-sinatra-sample)
 
 In this article I will explain in more depth how this works and how it is even
-possible to run Sinatra (and other small Rack applications) on AWS Lambda
+possible to run Sinatra rb (and other small Rack applications) on AWS Lambda
 
 > Originally I wanted to create step by step Sinatra - AWS Lambda manual from
-> scratch but guys at AWS done really good job with this repo. I couldn't produce
+> scratch but guys at AWS done really good job with the mentioned example repo. I couldn't produce
 > anything that would add more value.
 
 ### How does AWS Lambda work
@@ -35,23 +35,23 @@ You pay only for the compute time you consume - there is no charge when your cod
 > I literally copy paste this definition from their website
 
 So what it means is you write Ruby script, you load the code to AWS Lamda and
-then when you trigger it it will:
+then when you trigger it. That will:
 
-1. spin up Lambda instance (this is when you start being charged $$$)
-2. run your script code
+1. spin up Lambda function (this is when you start being charged $$$)
+2. run your script code (e.g. write some record to DB, process some payment, send an email)
 3. kill Lamda (this is when you will stop being charged)
 
-The price of execution depends of how much memory you allocate to this
-Lambda execution and how long it took to finish. **If Lambda spin up + code execution + die** took 100 ms you will pay
+The price of execution depends of how much memory you allocate to the
+Lambda execution and how long it will took to finish. If **Lambda spin up + code execution + die** took 100 ms you will pay
 only  for 100ms (And we are talking like $0.0001 per execution, check [pricing](https://aws.amazon.com/lambda/pricing/))
 
 > Serverless folks will hate me for using the words "spin up". In reality you are not spinning up anything as the AWS Lamda function is Function as a Service (FaaS)
-> therefore provisioning is taking care of by AWS. What I mean by "spin up"  is trigger the lamda function.
+> therefore provisioning is taken care of by AWS. What I mean by "spin up"  is trigger the lamda function.
 >
 > BUT this "trigger" is more complex than "run a script". You see there
-> is a concept of "cold starts" of Lambda executions => if the Lambda function
-> was not executed for a while it will take bit longer to execute as
-> more often executed Lambda functions. So it  really feels like Spin
+> is a concept of "cold starts" of Lambda executions; meaning  the Lambda function
+> was not executed for a while, it will take bit longer to execute
+> compared to often executed Lambda functions. So it  really feels like Spin
 > up.
 >
 > That's why I'll keep on using this term trough out the article in sense of special kind
@@ -60,12 +60,12 @@ only  for 100ms (And we are talking like $0.0001 per execution, check [pricing](
 **If you need to run the same Lambda function 1000 times you have to
 trigger up 1000 separate Lamba executions** of the same functionality.
 
-> You can imagine that if you wanted to do the same thing as Lambda is doing on a VM servers, you would have to lunch 1000 servers
-> to execute same one script on every VM and then kill the VM after it finished. Lambda
+> Imagine that if you wanted to do the same thing with VM servers, you would have to lunch 1000 VMs
+> and execute same one script on every one of those VMs and then kill the individual VMs after script finished. Lambda
 > is obviously much faster on spin up but principle of execution is
 > similar.
 
-The important part is that you are not able to cache anything in memory
+The important part is that you are not able to cache anything in the memory
 for next execution (e.g. no point using Ruby memoize `||=`)
 
 Yes there is some level of "next Lambda execution will be faster"
@@ -99,9 +99,9 @@ But you can also configure proxy routes with `*` where anything
 
 So technically speaking you can have
 
-`* /users` pointing to one AWS Lambda 
-`* /products` pointing to another AWS Lambda 
-`* /cusstomer_support` pointing to another AWS Lambda 
+`* /users/*` pointing to one AWS Lambda 
+`* /products/*` pointing to another AWS Lambda 
+`* /cusstomer_support/*` pointing to another AWS Lambda 
 
 ### Sinatra
 
@@ -130,7 +130,7 @@ AWS API Gateway is your APP server.
 
 That's being done [here](https://github.com/aws-samples/serverless-sinatra-sample/blob/master/lambda.rb#L45) in the source code ([mirror](https://github.com/equivalent/serverless-sinatra-sample/blob/2018-12-eq8article-sinatra-on-aws-lambda/lambda.rb#L45) )
 
-> you can find full flow description in section at the bottom of the
+> I'll describe the entire flow of the code at the bottom of this
 > article
 
 
@@ -145,7 +145,9 @@ spin up 1000 AWS Lambda Functions.
 
 ### Use case
 
-So is this solution good ?  Well every tool has it's purpose. You will
+So is this solution good ?
+
+Well every tool has it's purpose. You will
 use hammer to nail a nail to a wall but to fix your laptop hammer would
 not be the best tool.
 
@@ -153,12 +155,11 @@ Originally this "run your webserver in Lambda" feature was introduced to
 help web developers to migrate existing microservices to AWS without
 the need of full rewrite to Lambda scripts
 
-> Sinatra is not the first "small web server" that AWS Lambda is trying to
-> implement. You can do AWS Lambda [Expres JS](https://aws.amazon.com/blogs/compute/going-serverless-migrating-an-express-application-to-amazon-api-gateway-and-aws-lambda/) web apps for
-> quite some time
+> Sinatra is not the first "tiny web server" that AWS Lambda introduced. You can do AWS Lambda [Expres JS](https://aws.amazon.com/blogs/compute/going-serverless-migrating-an-express-application-to-amazon-api-gateway-and-aws-lambda/) web apps for
+> quite some time now.
 
 So the feature was introduced more like a migration help HOWEVER when
-used with caution it can be stable in production for microcervices.
+used with caution it can be stable in production **for microcervices**.
 
 And you can always mix and match with regular serverless flow of simple AWS Functions
 
@@ -179,12 +180,12 @@ Sinatra is build on top of Rack. [Rails](https://rubyonrails.org/) is build on t
 
 You need to realize that serverless is next level of Microservices. It's
 not designed for Monolith Applications. And although Rails can be used
-to some degree in Microservices it's primary goal is Monolith ([Majestic Monolith by D.H.H. (Prim.Author of Rails)](https://m.signalvnoise.com/the-majestic-monolith-29166d022228))
+to some degree in Microservices it's primary goal is Monolith ( e.g.: [Majestic Monolith by D.H.H](https://m.signalvnoise.com/the-majestic-monolith-29166d022228))
 
-> I have entire 40 min talk about this  [Monolith, Microservices & Serverless Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)
+> I have entire 40 min talk about  [Monolith, Microservices & Serverless Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)
 
 By definition Rails have lot of tools and dependencies that are freaking
-awesome in long running Monolith but makes 0 sense in Serverless. 
+awesome in long running Monolith but makes zero sense in Serverless.
 
 If you manage to make AWS Lambda work with Rails you would discover that
 every request is taking ridiculous amount of time because every request
@@ -206,6 +207,7 @@ theoretically could.
 ### Full flow of AWS Sinatra Serverless example
 
 ##### API Gateway is called
+
 1. Browser makes request to `https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/Prod/hello-world`
 2. Global AWS recognize subdomain domain `xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com` and pass it to your AWS API Gateway product
 3. AWS API Gatway see that you are using the `/Prod` pipeline  (as you can have /Stage or /Prod) so it will pass the request to the `Prod` stage
@@ -282,5 +284,11 @@ This will be needed when you do `POST /api/feedback`
    application back to API Gateway via return value
    [here](https://github.com/equivalent/serverless-sinatra-sample/blob/2018-12-eq8article-sinatra-on-aws-lambda/lambda.rb#L68)
 
+
+### Links & Discussion
+
+* [Monolith, Microservices & Serverless Ruby](https://www.youtube.com/watch?v=fn17nojYa-I) [Mirror](https://skillsmatter.com/skillscasts/11594-lrug-march)
+* <https://aws.amazon.com/blogs/compute/announcing-ruby-support-for-aws-lambda/>
+* <https://github.com/aws-samples/serverless-sinatra-sample>
 
 
