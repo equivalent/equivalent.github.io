@@ -211,8 +211,8 @@ If you manage to make AWS Lambda work with Rails you would discover that
 every request is taking ridiculous amount of time because every request
 would have to load entire Rails and your code to memory .
 
-You need to have your Lambda functions to die fast otherwise you will
-have slow response times and pay much more than you would with server
+You need to have your Lambda functions load up fast otherwise you will
+have slow response times and pay  more than you would with server
 running 24h a day.
 
 Same would apply for large Sinatra Applications. 
