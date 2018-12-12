@@ -10,12 +10,11 @@ description:
   approach and in this article we will have a look how/why
 ---
 
-29.11.2018 [AWS Lambda announced official Ruby Support](https://aws.amazon.com/blogs/compute/announcing-ruby-support-for-aws-lambda/)
-that means we all can build Serverless applications (or FaaS scripts)
+29.11.2018 [AWS Lambda announced official Ruby Support](https://aws.amazon.com/blogs/compute/announcing-ruby-support-for-aws-lambda/).
+That means we all can build Serverless applications (or FaaS scripts)
 with the language that we love.
 
-AWS in the same
-[article](https://aws.amazon.com/blogs/compute/announcing-ruby-support-for-aws-lambda/)
+AWS in the [same article](https://aws.amazon.com/blogs/compute/announcing-ruby-support-for-aws-lambda/)
 also provided quite decent step by step manual for creating AWS Lambda
 functions but also how to run [Sinatra](http://sinatrarb.com/)
 application on AWS Lambda with a code sample project [AWS Lambda - serverless Sinatra app example](https://github.com/aws-samples/serverless-sinatra-sample)
