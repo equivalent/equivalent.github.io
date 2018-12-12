@@ -80,7 +80,7 @@ minute.
 
 ### Plugging in API Gateway
 
-AWL Lambda is just a engine. It only executes your Ruby script. There is
+AWS Lambda is just a engine. It only executes your Ruby script. There is
 no routing inside as you would have in Ruby on Rails application.
 
 What you need to do is to plug routing solution to your individual
@@ -105,7 +105,7 @@ So technically speaking you can have
 
 ### Sinatra
 
-So now we understand how API Gateway and AWL Lambda works I can finally
+So now we understand how API Gateway and AWS Lambda works I can finally
 explain how is it even possible that you can run Sinatra on AWS Lambda?
 
 
@@ -125,7 +125,6 @@ Ruby routes -> Ruby controllers -> Ruby Model -> ...
 Therefore in the [AWS Lambda Sinatra example](https://github.com/aws-samples/serverless-sinatra-sample)  you don't lunch any App server (no Puma, no Webrick). The
 AWS API Gateway is your APP server. 
 
-![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/2018-12-aws-sinatra-lambda.jpg)
 
 
 **You just need to call the [Rack](https://github.com/rack/rack) part of Sinatra with your AWS Lambda function passing the request params/body from the AWS API Gateway**
@@ -139,6 +138,8 @@ That's being done [here](https://github.com/aws-samples/serverless-sinatra-sampl
 That Brings us to the main point of how this works:
 
 **AWS API Gateway will proxy any/every request to this one AWS Lambda that will spin up and execute one route of the Sinatra application. Once the response is returned to the API Gateway Lambda will die.**
+
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/2018-12-aws-sinatra-lambda.jpg)
 
 That means if this Sinatra app needs to receive 1000 requests, it will
 spin up 1000 AWS Lambda Functions.
