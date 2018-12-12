@@ -150,6 +150,9 @@ That Brings us to the main point of how this works:
 That means if this Sinatra app needs to receive 50 requests, it will
 spin up 50 AWS Lambda Functions.
 
+> And only next requests "may be" executed on loaded up Lambdas with
+> Sinatra dependancies in memory.
+
 If there are 1000 requests concurrently, AWS will try to run 1000
 invocations for the same Lambda function. However, if it's 1000
 requests/second, and each request only needs 200 ms to process, there could
