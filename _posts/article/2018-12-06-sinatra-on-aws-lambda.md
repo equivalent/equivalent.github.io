@@ -298,7 +298,7 @@ This will be needed when you do `POST /api/feedback`
 * [Monolith, Microservices & Serverless Ruby](https://www.youtube.com/watch?v=fn17nojYa-I) [Mirror](https://skillsmatter.com/skillscasts/11594-lrug-march)
 * <https://aws.amazon.com/blogs/compute/announcing-ruby-support-for-aws-lambda/>
 * <https://github.com/aws-samples/serverless-sinatra-sample>
-* https://www.serverless-ruby.org/
+* <https://www.serverless-ruby.org/>
 
 ### Discussion:
 
