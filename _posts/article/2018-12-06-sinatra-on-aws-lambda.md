@@ -20,12 +20,10 @@ also provided quite decent step by step manual for creating AWS Lambda
 functions but also how to run [Sinatra](http://sinatrarb.com/)
 application on AWS Lambda with a code sample project [AWS Lambda - serverless Sinatra app example](https://github.com/aws-samples/serverless-sinatra-sample)
 
-In this article I will explain in better depth how this works and how it is even
-possible to run Sinatra (and other Rack applications) on AWS Lambda
+In this article I will explain in more depth how this works and how it is even
+possible to run Sinatra (and other small Rack applications) on AWS Lambda
 
-In the second part of the article I will also try to explain how you could replicate the setup.
-
-> Originally I wanted to create step by step Sinatra - AWL Lambda manual of my own from
+> Originally I wanted to create step by step Sinatra - AWS Lambda manual from
 > scratch but guys at AWS done really good job with this repo. I couldn't produce
 > anything that would add more value.
 
@@ -110,6 +108,8 @@ So technically speaking you can have
 
 So now we understand how API Gateway and AWL Lambda works I can finally
 explain how is it even possible that you can run Sinatra on AWS Lambda?
+
+![](https://raw.githubusercontent.com/equivalent/myWallpapers/master/fun/its-a-trap.jpg)
 
 You are not actually running web-server (or App-server) like you would
 normally do with Sinatra or Ruby on Rails.
@@ -204,7 +204,7 @@ with 50 dependencies then you will have same problem as with Rails.
 So no Rails is not Designed for this. Don't do it even if you
 theoretically could.
 
-### Full flow of Sinatra AWS Lambda
+### Full flow of AWS Sinatra Serverless example
 
 ##### API Gateway is called
 1. Browser makes request to `https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/Prod/hello-world`
