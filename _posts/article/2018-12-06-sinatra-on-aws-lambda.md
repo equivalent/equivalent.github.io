@@ -108,9 +108,8 @@ So technically speaking you can have
 So now we understand how API Gateway and AWL Lambda works I can finally
 explain how is it even possible that you can run Sinatra on AWS Lambda?
 
-![](https://raw.githubusercontent.com/equivalent/myWallpapers/master/fun/its-a-trap.jpg)
 
-You are not actually running web-server (or App-server) like you would
+You need to realize that you are not actually running web-server (or App-server) like you would
 normally do with Sinatra or Ruby on Rails.
 
 When you for example run `rails server` in Ruby on Rails project on your laptop you actually start
@@ -125,6 +124,9 @@ Ruby routes -> Ruby controllers -> Ruby Model -> ...
 
 Therefore in the [AWS Lambda Sinatra example](https://github.com/aws-samples/serverless-sinatra-sample)  you don't lunch any App server (no Puma, no Webrick). The
 AWS API Gateway is your APP server. 
+
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2018/2018-12-aws-sinatra-lambda.jpg)
+
 
 **You just need to call the [Rack](https://github.com/rack/rack) part of Sinatra with your AWS Lambda function passing the request params/body from the AWS API Gateway**
 
@@ -177,6 +179,8 @@ This brings us to to next big question:
 ### Can I run Ruby on Rails on AWS Lambda:
 
 Sinatra is build on top of Rack. [Rails](https://rubyonrails.org/) is build on top Rack. So there should not be any problem running entire Ruby on Rails project on AWS Lambda right ?
+
+![](https://raw.githubusercontent.com/equivalent/myWallpapers/master/fun/its-a-trap.jpg)
 
 You need to realize that serverless is next level of Microservices. It's
 not designed for Monolith Applications. And although Rails can be used
