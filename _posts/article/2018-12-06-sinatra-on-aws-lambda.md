@@ -222,6 +222,9 @@ theoretically could.
 
 #### AWS Lambda Execution
 
+> We are done with the main article (you don't need to read this). This section is more for those who want
+> to try out the [example repo](https://github.com/aws-samples/serverless-sinatra-sample) and learn how it works step by step.
+
 AWS lambda calls [lambda.rb](https://github.com/aws-samples/serverless-sinatra-sample/blob/master/lambda.rb) `#handler` method which does the following:
 
 1. set Rack enviroment variables related to the replication of appserver call
