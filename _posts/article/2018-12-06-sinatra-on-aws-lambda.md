@@ -229,7 +229,7 @@ theoretically could.
 We are done with the main article (you don't need to read this). This section is more for those who want
 to try out the [example repo](https://github.com/aws-samples/serverless-sinatra-sample) and learn how it works step by step.
 
-##### API Gateway is called
+#### API Gateway is called
 
 > During the time this article was being published author of
 > [serverless-sinatra-sample](https://github.com/aws-samples/serverless-sinatra-sample) pushed support for AWS ALB (application  load balacer)  [commit](https://github.com/aws-samples/serverless-sinatra-sample/commit/d625fae3b0ba07b7f9c8a3b2f47020f4e1a17152) which is even cooler.
