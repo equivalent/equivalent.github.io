@@ -228,6 +228,11 @@ theoretically could.
 
 ##### API Gateway is called
 
+> During the time this article was being published author of
+> [serverless-sinatra-sample](https://github.com/aws-samples/serverless-sinatra-sample) pushed support for AWS ALB (application  load balacer)  [commit](https://github.com/aws-samples/serverless-sinatra-sample/commit/d625fae3b0ba07b7f9c8a3b2f47020f4e1a17152) which is even cooler.
+>
+> I will update this article as soon as I can
+
 1. Browser makes request to `https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/Prod/hello-world`
 2. Global AWS recognize subdomain domain `xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com` and pass it to your AWS API Gateway product
 3. AWS API Gatway see that you are using the `/Prod` pipeline  (as you can have /Stage or /Prod) so it will pass the request to the `Prod` stage
