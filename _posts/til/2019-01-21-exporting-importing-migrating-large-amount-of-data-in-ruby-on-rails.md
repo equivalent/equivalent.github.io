@@ -5,7 +5,7 @@ categories: til
 disq_id: til-56
 ---
 
-Couple of days ago I was creating export / import script to migrate several hundred
+Couple of days ago my colleague and I we were creating export / import script to migrate several hundred
 thousand records and associated relations from one Ruby on Rails application to
 another Ruby on Rails application (with bit different data model).
 
