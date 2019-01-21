@@ -100,6 +100,8 @@ record to Ruby hash of fields that we want to export ( `{:id=> 1, :title =>
 > note: use `Product.with_deleted.find_each do |product|` if you use
 > [Act as paranoid gem](https://github.com/ActsAsParanoid/acts_as_paranoid)
 
+> note2: if you ever need "in groups" version of `find_each` you can use `Product.find_in_batches { |batch| puts "batch"; batch.each { |product| puts product.id } } `
+
 ##### Import script
 
 ```ruby
