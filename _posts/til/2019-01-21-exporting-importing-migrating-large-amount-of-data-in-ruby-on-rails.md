@@ -75,9 +75,9 @@ Export.new.call
 this will export something like:
 
 ```json
-{"id": 1, "title": "Apple youPhone", "comments": [{"id":10, "content": "How dare you?\\n Don't you know apples are fruit?"}], "media":[{"id": 11, "attachment_original_size":"http://xxxx.jpg", "attachment_thumb_size":"http://yyyy.jpg", }]
-{"id": 2, "title": "Trivium", "comments": [], "media":[{"id": 12, "attachment_original_size":"http://tttt.jpg", "attachment_thumb_size":"http://rrrr.jpg", }]
-{"id": 3, "title": "Bring me the Horizon", "comments": [{"id":13, "content": "Scream"}], "media":[]
+{"id": 1, "title": "Apple youPhone", "comments": [{"id":10, "content": "How dare you?\\n Don't you know apples are fruit?"}], "media":[{"id": 11, "attachment_original_size":"http://xxxx.jpg", "attachment_thumb_size":"http://yyyy.jpg", }]}
+{"id": 2, "title": "Trivium", "comments": [], "media":[{"id": 12, "attachment_original_size":"http://tttt.jpg", "attachment_thumb_size":"http://rrrr.jpg", }]}
+{"id": 3, "title": "Bring me the Horizon", "comments": [{"id":13, "content": "Scream"}], "media":[]}
 ```
 
 As you can see it's a text file that contains JSON object on every line
