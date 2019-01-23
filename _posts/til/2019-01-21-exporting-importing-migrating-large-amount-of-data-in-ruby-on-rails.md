@@ -151,6 +151,7 @@ end
 Import.new.call
 ```
 
+
 Important points:
 
 * We use `IO.foreach(file_path) do |line|` which will "stream" every line to the block. If we use `File.readline(file_path) do |line|` or `File.read(file_path).split("\n") do |line|` we would have to load the entire content to memory (and like I've said this solution needs support migration of few GB size file of data).
@@ -160,6 +161,7 @@ To learn more read [this article](https://felipeelias.github.io/ruby/2017/01/02/
 * We log errors with [Ruby logger](https://ruby-doc.org/stdlib-2.1.2/libdoc/logger/rdoc/Logger.html) to custom `import.log` file. It's easier to debug when it's a separate file.
 * export script exported the url to the file fore the Medium (e.g.: `http://test.jpg`) now we will use ` URI.open('http://test.jpg')` to download the file and save it to new storage (e.g. [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html). Now you may point out that we are importing only `attachment_original_size` and not the `attachment_thumb_size`. This is because I would recommend to recreate the "thumbnails" from the original (as with smaller files it's faster then download). But it's up to your business logic if you want to download the thumbnails or recreate them (e.g. large pictures or video thumbnails).
 
+#### Transactions
 
 Now one more recommendation. Sometimes you don't want to import data
 partially. If the Product was created and Medium failed you may want to
@@ -196,9 +198,30 @@ good choice as it could slow down user experience accessing the
 application.
 
 
+#### Lazy Enum
+
+`IO.foreach` supports Lazy Enum
+
+> if you have no idea why Lazy enum is pls check my article [Lazy Enumerators in Ruby](https://blog.eq8.eu/article/ruby-enumerable-enumerator-lazy-and-domain-specific-collections.html)
+
+So you can do somethnig like:
+
+```ruby
+imported_products_old_ids = Work.pluck(:old_version_id).uniq
+
+IO
+  .foreach('tmp/export_products.txt')
+  .lazy
+  .map { |raw_line| JSON.parse(raw_line) }
+  .select { |product_hash| imported_products_old_ids.include?(product_hash.fetch('id')) }
+  .each do |product_hash|
+    # ...
+  end
+```
+
 > Source of the IO trick is from article [Fast file processing Ruby](https://felipeelias.github.io/ruby/2017/01/02/fast-file-processing-ruby.html)
 >
->You can do lots of crazy stuff with `\n` sparated lines, like lazy loading:
+> You can do lots of crazy stuff with `\n` sparated lines, and  lazy loading:
 > `IO.foreach('large.txt').lazy.grep(/abcd/).take(10).to_a`
 
 ## Other solutions
