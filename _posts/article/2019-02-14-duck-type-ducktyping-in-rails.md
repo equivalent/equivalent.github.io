@@ -11,7 +11,9 @@ description:
 
 ---
 
-![Don't get offended it's just a rubber duck](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/duck-type.jpg)
+> Article is still in progress, I'm planing to release it by end of the
+> weak
+
 
 In programming there is a powerful concept called "Duck Type"
 
@@ -71,6 +73,7 @@ method `#aa`. Therefore `B.new(C.new).call => 'aa'`
 
 > quacks like a duck, then it must be a duck
 
+![Don't get offended it's just a rubber duck](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/duck-type.jpg)
 
 When we initialize class `B` with instance of the class `D` which
 instance object has no  method `aa` then we would get Exception error
@@ -82,7 +85,7 @@ Therefore: `B.new(D.new).call => NoMethodError (undefined method aa for D:Class)
 
 Therefore we don't have to do any check like:
 
-```
+```ruby
 # You Don't need to do this
 class B
   def call(a)
@@ -93,7 +96,7 @@ class B
 end
 ```
 
-### Rails is full of Ducks
+### Rails have Ducks
 
 Imagine you have this piece of code:
 
@@ -107,8 +110,8 @@ class Quack  < ActiveRecord::Base
 end
 
 module Paginate
-  def self.paginate(scope, page: 1)
-    scope.limit(2).offsent(page * limit)
+  def self.paginate(scope, page: 1, limit: 10)
+    scope.limit(limit).offsent(page * limit)
   end
 end
 
@@ -153,9 +156,9 @@ one way would be to chock the type in the `Paginate#paginate` method:
 ```ruby
 # don't do this !
 module Paginate
-  def self.paginate(scope, page: 1)
+  def self.paginate(scope, page: 1, limit: 10)
     return [] unless scope.instance?of(ActiveRecord::Relation) # don't do this !
-    scope.limit(2).offsent(page * limit)
+    scope.limit(limit).offsent(page * limit)
   end
 end
 ```
@@ -182,6 +185,13 @@ end
 > as if duck_ids is `[]`  in that case Rails adds ` AND 1=0 ` to the SQL
 > call. Again I just wanted to show you one from of duck type in Rails
 
+Point of this section is to show you there are many ways how to write
+simmilar piece of logic. If you need to write an `if` statement chances
+are the whole code can be re-wrote other way with a duck type. Sometimes
+it's not worth it and `if` statement more readable code. But lot of times duck
+typing will help you speed up the particular part of application.
 
+
+### SOLID Ducks and Rails
 
 ...article still in progress
