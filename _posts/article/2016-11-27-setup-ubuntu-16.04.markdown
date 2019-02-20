@@ -152,6 +152,7 @@ sudo systemctl stop elasticsearch.service    # stop server
 
 > if you need image processing inside your Rails app with gems like
 > [Carrierwave](https://github.com/carrierwaveuploader/carrierwave),
+> [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html),
 > [Paperclip](https://github.com/thoughtbot/paperclip) or
 > [Dragonfly](https://github.com/markevans/dragonfly)
 
