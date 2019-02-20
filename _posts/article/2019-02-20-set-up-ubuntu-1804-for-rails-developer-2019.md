@@ -66,7 +66,7 @@ rvm install 2.5.3
 ```bash
 # works without adding sources
 sudo apt-get update
-sudo apt-get install postgresql-10
+sudo apt-get install postgresql-10 postgresql-contrib libpq-dev
 psql --version                      # psql (PostgreSQL) 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
 ```
 
