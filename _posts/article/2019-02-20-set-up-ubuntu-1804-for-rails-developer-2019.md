@@ -19,12 +19,6 @@ Feb 2019 technologies
 
 ```bash
 sudo apt install -y curl git
-
-# vim users
-sudo apt install -y curl vim vim-gnome
-
-# my pefronal favorit utilits
-sudo apt install p7-zip
 ```
 
 ## Generate ssh key
@@ -39,8 +33,8 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ## Install RVM + Ruby
 
 
-* https://rvm.io/rvm/install
-* https://github.com/rvm/ubuntu_rvm   RVM has official Ubuntu package now
+* <https://rvm.io/rvm/install>
+* <https://github.com/rvm/ubuntu_rvm>   RVM has official Ubuntu package now
 
 ```bash
 gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
@@ -67,7 +61,7 @@ rvm install 2.5.3
 > at the time Postgres 11.2 is available but since AWS RDS is only
 > supporting 10.6 I don't see the point going super edge.
 
-* https://www.postgresql.org/download/linux/ubuntu/
+* <https://www.postgresql.org/download/linux/ubuntu/>
 
 ```bash
 # works without adding sources
@@ -214,10 +208,17 @@ sudo apt-get install  imagemagick libmagickcore-dev libxslt-dev libmagickwand-de
 
 
 
+## My personal favorite utilities
 
+```
+# vim users
+sudo apt install -y  vim vim-gnome
 
+# my personal favorit utilits
+sudo apt install p7zip
+```
 
-## Janus Vim (Optional)
+#### Janus Vim
 
 Janus Vim is powerful extension of Vim to give it IDE like experienc
 
@@ -228,7 +229,7 @@ curl -L https://bit.ly/janus-bootstrap | bash
 ```
 
 
-## Set up SSH server (Optional)
+#### Set up SSH server (Optional)
 
 I have a history of destroying my laptops in accidents, so often I have
 two laptops that I keep up to date with in case I damage one. In order
