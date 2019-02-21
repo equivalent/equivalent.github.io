@@ -243,7 +243,8 @@ sudo apt install awscli
 
 #### AWS ElasticBenstalk CLI
 
-<https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html>
+* <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html>
+* [Elasticbeanstal and Ruby on Rails on Docker](https://www.youtube.com/watch?v=xhEyUYTuSQw)
 
 ```bash
 sudo apt install python-pip
@@ -281,7 +282,7 @@ sudo apt install ansible
 
 ## My personal favorite utilities
 
-```
+```bash
 # vim
 sudo apt install -y  vim vim-gnome
 
