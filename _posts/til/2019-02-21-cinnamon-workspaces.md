@@ -51,6 +51,13 @@ Set
 "Move window to workspace 6"   to be "Alt+Super+0"
 ```
 
+## (Optional) Disable workspace animation
+
+
+```
+Menu > Workspaces > OSD tab > enable workspace OSD > off
+```
+
 
 ## Install Cinamon on Ubuntu 18.04
 
