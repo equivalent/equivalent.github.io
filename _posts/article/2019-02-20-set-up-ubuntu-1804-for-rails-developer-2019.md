@@ -116,7 +116,7 @@ Mongod v  v3.6.3
 # works without adding sources
 sudo apt-get update
 sudo apt install mongodb
-sudo systemctl start mongod
+sudo systemctl start mongodb
 ```
 
 If you want Mongo DB v 4 check <https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/>
