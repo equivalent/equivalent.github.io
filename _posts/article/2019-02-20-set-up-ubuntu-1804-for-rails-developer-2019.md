@@ -221,18 +221,72 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 
 
 
+> Ok that's it end of article. Down bellow is just some additional  software you may need (or not)
 
 
+## DevOps tools
+
+#### Heroku Toolbelt
+
+<https://devcenter.heroku.com/articles/heroku-cli>
+
+```bash
+sudo snap install --classic heroku
+```
+
+#### AWS CLI
+
+```bash
+sudo apt update
+sudo apt install awscli
+```
+
+#### AWS ElasticBenstalk CLI
+
+<https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html>
+
+```bash
+sudo apt install python-pip
+pip install awsebcli --upgrade --user
+```
+
+add this to your `.bash.rb`
+
+```bash
+export PATH=~/.local/bin:$PATH
+```
+
+#### Azure CLI
+
+<https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest>
+
+```bash
+sudo apt-get install apt-transport-https lsb-release software-properties-common dirmngr -y
+AZ_REPO=$(lsb_release -cs)
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+sudo apt-key --keyring /etc/apt/trusted.gpg.d/Microsoft.gpg adv --keyserver packages.microsoft.com  --recv-keys BC528686B50D79E339D3721CEB3E94ADBE1229CF
+sudo apt-get update
+sudo apt-get install azure-cli
+```
+
+#### Ansible
+
+```bash
+sudo apt-get update
+sudo apt install ansible
+```
+
+> note this install ansible-vault as well
 
 
 ## My personal favorite utilities
 
 ```
-# vim users
+# vim
 sudo apt install -y  vim vim-gnome
 
-# my personal favorit utilits
-sudo apt install p7zip
+# 7 zip full for encrypting file archives
+sudo apt install p7zip-full
 ```
 
 #### Janus Vim
