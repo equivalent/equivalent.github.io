@@ -10,6 +10,7 @@ redirect_from:
   - "/blogs/35-setting-up-ubuntu-16-04-for-ruby-on-rails-app-cheatsheet"
 ---
 
+> there is a 2019 revised version of this article  [Set up Ubuntu 18.04 for Ruby on Rails](https://blog.eq8.eu/article/set-up-ubuntu-1804-for-rails-developer-2019.html)
 
 Let say you want to quickly set up fresh install **Ubuntu 16.04** for [Ruby on Rails](http://rubyonrails.org/)
 application that uses Redis, Elasticache and Postgres.
