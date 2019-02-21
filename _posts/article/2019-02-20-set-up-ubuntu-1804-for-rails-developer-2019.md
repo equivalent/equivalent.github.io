@@ -338,4 +338,5 @@ now try to ssh from Laptop2 to Laptop1
 
 ## Discussion
 
-
+* <https://www.reddit.com/r/ruby/comments/at0tig/set_up_ubuntu_1804_for_ruby_on_rails_developer/>
+* <http://www.rubyflow.com/p/mnob6e-set-up-ubuntu-1804-for-ruby-on-rails-developer-revised-2019-cheatsheet>
