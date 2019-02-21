@@ -187,7 +187,7 @@ docker-compose --version    # docker-compose version 1.23.2, build 1110ad01
 > [Dragonfly](https://github.com/markevans/dragonfly)
 
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install  imagemagick libmagickcore-dev libxslt-dev libmagickwand-dev
 ```
@@ -209,15 +209,6 @@ solution
 ```bash
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
-
-#### error2
-
-
-
-
-
-
-
 
 
 
