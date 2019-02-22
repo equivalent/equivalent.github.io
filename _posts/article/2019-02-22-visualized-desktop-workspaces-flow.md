@@ -4,35 +4,50 @@ categories: article
 title:  "Visualized desktop workspaces flow"
 disq_id: 57
 description:
-  productivity
+  Desktop Workspaces are designed to hold multiple applications in different
+  contexts. This article will try to show you how you can organize and
+  access these applications in relation to their responsibilities to
+  boost your productivity.
+
 ---
 
+In this article I will show you the most valuable productivity method I
+ever come up with. The method is about using existing tool currently
+available in  most of
+the operating systems called
+[workspaces](https://help.ubuntu.com/stable/ubuntu-help/shell-workspaces.html.en)
 
+Desktop Workspaces are designed to hold multiple applications in different
+contexts. Point I'll try to show you is about how you organize and
+access these applications in relation to their responsibilities is
+the real productivity value.
 
-
-In my daily setup I use 6 workspaces which I visualize as grid of 3 columns on 2 rows:
-
-> Software implementation of Workspaces can be 6 workspaces columns in 1 row (e.g. OSx, or Cinnamon IDE). The important part is how you "visualize" it.
-
-![Workspaces in grid](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/visualized-workspaces-flow-workspaces.png)
+In order to present you this flow I'll show you how I use workspaces in daily professional life.
 
 
 ## Every workspace is dedicated to single purpose
 
-For example because I'm a [Ruby on Rails](https://rubyonrails.org/) web-developer building web-applications my daily
+In my daily setup I use 6 workspaces which I visualize as grid of 3 columns on 2 rows:
+
+
+![Workspaces in grid](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/visualized-workspaces-flow-workspaces.png)
+
+> Software implementation of Workspaces can be 6 workspaces columns in 1 row (e.g. OSx, or Cinnamon IDE). The important part is how you "visualize" it.
+
+Because I'm a  web-developer building web-applications (in [Ruby on Rails](https://rubyonrails.org/)) my daily
 workspaces layout look something like this:
 
 
 **Workspace1**
 
-* purpose: human interaction frontend testing of the web-application I'm building
+* purpose: interaction with frontend of the web-application I'm building
 * applications:
   - terminal running Ruby on Rails development web server
-  - web-browser loading frontend of application I'm building (`localhost:3000`)
+  - web-browser loading frontend of the application I'm building (`localhost:3000`)
 
 **Workspace2**
 
-* purpose: writing backend and frontend code + writing and lunching code tests
+* purpose: writing backend and frontend code + writing and running code tests
 * applications:
   - IDE code editor (Vim)
   - terminal in which I lunch my web-application backend tests (RSpec)
@@ -42,20 +57,18 @@ workspaces layout look something like this:
 * purpose: company communication
 * applications:
   - [Slack](https://slack.com/) (in the past I use to have Skype/ other IM, or company email. Depending on the company I worked for communication tools)
-  - editor (vim) writing down company related notes (E.g. questions I need to ask later on)
+  - editor (Vim) writing down company related notes (E.g. questions I need to ask later on)
 
 **Workspace4**
 
 * purpose: work on remote servers (e.g. when I'm asked to fix a critical production bug, run migrations on staging server, etc.)
 * applications:
-  - terminal to `ssh` to servers
-  - terminal to `scp` stuff from/to servers
+  - terminal to `ssh` to servers or terminal to `scp` stuff from/to servers
 
 **Workspace5**
 * purpose: personal - e.g. music, reading personal emails, personal IM, googling funny cats, etc...
 * applications:
   - web-browser (I lunch pretty much everything via web-browser)
-  - editor (vim) writing down personal notes (E.g. personal todo list)
 
 **Workspace6**
 * purpose: anything else
