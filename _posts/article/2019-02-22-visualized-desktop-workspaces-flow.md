@@ -12,7 +12,7 @@ description:
 ---
 
 In this article I will show you the most valuable productivity method I
-ever come up with. The method is about using existing tool currently
+use. It is about using existing tool currently
 available in  most of
 the operating systems called
 [workspaces](https://help.ubuntu.com/stable/ubuntu-help/shell-workspaces.html.en)
@@ -32,7 +32,7 @@ In my daily setup I use 6 workspaces which I visualize as grid of 3 columns on 2
 
 ![Workspaces in grid](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/visualized-workspaces-flow-workspaces.png)
 
-> Software implementation of Workspaces can be 6 workspaces columns in 1 row (e.g. OSx, or Cinnamon IDE). The important part is how you "visualize" it.
+> Software implementation of Workspaces can be 6 workspaces columns in 1 row (e.g. OSx, or Cinnamon DE). The important part is how you "visualize" it.
 
 Because I'm a  web-developer building web-applications (in [Ruby on Rails](https://rubyonrails.org/)) my daily
 workspaces layout look something like this:
