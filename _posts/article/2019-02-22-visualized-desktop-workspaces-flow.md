@@ -24,6 +24,7 @@ the real productivity value.
 
 In order to present you this flow I'll show you how I use workspaces in daily professional life.
 
+> I've created video showing real life usage <https://youtu.be/dcCKmB3lZxs>
 
 ## Every workspace is dedicated to single purpose
 
@@ -237,6 +238,7 @@ productivity method.
 
 * [WebDeveloper life hacks](https://skillsmatter.com/skillscasts/7455-web-developer-life-hacks) In the talk I talk about other interesting techniques I use for productivity
 
+* [Demonstration of Visualized Desktop workspaces flow](https://youtu.be/dcCKmB3lZxs)
 
 If you want to present this to your collegues here are [presentation slides](https://github.com/equivalent/equivalent.github.io/blob/master/assets/2019/visualized-workspaces-flow.odg)
 
