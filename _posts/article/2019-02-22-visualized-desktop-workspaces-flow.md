@@ -119,7 +119,7 @@ Mac OSx:
 * ...etc
 
 
-I use Ubuntu Linux with Cinnamon IDE. Here is short TIL note [how to setup workspaces in Cinnamon for workspace flow](https://blog.eq8.eu/til/cinnamon-workspaces.html)
+I use Ubuntu Linux with Cinnamon DE. Here is short TIL note [how to setup workspaces in Cinnamon for workspace flow](https://blog.eq8.eu/til/cinnamon-workspaces.html)
 
 > In the past I use to use Mac OSx, native Ubuntu desktop environment (before they made workspaces stupid and not usable in Ubuntu 18.04),
 > and several other Linux distros. Everywhere I was able to configure similar setup.
@@ -217,11 +217,11 @@ productivity.
 For example when I need to do my taxes I will close everything
 programming related and I would
 open tax related applications only. I have different applications on
-different windows (e.g spreadsheet on Workspace 2, government website on
+different workspaces (e.g spreadsheet on Workspace 2, government website on
 workspace 1, Bank account statements loaded in Workspace 3, etc...)
 
 I use to try to learn 3D modelling and graphics, Music editing and lots
-of (other stuff I suck at). I had
+of other stuff I suck at. I had
 completely  different workspaces flows in my head for every hobby.
 
 Point is I was "visualizing it"  mnemotechnically.
