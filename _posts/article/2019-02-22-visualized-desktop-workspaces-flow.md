@@ -168,7 +168,7 @@ columns in 3 rows (so 9 workspaces in total)
 ![workspaces - side numeric keyboard visualized workspace flow](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/visualized-workspaces-flow-num-pad-switch-shortcuts.png)
 
 
-![workspaces - side numeric keyboard layout visualized workspace flow](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/visualized-workspaces-flow-ten-finger-keyboard.jpg)
+![workspaces - side numeric keyboard layout visualized workspace flow](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/visualized-workspaces-flow-numeric-keyboard.jpg)
 
 
 I don't quite remember what was each workspace purpose but I've used all of them.
@@ -241,3 +241,4 @@ productivity method.
 
 * [Reddit /r/programmingtools](https://www.reddit.com/r/programmingtools/comments/ate46n/visualized_desktop_workspaces_flow/)
 * [Reddit /r/productivity]()
+* [Reddit /r/programming]()
