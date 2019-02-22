@@ -245,5 +245,4 @@ If you want to present this to your collegues here are [presentation slides](htt
 
 ## Discussion
 
-* Reddit: [/r/programmingtools](https://www.reddit.com/r/programmingtools/comments/ate46n/visualized_desktop_workspaces_flow/) [/r/productivity](https://www.reddit.com/r/productivity/comments/atef7a/visualized_desktop_workspaces_flow/) [/r/programming](https://www.reddit.com/r/programming/comments/ategje/visualized_desktop_workspaces_flow/) [/r/ubuntu](https://www.reddit.com/r/Ubuntu/comments/atf5hc/visualized_desktop_workspaces_flow/)
-* [Y Hackernews](https://news.ycombinator.com/item?id=19223930)
+* Reddit: [/r/programmingtools](https://www.reddit.com/r/programmingtools/comments/ate46n/visualized_desktop_workspaces_flow/) [/r/productivity](https://www.reddit.com/r/productivity/comments/atef7a/visualized_desktop_workspaces_flow/) [/r/programming](https://www.reddit.com/r/programming/comments/ategje/visualized_desktop_workspaces_flow/) [/r/ubuntu](https://www.reddit.com/r/Ubuntu/comments/atf5hc/visualized_desktop_workspaces_flow/) [/r/linuxmint](https://www.reddit.com/r/linuxmint/comments/atf9jj/visualized_desktop_workspaces_flow/)

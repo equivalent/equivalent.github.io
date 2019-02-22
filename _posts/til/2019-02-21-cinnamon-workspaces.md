@@ -5,6 +5,10 @@ categories: til
 disq_id: til-57
 ---
 
+This TIL note is related to article [Visualized desktop workspaces flow](https://blog.eq8.eu/article/visualized-desktop-workspaces-flow.html)
+
+How to Setup Cinnamon DE workspaces and keyboard shortcuts (instructions how to install Cinnamon DE
+on Ubuntu 18.04 are at the bottom)
 
 
 ## step 1  - increase the number of workspaces
