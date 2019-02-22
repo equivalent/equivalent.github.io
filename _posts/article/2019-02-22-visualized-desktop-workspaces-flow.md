@@ -38,42 +38,12 @@ Because I'm a  web-developer building web-applications (in [Ruby on Rails](https
 workspaces layout look something like this:
 
 
-**Workspace1**
-
-* purpose: interaction with frontend of the web-application I'm building
-* applications:
-  - terminal running Ruby on Rails development web server
-  - web-browser loading frontend of the application I'm building (`localhost:3000`)
-
-**Workspace2**
-
-* purpose: writing backend and frontend code + writing and running code tests
-* applications:
-  - IDE code editor (Vim)
-  - terminal in which I lunch my web-application backend tests (RSpec)
-
-**Workspace3**
-
-* purpose: company communication
-* applications:
-  - [Slack](https://slack.com/) (in the past I use to have Skype/ other IM, or company email. Depending on the company I worked for communication tools)
-  - editor (Vim) writing down company related notes (E.g. questions I need to ask later on)
-
-**Workspace4**
-
-* purpose: work on remote servers (e.g. when I'm asked to fix a critical production bug, run migrations on staging server, etc.)
-* applications:
-  - terminal to `ssh` to servers or terminal to `scp` stuff from/to servers
-
-**Workspace5**
-* purpose: personal - e.g. music, reading personal emails, personal IM, googling funny cats, etc...
-* applications:
-  - web-browser (I lunch pretty much everything via web-browser)
-
-**Workspace6**
-* purpose: anything else
-* applications:
-  - e.g. VPN tunnel app, or image editor (Gimp) when needed.
+- **Workspace1** purpose: interaction with frontend of the web-application I'm building (Firefox)
+- **Workspace2** purpose: writing and executing code/tests (code editor, terminal)
+- **Workspace3** purpose: company communication (e.g.: company email or company instant message application)
+- **Workspace4** purpose: work on remote servers (e.g. critical bug on production server, copy a files from server, etc..)
+- **Workspace5** purpose: personal (e.g. music, personal emails, googling funny cats, etc...)
+- **Workspace6** purpose: anything else (e.g. Image editor when needed)
 
 Supper important part of this productivity flow is to get into the mindset of what "responsibility" each Workspaces represent.
 
@@ -208,11 +178,36 @@ I don't quite remember what was each workspace purpose but I've used all of them
 I'm running usually one or two applications (maximum three) per workspace.
 This is so that on any given workspaces I don't have to do too many `Alt+tab` (switch workspace application)
 
+For example:
+
+**FE testing workspace**
+- web-browser loading frontend of the application I'm building (`localhost:3000`)
+- terminal running Ruby on Rails development web server
+
+**Write code/test workspace**
+- IDE code editor (Vim)
+- terminal in which I lunch code tests (RSpec)
+
+**company communication workspace**
+- [Slack](https://slack.com/) or in the past I use to have Skype or company email. Depending on the company communication tools
+- editor (Vim) writing down company related notes (E.g. questions I need to ask later on)
+
+**server stuff workspace**
+- terminal to `ssh` to servers
+- terminal to `scp` stuff from/to servers
+- ..etc
+
+**personal workspace**
+- web-browser (I lunch pretty much everything via web-browser)
+
+**Workspace6**
+- e.g. VPN tunnel app, or image editor (Gimp) when needed.
+
 It doesn't mean that I need to lunch every application on every
 workspace every day. There are days when I don't do anything with
 remote servers so nothing get lunched on Workspace4
 
-It's more about "where" I would lunch those applications.
+It's more about "**where**" I would lunch those applications.
 
 ## Conclusion
 
