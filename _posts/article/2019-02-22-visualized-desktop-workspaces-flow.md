@@ -237,13 +237,11 @@ productivity method.
 ## Other Links
 
 * [WebDeveloper life hacks](https://skillsmatter.com/skillscasts/7455-web-developer-life-hacks) In the talk I talk about other interesting techniques I use for productivity
-
 * [Demonstration of Visualized Desktop workspaces flow](https://youtu.be/dcCKmB3lZxs)
+* [how to setup workspaces in Cinnamon for workspace flow](https://blog.eq8.eu/til/cinnamon-workspaces.html)
 
 If you want to present this to your collegues here are [presentation slides](https://github.com/equivalent/equivalent.github.io/blob/master/assets/2019/visualized-workspaces-flow.odg)
 
 ## Discussion
 
-* [Reddit /r/programmingtools](https://www.reddit.com/r/programmingtools/comments/ate46n/visualized_desktop_workspaces_flow/)
-* [Reddit /r/productivity](https://www.reddit.com/r/productivity/comments/atef7a/visualized_desktop_workspaces_flow/)
-* [Reddit /r/programming](https://www.reddit.com/r/programming/comments/ategje/visualized_desktop_workspaces_flow/)
+* Reddit: [/r/programmingtools](https://www.reddit.com/r/programmingtools/comments/ate46n/visualized_desktop_workspaces_flow/) [/r/productivity](https://www.reddit.com/r/productivity/comments/atef7a/visualized_desktop_workspaces_flow/) [/r/programming](https://www.reddit.com/r/programming/comments/ategje/visualized_desktop_workspaces_flow/)
