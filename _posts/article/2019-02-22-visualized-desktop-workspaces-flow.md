@@ -11,20 +11,21 @@ description:
 
 ---
 
-In this article I will show you the most valuable productivity method I
-use. It is about using existing tool currently
+In this article I will show you what is in my opinion  the most productive way how to work with your desktop environment.
+
+It is about using existing tool currently
 available in  most of
 the operating systems called
 [workspaces](https://help.ubuntu.com/stable/ubuntu-help/shell-workspaces.html.en)
 
 Desktop Workspaces are designed to hold multiple applications in different
-contexts. Point I'll try to show you is about how you organize and
-access these applications in relation to their responsibilities is
-the real productivity value.
+contexts. Point I'll try to make is about how you organize and
+access these applications in relation to their responsibilities in the
+most productive way.
 
 In order to present you this flow I'll show you how I use workspaces in daily professional life.
 
-> I've created video showing real life usage <https://youtu.be/dcCKmB3lZxs>
+> [Here is a quick video Demonstration](https://youtu.be/dcCKmB3lZxs) (youtube)
 
 ## Every workspace is dedicated to single purpose
 
@@ -124,8 +125,8 @@ I use Ubuntu Linux with Cinnamon DE. Here is short TIL note [how to setup worksp
 
 > In the past I use to use Mac OSx, native Ubuntu desktop environment (before they made workspaces stupid and not usable in Ubuntu 18.04),
 > and several other Linux distros. Everywhere I was able to configure similar setup.
-> I cannot give you any recommendation on Windows as I didn't use it for
-> over 10 years.
+> I know windows 10 has workspaces equivalent but I don't know how it
+> works as I don't use it
 
 You can set the workspace switch shortcuts to anything that make sense for you
 I'll provide just 2 examples I used:
@@ -244,4 +245,5 @@ If you want to present this to your collegues here are [presentation slides](htt
 
 ## Discussion
 
-* Reddit: [/r/programmingtools](https://www.reddit.com/r/programmingtools/comments/ate46n/visualized_desktop_workspaces_flow/) [/r/productivity](https://www.reddit.com/r/productivity/comments/atef7a/visualized_desktop_workspaces_flow/) [/r/programming](https://www.reddit.com/r/programming/comments/ategje/visualized_desktop_workspaces_flow/)
+* Reddit: [/r/programmingtools](https://www.reddit.com/r/programmingtools/comments/ate46n/visualized_desktop_workspaces_flow/) [/r/productivity](https://www.reddit.com/r/productivity/comments/atef7a/visualized_desktop_workspaces_flow/) [/r/programming](https://www.reddit.com/r/programming/comments/ategje/visualized_desktop_workspaces_flow/) [/r/ubuntu](https://www.reddit.com/r/Ubuntu/comments/atf5hc/visualized_desktop_workspaces_flow/)
+* [Y Hackernews](https://news.ycombinator.com/item?id=19223930)
