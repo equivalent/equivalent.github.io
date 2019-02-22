@@ -192,6 +192,17 @@ sudo apt-get update
 sudo apt-get install  imagemagick libmagickcore-dev libxslt-dev libmagickwand-dev
 ```
 
+## vips
+
+[ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html) in [Rails 6](https://medium.com/rubyinside/whats-coming-to-rails-6-0-8ec79eea66da?fbclid=IwAR0Q4-SGVlyCsdI3f3w7KlsVCk7K0YISqQukDEqqqncDRgcCV5Yl6k8OP5k) is using gem
+ [image_processing](https://github.com/janko/image_processing) which
+ requires vips lib
+
+* https://github.com/libvips/libvips/wiki/Build-for-Ubuntu
+
+```bash
+sudo apt install libvips libvips-dev libvips-tools
+```
 
 ## Common Rails related errors:
 
