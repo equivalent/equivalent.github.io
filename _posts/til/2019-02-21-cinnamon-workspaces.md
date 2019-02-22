@@ -58,6 +58,12 @@ Set
 Menu > Workspaces > OSD tab > enable workspace OSD > off
 ```
 
+```
+Menu > Effects > Window effects >  off
+```
+
+
+
 
 ## Install Cinamon on Ubuntu 18.04
 
