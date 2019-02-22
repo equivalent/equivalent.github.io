@@ -239,4 +239,5 @@ productivity method.
 
 ## Discussion
 
-
+* [Reddit /r/programmingtools](https://www.reddit.com/r/programmingtools/comments/ate46n/visualized_desktop_workspaces_flow/)
+* [Reddit /r/productivity]()
