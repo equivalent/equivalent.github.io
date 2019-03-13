@@ -178,7 +178,7 @@ logic but much easier and cleaner way is to  `merge` the associated model scope:
 ```ruby
 class Article < ActiveRecord::Base
   belongs_to :user
-  scope :for_user_public_uid, ->(user_public_uids) { joins(:criterium_decision).merge(CriteriumDecision.for_public_uid(user_public_uids)) }
+  scope :for_user_public_uid, ->(user_public_uids) { joins(:users).merge(User.for_public_uid(user_public_uids)) }
 end
 
 
