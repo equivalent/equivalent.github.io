@@ -79,6 +79,10 @@ Now that the encrypted file was trasfered **delete the file from cloud**!
 
 > Note: don't hold files on cloud for too long. Delete them ASAP
 
+> Note: If you use Dropbox make sure you go to Web interface and after
+> deleting the file you go to "deleted files tab" and "delete the file
+> permanently"
+
 #### step 5: Decrypt file on server with GPG
 
 
