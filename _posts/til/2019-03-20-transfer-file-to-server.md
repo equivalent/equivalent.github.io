@@ -98,4 +98,5 @@ gpg /tmp/my-file.csv.gpg
 
 
 ## sources
-* https://www.techrepublic.com/article/how-to-easily-encryptdecrypt-a-file-in-linux-with-gpg/
+
+* <https://www.techrepublic.com/article/how-to-easily-encryptdecrypt-a-file-in-linux-with-gpg/>
