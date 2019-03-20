@@ -7,8 +7,8 @@ disq_id: til-58
 
 
 Many times developer needs to copy over database dump or some migration
-csv file containing data Easiest way is to just do `scp` but sometimes
-you are not able to do that due to fireval restrictions, or because you
+csv file containing data to server. Easiest way is to just do `scp` but sometimes
+you are not able to do that due to firewall restrictions, or because you
 have only web-console availble, therefore  no real `ssh` connection
 (e.g. Kubernetes dashboard)
 
@@ -68,7 +68,7 @@ transfer your encrypted file to cloud solution, for example:
 
 on the web-console inside server/docker-container
 
-```
+```bash
 cd /tmp/
 wget http://my-cloud-solution.com/file?uniqtockennnnnnnnnnn
 ```
