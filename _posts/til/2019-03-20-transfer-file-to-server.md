@@ -46,7 +46,7 @@ Copy that and use it in next step
 
 ```bash
 gpg -c /tmp/my-file.csv
-# specify a password
+# Enter password
 ```
 
 encrypted `/tmp/my-file.csv.gpg` is create
@@ -70,7 +70,7 @@ on the web-console inside server/docker-container
 
 ```bash
 cd /tmp/
-wget http://my-cloud-solution.com/file?uniqtockennnnnnnnnnn
+wget https://my-cloud-solution.com/file?uniqtockennnnnnnnnnn
 ```
 
 #### step 4: delete file on cloud
