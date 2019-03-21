@@ -39,7 +39,7 @@ connection with web-console for example.
 optional step - generate random string (like `q0nI2ReFF8PlUeQfWFZL`)
 
 ```bash
-head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo ''
+head /dev/urandom | tr -dc A-Za-z0-9 | head -c 25 ; echo ''
 ```
 
 Copy that and use it in next step
