@@ -5,6 +5,8 @@ categories: til
 disq_id: til-59
 ---
 
+Given on Ubuntu 18.04
+
 ```bash
 ffmpeg -i vokoscreen-2019-03-21_07-45-03.mkv -codec copy output.mp4
 ```
