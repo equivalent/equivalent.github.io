@@ -520,6 +520,57 @@ These approaches are valid but in lot of cases they are hard to
 maintain. Test contracts are my favorite approach  in 70% of situations
 when it comes to dealing with 3rd party API.
 
+### When Explicit Contracts are bad idea
+
+One example of when it's a bad idea to use Explicit contract for tests
+is when you are using 3rd party gem for HTTP call that is providing
+DSL and functionality around returned data.
+
+For example [Unsplash rb
+gem](https://github.com/unsplash/unsplash_rb) will let you do
+something like:
+
+
+```ruby
+photo = Unsplash::Photo.find('TcUY4zjKXL0')
+photo.photo.urls.regular # url of a image
+```
+
+Gem is automatically wrapping returned JSON data with custom objects.
+In this case I could create contract for the `.find` method where mock
+contract would wrap the JSON data to `Unsplash::Photo.new(json_body)`
+but problem is that I would "assume" how the gem will evolve in the
+future.
+
+```ruby
+# example of when explicit cantract is a bad idea
+
+module UnsplashContract
+  module Http
+    def find(id)
+      Unsplash::Photo.find(id)
+    end
+  end
+
+  module Mock
+    def find(id)
+      case id
+      when 'TcUY4zjKXL0'
+        json_body = '{"id": "TcUY4zjKXL0", "urls": [...], ...}'
+        hash = JSON.parse(json_body) # too much knowledge about the gem
+        Unsplash::Photo.new(hash) # too much knowledge about the gem , what if they change this ?
+      else
+        raise Unsplash::NotFoundError # too much knowledge about the gem, what if they change this ?
+      end
+    end
+  end
+end
+```
+
+It's fine to use contracts on 3rd party gems if they just serve as
+Gateway objects returning plain data or simple Ruby hash. But if they have lot of functionality around data
+you are far better of with [HTTP stubs](https://github.com/bblimke/webmock#stubbing-with-custom-response)
+
 ### sources
 
 * <http://blog.plataformatec.com.br/2015/10/mocks-and-explicit-contracts/>
