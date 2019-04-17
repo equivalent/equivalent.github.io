@@ -74,6 +74,8 @@ aws s3 ls s3://my-company-bucket-for-transactions/export-2019-04-17/
 aws s3 presign s3://my-company-bucket-for-transactions/export-2019-04-17/my-file.csv.gpg
 ```
 
+> default expire time of [presign](https://docs.aws.amazon.com/cli/latest/reference/s3/presign.html) is 3600 sec. If you need more `--expires-in 999999`
+
 ##### Dropbox
 
 ```bash
