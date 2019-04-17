@@ -53,15 +53,33 @@ encrypted `/tmp/my-file.csv.gpg` is create
 
 #### step2: transfer from laptop to cloud
 
-transfer your encrypted file to cloud solution, for example:
-
-* [AWS s3 CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html)
-  * `aws s3 cp /tmp/my-file.csv s3://my-company-bucket-for-transactions/`
-  * `aws s3 sync /tmp/multiple-files/ s3://my-company-bucket-for-transactions/multiple-files/`
-* dropbox
-  * `cp /tmp/my-file.csv.gpg ~/Dropbox/my-company/`, then generate a link in web interface
+transfer your encrypted file to cloud solution, for example
+with [AWS s3 CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html)
+or with Dropbox
 
 > note: don't transfer the non encrytped file `/tmp/my-file.csv`!
+
+##### AWS
+
+* `aws s3 cp /tmp/my-file.csv s3://my-company-bucket-for-transactions/`
+* `aws s3 sync /tmp/multiple-files/ s3://my-company-bucket-for-transactions/multiple-files/`
+
+real life example:
+
+```bash
+aws s3 sync /tmp/export/ s3://my-company-bucket-for-transactions/export-2019-04-17
+aws s3 ls s3://my-company-bucket-for-transactions/export-2019-04-17/
+
+# now generate urls for download
+aws s3 presign s3://my-company-bucket-for-transactions/export-2019-04-17/my-file.csv.gpg
+```
+
+##### Dropbox
+
+```bash
+cp /tmp/my-file.csv.gpg ~/Dropbox/my-company/
+```
+then generate a link in web interface
 
 
 #### step3: transfer from cloud to server
@@ -82,6 +100,16 @@ Now that the encrypted file was trasfered **delete the file from cloud**!
 > Note: If you use Dropbox make sure you go to Web interface and after
 > deleting the file you go to "deleted files tab" and "delete the file
 > permanently"
+
+AWS
+
+```bash
+aws s3 rm s3://my-company-bucket-for-transactions/export-2019-04-17/my-file.csv.gpg
+
+# or folder delete
+
+aws s3 rm s3://my-company-bucket-for-transactions/export-2019-04-17 --recursive
+```
 
 #### step 5: Decrypt file on server with GPG
 
