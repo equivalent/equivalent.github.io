@@ -72,6 +72,8 @@ aws s3 ls s3://my-company-bucket-for-transactions/export-2019-04-17/
 
 # now generate urls for download
 aws s3 presign s3://my-company-bucket-for-transactions/export-2019-04-17/my-file.csv.gpg
+# => https://my-company-bucket-for-transactions/export-2019-04-17/my-file.csv.gpg?AWSAccessKeyId=xxxxxxxxxxxxxxxxxxxx&Expires=1555585422&Signature=xxxxxxxxxxxxxxxxxxxxxxxxxxx%3D
+
 ```
 
 > default expire time of [presign](https://docs.aws.amazon.com/cli/latest/reference/s3/presign.html) is 3600 sec. If you need more `--expires-in 999999`
@@ -92,6 +94,15 @@ on the web-console inside server/docker-container
 cd /tmp/
 wget https://my-cloud-solution.com/file?uniqtockennnnnnnnnnn
 ```
+AWS
+
+```bash
+wget 'https://my-company-bucket-for-transactions.s3.amazonaws.com/export-2019-04-17/my-file.csv.gpg?AWSAccessKeyId=AKIAJNAHAMBRAGLAZCUQ&Expires=1555585422&Signature=RB1hk0gQUaVurAP6NKuaha4MlXI%3D'
+```
+
+> note with AWS presign url make sure you place the url into apostrophe
+> `''` otherwise wget (or curl) will give you 403
+
 
 #### step 4: delete file on cloud
 
@@ -126,7 +137,10 @@ gpg /tmp/my-file.csv.gpg
 
 
 
-
 ## sources
 
 * <https://www.techrepublic.com/article/how-to-easily-encryptdecrypt-a-file-in-linux-with-gpg/>
+
+## Related articles
+
+* [Exporting and Importing large amount of data in Rails](https://blog.eq8.eu/til/exporting-importing-migrating-large-amount-of-data-in-ruby-on-rails.html)
