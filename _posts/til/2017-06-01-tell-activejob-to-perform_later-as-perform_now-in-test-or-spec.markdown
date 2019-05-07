@@ -8,6 +8,10 @@ redirect_from:
   - "/tils/30-tell-activejob-to-perform_later-as-perform_now-in-test-or-spec"
 ---
 
+> If you are looking for [How to test if ActiveJob job was enqueued in Rails RSpec](https://blog.eq8.eu/til/how-to-test-if-activejob-job-was-enqueued-in-rails-rspec.html) pls check [this note](https://blog.eq8.eu/til/how-to-test-if-activejob-job-was-enqueued-in-rails-rspec.html)
+
+
+
 Rails[ActiveJob](http://edgeguides.rubyonrails.org/active_job_basics.html)
 
 Let say you have `perform_later` job that is calling another

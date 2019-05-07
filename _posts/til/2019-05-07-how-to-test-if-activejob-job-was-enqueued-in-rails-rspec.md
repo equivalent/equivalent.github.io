@@ -110,3 +110,7 @@ end
 
 * [relish rspec rails docs](https://relishapp.com/rspec/rspec-rails/docs/matchers/have-been-enqueued-matcher)
 
+### Discussion
+
+* <https://www.reddit.com/r/ruby/comments/blrdeg/how_to_test_if_activejob_job_was_enqueued_in/>
+* <http://www.rubyflow.com/p/xvsdk0-how-to-test-if-activejob-job-was-enqueued-in-rails-rspec>
