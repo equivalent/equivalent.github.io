@@ -85,3 +85,8 @@ and Remove existing mapping `alt+ctrl+T` (`xfce4-terminal-popup`)
 add new mapping `alt+ctrl+T`  for `xfce4-terminal`
 
 ![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/manjaro-step-4-replace-terminal-popup-shortcut.png)
+
+## Related articles
+
+* [Visualized desktop workspaces flow](https://blog.eq8.eu/article/visualized-desktop-workspaces-flow.html)
+* [Visualized Desktop Workspace flow in Cinnamon](https://blog.eq8.eu/til/cinnamon-workspaces.html)

@@ -76,3 +76,9 @@ sudo add-apt-repository ppa:embrosyn/cinnamon
 sudo apt-get update
 sudo apt install cinnamon
 ```
+
+
+## Related articles
+
+* [Visualized desktop workspaces flow](https://blog.eq8.eu/article/visualized-desktop-workspaces-flow.html)
+* [Visualized Desktop Workspace flow in Manjaro linux 18 - XFCE](https://blog.eq8.eu/til/xfce-workspaces.html)
