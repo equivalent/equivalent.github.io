@@ -20,6 +20,8 @@ Menu > workspaces
 
 Increment number of workspaces
 
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/manjaro-step1-add-workspaces.png)
+
 ## Step 2  - add  switch to window num. shortcuts
 
 ```
@@ -45,6 +47,7 @@ Workspace 6                       Super + 6
 
 ```
 
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/manjaro-step-2-add-window-shortcut--witch-workspace.png)
 
 ## Step 3 - remove Super mapping (Optional)
 
@@ -59,6 +62,7 @@ Menu > Keyboard > Application Shortcuts
 
 ...find shortcut "L Super" (`xfc4-popup-whiskermenu` by default) and map it to something else (e.g. `Super + Space` or remove it
 
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/manjaro-step3-remove-super-shortcut.png)
 
 
 ## Step 4 - remove mapping for "terminal pop-up" (Optional)
@@ -80,4 +84,4 @@ and Remove existing mapping `alt+ctrl+T` (`xfce4-terminal-popup`)
 
 add new mapping `alt+ctrl+T`  for `xfce4-terminal`
 
-
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/manjaro-step-4-replace-terminal-popup-shortcut.png)
