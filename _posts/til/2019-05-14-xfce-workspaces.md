@@ -90,3 +90,7 @@ add new mapping `alt+ctrl+T`  for `xfce4-terminal`
 
 * [Visualized desktop workspaces flow](https://blog.eq8.eu/article/visualized-desktop-workspaces-flow.html)
 * [Visualized Desktop Workspace flow in Cinnamon](https://blog.eq8.eu/til/cinnamon-workspaces.html)
+
+## Discussion
+
+* [Reddit](https://www.reddit.com/r/ManjaroLinux/comments/bob33z/visualized_desktop_workspace_flow_in_manjaro/)
