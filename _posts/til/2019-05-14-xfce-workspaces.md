@@ -31,13 +31,6 @@ Menu > Window Manager > keyboard
 Add shortcut that you like. For example:
 
 ```
-Move Window to workspace 1        Super + Ctrl + 1
-Move Window to workspace 2        Super + Ctrl + 2
-Move Window to workspace 3        Super + Ctrl + 3
-Move Window to workspace 4        Super + Ctrl + 5
-Move Window to workspace 5        Super + Ctrl + 5
-Move Window to workspace 6        Super + Ctrl + 6
-
 Workspace 1                       Super + 1
 Workspace 2                       Super + 2
 Workspace 3                       Super + 3
@@ -45,7 +38,15 @@ Workspace 4                       Super + 4
 Workspace 5                       Super + 5
 Workspace 6                       Super + 6
 
+Move Window to workspace 1        Super + ALT + 1
+Move Window to workspace 2        Super + ALT + 2
+Move Window to workspace 3        Super + ALT + 3
+Move Window to workspace 4        Super + ALT + 5
+Move Window to workspace 5        Super + ALT + 5
+Move Window to workspace 6        Super + ALT + 6
 ```
+
+> by "Super" I mean the Left hand  "Windows" button
 
 ![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/manjaro-step-2-add-window-shortcut--witch-workspace.png)
 
