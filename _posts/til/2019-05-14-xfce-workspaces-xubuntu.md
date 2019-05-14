@@ -22,7 +22,7 @@ Menu > workspaces
 
 Increment number of workspaces
 
-![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/xubuntu-step1-set-workspaces)
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/xubuntu-step1-set-workspaces.png)
 
 ## Step 2  - add  switch to workspaces number shortcuts
 
@@ -60,7 +60,7 @@ Move Window to workspace 6        Super + ALT + 6
 Xubuntu is really friendly to [Visualized desktop workspaces flow](https://blog.eq8.eu/article/visualized-desktop-workspaces-flow.html)
 so from this point you should be good to go.
 
-How ever here are some of mine optional recommendations for better
+However here are some of mine optional recommendations for better
 experience
 
 
@@ -86,3 +86,6 @@ Add `xfce4-popup-whiskermenu` and set it to `ctrl + super`.
 * [Visualized Desktop Workspace flow in Cinnamon](https://blog.eq8.eu/til/cinnamon-workspaces.html)
 * [Visualized Desktop Workspace flow in Manjaro linux 18 - XFCE](https://blog.eq8.eu/til/xfce-workspaces.html)
 
+## Discussion
+
+* [Reddit](https://www.reddit.com/r/xubuntu/comments/boiwii/visualized_desktop_workspace_flow_in_xubuntu_1804/)

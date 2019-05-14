@@ -91,6 +91,7 @@ add new mapping `alt+ctrl+T`  for `xfce4-terminal`
 
 * [Visualized desktop workspaces flow](https://blog.eq8.eu/article/visualized-desktop-workspaces-flow.html)
 * [Visualized Desktop Workspace flow in Cinnamon](https://blog.eq8.eu/til/cinnamon-workspaces.html)
+* [Visualized Desktop Workspace flow in Xubuntu 18.04 - XFCE](https://blog.eq8.eu/til/xfce-workspaces-xubuntu.html)
 
 ## Discussion
 

@@ -82,3 +82,4 @@ sudo apt install cinnamon
 
 * [Visualized desktop workspaces flow](https://blog.eq8.eu/article/visualized-desktop-workspaces-flow.html)
 * [Visualized Desktop Workspace flow in Manjaro linux 18 - XFCE](https://blog.eq8.eu/til/xfce-workspaces.html)
+* [Visualized Desktop Workspace flow in Xubuntu 18.04 - XFCE](https://blog.eq8.eu/til/xfce-workspaces-xubuntu.html)
