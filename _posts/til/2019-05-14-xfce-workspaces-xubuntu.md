@@ -64,7 +64,7 @@ However here are some of mine optional recommendations for better
 experience
 
 
-#### set menu dialog
+#### Set menu dialog
 
 By default the menu dialog will pop-up when you press `ctrl + esc`. I
 find it bit more productive if the shortcut is `ctrl + Super` (ctrl + left
@@ -77,6 +77,27 @@ Menu > Keyboard > Application Shortcuts
 
 Add `xfce4-popup-whiskermenu` and set it to `ctrl + super`.
 
+
+#### Stop browser window from switching workspace
+
+By default in Xubuntu when you clikt on a link (E.g. in Slack) browser
+opened in other workspace will move to curret workspace. This violates
+the Visualized  workspaces flow.
+
+To disable this:
+
+```
+Menu > Keyboard > Window Manager Tweaks > Focus Tab > 
+
+set: "When a window raises itself"
+to: "Do nothing"
+```
+
+![](https://i.stack.imgur.com/Dn4Tj.png)
+
+source: 
+
+* <https://unix.stackexchange.com/questions/97918/stop-browser-window-from-switching-workspace-and-getting-focus-when-opening-a-li>
 
 
 
