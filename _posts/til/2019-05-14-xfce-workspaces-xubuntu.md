@@ -99,6 +99,15 @@ source:
 
 * <https://unix.stackexchange.com/questions/97918/stop-browser-window-from-switching-workspace-and-getting-focus-when-opening-a-li>
 
+#### Bug fixes
+
+**Screen lock blanks screen indefinitely / shutdowns computer**
+
+You may have a bug that when you lock your screen the laptop screen
+goes blank indefinitely.
+
+see : <https://www.reddit.com/r/xubuntu/comments/boxfmq/xflock4_lock_screen_will_shutdown/>
+for solution
 
 
 ## Related articles
