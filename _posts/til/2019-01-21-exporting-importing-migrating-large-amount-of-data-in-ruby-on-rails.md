@@ -32,7 +32,7 @@ class Export
   def call
     file = File.open(Rails.root.join('tmp/export_products.txt'), 'w')
 
-    Product.find_each do |product|
+    Product.order(:id).find_each do |product|
       file.write(serialize_product(product).to_json)
       file.write("\n")
     end
