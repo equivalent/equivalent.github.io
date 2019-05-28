@@ -4,7 +4,7 @@ categories: article
 title:  "Rails Bounded contexts - the simple way"
 disq_id: 50
 description:
-  Rails Bounded contexts via Value object interfaces
+  Rails Bounded contexts via interface objects
   Article in progress
 ---
 
@@ -15,11 +15,224 @@ This article is not finished yet !!!
 >
 > please check on later once it's officially relased
 
-The premiss of this article is to organize your business related classes
-to `app/bounded_context/...` while still keep your Rails related classes
-with correlation with Rails best practices.
+
+In this Article I'll show you how I'm organizing business related
+classes in [Ruby on Rails](https://rubyonrails.org/) so I benefit
+from [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html)
+while still keep Rails conventions and best practices.
+
+We (me and my collegues) are writing BE code following way for over a year
+(dating since late 2017) to write BE API in Rails but I also use this pattern for
+my personal projects in which the server renders HTML ([majestic monolith](https://m.signalvnoise.com/the-majestic-monolith/))
+
+These applications are quite extensive in business logic. Therefore
+considere the following pattern only when building long running large
+applications where long term maintainability is the key.
+Fololwing pattern may not be the best if you are building weekend project.
+
+## Theory
+
+The point of [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html) is to organize the the code 
+according of business boundaries.
+
+That means you may have education application in which you have students teachers and their works in lessons. So two natural bounded contexts may be:
+
+* `lesson_planning` -> preparation of lesson on teacher's side, like adding slideshow, or uploading eductation documents for students
+* `work_interactions` -> once the lesson is done, students can interact with each other works like comments, annotations, and receive notifications around those
+
+As you can imagine both bounded context are interacting with same
+"models" (Student, Teacher, Work, Lesson) just around differnent
+business perspective.
+
+That means you would place all related code for `lesson_planning` to one folder and all related code to `work_interactions` to that folder
+
+You can think about this folders  as Microservices where every responsibility lives in it's own application
+
+> Now If you want to understand what I mean by "Microservices" following the "bounded contexts" please watch my talk
+> [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
+> [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
+
+So what you are ultimately trying to achive is organize code into layers
+
+
+
+!!!!!!
+!!!!! todo add image
+!!!!!!
+
+Other good references explaining Bounded context
+
+* [Elixir Phoenix 1.3 by Chris McCord - bounded context in Phoenix](https://youtu.be/tMO28ar0lW8?t=15m31s)
+
+
+
+> You may be ask "So are Bounded Contexts something like namespaces e.g.: `/admin` and `/` ?"
+> No, no their not. Think about this way every Bounded Context have
+> its own code for admin e.g. `lesson_planning/admin`
+> `work_interactions/admin`. If you still don't understand it pls watch
+>  [my talk](https://www.youtube.com/watch?v=xhEyUYTuSQw)
+
+
+## Rails and Bounded Contexts
+
+Now theory is beautiful, practice is  painful.
+
+There are several good resources on Bounded Contexts in Ruby on Rails. Some
+are calling for [splitting Rails into Bounded Context via Rails
+Engine](https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4)
+
+> basically you create own Rails Engine `lesson_planning` and another
+> engine `work_interactions`. That means controllers and models are in
+> their own Rails engine
+
+Some are calling for [event architecture](https://www.youtube.com/watch?v=STKCRSUsyP0) to achive
+Bounded context like in [Domain Driven Design in Rails book](https://blog.arkency.com/domain-driven-rails/)
+
+> book is about creating isolated bounded contexts and then interacting in-between
+> those bounded contexts via publishing events. Check out their [gem](https://railseventstore.org/) for more info.
+
+Although I really like and respect all these suggestions they all are
+trying to introduce something that Rails was not designed for. In my
+opinion they are
+trying to introduce new way of thinking so much that junior developers
+cannot catch up with them. 
+
+> Biggest benefit of Rails is that it is trying to be as friendly as
+> possible to junior and senior developers by following certain conventions. And although those
+> conventions may be annoying/limiting for large applications they form
+> basis of community and framework that is still dominating in Ruby world
+> for more then 15 years.
+
+
+Solution that I'll demonstrate here is not advising for "full" split into
+bounded context But rather **pragmatic** partial bounded context in which we will
+keep `views`, `models`,`controllers`, as they are in `app/views`
+`app/controllers`, `app/models`.
+
+We will move only the `app/jobs/*`, `app/mailers/*`, (and other business logic like  `app/services/*`)
+into bounded contexts. Therefore we will end up with something like:
+
+```
+app
+  models
+  controllers
+  views
+  bounded_contexts
+    lesson_planing
+      notify_students_job.rb
+      student_mailer.rb
+      teacher_mailer.rb
+    work_interactions
+      student_mailer.rb
+```
+
+## Example
+
+Let say we have an application in which `Student` can create `Work`
+inside a `Lesson`. On every `Work` other students can place a `Comment`.
+
+
+In traditional Ruby on Rails application you organize code in this way:
+
+```
+app
+  controllers
+    students_controller.rb
+    works_controller.rb
+    lessons_controller.rb
+    comments_controller.rb
+  model
+    teacher.rb
+    work.rb
+    lesson.rb
+    student.rb
+    comment.rb
+  jobs
+    process_works_job
+
+lib
+  some_custom_lib_for_correcting_student_age.rb
+  some_custom_lib_for_for_correcting_comment_.rb
+```
+
+Let say the busines logic is following:
+
+* teacher can create losson and add students to the lesson
+* every student can create work inside that lesson
+* once the teacher "delivers" the lesson then other students can place commennts on that work
+
+Now if this would be a traditional Rails app we would just jam the
+various business logic methods into related models and controllers:
+
+```ruby
+
+class Lesson < ActiveReccord::Base
+  # ...
+  deliver
+    self.delivered = true
+    self.save
+    Teacher.all do |teacher|
+      Mailer
+    end
+  end
+  # ..
+end
+
+class Work < ActiveReccord::Base
+  belongs_to :lesson
+  # ...
+
+  def process_works
+    ProcessWorkJob.perform_later(work_id: self.id)
+  end
+
+  def can_be_commented?
+    self.lesson.delivered?
+  end
+  # ...
+end
+
+# ...and so on
+```
+
+Now you cauld jam the busines related update/create methods to be in `app/service` folder (so called Service Objects) and
+authentication methods to `app/policy` (e.g. [Policy Objects](https://blog.eq8.eu/article/policy-object.html), [Pundit Gem](https://github.com/varvet/pundit)
+
+But still you will organize  along the "type of classes" not really do
+any organization around "business logic"
+
+
+```
+app
+  controllers
+    students_controller.rb
+    works_controller.rb
+    lessons_controller.rb
+    comments_controller.rb
+  model
+    teacher.rb
+    work.rb
+    lesson.rb
+    student.rb
+    comment.rb
+  jobs
+    process_works_job
+
+lib
+  some_custom_lib_for_correcting_student_age.rb
+  some_custom_lib_for_for_correcting_comment_.rb
+```
+
+
+
+Now theory of bounded
+
 
 If you do this right you will end up with a folder structure like this:
+
+
+Theory of bounded context is to organize your code according to busines
+logic. 
 
 ```
 app
