@@ -25,6 +25,7 @@ We (me and my collegues) are writing BE code following way for over a year
 (dating since late 2017) to write BE API in Rails but I also use this pattern for
 my personal projects in which the server renders HTML ([majestic monolith](https://m.signalvnoise.com/the-majestic-monolith/))
 
+
 These applications are quite extensive in business logic. Therefore
 considere the following pattern only when building long running large
 applications where long term maintainability is the key.
@@ -565,5 +566,12 @@ app
       evil_corp_pricing_gateway.rb
 ```
 
+
+
+## Conclusion
+
+Let me epmasize one more thing: This article took more over a year to be finilized. Behind it are
+countless hours of learning, comparing and trying solutions. Lot of real development trial
+and error so you have final form that I'm 100% confident with.
 
 
