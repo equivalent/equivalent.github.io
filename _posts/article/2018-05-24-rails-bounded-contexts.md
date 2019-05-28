@@ -37,14 +37,14 @@ according of business boundaries.
 
 That means you may have education application in which you have students teachers and their works in lessons. So two natural bounded contexts may be:
 
-* `lesson_planning` -> preparation of lesson on teacher's side, like adding slideshow, or uploading eductation documents for students
-* `work_interactions` -> once the lesson is done, students can interact with each other works like comments, annotations, and receive notifications around those
+* `classroom` -> preparation of lesson on teacher's side, like adding slideshow, or uploading eductation documents for students
+* `public_board` -> once the lesson is done, students can interact with each other works like comments, annotations, and receive notifications around those
 
 As you can imagine both bounded context are interacting with same
-"models" (Student, Teacher, Work, Lesson) just around differnent
+"models" (Student, Teacher, Work, Lesson) just around different
 business perspective.
 
-That means you would place all related code for `lesson_planning` to one folder and all related code to `work_interactions` to that folder
+That means you would place all related code for `classroom` to one folder and all related code to `public_board` to that folder
 
 You can think about this folders  as Microservices where every responsibility lives in it's own application
 
@@ -55,10 +55,7 @@ You can think about this folders  as Microservices where every responsibility li
 So what you are ultimately trying to achive is organize code into layers
 
 
-
-!!!!!!
-!!!!! todo add image
-!!!!!!
+![bounded contexts example 1](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/bounded-context-1.jpg)
 
 Other good references explaining Bounded context
 
@@ -68,8 +65,8 @@ Other good references explaining Bounded context
 
 > You may be ask "So are Bounded Contexts something like namespaces e.g.: `/admin` and `/` ?"
 > No, no their not. Think about this way every Bounded Context have
-> its own code for admin e.g. `lesson_planning/admin`
-> `work_interactions/admin`. If you still don't understand it pls watch
+> its own code for admin e.g. `classroom/admin`
+> `public_board/admin`. If you still don't understand it pls watch
 >  [my talk](https://www.youtube.com/watch?v=xhEyUYTuSQw)
 
 
@@ -81,8 +78,8 @@ There are several good resources on Bounded Contexts in Ruby on Rails. Some
 are calling for [splitting Rails into Bounded Context via Rails
 Engine](https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4)
 
-> basically you create own Rails Engine `lesson_planning` and another
-> engine `work_interactions`. That means controllers and models are in
+> basically you create own Rails Engine `classroom` and another
+> engine `public_board`. That means controllers and models are in
 > their own Rails engine
 
 Some are calling for [event architecture](https://www.youtube.com/watch?v=STKCRSUsyP0) to achive
@@ -104,6 +101,8 @@ cannot catch up with them.
 > for more then 15 years.
 
 
+## Summary of this solution
+
 Solution that I'll demonstrate here is not advising for "full" split into
 bounded context But rather **pragmatic** partial bounded context in which we will
 keep `views`, `models`,`controllers`, as they are in `app/views`
@@ -118,12 +117,36 @@ app
   controllers
   views
   bounded_contexts
-    lesson_planing
+    classroom
       notify_students_job.rb
+      notify_students_about_new_lesson_job.job
       student_mailer.rb
       teacher_mailer.rb
-    work_interactions
+      lesson_deliver_service.rb
+    public_board
+      comment_posted_job.rb
       student_mailer.rb
+```
+
+But we will go even further. We will introduce **interface objects**
+that will allow us to call related bounded contexts from perspective of
+the Rails models.
+
+For example:
+
+```ruby
+student = Student.find(123)
+student = Student.find(654)
+
+lesson = teacher.classroom.create_lesson(students: [student1, student2])
+
+some_file = File.open('/tmp/some_file.doc') # or this could be passed from controller as params[:file]
+lesson.classroom.upload_work(student: student1, file: some_file)
+
+lesson.classroom.deliver_lesson
+
+work = Work.find(468)
+work.work_interaction.post_comment(student: student2, title: "Great work mate!")
 ```
 
 ## Example
