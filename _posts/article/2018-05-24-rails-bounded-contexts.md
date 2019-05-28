@@ -1,7 +1,7 @@
 ---
 layout: article_post
 categories: article
-title:  "Rails Bounded contexts - the simple way"
+title:  "Ruby on Rails - pragmatic bounded contexts"
 disq_id: 50
 description:
   Rails Bounded contexts via interface objects
@@ -16,93 +16,61 @@ This article is not finished yet !!!
 > please check on later once it's officially relased
 
 
-In this Article I'll show you how I'm organizing business related
-classes in [Ruby on Rails](https://rubyonrails.org/) so I benefit
-from [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html)
+In this Article I'll show you how to organize business
+classes in [Ruby on Rails](https://rubyonrails.org/) so your application
+can benefit from [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html)
 while still keep Rails conventions and best practices.
 
-We (me and my collegues) are writing BE code following way for over a year
-(dating since late 2017) to write BE API in Rails but I also use this pattern for
-my personal projects in which the server renders HTML ([majestic monolith](https://m.signalvnoise.com/the-majestic-monolith/))
+> This will be really pragmatic solution. I'll enlist other Rails Bounded Context
+> solutions at the bottom of the article.
 
+As this topic is quite extensive article is separated in following
+sections:
 
-These applications are quite extensive in business logic. Therefore
-considere the following pattern only when building long running large
-applications where long term maintainability is the key.
-Fololwing pattern may not be the best if you are building weekend project.
+1. Bounded Contexts theory
+2. Theory around this solution
+3. Example code
+4. Comparison of other ways how to do Bounded Contexts in Rails
 
-## Theory
+## Bounded Contexts theory
 
-The point of [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html) is to organize the the code 
-according of business boundaries.
+The point of [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html) is to organize the code
+inside **business boundaries**.
 
-That means you may have education application in which you have students teachers and their works in lessons. So two natural bounded contexts may be:
+For example let say we are building an education application
+in which you have `students` `teachers` and their `works` inside `lessons`.
 
-* `classroom` -> preparation of lesson on teacher's side, like adding slideshow, or uploading eductation documents for students
-* `public_board` -> once the lesson is done, students can interact with each other works like comments, annotations, and receive notifications around those
+So two natural bounded contexts may be:
 
-As you can imagine both bounded context are interacting with same
+* `classroom`
+  * creation of lesson
+  * adding students to the lesson
+  * students uploading their work files
+  * students and teachers receiving email notifications when they are invited to lesson
+  * lesson delivery
+* `public_board`
+  * once the lesson is published students can comment on each other works
+  * students will be notified when new comments are added for their work
+
+As you can imagine both bounded contexts are interacting with same
 "models" (Student, Teacher, Work, Lesson) just around different
 business perspective.
 
-That means you would place all related code for `classroom` to one folder and all related code to `public_board` to that folder
+That means you would place all related code for `classroom` to one folder
+and all related code to `public_board` to that folder.
 
-You can think about this folders  as Microservices where every responsibility lives in it's own application
-
-> Now If you want to understand what I mean by "Microservices" following the "bounded contexts" please watch my talk
-> [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
-> [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
-
-So what you are ultimately trying to achive is organize code into layers
-
+So what you are ultimately trying to achieve is organize code into layers similar to this:
 
 ![bounded contexts example 1](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/bounded-context-1.jpg)
 
-Other good references explaining Bounded context
-
-* [Elixir Phoenix 1.3 by Chris McCord - bounded context in Phoenix](https://youtu.be/tMO28ar0lW8?t=15m31s)
-
-
-
-> You may be ask "So are Bounded Contexts something like namespaces e.g.: `/admin` and `/` ?"
+> You may be ask: "So are Bounded Contexts something like namespaces e.g.: `/admin` or `/api` ?"
 > No, no their not. Think about this way every Bounded Context have
-> its own code for admin e.g. `classroom/admin`
-> `public_board/admin`. If you still don't understand it pls watch
->  [my talk](https://www.youtube.com/watch?v=xhEyUYTuSQw)
+> its own code for admin e.g. `classroom/admin`, `public_board/admin`.
+> If you don't understand what I mean by that please watch talk
+> [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
+> [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
 
-
-## Rails and Bounded Contexts
-
-Now theory is beautiful, practice is  painful.
-
-There are several good resources on Bounded Contexts in Ruby on Rails. Some
-are calling for [splitting Rails into Bounded Context via Rails
-Engine](https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4)
-
-> basically you create own Rails Engine `classroom` and another
-> engine `public_board`. That means controllers and models are in
-> their own Rails engine
-
-Some are calling for [event architecture](https://www.youtube.com/watch?v=STKCRSUsyP0) to achive
-Bounded context like in [Domain Driven Design in Rails book](https://blog.arkency.com/domain-driven-rails/)
-
-> book is about creating isolated bounded contexts and then interacting in-between
-> those bounded contexts via publishing events. Check out their [gem](https://railseventstore.org/) for more info.
-
-Although I really like and respect all these suggestions they all are
-trying to introduce something that Rails was not designed for. In my
-opinion they are
-trying to introduce new way of thinking so much that junior developers
-cannot catch up with them. 
-
-> Biggest benefit of Rails is that it is trying to be as friendly as
-> possible to junior and senior developers by following certain conventions. And although those
-> conventions may be annoying/limiting for large applications they form
-> basis of community and framework that is still dominating in Ruby world
-> for more then 15 years.
-
-
-## Summary of this solution
+## Introducing Bounded Context to Rails
 
 Solution that I'll demonstrate here is not advising for "full" split into
 bounded context But rather **pragmatic** partial bounded context in which we will
@@ -150,11 +118,7 @@ work = Work.find(468)
 work.work_interaction.post_comment(student: student2, title: "Great work mate!")
 ```
 
-## Example
-
-Let say we have an application in which `Student` can create `Work`
-inside a `Lesson`. On every `Work` other students can place a `Comment`.
-
+## Code Example
 
 In traditional Ruby on Rails application you organize code in this way:
 
@@ -570,8 +534,58 @@ app
 
 ## Conclusion
 
+We (me and my colleagues) are writing Backend code for JSON API Rails application
+following way for over a year
+(dating since late 2017) 
+
+Furthermore I also use this pattern for  personal projects in which the server renders HTML ([majestic monolith](https://m.signalvnoise.com/the-majestic-monolith/))
+
+These applications are quite extensive in business logic. Therefore
+consider the following pattern only when building long running large
+applications where long term maintainability is the key.
+
 Let me epmasize one more thing: This article took more over a year to be finilized. Behind it are
-countless hours of learning, comparing and trying solutions. Lot of real development trial
+countless hours of learning, comparing and trying solutions. Lot of real team development. Trial
 and error so you have final form that I'm 100% confident with.
+
+
+## Other ways to do Bounded Contexts in Rails
+
+
+> You can think about this folders  as Microservices where every responsibility lives in its own application
+>
+> If you don't understand what I mean by that please watch talk
+> [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
+> [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
+
+There are several good resources on Bounded Contexts in Ruby on Rails. Some
+are calling for [splitting Rails into Bounded Context via Rails
+Engine](https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4)
+
+> basically you create own Rails Engine `classroom` and another
+> engine `public_board`. That means controllers and models are in
+> their own Rails engine
+
+Some are calling for [event architecture](https://www.youtube.com/watch?v=STKCRSUsyP0) to achieve
+Bounded context like in [Domain Driven Design in Rails book](https://blog.arkency.com/domain-driven-rails/)
+
+> book is about creating isolated bounded contexts and then interacting in-between
+> those bounded contexts via publishing events. Check out their [gem](https://railseventstore.org/) for more info.
+
+Although I really like and respect all these suggestions they all are
+trying to introduce something that Rails was not designed for. In my
+opinion they are
+trying to introduce new way of thinking so much that junior developers
+cannot catch up with them.
+
+Biggest benefit of Rails is that it is trying to be as friendly as
+possible to junior and senior developers by following certain conventions. And although those
+conventions may be annoying/limiting for large applications they form
+basis of community and framework that is still dominating in Ruby world
+for more then 15 years.
+
+Other good references explaining Bounded context
+
+* [Elixir Phoenix 1.3 by Chris McCord - bounded context in Phoenix](https://youtu.be/tMO28ar0lW8?t=15m31s)
 
 
