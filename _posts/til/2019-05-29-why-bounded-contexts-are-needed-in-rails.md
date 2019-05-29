@@ -38,7 +38,8 @@ lib
 > As was pointed out by article [How DHH Organizes His Rails Controllers](http://jeromedalbert.com/how-dhh-organizes-his-rails-controllers/)
 > well organized job objects and controllers can replace all features of service objects.
 > But this is not a topic of my article. For sake of saving time let's
-> assume service objects are Rails feature
+> assume service objects are Rails feature. My point is you would get
+> into same problems that I'll desribe here even without Service Objects
 
 
 Now the issue is that you are jamming multiple perspectives of business
@@ -69,7 +70,7 @@ class Classroom::StudentMailer < ApplicationMailer
 end
 ```
 
-Now this is quite simple example but more the business logic grows you
+This is quite simple example but more the business logic grows you
 will end up with bigger mess.
 
 Now you could introduce separate Mailer classes for different scenarios
@@ -91,7 +92,8 @@ app
     comment.rb
   mailer
     parent_mailer.rb
-    student_mailer.rb
+    evaluation_student_mailer.rb
+    lesson_student_mailer.rb
     teacher_mailer.rb
   services
     lesson_creation_service.rb
@@ -113,8 +115,8 @@ lib
   recalculate_curency.rb
 ```
 
-Does this appear like a mess ? Yes that's the point there is no
-organization around business logic. The classes are well named but they
+Does this appear like a mess ? Yes that's the point!  There is no
+organization around business logic on folder level. The classes are well named but they
 don't tell you anything about their place in the world.
 
 Lets take the same mess and translate it to Bounded Contexts
@@ -158,9 +160,7 @@ app
 ```
 
 Now without knowing what those classes really do you can kindof see the
-business values the Application is trying to achieve 
-
-
+business values the Application is trying to achieve
 
 
 
