@@ -150,63 +150,70 @@ In traditional Ruby on Rails application you organize code in this way:
 ```
 app
   controllers
-    students_controller.rb
     works_controller.rb
     lessons_controller.rb
-    comments_controller.rb
   model
     teacher.rb
     work.rb
     lesson.rb
     student.rb
     comment.rb
+  mailer
+    student_mailer.rb
+    teacher_mailer.rb
+  services
+    lesson_creation_service.rb
+    work_upload_service.job
   jobs
-    process_works_job
-
+    reprocess_work_thumbnail_job.rb
 lib
-  some_custom_lib_for_correcting_student_age.rb
-  some_custom_lib_for_for_correcting_comment_.rb
+  generate_thumbnail_from_pdf.rb
 ```
 
-Let say the busines logic is following:
 
-* teacher can create losson and add students to the lesson
-* every student can create work inside that lesson
-* once the teacher "delivers" the lesson then other students can place commennts on that work
+> Let's not argue if service objects are "traditional" for Rails.
+> As was pointed out by article [How DHH Organizes His Rails Controllers](http://jeromedalbert.com/how-dhh-organizes-his-rails-controllers/)
+> well organized job objects and controllers can replace all features of service objects.
+> But this is not a topic of my article. For sake of saving time let's
+> assume service objects are Rails feature
 
-Now if this would be a traditional Rails app we would just jam the
-various business logic methods into related models and controllers:
+
+Now the issue is that you are jamming multiple perspective of business
+logic into single class. Take for example `StudentMailer` we would jam
+responsibility for sending email when "student was invited to lesson"
+and "student received comment on his published work"
 
 ```ruby
+class Classroom::StudentMailer < ApplicationMailer
 
-class Lesson < ActiveReccord::Base
-  # ...
-  deliver
-    self.delivered = true
-    self.save
-    Teacher.all do |teacher|
-      Mailer
-    end
+  # invitation to new lesson
+  def new_lesson(lesson_id:, student_id:)
+    @lesson = Lesson.find_by!(id: lesson_id)
+    @student = Student.find_by!(id: student_id)
+
+    mail(to: @student.email, subject: %{New lesson "#{@lesson.title}"})
   end
-  # ..
+
+  # new comment on student's work
+  def comment_received(comment_id:)
+    @comment = Comment.find_by!(id: comment_id)
+
+    to = comment.work.student.email
+    subject = "Student #{comment.author.id} posted comment on your work #{comment.work.id}"
+
+    mail(to: to, subject: subject })
+  end
 end
-
-class Work < ActiveReccord::Base
-  belongs_to :lesson
-  # ...
-
-  def process_works
-    ProcessWorkJob.perform_later(work_id: self.id)
-  end
-
-  def can_be_commented?
-    self.lesson.delivered?
-  end
-  # ...
-end
-
-# ...and so on
 ```
+
+Now this is quite simple example but more the business logic grows
+
+
+
+
+
+
+
 
 Now you cauld jam the busines related update/create methods to be in `app/service` folder (so called Service Objects) and
 authentication methods to `app/policy` (e.g. [Policy Objects](https://blog.eq8.eu/article/policy-object.html), [Pundit Gem](https://github.com/varvet/pundit)
