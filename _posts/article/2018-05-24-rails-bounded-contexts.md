@@ -40,8 +40,7 @@ works.
 So two natural bounded contexts may be:
 
 * `classroom` bounded context
-  * creation of lesson
-  * adding students to the lesson
+  * creation of lesson and adding students to the lesson
   * students receiving email notifications when they are invited to lesson
   * students uploading their work files
   * teachers receiving email notifications when they new work is uploaded to  lesson
@@ -52,12 +51,12 @@ So two natural bounded contexts may be:
   * mark lesson as favorite
 
 As you can imagine both bounded contexts are interacting with same
-models (Student, Teacher, Work, Lesson) just around different
+models (`Student`, `Teacher`, `Work`, `Lesson`) just around different
 business perspective.
 
 That means you would place all related code & classes for `classroom` to one folder
 and all related code to `public_board` to that other folder. As for the shared
-models you would create own representation of those models in give
+models you would create own representation of those models in given
 bounded context `Classroom::Student` (ideally with own DB table)
 and `PublicBoard::Student` (ideally with own DB table)
 
@@ -71,8 +70,8 @@ So what Bounded Contexts are ultimately trying to achieve is organize code into 
 **In order to fetch data or call functionality of different bounded context you would call
 interfaces of those bounded contexts** (you should not call directly classes hidden inside Bounded Context)
 
-> You may be ask: "Are Bounded Contexts something like namespaces e.g.: `/admin` or `/api` ?"
-> No, no their not. Think about it this way: "every Bounded Context have
+> You may be asking: "Are Bounded Contexts something like namespaces e.g.: `/admin` or `/api` ?"
+> No, no their not! Think about it this way: "every Bounded Context have
 > its own code for admin e.g. `classroom/admin`, `public_board/admin`".
 > It's the same structure like if you are building microservices (every
 > microservice is own independent application pulling only data
@@ -84,7 +83,7 @@ interfaces of those bounded contexts** (you should not call directly classes hid
 
 One key benefit of Bounded Contexts is that you can organize your team
 around different Bounded Contexts, therefore you will have less issues
-around multiple developers conflicting each other work.
+around multiple developers git conflicting each other work.
 
 ## Bounded contexts via interface objects
 
@@ -93,7 +92,7 @@ around multiple developers conflicting each other work.
 Let me first clarify:
 
 * solution in this article will **not** introduce any requirements for database split or table split for different models or bounded contexts
-* solution that I'll demonstrate here is **not** advising to split every Rails application class into separate bounded contexts
+* solution that I'll demonstrate here will **not** advise to split every Rails application class into separate bounded contexts
 * we will also **not** separate controllers to different bounded contexts
 
 > Full explanation why can be found in "Summary" part of the article at the bottom.
@@ -120,6 +119,7 @@ app
   controllers
     lessons_controller.rb
     works_controller.rb
+    comments_controller.rb
   views
     # ...
   bounded_contexts
@@ -169,8 +169,13 @@ lesson.public_board.mark_as_favorite(current_user: student1)
 
 So point is that you have nice boundary interfaces e.g.: `lesson.public_board`, `lesson.classroom`.
 
-If you ever need to cross  different bounded contexts from within bounded
-context you can do that via those interfaces. Have a look at `lesson.public_board.cross` calling  `lesson.classroom.cross_boundary_example`
+> Give it a second to think  about how this will clean up your models from business logic.
+> You will end up with lean models and lean controllers
+
+**If you ever need to cross  different bounded context from within bounded
+context you can do that via these  interface objects**. Have a look at `lesson.public_board.cross` calling  `lesson.classroom.cross_boundary_example` in the code example bellow to fully understand what I mean.
+Point is you are able to call different bounded context logic without breaking the
+convention of: "Never call different Bounded Context class directly"
 
 ## Code Example
 
@@ -292,7 +297,9 @@ module Classroom
     end
 
     def create_lesson(students:, title:)
-      Classroom::LessonCreationService.call(students: students, title: title, teacher: teacher)
+      Lesson.transaction do
+        Classroom::LessonCreationService.call(students: students, title: title, teacher: teacher)
+      end
     end
   end
 end
