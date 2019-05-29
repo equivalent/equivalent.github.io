@@ -467,6 +467,23 @@ module Classroom
 end
 ```
 
+```ruby
+# app/bounded_contexts/public_board/lesson_interface.rb
+module Classroom
+  class LessonInterface
+    attr_reader :lesson
+
+    def initialize(lesson)
+      @lesson = lesson
+    end
+
+    def mark_as_favorite(current_user:)
+      # ... some logic
+    end
+  end
+end
+`
+
 
 #### controllers
 
@@ -484,6 +501,13 @@ class LessonsController < ApplicationController
   def publish
     lesson = Lesson.find(params[:lesson_id])
     lesson.classroom.publish
+    # ...
+  end
+
+  def mark_as_favorite
+    lesson = Lesson.find(params[:lesson_id])
+    current_user_student = Student.find(session[:id])
+    lesson.public_board.mark_as_favorite(current_user: current_user_student)
     # ...
   end
 end
