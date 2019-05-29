@@ -673,4 +673,6 @@ are great solution if you are Amazon or Google size company.
 
 ## Discussion
 
-
+* <https://www.reddit.com/r/rails/comments/bulwga/ruby_on_rails_bounded_contexts_via_interface/>
+* <https://www.reddit.com/r/ruby/comments/bulw5y/ruby_on_rails_bounded_contexts_via_interface/>
+* <http://www.rubyflow.com/p/dp2z58-ruby-on-rails-bounded-contexts-via-interface-objects>
