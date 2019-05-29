@@ -166,8 +166,8 @@ lesson.public_board.mark_as_favorite(current_user: student1)
 
 So point is that you have nice boundary interfaces e.g.: `lesson.public_board`, `lesson.classroom`.
 
-> If you ever need to cross  different bounded contexts from within bounded
-> context you can do that via those interfaces
+If you ever need to cross  different bounded contexts from within bounded
+context you can do that via those interfaces. Have a look at `lesson.public_board.cross` calling  `lesson.classroom.cross_boundary_example`
 
 ## Code Example
 
@@ -354,6 +354,10 @@ module Classroom
       lesson.published = true
       lesson.save!
     end
+
+    def cross_boundary_example
+      # some logic related to classroom
+    end
   end
 end
 ```
@@ -482,6 +486,11 @@ module Classroom
 
     def mark_as_favorite(current_user:)
       # ... some logic
+    end
+
+    def cross
+      result = lesson.classroom.cross_boundary_example
+      # ... you can use the result of different boundary in this boundary
     end
   end
 end
