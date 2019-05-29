@@ -173,6 +173,7 @@ So point is that you have nice boundary interfaces e.g.: `lesson.public_board`, 
 
 
 ```ruby
+# db/schema.rb
 ActiveRecord::Schema.define(version: 2019_05_22_134007) do
   create_table "lessons" do |t|
     t.string "title"
@@ -364,8 +365,6 @@ module Classroom
     extend self
 
     def call(student:, lesson:, file:)
-      lesson = Lesson.create!(title: title, teacher: teacher)
-
       work = lesson.works.new(student: student)
       work.file = file
       work.save!
@@ -486,7 +485,7 @@ module Classroom
     end
   end
 end
-`
+```
 
 
 #### controllers
@@ -508,6 +507,7 @@ class LessonsController < ApplicationController
     # ...
   end
 
+  # POST /lessons/345/mark_as_favorite
   def mark_as_favorite
     lesson = Lesson.find(params[:lesson_id])
     current_user_student = Student.find(session[:id])
