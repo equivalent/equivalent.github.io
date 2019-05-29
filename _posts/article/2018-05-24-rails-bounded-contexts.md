@@ -24,7 +24,7 @@ while still keep Rails conventions and best practices. Solution is also friendly
 As this topic is quite extensive article is separated in following
 sections:
 
-1. Bounded Contexts general theory
+1. What are Bounded Contexts
 2. Bounded Contexts via Interface Objects (theory around my solution)
 3. Example Rails code
 4. Summary
@@ -32,13 +32,15 @@ sections:
 
 If something too long to read please just skip to section you are interested in.
 
-## Bounded Contexts general theory
+## What are Bounded Contexts
 
 The point of [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html) is to organize the code
 inside **business boundaries**.
 
 For example let say we are building an education application
 in which you have `students` `teachers` and their `works` inside `lessons`.
+After `lesson` is done (published) other students can `comment` each other
+works.
 
 So two natural bounded contexts may be:
 
@@ -71,7 +73,7 @@ So what Bounded Contexts are ultimately trying to achieve is organize code into 
 ![bounded contexts example 1](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/bounded-context-1.jpg)
 
 **In order to fetch data or call functionality of different bounded context you would call
-interfaces of those bounded contexts** (you should not call directly Bounded Context classes)
+interfaces of those bounded contexts** (you should not call directly classes hidden inside Bounded Context)
 
 > You may be ask: "Are Bounded Contexts something like namespaces e.g.: `/admin` or `/api` ?"
 > No, no their not. Think about it this way: "every Bounded Context have
@@ -87,9 +89,11 @@ interfaces of those bounded contexts** (you should not call directly Bounded Con
 
 ## Bounded contexts via interface objects
 
+(our solution)
+
 Let me first clarify:
 
-* solution in this article will **not** introduce any requirements for database / table split for different models / bounded contexts
+* solution in this article will **not** introduce any requirements for database split or table split for different models or bounded contexts
 * solution that I'll demonstrate here is **not** advising to split every Rails app class into separate bounded contexts
 * we will also **not** separate controllers to different bounded contexts
 
