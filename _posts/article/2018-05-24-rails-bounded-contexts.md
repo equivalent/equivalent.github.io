@@ -4,8 +4,11 @@ categories: article
 title:  "Ruby on Rails - Bounded contexts via interface objects"
 disq_id: 50
 description:
-  Rails Bounded contexts via interface objects
-  Article in progress
+  In this Article I'll show you how to organize business
+  classes in Ruby on Rails so your application
+  can benefit from Bounded Contexts while still keep Rails conventions and best practices.
+  Solution is also friendly for junior developers.
+
 ---
 
 This article is not finished yet !!!
@@ -163,6 +166,9 @@ work.public_board.post_comment(student: student2, title: "Great work mate!")
 ```
 
 So point is that you have nice boundary interfaces e.g.: `lesson.public_board`, `lesson.classroom`.
+
+> If you ever need to cross  different bounded contexts from within bounded
+> context you can do that via those interfaces
 
 ## Code Example
 
