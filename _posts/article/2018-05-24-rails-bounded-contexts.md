@@ -580,18 +580,18 @@ following way for over a year (dating since late 2017)
 
 Furthermore I also use this pattern for  personal projects in which the server renders HTML (following [majestic monolith](https://m.signalvnoise.com/the-majestic-monolith/) pattern)
 
-These applications are quite extensive in business logic. Main goal
-was to write application code for long term maintainability,
-understandability and team management (as we can organize team members
+These applications are quite extensive in business logic. Our main goal
+is to write application code for long term maintainability,
+code understandability and team management (as we can organize team members
 around different bounded contexts).
 
-> If you creating one off small project for couple of months it may not be the best idea.
+> If you creating  small project that will run for couple of months then this may be overkill.
 
-Let me epmasize one more thing: This article took more over a year to be finalize. Behind it are
+Let me emphasize one more thing: This article took more over a year to be finalize. Behind it are
 countless hours of learning, comparing and trying solutions. Lot of real team development. Trial
 and error so you have final form that I'm 100% confident with.
 
-#### this solution is not "isolated enough"
+#### This solution is not "isolated enough"
 
 Yes that is correct. But main goal of this solution is to introduce
 level of organization (code and team) while still keeping the true
@@ -603,11 +603,12 @@ conventions may be limiting for large applications they form
 basis of community and framework that is still dominating in Ruby world
 for more then 15 years.
 
-Therefore this solution still uses traditional ActiveJob, Mailers, Puma.
+Therefore this solution still uses traditional ActiveJob, Mailers, Puma
+and other vanilla Rails goodies and practices.
 
 Solution is not enforcing new way of thinking around application engine.
 
-#### this solution is overkill for Rails
+#### This solution is overkill for Rails
 
 I've created entire post where I'll try to convince you that this level of organization is needed.
 Please read [Why you should consider Bounded Contexts in Rails](https://blog.eq8.eu/til/why-bounded-contexts-are-needed-in-rails.html) where I'll go into details.
@@ -652,21 +653,22 @@ benefits of event architecture can be achieved by well designed ActiveJobs but t
 
 Other good references explaining Bounded context is [Elixir Phoenix 1.3 by Chris McCord - bounded context in Phoenix](https://youtu.be/tMO28ar0lW8?t=15m31s). It's about different programming language => Elixir (functional programming lang.)
 
-To me this talk was quite opening to way of thinking of bounded contexts
-in Monolith so I definitely recommending to watch few minutes of that
-talk abound bounded contexts 
-
+To me this talk was quite eye-opening in term of how to  think of bounded contexts
+in Monolith. So I definitely recommending to watch few minutes of that
+talk abound bounded contexts.
 
 #### Microservices
 
-Like I said microservices are the ultimate respresentation of Bounded
+Like I said microservices are the ultimate representation of Bounded
 Contexts. I've covered this topic in a talk [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march) ([youtube mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw))
 
 Or if you want even better talk I'm recommending [Microservices talk by Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
 
 In general microservices are isolated applications that will just
-exchange data inbetween each other. Although they are cool on paper they
+exchange data / call actions in-between each other via HTTP calls. Although they are cool on paper they
 are super hard to do right, especially if you are small team. But they
 are great solution if you are Amazon or Google size company.
+
+## Discussion
 
 
