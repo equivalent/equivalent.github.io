@@ -156,16 +156,15 @@ lesson = teacher.classroom.create_lesson(students: [student1, student2], title: 
 some_file = File.open('/tmp/some_file.doc')
 lesson.classroom.upload_work(student: student1, file: some_file)
 
+lesson.public_board.mark_as_favorite(current_user: student1)
+
 work = Work.find(468)
 work.public_board.post_comment(student: student2, title: "Great work mate!")
 ```
 
+So point is that you have nice boundary interfaces e.g.: `lesson.public_board`, `lesson.classroom`.
+
 ## Code Example
-
-
-While keeping Rails models & controllers  first class citizens of
-application not violiting any Rails best practices. Bounded context
-classes will be invoked directly from within the related model:
 
 
 ```ruby
