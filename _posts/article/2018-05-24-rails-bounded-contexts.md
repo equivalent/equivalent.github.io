@@ -21,14 +21,15 @@ classes in [Ruby on Rails](https://rubyonrails.org/) so your application
 can benefit from [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html)
 while still keep Rails conventions and best practices.
 
-> This will be really pragmatic solution. I'll enlist and compare other Rails Bounded Context
-> solutions at the bottom of the article.
+Solution will **not** introduce any requirements for database split or any
+dramatic mindset colliding with traditional Rails way of thinking around
+web application therefore is friendly for junior developers.
 
 As this topic is quite extensive article is separated in following
 sections:
 
 1. Bounded Contexts general theory
-2. Bounded contexts via interface objects (theory around my solution)
+2. Bounded Contexts via Interface Objects (theory around my solution)
 3. Example Rails code
 4. Summary
 5. Comparison of other ways how to do Bounded Contexts in Rails
@@ -57,11 +58,14 @@ So two natural bounded contexts may be:
   * students will be notified when new comments are added on their work
 
 As you can imagine both bounded contexts are interacting with same
-"models" (Student, Teacher, Work, Lesson) just around different
+models (Student, Teacher, Work, Lesson) just around different
 business perspective.
 
-That means you would place all related code for `classroom` to one folder
-and all related code to `public_board` to that folder.
+That means you would place all related code & classes for `classroom` to one folder
+and all related code to `public_board` to that other folder. As for the shared
+models you would create own representation of those models in give
+bounded context `Classroom::Student` (ideally with own DB table)
+and `PublicBoard::Student` (ideally with own DB table)
 
 So what you are ultimately trying to achieve is organize code into layers similar to this:
 
@@ -77,11 +81,15 @@ So what you are ultimately trying to achieve is organize code into layers simila
 > [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
 > [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
 
+
 ## Bounded contexts via interface objects
 
 Solution that I'll demonstrate here is **not** advising to split every
 Rails app class into separate bounded contexts
 but rather creating pragmatic partial bounded contexts only around business logic classes.
+
+> Full explanation why can be found in "Summary" part of the article at the bottom.
+> I'll also enlist and compare other Rails Bounded Context solutions.
 
 This means we will keep `views`, `models`,`controllers`, as they are in `app/views`
 `app/controllers`, `app/models`.
@@ -119,7 +127,7 @@ app
 ```
 
 
-![bounded contexts example 1](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/bounded-context-1.jpg)
+![bounded contexts example 1](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/bounded-context-2.jpg)
 
 
 But we will go even further. We will introduce **interface objects**
