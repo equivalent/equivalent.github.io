@@ -173,7 +173,6 @@ ActiveRecord::Schema.define(version: 2019_05_22_134007) do
   create_table "lessons" do |t|
     t.string "title"
     t.bigint "teacher_id"
-  queue_as :maintenance
     t.boolean "published", default: false
   end
 
@@ -258,6 +257,8 @@ end
 So far standard Rails stuff, now let's start introducing Bounded
 Contexts
 
+#### Bounded Contexts
+
 
 ```ruby
 # config/application.rb
@@ -269,22 +270,6 @@ module MyApplication
   end
 end
 ```
-
-
-
-student = Student.find(123)
-student = Student.find(654)
-
-# Lesson creation
-lesson = teacher.classroom.create_lesson(students: [student1, student2], title: "Battle of Kursk")
-
-# Student Work file upload
-some_file = File.open('/tmp/some_file.doc')
-lesson.classroom.upload_work(student: student1, file: some_file)
-
-work = Work.find(468)
-work.work_interaction.post_comment(student: student2, title: "Great work mate!")
-
 
 ```ruby
 # app/bounded_contexts/classroom/teacher_interface.rb
@@ -424,6 +409,55 @@ module Classroom
 
       # do something with the work
     end
+  end
+end
+```
+
+#### controllers
+
+```ruby
+class LessonsController < ApplicationController
+
+  # POST /lessons
+  def create
+    students = Student.where(id: params[:student_ids])
+    lesson = teacher.classroom.create_lesson(students: students, title: params[:title])
+    # ...
+  end
+
+  # POST /lessons/345/publish
+  def publish
+    lesson = Lesson.find(params[:lesson_id])
+    lesson.classroom.publish
+    # ...
+  end
+end
+```
+
+```ruby
+class WorksController < ApplicationController
+
+  # POST /lesson/123/works
+  def create
+    lesson = Lesson.find(params[:lesson_id])
+    current_user_student = Student.find(session[:id])
+
+    lesson.classroom.upload_work(student: current_user_student, file: params[:file])
+    # ...
+  end
+end
+```
+
+```ruby
+class CommentsController < ApplicationController
+
+  # POST /works/123/comments
+  def create
+    work = Work.find(params[:work_id])
+    current_user_student = Student.find(session[:id])
+
+    work.work_interaction.post_comment(student: current_user_student, title: params[:title])
+    # ...
   end
 end
 ```
