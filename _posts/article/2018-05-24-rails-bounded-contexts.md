@@ -94,7 +94,7 @@ interfaces of those bounded contexts** (you should not call directly classes hid
 Let me first clarify:
 
 * solution in this article will **not** introduce any requirements for database split or table split for different models or bounded contexts
-* solution that I'll demonstrate here is **not** advising to split every Rails app class into separate bounded contexts
+* solution that I'll demonstrate here is **not** advising to split every Rails application class into separate bounded contexts
 * we will also **not** separate controllers to different bounded contexts
 
 > Full explanation why can be found in "Summary" part of the article at the bottom.
@@ -162,81 +162,12 @@ work.work_interaction.post_comment(student: student2, title: "Great work mate!")
 
 ## Code Example
 
-In traditional Ruby on Rails application you organize code in this way:
 
-```
-app
-  controllers
-    works_controller.rb
-    lessons_controller.rb
-  model
-    teacher.rb
-    work.rb
-    lesson.rb
-    student.rb
-    comment.rb
-  mailer
-    student_mailer.rb
-    teacher_mailer.rb
-  services
-    lesson_creation_service.rb
-    work_upload_service.job
-  jobs
-    reprocess_work_thumbnail_job.rb
-lib
-  generate_thumbnail_from_pdf.rb
-```
-
-
-> Let's not argue if service objects are "traditional" for Rails.
-> As was pointed out by article [How DHH Organizes His Rails Controllers](http://jeromedalbert.com/how-dhh-organizes-his-rails-controllers/)
-> well organized job objects and controllers can replace all features of service objects.
-> But this is not a topic of my article. For sake of saving time let's
-> assume service objects are Rails feature
-
-
-Now the issue is that you are jamming multiple perspective of business
-logic into single class. Take for example `StudentMailer` we would jam
-responsibility for sending email when "student was invited to lesson"
-and "student received comment on his published work"
-
-```ruby
-class Classroom::StudentMailer < ApplicationMailer
-
-  # invitation to new lesson
-  def new_lesson(lesson_id:, student_id:)
-    @lesson = Lesson.find_by!(id: lesson_id)
-    @student = Student.find_by!(id: student_id)
-
-    mail(to: @student.email, subject: %{New lesson "#{@lesson.title}"})
-  end
-
-  # new comment on student's work
-  def comment_received(comment_id:)
-    @comment = Comment.find_by!(id: comment_id)
-
-    to = comment.work.student.email
-    subject = "Student #{comment.author.id} posted comment on your work #{comment.work.id}"
-
-    mail(to: to, subject: subject })
-  end
-end
-```
-
-Now this is quite simple example but more the business logic grows
+Different business logic would be in be in
+same named classes (Mailers, Jobs, Services)
 
 
 
-
-
-
-
-
-Now you cauld jam the busines related update/create methods to be in `app/service` folder (so called Service Objects) and
-authentication methods to `app/policy` (e.g. [Policy Objects](https://blog.eq8.eu/article/policy-object.html), [Pundit Gem](https://github.com/varvet/pundit)
-
-But still you will organize  along the "type of classes" not really do
-any organization around "business logic"
 
 
 ```
