@@ -163,96 +163,176 @@ work.work_interaction.post_comment(student: student2, title: "Great work mate!")
 ## Code Example
 
 
-Different business logic would be in be in
-same named classes (Mailers, Jobs, Services)
-
-
-
-
-
-```
-app
-  controllers
-    students_controller.rb
-    works_controller.rb
-    lessons_controller.rb
-    comments_controller.rb
-  model
-    teacher.rb
-    work.rb
-    lesson.rb
-    student.rb
-    comment.rb
-  jobs
-    process_works_job
-
-lib
-  some_custom_lib_for_correcting_student_age.rb
-  some_custom_lib_for_for_correcting_comment_.rb
-```
-
-
-
-Now theory of bounded
-
-
-If you do this right you will end up with a folder structure like this:
-
-
-Theory of bounded context is to organize your code according to busines
-logic. 
-
-```
-app
-  views
-    baskets
-      show.erb
-  models
-    product.rb
-    basket.rb
-  controllers
-    baskets_controller.rb
-  bounded_context
-    discounts
-      basket_value.rb
-      basket_serializer.rb
-      twenty_percent_discount.rb
-      compare_competitors_prices_discount.rb
-      evil_corp_pricing_gateway.rb
-```
-
 While keeping Rails models & controllers  first class citizens of
 application not violiting any Rails best practices. Bounded context
 classes will be invoked directly from within the related model:
 
+
 ```ruby
-@basket.discount.overal_discount
-@basket.discount.total_price_after_discount
-@basket.discount.as_json
+ActiveRecord::Schema.define(version: 2019_05_22_134007) do
+  create_table "lessons" do |t|
+    t.string "title"
+    t.bigint "teacher_id"
+  queue_as :maintenance
+    t.boolean "published", default: false
+  end
+
+  create_table "students" do |t|
+    t.string "email"
+  end
+
+  create_table "students_lessons" do |t|
+    t.bigint "lesson_id"
+    t.bigint "student_id"
+  end
+
+  create_table "teachers" do |t|
+    t.string "email"
+  end
+
+  create_table "works" do |t|
+    t.bigint "lesson_id"
+    t.bigint "student_id"
+  end
+
+  create_table "comments" do |t|
+    t.bigint "work_id"
+    t.bigint "student_id"
+  end
+end
+```
+
+```ruby
+# app/models/students.rb
+class Student < ActiveRecord::Base
+  has_many :works
+  has_many :comments
+  has_and_belongs_to_many :lessons
+end
+```
+
+```ruby
+# app/models/teacher.rb
+class Teacher < ActiveRecord::Base
+  has_many :lessons
+
+  def classroom
+    @classroom ||= Classroom::TeacherInterface.new(self)
+  end
+end
+```
+
+```ruby
+# app/models/lesson.rb
+class Lesson < ActiveRecord::Base
+  belongs_to :teacher
+  has_many :works
+  has_and_belongs_to_many :students
+
+  def classroom
+    @classroom ||= Classroom::LessonInterface.new(self)
+  end
+end
+```
+
+```ruby
+# app/models/work.rb
+class Work < ActiveRecord::Base
+  belongs_to :student
+  belongs_to :lesson
+
+  def classroom
+    @classroom ||= Classroom::WorkInterface.new(self)
+  end
+end
+```
+
+```ruby
+# app/models/comment.rb
+class Comment < ActiveRecord::Base
+  belongs_to :student
+  belongs_to :work
+end
+```
+
+So far standard Rails stuff, now let's start introducing Bounded
+Contexts
+
+
+```ruby
+# config/application.rb
+module MyApplication
+  class Application < Rails::Application
+    # ...
+    config.autoload_paths << Rails.root.join('app', 'bounded_contexts')
+    # ...
+  end
+end
 ```
 
 
-```ruby
-student1 = Student.find(123)
-student2 = Student.find(654)
+
+student = Student.find(123)
+student = Student.find(654)
 
 # Lesson creation
+lesson = teacher.classroom.create_lesson(students: [student1, student2], title: "Battle of Kursk")
 
-class Classroom::LessonCreationService
-  def call(students:, title:)
-    lesson = Lesson.create!(title: title)
+# Student Work file upload
+some_file = File.open('/tmp/some_file.doc')
+lesson.classroom.upload_work(student: student1, file: some_file)
 
-    students.each do |student|
-      lesson.students << student
+work = Work.find(468)
+work.work_interaction.post_comment(student: student2, title: "Great work mate!")
+
+
+```ruby
+# app/bounded_contexts/classroom/teacher_interface.rb
+module Classroom
+  class TeacherInterface
+    attr_reader :teacher
+
+    def initialize(teacher)
+      @teacher = teacher
+    end
+
+    def create_lesson(students:, title:)
+      Classroom::LessonCreationService.call(students: students, title: title, teacher: teacher)
+    end
+  end
+end
+```
+
+```ruby
+# app/bounded_contexts/classroom/lesson_creation_service.rb
+module Classroom
+  module LessonCreationService
+    extend self
+
+    def call(students:, teacher:, title:)
+      lesson = Lesson.create!(title: title, teacher: teacher)
+
+      students.each do |student|
+        lesson.students << student
+        notify_student(student, lesson)
+      end
+
+      lesson
+    end
+
+    private
+
+    def notify_student(student, lesson)
       Classroom::StudentMailer
         .new_lesson(lesson_id: lesson.id, student_id: student.id)
         .deliver_later
     end
-
-    lesson
   end
 end
+```
 
+```ruby
+# app/bounded_contexts/classroom/student_mailer.rb
 class Classroom::StudentMailer < ApplicationMailer
   def new_lesson(lesson_id:, student_id:)
     @lesson = Lesson.find_by!(id: lesson_id)
@@ -261,21 +341,92 @@ class Classroom::StudentMailer < ApplicationMailer
     mail(to: @student.email, subject: %{New lesson "#{@lesson.title}"})
   end
 end
-
-lesson = Classroom::LessonCreationService.call(students: [student1, student2], title: "Battle of Kursk")
-
-# Student Work file upload
-some_file = File.open('/tmp/some_file.doc') # or this could be passed from controller as params[:file]
-work = Work.create(lesson: lesson, file: some_file, student: student1 )
-
-##
-lesson.classroom.deliver_lesson
-
-work = Work.find(468)
-work.work_interaction.post_comment(student: student2, title: "Great work mate!")
 ```
 
 
+```ruby
+# app/bounded_contexts/classroom/lesson_interface.rb
+module Classroom
+  class LessonInterface
+    attr_reader :lesson
+
+    def initialize(lesson)
+      @lesson = lesson
+    end
+
+    def upload_work(student:, file:)
+      Classroom::WorkUploadService.call(student: student, lesson: lesson, file: file)
+    end
+
+    def publish
+      lesson.published = true
+      lesson.save!
+    end
+  end
+end
+```
+
+```ruby
+# app/bounded_contexts/classroom/work_upload_service.rb
+module Classroom
+  module WorkUploadService
+    extend self
+
+    def call(student:, lesson:, file:)
+      lesson = Lesson.create!(title: title, teacher: teacher)
+
+      work = lesson.works.new(student: student)
+      work.file = file
+      work.save!
+
+      notify_teacher(work, teacher)
+      schedule_reprocess_work_thumbnail(work)
+      work
+    end
+
+    private
+
+    def notify_teacher(work, teacher)
+      Classroom::TeacherMailer
+        .new_work_uploaded_to_lesson(work_id: work.id, teacher_id: teacher.id)
+        .deliver_later
+    end
+
+    def schedule_reprocess_work_thumbnail(work)
+      Classroom::ReprocessWorkThumbnailJob.perform_later(work_id: work.id)
+    end
+  end
+end
+```
+
+```ruby
+# app/bounded_contexts/classroom/teacher_mailer.rb
+module Classroom
+  class TeacherMailer < ApplicationMailer
+    def new_work_uploaded_to_lesson(work_id:, teacher_id:)
+      @work = Work.find_by!(id: work_id)
+      @teacher = Teacher.find_by!(id: teacher_id)
+
+      mail(to: @teacher.email, subject: %{New work was added "#{@work.id}"})
+    end
+  end
+end
+```
+
+```ruby
+# app/bounded_contexts/classroom/reprocess_work_thumbnail_job.rb
+module Classroom
+  class ReprocessWorkThumbnailJob < ActiveJob::Base
+    queue_as :classroom
+
+    def perform(work_id:)
+      work = Work.find_by!(id: work_id)
+
+      # do something with the work
+    end
+  end
+end
+```
 
 ## Conclusion
 
