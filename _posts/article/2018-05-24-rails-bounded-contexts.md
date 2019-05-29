@@ -82,6 +82,9 @@ interfaces of those bounded contexts** (you should not call directly classes hid
 > [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
 > [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
 
+One key benefit of Bounded Contexts is that you can organize your team
+around different Bounded Contexts, therefore you will have less issues
+around multiple developers conflicting each other work.
 
 ## Bounded contexts via interface objects
 
@@ -556,60 +559,100 @@ class CommentsController < ApplicationController
 end
 ```
 
-## Conclusion
+## Summary
 
 We (me and my colleagues) are writing Backend code for JSON API Rails application
-following way for over a year
-(dating since late 2017) 
+following way for over a year (dating since late 2017)
 
-Furthermore I also use this pattern for  personal projects in which the server renders HTML ([majestic monolith](https://m.signalvnoise.com/the-majestic-monolith/))
+Furthermore I also use this pattern for  personal projects in which the server renders HTML (following [majestic monolith](https://m.signalvnoise.com/the-majestic-monolith/) pattern)
 
-These applications are quite extensive in business logic. Therefore
-consider the following pattern only when building long running large
-applications where long term maintainability is the key.
+These applications are quite extensive in business logic. Main goal
+was to write application code for long term maintainability,
+understandability and team management (as we can organize team members
+around different bounded contexts).
 
-Let me epmasize one more thing: This article took more over a year to be finilized. Behind it are
+> If you creating one off small project for couple of months it may not be the best idea.
+
+Let me epmasize one more thing: This article took more over a year to be finalize. Behind it are
 countless hours of learning, comparing and trying solutions. Lot of real team development. Trial
 and error so you have final form that I'm 100% confident with.
 
+#### this solution is not "isolated enough"
 
-## Other ways to do Bounded Contexts in Rails
-
-
-> You can think about this folders  as Microservices where every responsibility lives in its own application
->
-> If you don't understand what I mean by that please watch talk
-> [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
-> [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
-
-There are several good resources on Bounded Contexts in Ruby on Rails. Some
-are calling for [splitting Rails into Bounded Context via Rails
-Engine](https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4)
-
-> basically you create own Rails Engine `classroom` and another
-> engine `public_board`. That means controllers and models are in
-> their own Rails engine
-
-Some are calling for [event architecture](https://www.youtube.com/watch?v=STKCRSUsyP0) to achieve
-Bounded context like in [Domain Driven Design in Rails book](https://blog.arkency.com/domain-driven-rails/)
-
-> book is about creating isolated bounded contexts and then interacting in-between
-> those bounded contexts via publishing events. Check out their [gem](https://railseventstore.org/) for more info.
-
-Although I really like and respect all these suggestions they all are
-trying to introduce something that Rails was not designed for. In my
-opinion they are
-trying to introduce new way of thinking so much that junior developers
-cannot catch up with them.
+Yes that is correct. But main goal of this solution is to introduce
+level of organization (code and team) while still keeping the true
+nature and experience of Ruby on Rails software development
 
 Biggest benefit of Rails is that it is trying to be as friendly as
-possible to junior and senior developers by following certain conventions. And although those
-conventions may be annoying/limiting for large applications they form
+possible to junior (and senior) developers by following certain conventions. And although those
+conventions may be limiting for large applications they form
 basis of community and framework that is still dominating in Ruby world
 for more then 15 years.
 
-Other good references explaining Bounded context
+Therefore this solution still uses traditional ActiveJob, Mailers, Puma.
 
-* [Elixir Phoenix 1.3 by Chris McCord - bounded context in Phoenix](https://youtu.be/tMO28ar0lW8?t=15m31s)
+Solution is not enforcing new way of thinking around application engine.
+
+#### this solution is overkill for Rails
+
+I've created entire post where I'll try to convince you that this level of organization is needed.
+Please read [Why you should consider Bounded Contexts in Rails](https://blog.eq8.eu/til/why-bounded-contexts-are-needed-in-rails.html) where I'll go into details.
+
+## Other ways to do Bounded Contexts in Rails
+
+There are several good resources on Bounded Contexts in Ruby on Rails:
+
+#### Rails engine based Bounded Contexts
+
+In the article [The Modular Monolith: Rails Architecture](https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4) by Dan Manges you can read about their solution. They've achieved
+bounded contexts by creating [Rails Engine](https://guides.rubyonrails.org/engines.html) for every bounded context
+
+I've tried this solution on my personal project I found it bit hard to
+maintain by myself. Similar to microservices it feels like you are
+working on several different applications rather than one monolith. I can totally see
+how this can work really well if the company have large team of
+developers. But small teams will feel the pain of slow progress.
+
+Drawback of this solution was also that ActiveRecord can use only one
+database connection (ideally you want own database for every Bounded
+Context) But good news is that soon Rails 6 will be released featuring
+[multiple db connections](https://rubyinrails.com/2019/03/25/rails-6-activerecord-multi-db-connection-switching/)
+
+#### Event Driven architecture 
+
+In the book [Domain Driven Design in Rails book](https://blog.arkency.com/domain-driven-rails/) (paid resource) you
+can read upon how to achieve independent bounded contexts by following
+Event Architecture.
+
+> to better understand what is event architecture I recommending talk [The Many Meanings of Event-Driven Architecture • Martin Fowler](https://www.youtube.com/watch?v=STKCRSUsyP0)
+
+In short you create isolated bounded contexts and then interacting in-between
+those bounded contexts via publishing events. Check out their ruby gem [event store](https://railseventstore.org/) for more info.
+
+Problem is that although I respect and admire this solution it brings
+quite different way how to think about the whole application as much
+it's no longer the good old pragmatic Rails. Arguably many of the
+benefits of event architecture can be achieved by well designed ActiveJobs but that's a topic for another article.
+
+#### Bounded contexts in Phoenix (Elixir)
+
+Other good references explaining Bounded context is [Elixir Phoenix 1.3 by Chris McCord - bounded context in Phoenix](https://youtu.be/tMO28ar0lW8?t=15m31s). It's about different programming language => Elixir (functional programming lang.)
+
+To me this talk was quite opening to way of thinking of bounded contexts
+in Monolith so I definitely recommending to watch few minutes of that
+talk abound bounded contexts 
+
+
+#### Microservices
+
+Like I said microservices are the ultimate respresentation of Bounded
+Contexts. I've covered this topic in a talk [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march) ([youtube mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw))
+
+Or if you want even better talk I'm recommending [Microservices talk by Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
+
+In general microservices are isolated applications that will just
+exchange data inbetween each other. Although they are cool on paper they
+are super hard to do right, especially if you are small team. But they
+are great solution if you are Amazon or Google size company.
 
 
