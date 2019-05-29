@@ -499,6 +499,13 @@ module Classroom
 end
 ```
 
+> you can place any types of objects into these bounded contexts like
+> [Policy Objects](https://blog.eq8.eu/article/policy-object.html),
+> [Query Objects](https://blog.eq8.eu/article/rails-association-relation-arel-magic.html),[Serializer Qbjects](https://blog.eq8.eu/article/rspec-json-api-testing.html). Whatever make sense for your application.
+>
+> In the JSON API application I work for we have policy objects and serializers not in
+> bounded contexts (so in `app/serializers/` `app/policy`) because it
+> make sense for us
 
 #### controllers
 
