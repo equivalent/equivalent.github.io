@@ -157,7 +157,7 @@ some_file = File.open('/tmp/some_file.doc')
 lesson.classroom.upload_work(student: student1, file: some_file)
 
 work = Work.find(468)
-work.work_interaction.post_comment(student: student2, title: "Great work mate!")
+work.public_board.post_comment(student: student2, title: "Great work mate!")
 ```
 
 ## Code Example
@@ -197,6 +197,7 @@ ActiveRecord::Schema.define(version: 2019_05_22_134007) do
   create_table "comments" do |t|
     t.bigint "work_id"
     t.bigint "student_id"
+    t.string "content"
   end
 end
 ```
@@ -239,6 +240,7 @@ end
 class Work < ActiveRecord::Base
   belongs_to :student
   belongs_to :lesson
+  has_many :comments
 
   def classroom
     @classroom ||= Classroom::WorkInterface.new(self)
@@ -413,6 +415,59 @@ module Classroom
 end
 ```
 
+
+```ruby
+# app/bounded_contexts/public_board/work_interface.rb
+module PublicBoard
+  class WorkInterface
+    attr_reader :work
+
+    def initialize(work)
+      @work = work
+    end
+
+    def can_post_comment?(current_user:)
+      work.lesson.published && current_user.is_a?(Student)
+    end
+
+    def post_comment(student:, content:)
+      comment = @work.comments.create!(student: student, content: content)
+      PublicBoard::CommentPostedJob.perform_later(comment_id: comment.id)
+      PublicBoard::StudentMailer.new_comment_on_your_work(comment_id: comment.id).deliver_later
+      comment
+    end
+  end
+end
+```
+
+```ruby
+# app/bounded_contexts/public_board/comment_posted_job.rb
+module Classroom
+  class CommentPostedJob < ActiveJob::Base
+    queue_as :public_board
+
+    def perform(comment_id:)
+      comment = Comment.find_by!(id: comment_id)
+      # do something with the comment
+    end
+  end
+end
+```
+
+```ruby
+# app/bounded_contexts/public_board/student_mailer.rb
+module Classroom
+  class StudentMailer < ActiveJob::Base
+
+    def new_comment_on_your_work(comment_id:)
+      comment = Comment.find_by!(id: comment_id)
+      # ...
+    end
+  end
+end
+```
+
+
 #### controllers
 
 ```ruby
@@ -456,8 +511,10 @@ class CommentsController < ApplicationController
     work = Work.find(params[:work_id])
     current_user_student = Student.find(session[:id])
 
-    work.work_interaction.post_comment(student: current_user_student, title: params[:title])
-    # ...
+    if work.public_board.can_post_comment?(current_user: current_user_student)
+      work.work_interaction.post_comment(student: current_user_student, content: params[:content])
+      # ...
+    end
   end
 end
 ```
