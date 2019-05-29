@@ -27,6 +27,8 @@ sections:
 
 If something too long to read please just skip to section you are interested in.
 
+> Article was drafted May 24, 2018, officially published May 30th 2019
+
 ## What are Bounded Contexts
 
 The point of [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html) is to organize the code
