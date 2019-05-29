@@ -20,7 +20,7 @@ As this topic is quite extensive article is separated in following
 sections:
 
 1. What are Bounded Contexts
-2. Bounded Contexts via Interface Objects (theory around my solution)
+2. Bounded Contexts via Interface Objects (theory around this pragmatic solution)
 3. Example Rails code
 4. Summary
 5. Comparison of other ways how to do Bounded Contexts in Rails
@@ -49,6 +49,7 @@ So two natural bounded contexts may be:
 * `public_board` bounded context
   * once the lesson is published students can comment on each other works
   * students will be notified when new comments are added on their work
+  * mark lesson as favorite
 
 As you can imagine both bounded contexts are interacting with same
 models (Student, Teacher, Work, Lesson) just around different
@@ -141,20 +142,26 @@ the Rails models.
 Something like:
 
 ```ruby
+teacher = Teacher.find(567)
 student = Student.find(123)
 student = Student.find(654)
 
 # Lesson creation
 lesson = teacher.classroom.create_lesson(students: [student1, student2], title: "Battle of Kursk")
 
-# Student Work file upload
+# Student uploads Work file
 some_file = File.open('/tmp/some_file.doc')
 lesson.classroom.upload_work(student: student1, file: some_file)
 
-lesson.public_board.mark_as_favorite(current_user: student1)
+# publish lesson
+lesson.classroom.publish
 
+# post comment to work
 work = Work.find(468)
 work.public_board.post_comment(student: student2, title: "Great work mate!")
+
+# Student marks lesson as favorite
+lesson.public_board.mark_as_favorite(current_user: student1)
 ```
 
 So point is that you have nice boundary interfaces e.g.: `lesson.public_board`, `lesson.classroom`.
