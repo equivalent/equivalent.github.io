@@ -11,14 +11,6 @@ description:
 
 ---
 
-This article is not finished yet !!!
-
-> This article is still in progress !!! Lot of developers asked me for a
-> preview of this article that's why I'm releasing it unfinished.
->
-> please check on later once it's officially relased
-
-
 In this Article I'll show you how to organize business
 classes in [Ruby on Rails](https://rubyonrails.org/) so your application
 can benefit from [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html)
