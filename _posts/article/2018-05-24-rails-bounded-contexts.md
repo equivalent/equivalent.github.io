@@ -1,7 +1,7 @@
 ---
 layout: article_post
 categories: article
-title:  "Ruby on Rails - pragmatic bounded contexts"
+title:  "Ruby on Rails - Bounded contexts via interface objects"
 disq_id: 50
 description:
   Rails Bounded contexts via interface objects
@@ -21,18 +21,21 @@ classes in [Ruby on Rails](https://rubyonrails.org/) so your application
 can benefit from [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html)
 while still keep Rails conventions and best practices.
 
-> This will be really pragmatic solution. I'll enlist other Rails Bounded Context
+> This will be really pragmatic solution. I'll enlist and compare other Rails Bounded Context
 > solutions at the bottom of the article.
 
 As this topic is quite extensive article is separated in following
 sections:
 
-1. Bounded Contexts theory
-2. Theory around this solution
-3. Example code
-4. Comparison of other ways how to do Bounded Contexts in Rails
+1. Bounded Contexts general theory
+2. Bounded contexts via interface objects (theory around my solution)
+3. Example Rails code
+4. Summary
+5. Comparison of other ways how to do Bounded Contexts in Rails
 
-## Bounded Contexts theory
+If something too long to read please just skip to section you are interested in.
+
+## Bounded Contexts general theory
 
 The point of [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html) is to organize the code
 inside **business boundaries**.
@@ -42,15 +45,16 @@ in which you have `students` `teachers` and their `works` inside `lessons`.
 
 So two natural bounded contexts may be:
 
-* `classroom`
+* `classroom` bounded context
   * creation of lesson
   * adding students to the lesson
+  * students receiving email notifications when they are invited to lesson
   * students uploading their work files
-  * students and teachers receiving email notifications when they are invited to lesson
-  * lesson delivery
-* `public_board`
+  * teachers receiving email notifications when they new work is uploaded to  lesson
+  * publish  the lesson (all the works)
+* `public_board` bounded context
   * once the lesson is published students can comment on each other works
-  * students will be notified when new comments are added for their work
+  * students will be notified when new comments are added on their work
 
 As you can imagine both bounded contexts are interacting with same
 "models" (Student, Teacher, Work, Lesson) just around different
@@ -63,56 +67,77 @@ So what you are ultimately trying to achieve is organize code into layers simila
 
 ![bounded contexts example 1](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/bounded-context-1.jpg)
 
-> You may be ask: "So are Bounded Contexts something like namespaces e.g.: `/admin` or `/api` ?"
-> No, no their not. Think about this way every Bounded Context have
-> its own code for admin e.g. `classroom/admin`, `public_board/admin`.
+> You may be ask: "Are Bounded Contexts something like namespaces e.g.: `/admin` or `/api` ?"
+> No, no their not. Think about it this way: "every Bounded Context have
+> its own code for admin e.g. `classroom/admin`, `public_board/admin`".
+> It's the same structure like if you are building microservices (every
+> microservice is own independent application pulling only data
+> needed from other microservices that it needs)
 > If you don't understand what I mean by that please watch talk
 > [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
 > [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
 
-## Introducing Bounded Context to Rails
+## Bounded contexts via interface objects
 
-Solution that I'll demonstrate here is not advising for "full" split into
-bounded context But rather **pragmatic** partial bounded context in which we will
-keep `views`, `models`,`controllers`, as they are in `app/views`
+Solution that I'll demonstrate here is **not** advising to split every
+Rails app class into separate bounded contexts
+but rather creating pragmatic partial bounded contexts only around business logic classes.
+
+This means we will keep `views`, `models`,`controllers`, as they are in `app/views`
 `app/controllers`, `app/models`.
 
 We will move only the `app/jobs/*`, `app/mailers/*`, (and other business logic like  `app/services/*`)
-into bounded contexts. Therefore we will end up with something like:
+into bounded contexts.
+
+> I'm explaining why in Summary part of the article down at the bottom
+
+Therefore we will end up with something like:
 
 ```
 app
   models
+    lesson.rb
+    student.rb
+    work.rb
+    teacher.rb
+    comment.rb
   controllers
+    lessons_controller.rb
+    works_controller.rb
   views
+    # ...
   bounded_contexts
     classroom
-      notify_students_job.rb
-      notify_students_about_new_lesson_job.job
+      lesson_creation_service.rb
       student_mailer.rb
       teacher_mailer.rb
-      lesson_deliver_service.rb
+      reprocess_work_thumbnail_job.rb
+      work_upload_service.job
     public_board
       comment_posted_job.rb
       student_mailer.rb
 ```
 
+
+![bounded contexts example 1](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/bounded-context-1.jpg)
+
+
 But we will go even further. We will introduce **interface objects**
 that will allow us to call related bounded contexts from perspective of
 the Rails models.
 
-For example:
+Something like:
 
 ```ruby
 student = Student.find(123)
 student = Student.find(654)
 
-lesson = teacher.classroom.create_lesson(students: [student1, student2])
+# Lesson creation
+lesson = teacher.classroom.create_lesson(students: [student1, student2], title: "Battle of Kursk")
 
-some_file = File.open('/tmp/some_file.doc') # or this could be passed from controller as params[:file]
+# Student Work file upload
+some_file = File.open('/tmp/some_file.doc')
 lesson.classroom.upload_work(student: student1, file: some_file)
-
-lesson.classroom.deliver_lesson
 
 work = Work.find(468)
 work.work_interaction.post_comment(student: student2, title: "Great work mate!")
@@ -252,282 +277,47 @@ classes will be invoked directly from within the related model:
 ```
 
 
-
-## Example
-
-
-Imagine you have a complex business logic that needs to be split into 40
-different classes/objects. Although there are many way how to maintain
-the code imagine a solution in which we would wrap all the **non-rails**
-objects to a folder located in
-`app/bounded_context/name_business_logic/*`
-
-So for example let say we have a complex way how we calculate discounts
-in online store.
-
-```erb
--# app/views/baskets/show.erb
-<p>You would normally pay <%= @basket.discount.total_price_before_discount %> GBP</p>
-<p>Our price is: <strong><%= @basket.discount.total_price_after_discount %> GBP</strong> !</p>
-<p>You will save <%= @basket.discount.overal_discount %> GBP</p>
-
-```
-
 ```ruby
-# app/controllers/baskets_controller.rb
-class BasketsController < ApplicationController
-  def show
-    @basket = current_user.basket
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @basket.discount.as_json }
+student1 = Student.find(123)
+student2 = Student.find(654)
+
+# Lesson creation
+
+class Classroom::LessonCreationService
+  def call(students:, title:)
+    lesson = Lesson.create!(title: title)
+
+    students.each do |student|
+      lesson.students << student
+      Classroom::StudentMailer
+        .new_lesson(lesson_id: lesson.id, student_id: student.id)
+        .deliver_later
     end
+
+    lesson
   end
 end
-```
 
+class Classroom::StudentMailer < ApplicationMailer
+  def new_lesson(lesson_id:, student_id:)
+    @lesson = Lesson.find_by!(id: lesson_id)
+    @student = Student.find_by!(id: student_id)
 
-```ruby
-# app/model/basket.rb
-class Basket < ActiveRecord::Base
-  has_many :products
-
-  def discount
-    @discount ||= Discount::BasketValue.new(self)
+    mail(to: @student.email, subject: %{New lesson "#{@lesson.title}"})
   end
 end
-```
 
-```ruby
-#app/bounded_context/discounts/basket_value.rb
-module Discounts
-  class Basket
-    attr_reader :basket
+lesson = Classroom::LessonCreationService.call(students: [student1, student2], title: "Battle of Kursk")
 
-    def initialize(basket)
-      @basket = basket
-    end
+# Student Work file upload
+some_file = File.open('/tmp/some_file.doc') # or this could be passed from controller as params[:file]
+work = Work.create(lesson: lesson, file: some_file, student: student1 )
 
-    # if custummer is buying 2 or more of the same product, he will get 20% off on the 2nd, 3rd, ... product
-    def overal_discount
-      duplicate_products = []
-      discount = 0.0
-      @basket.products.each do |product|
-        if duplicate_products.include?(product)
-          # give 20 % discount
-          discount = discount + (product.price / 100.00 * 20.00)
-        else
-          duplicate_products << product
-        end
-      end
-      discount
-    end
+##
+lesson.classroom.deliver_lesson
 
-    def total_price_after_discount
-      total_price_before_discount - overal_discount
-    end
-
-    def total_price_before_discount
-      @basket.products.sum(:price)
-    end
-
-    def as_json
-      Discounts::BasketSerializer.new(self).as_json
-    end
-  end
-end
-```
-
-```ruby
-#app/bounded_context/discounts/basket_serializer.rb
-module Discounts
-  class BasketSerializer
-    attr_reader :discount_basket_value
-
-    def initialize(discount_basket_value)
-      @discount_basket_value = discount_basket_value
-    end
-
-    def as_json
-     {
-       discount: discount_basket_value.discount,
-       price_before_discount: discount_basket_value.total_price_before_discount,
-       price_after_discount:  discount_basket_value.total_price_after_discount
-     }
-    end
-  end
-end
-```
-
-Now this is simple straight forward Value Object example.
-Controller is able to render Rails view directly with those value object
-values and if JSON format is requested value object will delegate object
-serialization to another class => `Discounts::BasketSerializer`
-
-You don't have to pay too much attention on the business implementation
-of this. It's a stupid example top of my head. Point is that the code is
-much better organized around your business logic in one place while not
-violating any Rails standards:
-
-```
-app
-  views
-    baskets
-      show.erb
-  models
-    product.rb
-    basket.rb
-  controllers
-    baskets_controller.rb
-  bounded_context
-    discounts
-      basket_value.rb
-      basket_serializer.rb
-```
-
-
-
-You can expand this solution to any type of object pattern.
-
-Imagine
-a Servise object that would pull competetors prices via Gateway class.
-Ad if the price of our discount (20% off of next product) still cannot
-compeat with competetor we will give them same prace as competetor:
-
-
-```ruby
-#app/bounded_context/discounts/basket_value.rb
-module Discounts
-  class Basket
-    attr_reader :basket
-
-    def initialize(basket)
-      @basket = basket
-    end
-
-    def overal_discount
-      possible_discounts = []
-      possible_discounts << 0.0
-      possible_discounts << TwentyPercentDiscount.new(@basket.producs).call
-      possible_discounts << CompareCompetitorsPricesDiscount.new(@basket.producs).call
-      possible_discounts.sort.reverse.first
-    end
-
-    def total_price_after_discount
-      total_price_before_discount - overal_discount
-    end
-
-    def total_price_before_discount
-      @basket.products.sum(:price)
-    end
-
-    def as_json
-      Discounts::BasketSerializer.new(self).as_json
-    end
-  end
-end
-```
-
-```ruby
-#app/bounded_context/discounts/twenty_percent_discount.rb
-module Discounts
-  # if custummer is buying 2 or more of the same product, he will get 20% off on the 2nd, 3rd, ... product
-  class TwentyPercentDiscount
-     attr_reader :duplicate_products, :products
-     attr_accessor :discount
-
-     def inintialize(products)
-       @duplicate_products = []
-       @discount = 0.0
-       @products = products
-    end
-
-    def call
-      products.each do |product|
-        if duplicate_products.include?(product)
-          # give 20 % discount
-          self.discount = discount + twenty_percent(product.price)
-        else
-          duplicate_product << product
-        end
-      end
-      discount
-    end
-
-    private
-
-    def twenty_percent(price)
-      price / 100.00 * 20.00
-    end
-  end
-end
-```
-
-```ruby
-#app/bounded_context/discounts/compare_competitors_prices_discount.rb
-module Discounts
-
-  # we will add a differencte of our price vs competitor as a discount
-  class CompareCompetitorsPricesDiscount
-    attr_reader :products
-    attr_accessor :discount
-
-    def initialize(products)
-      @products = products
-      @discount = 0.0
-    end
-
-    def call
-      products.each do |product|
-        competetor_price = EvilCorpPricingGateway.price_of(product.international_product_id)
-        if competetor_price > product.price
-          self.discount = competetor_price - product.price
-        end
-      end
-    end
-  end
-end
-```
-
-```ruby
-#app/bounded_context/discounts/evil_corp_pricing_gateway.rb
-module Discounts
-  module EvilCorpPricingGateway
-    def self.price_of(international_product_id)
-      resp = HTTParty.get("https://evilcorp.com/product/#{international_product_id}.json")
-      hash = JSON.parse(resp)
-      hash['product']['price'].to_f
-    end
-  end
-end
-```
-
-So this code will try to calculate the discount from our "buy one next
-one is 20% off" discount business decission or it will try to match the
-different what our competitor is offering as a discount. We will give
-customer the discount depending which
-discount is better for him.
-
-As you can see our business logic has grown but our folder structure
-keeps everything in place:
-
-```
-app
-  views
-    baskets
-      show.erb
-  models
-    product.rb
-    basket.rb
-  controllers
-    baskets_controller.rb
-  bounded_context
-    discounts
-      basket_value.rb
-      basket_serializer.rb
-      twenty_percent_discount.rb
-      compare_competitors_prices_discount.rb
-      evil_corp_pricing_gateway.rb
+work = Work.find(468)
+work.work_interaction.post_comment(student: student2, title: "Great work mate!")
 ```
 
 
