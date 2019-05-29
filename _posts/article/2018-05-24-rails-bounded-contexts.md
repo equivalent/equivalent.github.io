@@ -19,11 +19,7 @@ This article is not finished yet !!!
 In this Article I'll show you how to organize business
 classes in [Ruby on Rails](https://rubyonrails.org/) so your application
 can benefit from [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.html)
-while still keep Rails conventions and best practices.
-
-Solution will **not** introduce any requirements for database split or any
-dramatic mindset colliding with traditional Rails way of thinking around
-web application therefore is friendly for junior developers.
+while still keep Rails conventions and best practices. Solution is also friendly for junior developers.
 
 As this topic is quite extensive article is separated in following
 sections:
@@ -67,16 +63,23 @@ models you would create own representation of those models in give
 bounded context `Classroom::Student` (ideally with own DB table)
 and `PublicBoard::Student` (ideally with own DB table)
 
-So what you are ultimately trying to achieve is organize code into layers similar to this:
+> I'll not go into details of how you might sync up  data in those
+> cases as this article is not working with this solution.
+
+So what Bounded Contexts are ultimately trying to achieve is organize code into separate business boundaries:
 
 ![bounded contexts example 1](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/bounded-context-1.jpg)
+
+**In order to fetch data or call functionality of different bounded context you would call
+interfaces of those bounded contexts** (you should not call directly Bounded Context classes)
 
 > You may be ask: "Are Bounded Contexts something like namespaces e.g.: `/admin` or `/api` ?"
 > No, no their not. Think about it this way: "every Bounded Context have
 > its own code for admin e.g. `classroom/admin`, `public_board/admin`".
 > It's the same structure like if you are building microservices (every
 > microservice is own independent application pulling only data
-> needed from other microservices that it needs)
+> needed from other microservices) Microservices are the ultimate
+> respresentation of Bounded Contexts.
 > If you don't understand what I mean by that please watch talk
 > [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
 > [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
@@ -84,20 +87,22 @@ So what you are ultimately trying to achieve is organize code into layers simila
 
 ## Bounded contexts via interface objects
 
-Solution that I'll demonstrate here is **not** advising to split every
-Rails app class into separate bounded contexts
-but rather creating pragmatic partial bounded contexts only around business logic classes.
+Let me first clarify:
+
+* solution in this article will **not** introduce any requirements for database / table split for different models / bounded contexts
+* solution that I'll demonstrate here is **not** advising to split every Rails app class into separate bounded contexts
+* we will also **not** separate controllers to different bounded contexts
 
 > Full explanation why can be found in "Summary" part of the article at the bottom.
 > I'll also enlist and compare other Rails Bounded Context solutions.
+
+We will rather create more pragmatic **bounded contexts only around business logic classes** and we will work with same models in same database tables (as would traditional Rails application)
 
 This means we will keep `views`, `models`,`controllers`, as they are in `app/views`
 `app/controllers`, `app/models`.
 
 We will move only the `app/jobs/*`, `app/mailers/*`, (and other business logic like  `app/services/*`)
 into bounded contexts.
-
-> I'm explaining why in Summary part of the article down at the bottom
 
 Therefore we will end up with something like:
 
