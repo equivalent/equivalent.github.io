@@ -73,7 +73,7 @@ So what Bounded Contexts are ultimately trying to achieve is organize code into 
 interfaces of those bounded contexts** (you should not call directly classes hidden inside Bounded Context)
 
 > You may be asking: "Are Bounded Contexts something like namespaces e.g.: `/admin` or `/api` ?"
-> No, no their not! Think about it this way: "every Bounded Context have
+> No, no they're not! Think about it this way: "every Bounded Context have
 > its own code for admin e.g. `classroom/admin`, `public_board/admin`".
 > It's the same structure like if you are building microservices (every
 > microservice is own independent application pulling only data
@@ -627,6 +627,21 @@ Solution is not enforcing new way of thinking around application engine.
 
 I've created entire post where I'll try to convince you that this level of organization is needed.
 Please read [Why you should consider Bounded Contexts in Rails](https://blog.eq8.eu/til/why-bounded-contexts-are-needed-in-rails.html) where I'll go into details.
+
+#### Don't extract by default
+
+I advise **not** to extract to bounded context based businness classe by default!
+
+Start writing your code within controller  (as any regular Rails app) and once the complexity grows extract to businness objects (Services, Processor objects, Presenters, Value objects, Listeners ...whatever works for you)
+
+Point of this article was to show you how you can organize those
+business logic classes with more clarity (place them to bounded context and cover it with nice bounded context interface)
+
+Please don't think of this as a default folder structure from day one of
+the project
+
+Specially with new projects. You many not know yet what those business
+boundaries are yet. 
 
 ## Other ways to do Bounded Contexts in Rails
 
