@@ -363,4 +363,7 @@ sudo apt-get -f install # tell to continue installing the latest kernel
 sudo apt-get autoremove
 ```
 
+### Discussion
 
+* <https://www.reddit.com/r/ruby/comments/busxti/how_to_lunch_rails_console_in_specific_docker/>
+* <https://www.reddit.com/r/docker/comments/busymw/how_to_lunch_rails_console_in_specific_docker/>
