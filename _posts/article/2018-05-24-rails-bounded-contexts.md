@@ -409,7 +409,7 @@ module Classroom
 
     def notify_student(student, lesson)
       Classroom::StudentMailer
-        .new_lesson(lesson_id: lesson.id, student_id: student.id)
+        .invitation_to_lesson(lesson_id: lesson.id, student_id: student.id)
         .deliver_later
     end
   end
@@ -419,7 +419,7 @@ end
 ```ruby
 # app/bounded_contexts/classroom/student_mailer.rb
 class Classroom::StudentMailer < ApplicationMailer
-  def new_lesson(lesson_id:, student_id:)
+  def invitation_to_lesson(lesson_id:, student_id:)
     @lesson = Lesson.find_by!(id: lesson_id)
     @student = Student.find_by!(id: student_id)
 
@@ -523,7 +523,8 @@ end
 >
 > In the JSON API application I work for we have policy objects and serializers not in
 > bounded contexts (so in `app/serializers/` `app/policy`) because it
-> make sense for us
+> make sense for us. Point is figure out what is best for you and your
+> team.
 
 #### controllers
 
@@ -532,6 +533,7 @@ class LessonsController < ApplicationController
 
   # POST /lessons
   def create
+    teacher = Teacher.find(session[:teacher_id])
     students = Student.where(id: params[:student_ids])
     lesson = teacher.classroom.create_lesson(students: students, title: params[:title])
     # ...
@@ -604,7 +606,9 @@ and error so you have final form that I'm 100% confident with.
 
 #### This solution is not "isolated enough"
 
-Yes that is correct. But main goal of this solution is to introduce
+Yes that is correct. This is not poster child example of Bounded Contexts.
+
+Main goal of this solution is to introduce
 level of organization (code and team) while still keeping the true
 nature and experience of Ruby on Rails software development
 
