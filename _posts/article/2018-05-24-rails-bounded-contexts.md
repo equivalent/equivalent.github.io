@@ -80,7 +80,7 @@ interfaces of those bounded contexts** (you should not call directly classes hid
 > needed from other microservices) Microservices are the ultimate
 > respresentation of Bounded Contexts.
 > If you don't understand what I mean by that please watch talk
-> [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw)) or
+> [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march)([mirror](https://www.youtube.com/watch?v=fn17nojYa-I)) or
 > [Microservices • Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
 
 One key benefit of Bounded Contexts is that you can organize your team
@@ -700,7 +700,7 @@ benefits of event architecture can be achieved by well designed ActiveJobs but t
 #### Microservices
 
 Like I said microservices are the ultimate representation of Bounded
-Contexts. I've covered this topic in a talk [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march) ([youtube mirror](https://www.youtube.com/watch?v=xhEyUYTuSQw))
+Contexts. I've covered this topic in a talk [Web Architecture choices & Ruby](https://skillsmatter.com/skillscasts/11594-lrug-march) ([youtube mirror](https://www.youtube.com/watch?v=fn17nojYa-I))
 
 Or if you want even better talk I'm recommending [Microservices talk by Martin Fowler](https://www.youtube.com/watch?v=wgdBVIX9ifA)
 
