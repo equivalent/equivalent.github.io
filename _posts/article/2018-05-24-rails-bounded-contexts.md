@@ -25,7 +25,7 @@ sections:
 4. Summary
 5. Comparison of other ways how to do Bounded Contexts in Rails
 
-If something too long to read please just skip to section you are interested in.
+If something is too long to read please just skip to section you are interested in.
 
 > Article was drafted May 24, 2018, officially published May 30th 2019
 
@@ -35,7 +35,7 @@ The point of [Bounded Contexts](https://martinfowler.com/bliki/BoundedContext.ht
 inside **business boundaries**.
 
 For example let say we are building an education application
-in which you have `students` `teachers` and their `works` inside `lessons`.
+in which you have `teachers`, `students`  and their `works` inside `lessons`.
 After `lesson` is done (published) other students can `comment` each other
 works.
 
@@ -53,11 +53,11 @@ So two natural bounded contexts may be:
   * mark lesson as favorite
 
 As you can imagine both bounded contexts are interacting with same
-models (`Student`, `Teacher`, `Work`, `Lesson`) just around different
+models (`Student`, `Teacher`, `Work`, `Lesson`) just from different
 business perspective.
 
 That means you would place all related code & classes for `classroom` to one folder
-and all related code to `public_board` to that other folder. As for the shared
+and all related code to `public_board` to the other folder. As for the shared
 models you would create own representation of those models in given
 bounded context `Classroom::Student` (ideally with own DB table)
 and `PublicBoard::Student` (ideally with own DB table)
@@ -259,6 +259,10 @@ class Work < ActiveRecord::Base
 
   def classroom
     @classroom ||= Classroom::WorkInterface.new(self)
+  end
+
+  def public_board
+    @classroom ||= PublicBoard::WorkInterface.new(self)
   end
 end
 ```
