@@ -588,10 +588,10 @@ end
 
 ## Summary
 
-We (me and my colleagues) are writing Backend code for JSON API Rails application
+We (me and my colleagues) are writing backend code for JSON API Rails application
 following way for over a year (dating since late 2017)
 
-Furthermore I also use this pattern for  personal projects in which the server renders HTML (following [majestic monolith](https://m.signalvnoise.com/the-majestic-monolith/) pattern)
+Furthermore I also use this pattern for  personal projects in which the server renders HTML (following [majestic monolith](https://m.signalvnoise.com/the-majestic-monolith/) style of applications)
 
 These applications are quite extensive in business logic. Our main goal
 is to write application code for long term maintainability,
@@ -606,7 +606,7 @@ and error so you have final form that I'm 100% confident with.
 
 #### This solution is not "isolated enough"
 
-Yes that is correct. This is not poster child example of Bounded Contexts.
+Yes that is correct. This is not poster child example of Bounded Contexts (You can read about those in selcion bellow)
 
 Main goal of this solution is to introduce
 level of organization (code and team) while still keeping the true
