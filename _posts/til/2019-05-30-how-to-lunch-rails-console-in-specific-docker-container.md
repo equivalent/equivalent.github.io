@@ -47,7 +47,7 @@ Let say you are already running docker containers (e.g. via
 
 You are able to launch a new Rails console on existing docker container
 
-> this will use less memmory copared to  `docker-copose run`
+> this will use less memory copared to  `docker-copose run`
 
 You can do that with `docker exec -it xxxxxxx bin/rails c` (where the
 `xxxxx` is container id)
@@ -91,7 +91,7 @@ sudo docker exec -d $( sudo docker ps | grep name_of_my_image | awk "{print \$1}
 sudo docker exec -d $( sudo docker ps | grep name_of_my_image | awk "{print \$1}" | head -n 1 ) bin/rails runner 'User.all.find_each {|u| u.do_something! }'
 ```
 
-> remminder: docker containers need to run already in order to do `docker exec`. If this don't work  make sure `docker ps`  give you back some ids.
+> reminder: docker containers need to run already in order to do `docker exec`. If this don't work  make sure `docker ps`  give you back some ids.
 
 
 ## Other
