@@ -654,8 +654,8 @@ boundaries are.
 
 This is common problem with microcesrvices. Developers introduce
 boundaries (microservices) that seems logical and then they discover
-that that split was premature. Same is with Bounded Contexts with
-Interface Objects (or any other Bounded Contexts) If you prematurely
+that that split was premature. Same is with [Bounded Contexts via
+Interface Objects](https://blog.eq8.eu/article/rails-bounded-contexts.html) (or any other Bounded Contexts) If you prematurely
 split your code you may find yourself with same problem that you need to
 join certain bounded context logic. The benefit however is that the
 refactor is less painful as you are working within same monolithic codebase.
