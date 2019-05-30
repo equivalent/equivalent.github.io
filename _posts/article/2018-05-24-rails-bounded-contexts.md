@@ -387,8 +387,6 @@ end
 ```
 
 
-
-
 ```ruby
 # app/bounded_contexts/classroom/lesson_creation_service.rb
 module Classroom
@@ -492,7 +490,7 @@ end
 
 ```ruby
 # app/bounded_contexts/public_board/comment_posted_job.rb
-module Classroom
+module PublicBoard
   class CommentPostedJob < ActiveJob::Base
     queue_as :public_board
 
@@ -506,7 +504,7 @@ end
 
 ```ruby
 # app/bounded_contexts/public_board/student_mailer.rb
-module Classroom
+module PublicBoard
   class StudentMailer < ActiveJob::Base
 
     def new_comment_on_your_work(comment_id:)
