@@ -664,13 +664,6 @@ quite different way how to think about the whole application as much
 it's no longer the good old pragmatic Rails. Arguably many of the
 benefits of event architecture can be achieved by well designed ActiveJobs but that's a topic for another article.
 
-#### Bounded contexts in Phoenix (Elixir)
-
-Other good references explaining Bounded context is [Elixir Phoenix 1.3 by Chris McCord - bounded context in Phoenix](https://youtu.be/tMO28ar0lW8?t=15m31s). It's about different programming language => Elixir (functional programming lang.)
-
-To me this talk was quite eye-opening in term of how to  think of bounded contexts
-in Monolith. So I definitely recommending to watch few minutes of that
-talk abound bounded contexts.
 
 #### Microservices
 
@@ -683,6 +676,21 @@ In general microservices are isolated applications that will just
 exchange data / call actions in-between each other via HTTP calls. Although they are cool on paper they
 are super hard to do right, especially if you are small team. But they
 are great solution if you are Amazon or Google size company.
+
+So in relation to Rails you can crate multiple small Rails (on Sinatra)
+applications communicating which each other (every Rails application is
+own bounded context)
+
+#### Bounded contexts in Phoenix (Elixir)
+
+Other good references explaining Bounded context is [Elixir Phoenix 1.3 by Chris McCord - bounded context in Phoenix](https://youtu.be/tMO28ar0lW8?t=15m31s). It's about different programming language => Elixir (functional programming lang.)
+
+To me this talk was quite eye-opening in term of how to  think of bounded contexts
+in Monolith. So I definitely recommending to watch few minutes of that
+talk abound bounded contexts.
+
+It inspired me to dig into new ways of thinking It
+may inspire you too
 
 ## Discussion
 
