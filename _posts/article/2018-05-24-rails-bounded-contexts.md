@@ -276,7 +276,9 @@ end
 ```
 
 So far standard Rails stuff, now let's start introducing Bounded
-Contexts
+Contexts and their Interface Objects
+
+
 
 #### Bounded Contexts
 
@@ -291,6 +293,7 @@ module MyApplication
   end
 end
 ```
+
 
 ```ruby
 # app/bounded_contexts/classroom/teacher_interface.rb
@@ -310,6 +313,81 @@ module Classroom
   end
 end
 ```
+
+```ruby
+# app/bounded_contexts/classroom/lesson_interface.rb
+module Classroom
+  class LessonInterface
+    attr_reader :lesson
+
+    def initialize(lesson)
+      @lesson = lesson
+    end
+
+    def upload_work(student:, file:)
+      Classroom::WorkUploadService.call(student: student, lesson: lesson, file: file)
+    end
+
+    def publish
+      lesson.published = true
+      lesson.save!
+    end
+
+    def cross_boundary_example
+      # some logic related to classroom
+    end
+  end
+end
+```
+
+```ruby
+# app/bounded_contexts/public_board/lesson_interface.rb
+module Classroom
+  class LessonInterface
+    attr_reader :lesson
+
+    def initialize(lesson)
+      @lesson = lesson
+    end
+
+    def mark_as_favorite(current_user:)
+      # ... some logic
+    end
+
+    def cross
+      result = lesson.classroom.cross_boundary_example
+      # ... you can use the result of different boundary in this boundary
+    end
+  end
+end
+```
+
+```ruby
+# app/bounded_contexts/public_board/work_interface.rb
+module PublicBoard
+  class WorkInterface
+    attr_reader :work
+
+    def initialize(work)
+      @work = work
+    end
+
+    def can_post_comment?(current_user:)
+      work.lesson.published && current_user.is_a?(Student)
+    end
+
+    def post_comment(student:, content:)
+      comment = @work.comments.create!(student: student, content: content)
+      PublicBoard::CommentPostedJob.perform_later(comment_id: comment.id)
+      PublicBoard::StudentMailer.new_comment_on_your_work(comment_id: comment.id).deliver_later
+      comment
+    end
+  end
+end
+```
+
+
+
 
 ```ruby
 # app/bounded_contexts/classroom/lesson_creation_service.rb
@@ -351,32 +429,6 @@ class Classroom::StudentMailer < ApplicationMailer
 end
 ```
 
-
-```ruby
-# app/bounded_contexts/classroom/lesson_interface.rb
-module Classroom
-  class LessonInterface
-    attr_reader :lesson
-
-    def initialize(lesson)
-      @lesson = lesson
-    end
-
-    def upload_work(student:, file:)
-      Classroom::WorkUploadService.call(student: student, lesson: lesson, file: file)
-    end
-
-    def publish
-      lesson.published = true
-      lesson.save!
-    end
-
-    def cross_boundary_example
-      # some logic related to classroom
-    end
-  end
-end
-```
 
 ```ruby
 # app/bounded_contexts/classroom/work_upload_service.rb
@@ -438,31 +490,6 @@ module Classroom
 end
 ```
 
-
-```ruby
-# app/bounded_contexts/public_board/work_interface.rb
-module PublicBoard
-  class WorkInterface
-    attr_reader :work
-
-    def initialize(work)
-      @work = work
-    end
-
-    def can_post_comment?(current_user:)
-      work.lesson.published && current_user.is_a?(Student)
-    end
-
-    def post_comment(student:, content:)
-      comment = @work.comments.create!(student: student, content: content)
-      PublicBoard::CommentPostedJob.perform_later(comment_id: comment.id)
-      PublicBoard::StudentMailer.new_comment_on_your_work(comment_id: comment.id).deliver_later
-      comment
-    end
-  end
-end
-```
-
 ```ruby
 # app/bounded_contexts/public_board/comment_posted_job.rb
 module Classroom
@@ -490,27 +517,6 @@ module Classroom
 end
 ```
 
-```ruby
-# app/bounded_contexts/public_board/lesson_interface.rb
-module Classroom
-  class LessonInterface
-    attr_reader :lesson
-
-    def initialize(lesson)
-      @lesson = lesson
-    end
-
-    def mark_as_favorite(current_user:)
-      # ... some logic
-    end
-
-    def cross
-      result = lesson.classroom.cross_boundary_example
-      # ... you can use the result of different boundary in this boundary
-    end
-  end
-end
-```
 
 > you can place any types of objects into these bounded contexts like
 > [Policy Objects](https://blog.eq8.eu/article/policy-object.html),
