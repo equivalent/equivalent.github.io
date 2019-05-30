@@ -606,7 +606,7 @@ and error so you have final form that I'm 100% confident with.
 
 #### This solution is not "isolated enough"
 
-Yes that is correct. This is not poster child example of Bounded Contexts (You can read about those in selcion bellow)
+Yes that is correct. This is not poster child example of Bounded Contexts (You can read about those in section bellow)
 
 Main goal of this solution is to introduce
 level of organization (code and team) while still keeping the true
