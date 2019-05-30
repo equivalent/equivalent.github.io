@@ -11,7 +11,7 @@ disq_id: til-64
 Given you have [docker-compose](https://docs.docker.com/compose/) e.g.
 
 ```
-# docker-compse.yml
+# docker-compose.yml
 version: '3'
 services:
   my_application:
