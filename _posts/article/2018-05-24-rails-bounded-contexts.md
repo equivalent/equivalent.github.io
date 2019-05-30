@@ -640,8 +640,16 @@ business logic classes with more clarity (place them to bounded context and cove
 Please don't think of this as a default folder structure from day one of
 the project
 
-Specially with new projects. You many not know yet what those business
-boundaries are yet. 
+Especially if you are starting with a new project you many not know yet what those business
+boundaries are.
+
+This is common problem with microcesrvices. Developers introduce
+boundaries (microservices) that seems logical and then they discover
+that that split was premature. Same is with Bounded Contexts with
+Interface Objects (or any other Bounded Contexts) If you prematurely
+split your code you may find yourself with same problem that you need to
+join certain bounded context logic. The benefit however is that the
+refactor is less painful as you are working within same monolithic codebase.
 
 ## Other ways to do Bounded Contexts in Rails
 
