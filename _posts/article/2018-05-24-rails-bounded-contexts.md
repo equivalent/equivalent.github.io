@@ -87,6 +87,15 @@ One key benefit of Bounded Contexts is that you can organize your team
 around different Bounded Contexts, therefore you will have less issues
 around multiple developers git conflicting each other work.
 
+> People are sometimes the most difficult part for programming. No
+> matter what programming pattern your team follows (DCI, SOLID, majestic monolith, ...) all it takes is one developer in your team
+> who either don't get it or decides to do his job differently and all
+> hell breaks loose. So how bounded contexts may help is to introduce
+> some isolation for different styles of coding.
+>
+> So biggest benefit of hardcore bounded contexts is that your team can split the layers of influence to certain style/pattern of coding.
+> For example you can tell that one colleague to work only around `public_board` bound context while developer/s understanding certain coding principles > will work on the `classroom` bounded context. 
+
 ## Bounded contexts via interface objects
 
 (our solution)
