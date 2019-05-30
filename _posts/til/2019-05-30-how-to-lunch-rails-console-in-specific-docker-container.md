@@ -6,32 +6,42 @@ disq_id: til-64
 ---
 
 
-## docker run
+## docker-compose run
 
+Given you have `docker-compose` e.g.
 
-`docker run` will start docker image as a container. So you are able to
+```
+# docker-compse.yml
+version: '3'
+services:
+  my_application:
+    image: name_of_my_image:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # ...
+```
+
+`docker-compose run` will start docker image as a container. So you are able to
 do:
 
 ```bash
+
 # lunch interactive bash
-docker run -it  name_of_my_image bash
+docker-compose run -it my_application  bash
 
 # lunch interactive rails console on that rails image
-docker exec -it name_of_my_image rails c
+docker-compose run -it my_application rails c
 
 # or if you don't have global bundler in that rails docker image
-docker exec -it name_of_my_image bin/rails c
+docker-compose run -it my_application bin/rails c
 
 # to run daemonized rake task in that rails docker image
-docker exec -d name_of_my_image bin/rake db:migrate
+docker-compose run -d my_application bin/rake db:migrate
 
 # to run daemonized rails runner
-docker exec -d name_of_my_image bin/rails runner 'User.all.find_each {|u| u.do_something! }'
+docker-compose run -d my_application bin/rails runner 'User.all.find_each {|u| u.do_something! }'
 ```
-
-> you are also able to do bulk actions (like delete dead images to free up disk) with
-> some bash magic. Check <https://blog.eq8.eu/article/spring-cleanup-web-developer.html> for more info
-
 ## docker exec
 
 Let say you are already running docker containers (e.g. via
@@ -82,4 +92,11 @@ sudo docker exec -d $( sudo docker ps | grep name_of_my_image | awk "{print \$1}
 ```
 
 > remminder: docker containers need to run already in order to do `docker exec`. If this don't work  make sure `docker ps`  give you back some ids.
+
+
+## docker run
+
+> you are also able to do bulk actions (like delete dead images to free up disk) with
+> some bash magic. Check <https://blog.eq8.eu/article/spring-cleanup-web-developer.html> for more info
+
 
