@@ -1,6 +1,6 @@
 ---
 layout: til_post
-title:  "How to lunch Rails console in specific Docker image or  Docker container"
+title:  "How to launch Rails console in specific Docker image or  Docker container"
 categories: til
 disq_id: til-64
 ---
@@ -25,10 +25,10 @@ services:
 `docker-compose run` will start docker image as a container. So you are able to do:
 
 ```bash
-# lunch interactive bash
+# launch interactive bash
 docker-compose run -it my_application  bash
 
-# lunch interactive rails console on that rails image
+# launch interactive rails console on that rails image
 docker-compose run -it my_application rails c
 
 # or if you don't have global bundler in that rails docker image
@@ -45,9 +45,9 @@ docker-compose run -d my_application bin/rails runner 'User.all.find_each {|u| u
 Let say you are already running docker containers (e.g. via
 `docker-compose up` or plain `docker run name_of_my_image`)
 
-You are able to lunch a new Rails console on existing docker container
+You are able to launch a new Rails console on existing docker container
 
-> this will eat up less memmory than `docker-copose run`
+> this will use less memmory copared to  `docker-copose run`
 
 You can do that with `docker exec -it xxxxxxx bin/rails c` (where the
 `xxxxx` is container id)
@@ -56,15 +56,15 @@ You can do that with `docker exec -it xxxxxxx bin/rails c` (where the
 > the docker container id
 
 But problem is the container id is different every time. What if you
-want to lunch command that will lunch on specific docker container from
+want to launch command that will launch on specific docker container from
 docker image named `name_of_my_image`
 
 
 ```bash
-# lunch interactive bash on that running container
+# launch interactive bash on that running container
 docker exec -it $( docker ps | grep name_of_my_image | awk "{print \$1}" | head -n 1 ) bash
 
-# lunch interactive rails console on that running container
+# launch interactive rails console on that running container
 docker exec -it $( docker ps | grep name_of_my_image | awk "{print \$1}" | head -n 1 ) rails c
 
 # or if you don't have global bundler in that container
