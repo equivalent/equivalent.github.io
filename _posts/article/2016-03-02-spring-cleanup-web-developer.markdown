@@ -127,6 +127,8 @@ sudo docker rmi -f $(sudo docker images | ruby -ne 'puts $_.split[2] if $_.match
 > Rails (assuming your docker image name contains word rails)
 > `rails_container_id=$(sudo docker ps | ruby -ne 'puts $_.split.first if $_ =~ /rails/') && sudo docker exec -it   $rails_container_id  rails c`
 
+Related article: [How to lunch bash specific docker image name or Docker container name](https://blog.eq8.eu/til/how-to-lunch-rails-console-in-specific-docker-container.html)
+
 ### Docker containers cleanup
 
 To see list of all  docker containers
@@ -179,6 +181,10 @@ sudo docker ps --filter status=dead --filter status=exited -aq | xargs sudo dock
 I had a situation where I runned every command possible but still my
 `/var/lib/docker/containers` had several GB. This command dropped 100%
 usage to 30%
+
+Related article: [How to lunch Rails console in specific Docker image name or Docker container name](https://blog.eq8.eu/til/how-to-lunch-rails-console-in-specific-docker-container.html)
+
+
 
 ## Removing old release Git branches
 
