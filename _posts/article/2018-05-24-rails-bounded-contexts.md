@@ -342,7 +342,7 @@ end
 
 ```ruby
 # app/bounded_contexts/public_board/lesson_interface.rb
-module Classroom
+module PublicBoard
   class LessonInterface
     attr_reader :lesson
 
