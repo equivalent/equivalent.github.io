@@ -94,9 +94,13 @@ sudo docker exec -d $( sudo docker ps | grep name_of_my_image | awk "{print \$1}
 > remminder: docker containers need to run already in order to do `docker exec`. If this don't work  make sure `docker ps`  give you back some ids.
 
 
-## docker run
+## Other
 
-> you are also able to do bulk actions (like delete dead images to free up disk) with
-> some bash magic. Check <https://blog.eq8.eu/article/spring-cleanup-web-developer.html> for more info
+You are also able to do bulk actions (like delete dead images to free up disk) with
+some bash magic. Check <https://blog.eq8.eu/article/spring-cleanup-web-developer.html> for more info
 
+## Discussion
+
+* <https://www.reddit.com/r/ruby/comments/busxti/how_to_lunch_rails_console_in_specific_docker/>
+* <https://www.reddit.com/r/docker/comments/busymw/how_to_lunch_rails_console_in_specific_docker/>
 
