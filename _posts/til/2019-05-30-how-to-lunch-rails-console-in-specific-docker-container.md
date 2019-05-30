@@ -8,7 +8,7 @@ disq_id: til-64
 
 ## docker-compose run
 
-Given you have `docker-compose` e.g.
+Given you have [docker-compose](https://docs.docker.com/compose/) e.g.
 
 ```
 # docker-compse.yml
@@ -22,11 +22,9 @@ services:
     # ...
 ```
 
-`docker-compose run` will start docker image as a container. So you are able to
-do:
+`docker-compose run` will start docker image as a container. So you are able to do:
 
 ```bash
-
 # lunch interactive bash
 docker-compose run -it my_application  bash
 
@@ -45,9 +43,11 @@ docker-compose run -d my_application bin/rails runner 'User.all.find_each {|u| u
 ## docker exec
 
 Let say you are already running docker containers (e.g. via
-`docker-compose up`) now you don't want to `docker run` new container to
-lunch a  Rails console (as that will eat up more memory) but you
-rather want to execute rails commands on existing docker container.
+`docker-compose up` or plain `docker run name_of_my_image`)
+
+You are able to lunch a new Rails console on existing docker container
+
+> this will eat up less memmory than `docker-copose run`
 
 You can do that with `docker exec -it xxxxxxx bin/rails c` (where the
 `xxxxx` is container id)
