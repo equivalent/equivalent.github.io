@@ -247,6 +247,10 @@ class Lesson < ActiveRecord::Base
   def classroom
     @classroom ||= Classroom::LessonInterface.new(self)
   end
+
+  def public_board
+    @classroom ||= PublicBoard::LessonInterface.new(self)
+  end
 end
 ```
 
@@ -259,10 +263,6 @@ class Work < ActiveRecord::Base
 
   def classroom
     @classroom ||= Classroom::WorkInterface.new(self)
-  end
-
-  def public_board
-    @classroom ||= PublicBoard::WorkInterface.new(self)
   end
 end
 ```
