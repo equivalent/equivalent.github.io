@@ -334,7 +334,7 @@ module Classroom
     end
 
     def cross_boundary_example
-      # some logic related to classroom
+      # some logic related to classroom bounded context
     end
   end
 end
@@ -355,6 +355,7 @@ module PublicBoard
     end
 
     def cross
+      # demonstration of how you can call other bounded context from this bounded context
       result = lesson.classroom.cross_boundary_example
       # ... you can use the result of different boundary in this boundary
     end
