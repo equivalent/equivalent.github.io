@@ -297,12 +297,14 @@ Contexts and their Interface Objects
 module MyApplication
   class Application < Rails::Application
     # ...
+    # We need to tell Rails to include `app/bounded_contexts` in auto loader
+    # This step is needed only in older Rails applications.
+    # Any subdirs you put in `./app` should automatically get picked up as an autoload path in newer Rails
     config.autoload_paths << Rails.root.join('app', 'bounded_contexts')
     # ...
   end
 end
 ```
-
 
 ```ruby
 # app/bounded_contexts/classroom/teacher_interface.rb
