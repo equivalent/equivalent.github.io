@@ -211,7 +211,7 @@ all rainbows and unicorns.
 Like 7 months after my purchase had to take my Lenovo i7 to Lenovo repair center (there is one in my home town).
 There was a motherboard failture.
 The  reclamation  process was quite quick, within 2  weeks I had my
-laptop repaired and repaired. I didn't pay anything as the Laptop was under warranty. 
+laptop repaired and ready for pick-up. I didn't pay anything as the Laptop was under warranty. 
  
 > Note that I went to  Lenovo store/repair center, not store where I bought
 > the laptop. Reason is that some big re-sellers like to postpone the
@@ -235,8 +235,9 @@ placed back. I think I broke some inner working of the key. I didn't
 bother sending it to shop for repair, I just replaced key `*/&` (I'm not
 using it)  for the broken `A` key 
 
-Honestly it's a mystery for me how I broke the `A` key as I was only
-typing not doing any strange experiments of replacing keys.
+Honestly it's a mystery for me how I broke the `A` key as **I was just
+typing** not doing any strange experiments by replacing keys or
+something.
 
 > [how to replace lenovo key on keyboard](https://www.youtube.com/watch?v=4GeG-J981eg)
 
