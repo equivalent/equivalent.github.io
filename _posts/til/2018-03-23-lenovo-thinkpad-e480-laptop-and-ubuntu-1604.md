@@ -137,6 +137,9 @@ I can confirm Ubuntu 16.04 is working out of the box. No issue.
 (I've manage to install Ubuntu without uninstalling Windows 10, just
 make sure you disable SafeBoot)
 
+I can confirm Ubuntu 18.04 is working out of the box. No issue.
+
+I can confirm XUbuntu 18.04 is working out of the box. No issue.
 
 Touchpad works out of the box, camera, WiFi (unlike Dell XPS 13) No
 problems. Graphic card too.
