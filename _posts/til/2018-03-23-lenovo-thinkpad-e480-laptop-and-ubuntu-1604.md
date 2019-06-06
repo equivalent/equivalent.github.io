@@ -18,6 +18,9 @@ Bluetooth 4.1, (20KN0-01N)
 > I will just try to answer questions that had before I
 > bought the Laptop
 
+* **update 2019-06-06** I've posted some manufacture errors that I
+needed to deal with the laptop at the bottom of the article
+
 ### Keyboard / Tochpad
 
 My main reason for new laptop was that I needed a laptop with good keyboad
@@ -193,4 +196,48 @@ And to you: Lenovo e480 is a great laptop. Second best I ever had in my life
 
 > MacBook Air is fine but just a shiny gadget for that is not even close to these two laptops
 > and Dell XPS 13 (late 2015) was a terrible waste of money.
+
+
+
+### Manufacture errors
+
+Overall I'm satisfied with the notebook. I would buy it again.
+
+I just feel obligated to provide full picture of the laptop - It's not
+all rainbows and unicorns.
+
+**problem 1**
+
+Like 7 months after my purchase had to take my Lenovo i7 to Lenovo repair center (there is one in my home town).
+There was a motherboard failture.
+The  reclamation  process was quite quick, within 2  weeks I had my
+laptop repaired and repaired. I didn't pay anything as the Laptop was under warranty. 
+ 
+> Note that I went to  Lenovo store/repair center, not store where I bought
+> the laptop. Reason is that some big re-sellers like to postpone the
+> reclamation process to very last day they are allowed for some reason. In Europe we have 30day period
+> for private owners, 40 days for company bought products. Don't know
+> why big re-sellers do this but happened to me every time I returned
+> malfunctioned electronic product.
+
+If this discourage you from  buying one let me remind you that I'm not
+the most gentle with my laptops this may have been partially caused by
+myself.
+
+Just so you know I bought another Lenovo E480 i5 for the period
+while I had my i7 in repair (yes I own two E480 now !)
+
+
+**problem 2**
+
+12 months after  usage the `A` key pop out of keyboard socket and could not be
+placed back. I think I broke some inner working of the key. I didn't
+bother sending it to shop for repair, I just replaced key `*/&` (I'm not
+using it)  for the broken `A` key 
+
+Honestly it's a mystery for me how I broke the `A` key as I was only
+typing not doing any strange experiments of replacing keys.
+
+> [how to replace lenovo key on keyboard](https://www.youtube.com/watch?v=4GeG-J981eg)
+
 
