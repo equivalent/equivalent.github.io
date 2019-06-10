@@ -184,6 +184,49 @@ files and regenerate fresh credentials file ([source](https://github.com/rails/r
 > note! `EDITOR=vim rails credentials:edit` may not work if you require
 > credential value in some file (e.g. in config/database.yml`)
 
+
+### How secure are Rails credentials?
+
+Point of Rails credentials is to help developers be more productive by
+`git commit` all credentials (both development and production). Once
+something is pushed on `git` it's there. Anyone with the copy of the
+repo has the encrypted file.
+
+Rails uses `AES 128-bit` for credentials and in theory it takes several decades to crack this encryption.
+
+There are many opinions on whether AES can be cracked. Short answer
+"It can". Question is how long will it take with what technology in what era (10
+years ago technology ? Today technology ? With technology in next 10 years ? )
+
+**My opinion**:
+
+Yes it's safe but it's like parking an expensive
+car on rails of abandoned train track. Yes the train should not go there but
+you will feel uncomfortable the entire time.
+
+If it's a private project with couple of hundred users no one will spend resources on server farm
+to crack your credentials. And by the time the project will grow big you
+will probably have different db credentials => old file is no longer
+valid.
+
+If you are building a "Bank" application that will run for couple of
+decades with same DB passwords, maybe that's not the best way
+how to store DB password. It's still ok to store some small non core
+credentials (E.g Sendgrid token).
+
+In overall most security breaches happens because people are stupid.
+Maybe your colleague has non encrypted laptop and after finishing his
+employment with your company he will not erase the project as he was
+asked to. Down the line 5 years later he throw away his non-encrypted
+laptop with the entire project with safely encrypted Rails credentials
+but also with the `config/master.key` still on same drive. Laptop &
+drive will get to scrape yard somewhere in 3rd world countries where there are
+organized gangs targeting such forgotten hard disks for information.
+
+My point is: Think before you store something in Rails credentials.
+
+> To be paranoid is on a job description of a senior web-developer.
+
 ### Discussion
 
 * <https://www.reddit.com/r/ruby/comments/9211gs/rails_52_credentials_cheat_cheat/>
