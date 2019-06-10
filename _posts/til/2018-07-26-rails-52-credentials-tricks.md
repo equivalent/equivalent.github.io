@@ -192,6 +192,8 @@ Point of Rails credentials is to help developers be more productive by
 something is pushed on `git` it's there. Anyone with the copy of the
 repo has the encrypted file.
 
+So is it secure to store production credentials in Rails credentials ?
+
 Rails uses `AES 128-bit` for credentials and in theory it takes several decades to crack this encryption.
 
 There are many opinions on whether AES can be cracked. Short answer
@@ -223,7 +225,9 @@ but also with the `config/master.key` still on same drive. Laptop &
 drive will get to scrape yard somewhere in 3rd world countries where there are
 organized gangs targeting such forgotten hard disks for information.
 
-My point is: Think before you store something in Rails credentials.
+My point is: Think before you store something in Rails credentials. How
+will the project evolve ? What personalities of developers will have
+access to `master.key`? What are your company security policies?
 
 > To be paranoid is on a job description of a senior web-developer.
 
