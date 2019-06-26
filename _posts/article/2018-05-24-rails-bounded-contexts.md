@@ -258,7 +258,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def public_board
-    @classroom ||= PublicBoard::LessonInterface.new(self)
+    @public_board ||= PublicBoard::LessonInterface.new(self)
   end
 end
 ```
