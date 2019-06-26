@@ -444,6 +444,8 @@ in Rails 5 you can do
 
 > source: <https://blog.bigbinary.com/2016/03/24/support-for-left-outer-joins-in-rails-5.html>
 
+> What is the difference between left join and left outer join ? Basically there is no difference in left join and left outer join. Left outer join also returns same results as left join. In some database, left join is known as left outer join [source](https://www.quora.com/What-is-the-difference-between-left-join-and-left-outer-join-in-sql)
+
 #### Left join not including any right side associations
 
 
