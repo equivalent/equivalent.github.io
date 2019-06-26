@@ -436,7 +436,7 @@ So this is trying to say: "Give me all users which has no permissions"
 ![understanding SQL Joins](https://qph.fs.quoracdn.net/main-qimg-1cbe8b3438b5e200c900e0dcffbb63af.webp)
 > original from [Quora question](https://www.quora.com/How-do-I-decide-when-to-use-InnerJoin-Outer-Join)  ([mirror image](https://github.com/equivalent/equivalent.github.io/blob/master/assets/2019/understanding_joins.jpg))
 
-##### Left outer join 
+#### Left outer join 
 
 in Rails 5 you can do 
 
@@ -444,6 +444,16 @@ in Rails 5 you can do
 
 > source: <https://blog.bigbinary.com/2016/03/24/support-for-left-outer-joins-in-rails-5.html>
 
+#### Left join not including any right side associations
+
+
+e.g. Get all Authors without any books
+
+```ruby
+Author.left_joins(:books).where(books: { id: nil })
+SELECT "authors".* FROM "authors" LEFT OUTER JOIN "boolks" ON "books"."author_id" = "author"."id" WHERE  "books"."id" IS NULL
+=> nil
+```
 
 ## Expert
 
