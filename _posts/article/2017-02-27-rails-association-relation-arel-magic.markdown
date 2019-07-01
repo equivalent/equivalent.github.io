@@ -422,6 +422,14 @@ Event.where(Event.arel_table[:start_at].lt(Time.now))
 Comment.order(Comment.arel_table['created_at'].desc)
 ```
 
+#### Random order
+
+workes in Postgres, not sure about other DB
+
+```ruby
+Comment.where(category: 'funny').order("random()")
+```
+
 #### Arel - give me records that have empty / no associations
 
 ```
