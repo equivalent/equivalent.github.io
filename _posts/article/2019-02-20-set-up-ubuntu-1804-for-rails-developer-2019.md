@@ -282,6 +282,20 @@ sudo apt install ansible
 > note this install ansible-vault as well
 
 
+#### YARN
+
+<https://yarnpkg.com/lang/en/docs/install/#debian-stable>
+
+```bash
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+deb https://dl.yarnpkg.com/debian/ stable main
+
+sudo apt-get update && sudo apt-get install yarn
+```
+
+
+
 ## My personal favorite utilities
 
 ```bash
