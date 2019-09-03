@@ -89,7 +89,8 @@ Last page:
 ```
 
 
-It's easy to calculate how many elements you may receive. If you know
+Due to fact that `last page` is the same number as `total number` of pages 
+it's easy to calculate how many elements you may receive. If you know
 the last page is `4` and you are limiting results to `10` so you may
 end up with up to `40` elements because `10 * 4`
 
@@ -175,8 +176,10 @@ last page:
 On technical side this works but at the same time you look at `&page=3`
 you would expect it's 3rd page but really it's 4th page.
 
-How about the math ? `10 * 3` => 30 elements ? No it's up to 40
-elements `10 * 4`. This may be bit confusing for clients using your API
+This mean `last page` is not the same as `total number` of pages.
+
+This will start being problem once you consider Math: Because last page is `3` and we limit by `10` that means `10 * 3` = 30 elements ?
+No it's up to 40 elements `10 * 4` (4 pages in total). This may be bit confusing for clients using your API
 
 ## Conclusion
 
