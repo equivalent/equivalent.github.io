@@ -55,7 +55,7 @@ get /student/123/works?limit=10&page=1`
           { title: "work 7" },
           { title: "work 8" },
           { title: "work 9" },
-          { title: "work 10" },
+          { title: "work 10" }
         ]
        "limit": 10,
        "current_page": 1,
@@ -90,9 +90,8 @@ Last page:
 
 
 It's easy to calculate how many elements you may receive. If you know
-the last page is `4` and you are limiting results to `10` so you'll
+the last page is `4` and you are limiting results to `10` so you may
 end up with up to `40` elements because `10 * 4`
-
 
 
 > Simmilar pagination numbering is based in other solution like
@@ -100,10 +99,10 @@ end up with up to `40` elements because `10 * 4`
 > where first page is 1
 
 
-## pagination starts from page 0 - Array-like
+## Pagination starting from page 0 - Array-like
 
-So one other idea may to implement pagination so it imitates how Array works,
-meaning first element is page 0:
+So one other idea may to implement pagination so imitating how Array works.
+This means  first element is page 0:
 
 ```
 e.g. given I have 32 items with limit 10
@@ -138,7 +137,7 @@ get /student/123/works?limit=10&page=0`
           { title: "work 7" },
           { title: "work 8" },
           { title: "work 9" },
-          { title: "work 10" },
+          { title: "work 10" }
         ]
        "limit": 10,
        "current_page": 0,
