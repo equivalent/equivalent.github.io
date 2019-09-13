@@ -66,7 +66,7 @@ rvm install 2.5.3
 ```bash
 # works without adding sources
 sudo apt-get update
-sudo apt-get install postgresql-10 postgresql-contrib libpq-dev
+sudo apt-get install postgresql postgresql-contrib libpq-dev
 psql --version                      # psql (PostgreSQL) 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
 ```
 
@@ -173,9 +173,9 @@ other ref:
 * <https://github.com/docker/compose/releases/tag/1.23.2>
 
 ```bash
-sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version    # docker-compose version 1.23.2, build 1110ad01
+docker-compose --version    # docker-compose version 1.24.1, build 1110ad01
 ```
 
 
