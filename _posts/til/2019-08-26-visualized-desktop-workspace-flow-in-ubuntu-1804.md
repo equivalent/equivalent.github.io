@@ -17,15 +17,22 @@ This setup should probably work also for Ubuntu with manually installed XFCE
 ## install tweek tools
 
 ```
-sudo apt install gnome-tweek-tools
+sudo apt install gnome-tweek-tool
+
 ```
 
-<https://www.youtube.com/watch?v=qTsPLCJdbJw> 
 
-todo once you lunch ubuntu-tweak-tool :
+
+Once installed change workspaces to static and change number of workspaces to 6
+
+```
+Gnome Tweaks Tool > workspaces > StaticWorkspaces
+Gnome Tweaks Tool > workspaces > Numpber of Workspaces = 6
+```
 
 * in workspaces section eneble static workspaces and set them to 6
 
+> stolen from <https://www.youtube.com/watch?v=qTsPLCJdbJw> 
 
 ## set up keyborad shortcuts for workspace switch
 
@@ -86,6 +93,13 @@ gsettings set org.gnome.shell.app-switcher current-workspace-only true
 ```
 
 
+## move Ubuntu Launcher to bottom (Dock bottom)
+
+```
+> settings > Dock > position on screen bottom
+```
+
 ## other setting
+
 
 There are some interesting tips in this video <https://www.youtube.com/watch?v=qTsPLCJdbJw> you may want to consider
