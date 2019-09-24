@@ -30,7 +30,7 @@ You need to locate `<div class="enhance-effect" id="enhance-rotate-buttons" hidd
 and remove the `hidden` attribute so you end up with `<div class="enhance-effect" id="enhance-rotate-buttons">`
 
 
-```
+```html
 <div id="enhance-trim-rotate">
   ...
   <div class="enhance-effect" id="enhance-rotate-buttons" hidden="true">
@@ -42,10 +42,10 @@ and remove the `hidden` attribute so you end up with `<div class="enhance-effect
 
 to
 
-```
+```html
 <div id="enhance-trim-rotate">
   ...
-  <div class="enhance-effect" id="enhance-rotate-buttons"s >
+  <div class="enhance-effect" id="enhance-rotate-buttons" >
     ...
   </div>
 </div>
