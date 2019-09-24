@@ -51,8 +51,8 @@ to
 </div>
 ```
 
-[How to rotate video in Youtube](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/youtube-rotate-video-1.png)
-[How to rotate video in Youtube result](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/youtube-rotate-video-2.png)
+![How to rotate video in Youtube](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/youtube-rotate-video-1.png)
+![How to rotate video in Youtube result](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/youtube-rotate-video-2.png)
 
 
 
