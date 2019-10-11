@@ -146,3 +146,4 @@ to pay a license :)
 ### Discussion
 
 
+* <https://www.reddit.com/r/ruby/comments/dgifxy/retry_activejob_sidekiq_on_exception/>
