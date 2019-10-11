@@ -52,9 +52,10 @@ So let's imagine our job was queued before the `work` record was
 saved in DB. We would see some error in Sidekiq retry tab saying something
 like `ActiveRecord::NotFound`. Now it's no big deal the job will get
 retried bit later (with Sidekiq) but the thing is we may see this error
-pop up in error capture tool like Airbrake. So it's better if we prevent
-this error from  happening our self (so we have full controll of
-lifecycle of this Job)
+pop up in error capture tool like Airbrake.
+
+So it's better if we prevent this error from  happening ourself. This way  we have full controll of Job
+lifecycle.
 
 
 
@@ -96,8 +97,9 @@ NotifyThatWorkWasPublishedJob.perform_later(work_id: work.id)
 ```
 
 The issue here is that we are keeping the execution within the same
-thread. That means if the backeng logic will waste time on retry several
-seconds this will increase the actual execution of our production code.
+thread. That means if the backend logic will waste time on retry several
+seconds this will increase the actual execution of the entire Job.
+
 In other words our Job may time out.
 
 
@@ -106,7 +108,7 @@ So here is much better solution:
 ### Requeue the job
 
 Upon expected fail we will requeue the Job and pass attempt count as
-argument:
+an argument:
 
 
 ```ruby
@@ -138,8 +140,8 @@ NotifyThatWorkWasPublishedJob.perform_later(work_id: work.id)
 
 ### Go pro
 
-I know Sidekiq pro provides extra features so maybe thing to consider is
-that.
+I know Sidekiq pro provides extra features so maybe a thing to consider is
+to pay a license :) 
 
 ### Discussion
 
