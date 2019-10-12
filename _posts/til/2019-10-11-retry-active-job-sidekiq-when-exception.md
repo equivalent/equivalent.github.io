@@ -58,7 +58,6 @@ So it's better if we prevent this error from  happening ourself. This way  we ha
 lifecycle.
 
 
-
 ### Retry
 
 One way to do this by using Ruby `retry` ([doc](https://docs.ruby-lang.org/en/2.4.0/syntax/exceptions_rdoc.html)):
@@ -103,8 +102,6 @@ seconds this will increase the actual execution of the entire Job.
 In other words our Job may time out.
 
 
-So here is much better solution:
-
 ### Requeue the job
 
 Upon expected fail we will requeue the Job and pass attempt count as
@@ -126,7 +123,7 @@ class NotifyThatWorkWasPublishedJob < ActiveJob::Base
     # ...some logic that will send Email, Push notification etc.
   rescue WorkNotFound
     if try < 4
-      sleep 1
+      # optionally you can add `sleep 1` here to prolong wait period. However it's not recommended as that 1 second delay will hold up your BG job thread.
       self.class.perform_later(work_id: work_id, try: try)
     else
       raise(WorkNotFoundEvenAfterRetry)
@@ -137,6 +134,46 @@ end
 # trigger
 NotifyThatWorkWasPublishedJob.perform_later(work_id: work.id)
 ```
+
+
+
+
+### Active Job retry
+
+**recommended  solution**
+
+
+```ruby
+# app/jobs/new_work_published_job.rb
+class NotifyThatWorkWasPublishedJob < ActiveJob::Base
+  WorkNotFound = Class.new(StandardError)
+
+  retry_on WorkNotFound
+  queue_as :notifications
+
+  def perform(work_id:)
+    work = Work.find_by(id: work_id) || raise(WorkNotFound)
+
+    # ...some logic that will send Email, Push notification etc.
+  end
+end
+
+# trigger
+NotifyThatWorkWasPublishedJob.perform_later(work_id: work.id)
+```
+
+
+`retry_on` supports arguments such as `wait` time (default `3.seconds`), or `attempts`(default `5`), even `queue` and `priority`.
+
+```
+retry_on WorkNotFound, wait: 3.seconds, attempts: 5
+```
+
+* <https://guides.rubyonrails.org/active_job_basics.html#retrying-or-discarding-failed-jobs>
+* <https://api.rubyonrails.org/v6.0.0/classes/ActiveJob/Exceptions/ClassMethods.html>
+
+
+> Thank you [jrochkind](https://www.reddit.com/r/ruby/comments/dgifxy/retry_activejob_sidekiq_on_exception/f3dc097/) for recommending this solution
 
 ### Go pro
 
