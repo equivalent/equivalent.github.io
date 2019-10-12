@@ -138,7 +138,7 @@ NotifyThatWorkWasPublishedJob.perform_later(work_id: work.id)
 
 
 
-### Active Job retry
+### ActiveJob retry
 
 **recommended  solution**
 
@@ -165,7 +165,7 @@ NotifyThatWorkWasPublishedJob.perform_later(work_id: work.id)
 
 `retry_on` supports arguments such as `wait` time (default `3.seconds`), or `attempts`(default `5`), even `queue` and `priority`.
 
-```
+```ruby
 retry_on WorkNotFound, wait: 3.seconds, attempts: 5
 ```
 
