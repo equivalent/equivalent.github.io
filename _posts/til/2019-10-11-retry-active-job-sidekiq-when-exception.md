@@ -170,7 +170,7 @@ retry_on WorkNotFound, wait: 3.seconds, attempts: 5
 ```
 
 * <https://guides.rubyonrails.org/active_job_basics.html#retrying-or-discarding-failed-jobs>
-* <https://api.rubyonrails.org/v6.0.0/classes/ActiveJob/Exceptions/ClassMethods.html>
+* <https://api.rubyonrails.org/v6.0.0/classes/ActiveJob/Exceptions/ClassMethods.html#method-i-retry_on>
 
 
 > Thank you [jrochkind](https://www.reddit.com/r/ruby/comments/dgifxy/retry_activejob_sidekiq_on_exception/f3dc097/) for recommending this solution
