@@ -107,6 +107,12 @@ object (bind/unbind).
 
 * [Ruby metaprogramming examples](https://blog.eq8.eu/til/metaprogramming-ruby-examples.html)
 
+### UPDATE:
+
+Ruby 2.7 will support `bind_call`
+
+<https://blog.saeloun.com/2019/10/17/ruby-2-7-adds-unboundmethod-bind_call-method.html>
+
 ### Discussion to this article:
 
 * <https://www.reddit.com/r/ruby/comments/80cu8y/method_binding_in_ruby/>
