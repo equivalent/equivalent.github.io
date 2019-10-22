@@ -175,6 +175,62 @@ retry_on WorkNotFound, wait: 3.seconds, attempts: 5
 
 > Thank you [jrochkind](https://www.reddit.com/r/ruby/comments/dgifxy/retry_activejob_sidekiq_on_exception/f3dc097/) for recommending this solution
 
+### Let it fail. Let Sidekiq do the retry
+
+In case where you use ActiveJob with Sidekiq default behavior of Sidekiq
+is that it will requeue failed job and retry it later.
+
+Now this is nothing new we described this in the top of the article and
+we said that we don't want this as error monitoring tool like Airbrake
+will be hammered with exceptions messages.
+
+Now there is a way how to silence Airbrake errors when they are Sidekiq
+retried:
+
+
+```ruby
+# config/initializers/airbrake.rb
+require 'airbrake/sidekiq'
+# ...
+# ...
+# ...
+
+Airbrake.add_filter(Airbrake::Sidekiq::RetryableJobsFilter.new)
+```
+
+
+From <https://github.com/airbrake/airbrake#airbrakesidekiqretryablejobsfilter>:
+
+> By default, Airbrake notifies of all errors, including reoccurring errors during a retry attempt. To filter out these errors and only get notified when Sidekiq has exhausted its retries you can add the RetryableJobsFilter:
+
+
+
+> thank you [mperham](https://www.reddit.com/r/ruby/comments/dgifxy/retry_activejob_sidekiq_on_exception/) for suggestion
+
+Now I see two issues with this:
+
+First of all I believe this is a global solution so there is no way how
+to filter certain sidekiq exceptions after different number of retries.
+For example if exception `CouldNotSendMailingListEmailJobFaild` it's fine to
+get notifield by Airbrake in couple of hours but if you are dealing with
+exception such as `BankTransactionBetweenAccountsJobFailed` you better
+get notified by Airbrake within seconds !
+
+I didn't tried this Airbrake::Sidekiq::RetryableJobsFilter in my application so please correct me if I'm
+wrong.
+
+But even if I'm wrong with  configuration options of this Airbrake
+filter you will still have the issue that in Sidekiq jobs may get
+retried in couple of minutes/hours/days (unless you step in to the UI and
+you trigger there retry manually)
+
+<https://github.com/mperham/sidekiq/wiki/Error-Handling#automatic-job-retry>
+
+So in many smaller applications this solution may be fine enough option.
+But if you are dealing with application where you want to have closer
+grip of the retry process I don't recommend this approach
+
+
 ### Go pro
 
 I know Sidekiq pro provides extra features so maybe a thing to consider is
