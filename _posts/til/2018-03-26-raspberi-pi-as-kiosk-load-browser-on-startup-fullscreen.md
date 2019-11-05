@@ -8,6 +8,20 @@ disq_id: til-46
 ...or how to start Midori browser in fullscreen on raspberian
 
 
+
+**IMPORTANT NOTE!!!**
+
+> update 2019-11-05: I've recently tried steps bellow and thy don't work.
+> Not only that but it may cause your Raspberian Desktop not to load. I don't know why and don't have time to investigate.
+
+> Steps worked year ago but with recent Raspberian image some options
+> seems not to load properly.
+
+> Anyway I'm keeping this article for historic puprpose and older
+> Raspberian image versions but I recommend not to follow these steps.
+
+
+
 This TIL note is basically just a mirror of
 <http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/gui/auto-run-browser-on-startup>
 but there were some fixes based on
@@ -39,6 +53,7 @@ install `midori` browser
 #### Step 3 config lxde autostart
 
 Add at the bottom of the file `~/.config/lxsession/LXDE-pi/autostart`
+
 
 This
 
