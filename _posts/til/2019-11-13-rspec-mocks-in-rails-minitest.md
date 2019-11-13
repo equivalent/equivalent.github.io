@@ -62,3 +62,7 @@ end
 more resources:
 
 * <https://relishapp.com/rspec/rspec-mocks/docs/outside-rspec/integrate-with-minitest>
+
+Alternatives:
+
+* [minitest-mock_expectations](https://github.com/bogdanvlviv/minitest-mock_expectations)
