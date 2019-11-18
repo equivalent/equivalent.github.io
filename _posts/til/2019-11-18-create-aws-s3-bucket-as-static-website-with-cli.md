@@ -135,3 +135,6 @@ putting it here in case anyone needs it.
 * <https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html>
 
 ## Discussion
+
+* <https://www.reddit.com/r/aws/comments/dy53hi/create_aws_s3_bucket_as_a_static_website_with_aws/>
+* <https://www.reddit.com/r/programming/comments/dy54m8/create_aws_s3_bucket_as_a_static_website_with_aws/>
