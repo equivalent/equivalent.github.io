@@ -15,21 +15,18 @@ We will create dummy static website on bucket called `happy-bunny`
 
 ```bash
 # create s3 bucket via AWS CLI
-aws s3api create-bucket --bucket happy-bunny --acl public-read --region eu-west-1  --create-bucket-configuration LocationConstraint=eu-west-1
+aws s3api create-bucket --bucket happy-bunny --region eu-west-1  --create-bucket-configuration LocationConstraint=eu-west-1
 
 # ..or with profile option
-aws s3api create-bucket --bucket happy-bunny --acl public-read --region eu-west-1  --create-bucket-configuration LocationConstraint=eu-west-1 --profile equivalent
+aws s3api create-bucket --bucket happy-bunny --region eu-west-1  --create-bucket-configuration LocationConstraint=eu-west-1 --profile equivalent
 
 ```
 
-* `acl` `public-read` means that anything on bucket is publicly  availible
-* to understand why the LocationConstraint read [here](https://github.com/aws/aws-cli/issues/2603)
 * ` --profile nameofprofil` is only necesarry if you have multiple AWS accounts on your laptop (E.g work one is `default` and personal is `equivalent`)
+* to understand why the LocationConstraint read [here](https://github.com/aws/aws-cli/issues/2603)
 
 
 ## Set bucket public policy
-
-> Note yes we did `--acl public-read` but AWS have one more protection:
 
 
 create a file `/tmp/bucket_policy.json` with this content:
@@ -105,6 +102,33 @@ Website will be:
 <http://happy-bunny.s3-website-eu-west-1.amazonaws.com>
 
 
+## Script
+
+Everything together in one script
+
+```
+echo '
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::happy-bunny/*"
+        }
+    ]
+}
+' > /tmp/bucket_policy.json
+
+aws s3api create-bucket --bucket happy-bunny --region eu-west-1  --create-bucket-configuration LocationConstraint=eu-west-1 --profile equivalent
+aws s3api put-bucket-policy --bucket happy-bunny --policy file:///tmp/bucket_policy.json --profile equivalent
+aws s3 sync /home/t/git/equivalent/happy-bunny s3://happy-bunny/  --profile equivalent
+aws s3 website s3://happy-bunny/ --index-document index.html --error-document error.html --profile equivalent
+```
+
+
 ## Sources:
 
 * <https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteAccessPermissionsReqd.html>
@@ -115,7 +139,6 @@ Website will be:
 ## Debugging
 
 ```
-aws s3api   get-bucket-acl --bucket happy-bunny --profile equivalent
 aws s3api   get-bucket-policy --bucket happy-bunny --profile equivalent
 aws s3api   get-bucket-website --bucket happy-bunny --profile equivalent
 ```
