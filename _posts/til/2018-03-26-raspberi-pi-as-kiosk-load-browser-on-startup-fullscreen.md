@@ -83,3 +83,8 @@ sudo vim /etc/xdg/lxsession/LXDE/autostart
 
 
 all should just work
+
+
+## Other
+
+> note: I have unpolished Raspberi PI notes here: <https://github.com/equivalent/scrapbook2/blob/master/raspberry_pi.md>
