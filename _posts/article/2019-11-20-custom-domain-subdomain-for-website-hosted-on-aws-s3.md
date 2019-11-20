@@ -231,12 +231,17 @@ Really interesting book on this topic is <https://pragprog.com/book/brapps/serve
 
 > I have a talk on this topic: <https://youtu.be/fn17nojYa-I?t=1359>
 
+**Easier solutions**
+
+* https://pages.github.com/
+* https://zeit.co/ (this one is extremly cool: CDN, free HTTPs, unlimited websites)
+* https://surge.sh/
+* You can also host static website on Microsoft Azure Blob storage (e.g. if you are forced to use Azure) Read more [here](https://azure.microsoft.com/sv-se/blog/static-websites-on-azure-storage-now-generally-available/)  and if you want to see some example done by me: <https://github.com/equivalent/derren> 
+
 ## Sources
 
 * [AWS docs - Setting Up a Static Website Using a Custom Domain](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)
 * <https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html>
-
-If you looking for [Microsoft Azure Blob storage static website SPA example](https://github.com/equivalent/derren) have a look on <https://github.com/equivalent/derren>
 
 ## Discussion
 
