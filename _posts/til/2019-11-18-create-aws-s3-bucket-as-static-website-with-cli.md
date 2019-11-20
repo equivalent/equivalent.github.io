@@ -181,6 +181,10 @@ putting it here in case anyone needs it.
 
 * <https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html>
 
+#### Custom Domain
+
+<https://blog.eq8.eu/article/custom-domain-subdomain-for-website-hosted-on-aws-s3.html>
+
 ## Discussion
 
 * <https://www.reddit.com/r/aws/comments/dy53hi/create_aws_s3_bucket_as_a_static_website_with_aws/>
