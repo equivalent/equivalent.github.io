@@ -12,7 +12,11 @@ description:
 
 You can configure Amazon Web Services (AWS) [S3](https://aws.amazon.com/s3/) buckets to  host static websites (e.g. static HTML+CSS+JavaScript website or Single Page Apps (SPA) Frontend )
 
-In this Article I'll show you how to set S3 bucket for custom domanin / subdomain.
+In this Article I'll show you how to set AWS S3 bucket:
+
+1. AWS S3 bucket as a Subdomain website
+2. AWS S3 bucket as a Custom Domain website
+3. How to secure it with `https://`
 
 
 The core principle is that you need to name yout S3 bucket same way how
@@ -25,7 +29,7 @@ If you want to have subdomain on existing domain e.g.
 `happy-bunny.eq8.eu` then you create AWS S3 bucket `happy-bunny.eq8.eu`
 
 
-### Creating AWS S3 bucket website as Subdomain
+## AWS S3 as a Subdomain website
 
 We will create static website on `happy-bunny.eq8.eu`
 
@@ -73,17 +77,20 @@ Now we will create `CNAME`  DNS record on domain `eq8.eu`  to point `happy-bunny
 
 ![add DNS record for subdomain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-add-subdomain-dns-record.png)
 
+> On official [AWS docs](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html#root-domain-walkthrough-add-arecord-to-hostedzone) has different
+> way where you host your DNS records in [AWS Route 53](https://console.aws.amazon.com/route53/) and point A Records to buckets. I don't like this solution as I like to use
+>  [Cloudflare](https://cloudflare.com/) for free `https://`. More on that in section bellow.
 
 And it works <https://happy-bunny.eq8.eu/>
 
 
 ![happy-bunny.eq8.eu subdomain works](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-subdomain-works.png)
 
-> Reason why I have `https://` is because I have my DNS records on [Cloudflare](https://cloudflare.com/) more on that bellow
+That's all
 
 
 
-### Creating AWS S3 bucket website as a Custom Domain
+## AWS S3 bucket as a Custom Domain website
 
 We will create static website on `www.happy-bunny.xyz`
 
@@ -136,6 +143,23 @@ And run the file with `bash /tmp/create_bucket.sh`
 Once successfull we have it hosted: <http://www.happy-bunny.xyz.s3-website-eu-west-1.amazonaws.com/>
 
 In our `happy-bunny.xyz` domain we will create DNS record `CNAME`  to point `www` to `www.happy-bunny.xyz.eu.s3-website-eu-west-1.amazonaws.com`
+
+<http://www.happy-bunny.xyz/>
+
+#### Naked domain
+
+So great our `www` subdomain works. But what about the "Nake domain" `happy-bunny.xyz` (without the www in front) ?
+
+I would recommend to just use [wwwizer](http://wwwizer.com/naked-domain-redirect). All you need to do is point your DNS root `A` record to `174.129.25.170` and when
+someone loads `http://happy-bunny.xyz` he/she will get redirected to `http://www.happy-bunny.xyz`
+
+> On official [AWS docs](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html#root-domain-walkthrough-add-arecord-to-hostedzone) has different
+> way where you host your DNS records in [AWS Route 53](https://console.aws.amazon.com/route53/) and point A Records to buckets (I don't like this solution as I like to use
+>  [Cloudflare](https://cloudflare.com/) for free `https://`. More on that in section bellow)
+> Therefore you can create bucket `happy-bunny.xyz` to host the static pages.  It's up to you if you want to go this way.
+
+
+
 
 
 
