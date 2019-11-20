@@ -106,9 +106,8 @@ Website will be:
 
 Everything together in one script
 
-```
-echo '
-{
+```bash
+echo '{
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -119,8 +118,7 @@ echo '
             "Resource": "arn:aws:s3:::happy-bunny/*"
         }
     ]
-}
-' > /tmp/bucket_policy.json
+}' > /tmp/bucket_policy.json
 
 aws s3api create-bucket --bucket happy-bunny --region eu-west-1  --create-bucket-configuration LocationConstraint=eu-west-1 --profile equivalent
 aws s3api put-bucket-policy --bucket happy-bunny --policy file:///tmp/bucket_policy.json --profile equivalent
@@ -142,6 +140,30 @@ aws s3 website s3://happy-bunny/ --index-document index.html --error-document er
 aws s3api   get-bucket-policy --bucket happy-bunny --profile equivalent
 aws s3api   get-bucket-website --bucket happy-bunny --profile equivalent
 ```
+
+#### Whitespace in Bucket Policy Json
+
+```
+An error occurred (MalformedPolicy) when calling the PutBucketPolicy operation: Policies must be valid JSON and the first byte must be '{'
+```
+
+Make sure the JSON in `/tmp/bucket_policy.json` has no leading
+whitespace (new line). That means:
+
+* this is not OK: ` { }`
+* this is not OK: `\n{ }`
+* this is ok `{}`
+
+
+#### Bucket already exist
+
+```
+An error occurred (BucketAlreadyOwnedByYou) when calling the CreateBucket operation: Your previous request to create the named bucket succeeded and you already own it.
+```
+
+Well it already exist. Either delete it, continue with next command or create different name.
+
+To delete the entire bucket you can use `aws s3api  delete-bucket --bucket happy-bunny-123`  (check content inside bucket first `aws s3 ls happy-bunny-123` !!!, you cannot recover it once deleted)
 
 #### AWS account may have global "block public access"
 
