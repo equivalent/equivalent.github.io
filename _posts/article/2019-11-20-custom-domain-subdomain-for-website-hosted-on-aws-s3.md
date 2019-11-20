@@ -205,9 +205,38 @@ deployments (think about how will the cache get invalidated)
 
 > If you want to transfer Route53 to Cloudflare check [this article](https://blog.eq8.eu/article/aws-route-53-cloudflare.html)
 
-### Sources
+## Other tips
+
+**Ruby** dudes [Middleman](https://middlemanapp.com/) or [Jekyll](https://jekyllrb.com/)  are Static website frameworks. What you can do is compile project to static Websites and upload the compiled content to s3 website bucket
+
+```bash
+middleman build
+aws s3 sync ./build s3://www.name-of-my-website.eu
+```
+
+I've created several website for friends and familly this way
+
+* <http://www.zdenka.eu/>
+* <http://www.shortie.sk/>
+
+> But if you use Jekyll you can  host static websites on [Github Pages](https://pages.github.com/). e.g. [elkar.sk](https://elkar.sk/) ([source](https://github.com/elkar-slovakia/elkar-slovakia.github.io))
+
+
+**JavaScript** dudes you can build SPA websites and host them on S3 buckets
+
+Then backend can be built with AWS API Gateway and AWS lambda Functions (you pay for Lambda functions only if they are triggered) and AWS Dynamo DB as DB (you pay only for rows in DB) so you end up with "Serverless" platform
+This way you can build application FE + BE + DB that can cost you 0.0x per month if not used often (but if you have web app used as often as regular server prices will be comparable to webhosting)
+
+Really interesting book on this topic is <https://pragprog.com/book/brapps/serverless-single-page-apps>
+
+> I have a talk on this topic: <https://youtu.be/fn17nojYa-I?t=1359>
+
+## Sources
 
 * [AWS docs - Setting Up a Static Website Using a Custom Domain](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)
 * <https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html>
 
-### Discussion
+## Discussion
+
+* <https://www.reddit.com/r/aws/comments/dz3eg0/custom_domain_subdomain_for_website_hosted_on_aws/>
+* <https://www.reddit.com/r/programming/comments/dz3e7b/custom_domain_subdomain_for_website_hosted_on_aws/>
