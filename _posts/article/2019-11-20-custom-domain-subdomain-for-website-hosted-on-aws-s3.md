@@ -82,7 +82,7 @@ Now we will create `CNAME`  DNS record on domain `eq8.eu`  to point `happy-bunny
 ![add DNS record for subdomain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-add-subdomain-dns-record.png)
 
 > On official [AWS docs](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html#root-domain-walkthrough-add-arecord-to-hostedzone) has different
-> way where you host your DNS records in [AWS Route 53](https://console.aws.amazon.com/route53/) and point A Records to buckets. I don't like this solution as I like to use
+> way where you host your DNS records in [AWS Route 53](https://aws.amazon.com/route53/) and point A Records to buckets. I don't like this solution as I like to use
 >  [Cloudflare](https://cloudflare.com/) for free `https://`. More on that in section bellow.
 
 
@@ -164,7 +164,7 @@ someone loads `http://happy-bunny.xyz` he/she will get redirected to `http://www
 ![add DNS record for domain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-domain-dns.png)
 
 > On official [AWS docs](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html#root-domain-walkthrough-add-arecord-to-hostedzone) has different
-> way where you host your DNS records in [AWS Route 53](https://console.aws.amazon.com/route53/) and point A Records to buckets (I don't like this solution as I like to use
+> way where you host your DNS records in [AWS Route 53](https://aws.amazon.com/route53/) and point A Records to buckets (I don't like this solution as I like to use
 >  [Cloudflare](https://cloudflare.com/) for free `https://`. More on that in section bellow)
 > Therefore you can create bucket `happy-bunny.xyz` to host the static pages.  It's up to you if you want to go this way.
 
@@ -206,6 +206,14 @@ the file and you will avoid this problem. It's a static website anyway.
 
 Just be sure to be careful how you set it up if you need to do frequent
 deployments (think about how will the cache get invalidated)
+
+
+> If you rather want to have everything on AWS you can set up [AWS CloudFront](https://aws.amazon.com/cloudfront/) to do the CDN + https and
+> then if you host your DNS records in [AWS Route 53](https://aws.amazon.com/route53/) you can point custom
+> domain to it. I don't have experience with this solution but it was recommended to me in
+> [this discussion](https://www.reddit.com/r/javascript/comments/dz3q3y/static_website_hosted_on_aws_s3_good_for_cheap/f85f9oh?utm_source=share&utm_medium=web2x)
+
+
 
 > If you want to transfer Route53 to Cloudflare check [this article](https://blog.eq8.eu/article/aws-route-53-cloudflare.html)
 
