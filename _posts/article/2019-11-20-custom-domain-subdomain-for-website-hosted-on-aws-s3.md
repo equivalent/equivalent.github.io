@@ -236,6 +236,8 @@ Really interesting book on this topic is <https://pragprog.com/book/brapps/serve
 * [AWS docs - Setting Up a Static Website Using a Custom Domain](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)
 * <https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html>
 
+If you looking for [Microsoft Azure Blob storage static website SPA example](https://github.com/equivalent/derren) have a look on <https://github.com/equivalent/derren>
+
 ## Discussion
 
 * <https://www.reddit.com/r/aws/comments/dz3eg0/custom_domain_subdomain_for_website_hosted_on_aws/>
