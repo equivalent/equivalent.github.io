@@ -144,7 +144,10 @@ Once successfull we have it hosted: <http://www.happy-bunny.xyz.s3-website-eu-we
 
 In our `happy-bunny.xyz` domain we will create DNS record `CNAME`  to point `www` to `www.happy-bunny.xyz.eu.s3-website-eu-west-1.amazonaws.com`
 
-<http://www.happy-bunny.xyz/>
+Website works now on: <http://www.happy-bunny.xyz/>
+
+![add DNS record for domain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-websites-domain-works.png)
+
 
 #### Naked domain
 
@@ -153,15 +156,50 @@ So great our `www` subdomain works. But what about the "Nake domain" `happy-bunn
 I would recommend to just use [wwwizer](http://wwwizer.com/naked-domain-redirect). All you need to do is point your DNS root `A` record to `174.129.25.170` and when
 someone loads `http://happy-bunny.xyz` he/she will get redirected to `http://www.happy-bunny.xyz`
 
+![add DNS record for domain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-domain-dns.png)
+
 > On official [AWS docs](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html#root-domain-walkthrough-add-arecord-to-hostedzone) has different
 > way where you host your DNS records in [AWS Route 53](https://console.aws.amazon.com/route53/) and point A Records to buckets (I don't like this solution as I like to use
 >  [Cloudflare](https://cloudflare.com/) for free `https://`. More on that in section bellow)
 > Therefore you can create bucket `happy-bunny.xyz` to host the static pages.  It's up to you if you want to go this way.
 
 
+## Cloudflare for free https and caching
+
+In order to get https for free on your website I would recommend to
+create [Cloudflare](https://cloudflare.com/) account and transfer your
+DNS nameserver records (NS records) for your domain to Cloudflare
+
+> No worries this is NOT "transfering doamin". You will only point DNS
+> name servers to different location
+
+![add DNS record for domain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-cloudflare.png)
+
+Once in Cloudflare go to "SSL/TLS" section and choose "flexible" for
+your domain.
+
+This way you will end up with:
+
+`http://www.happy-bunny.xyz` and `https://www.happy-bunny.xyz`
+
+You can go one step further and configure "Always Use HTTPS" (in `SSL/TLS > Edge Certificates > Always Use HTTPS > ON`) this way when someone goes to 
+`http://www.happy-bunny.xyz` he/she will get redirected to `https://www.happy-bunny.xyz`
+
+An additional benefit of Cloudflare is that it will provide caching for your static files on DNS level.
+
+Becase you pay for AWS S3 bucket depending how much data you store but
+also "how much data is transfered" you may get slightly bigger bill if
+large files are requested too often (e.g. someone created script pulling
+large image from your website in infinite loop)
 
 
+If you configure Cloudflare the right way you can tell it to cache all
+the file and you will avoid this problem. It's a static website anyway.
 
+Just be sure to be careful how you set it up if you need to do frequent
+deployments (think about how will the cache get invalidated)
+
+> If you want to transfer Route53 to Cloudflare check [this article](https://blog.eq8.eu/article/aws-route-53-cloudflare.html)
 
 ### Sources
 
