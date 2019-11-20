@@ -10,7 +10,7 @@ description:
 ---
 
 
-You can configure Amazon Web Services (AWS) [S3](https://aws.amazon.com/s3/) buckets to  host static websites (e.g. static HTML+CSS+JavaScript website or Single Page Apps (SPA) Frontend )
+You can configure Amazon Web Services (AWS) [S3](https://aws.amazon.com/s3/) buckets to  host static websites (e.g. static HTML+CSS+JavaScript website or Single Page App (SPA) Frontend )
 
 In this Article I'll show you how to set AWS S3 bucket:
 
@@ -19,7 +19,7 @@ In this Article I'll show you how to set AWS S3 bucket:
 3. How to secure it with `https://`
 
 
-The core principle is that you need to name yout S3 bucket same way how
+The core principle is that you need to name your S3 bucket same way how
 the domain / subdomain will be named.
 
 So for example if you want `www.happy-bunny.xyz` you create AWS S3 bucket with
@@ -62,7 +62,7 @@ aws s3api create-bucket --bucket happy-bunny.eq8.eu --region eu-west-1  --create
 ```
 
 * be sure you replace `/tmp/SOURCE_FOLDER` with where your keep your files on your computer
-* be sure you reploace `s3://happy-bunny.eq8.eu/` with the name of your bucket
+* be sure you replace `s3://happy-bunny.eq8.eu/` with the name of your bucket
 
 And run the file with `bash /tmp/create_bucket.sh`
 
@@ -70,7 +70,7 @@ And run the file with `bash /tmp/create_bucket.sh`
 
 
 
-Once successfull we have it hosted: <http://happy-bunny.eq8.eu.s3-website-eu-west-1.amazonaws.com/>
+Once successful we have it hosted here: <http://happy-bunny.eq8.eu.s3-website-eu-west-1.amazonaws.com/>
 
 Now we will create `CNAME`  DNS record on domain `eq8.eu`  to point `happy-bunny.eq8.eu` to `happy-bunny.eq8.eu.s3-website-eu-west-1.amazonaws.com`
 
@@ -93,11 +93,6 @@ That's all
 ## AWS S3 bucket as a Custom Domain website
 
 We will create static website on `www.happy-bunny.xyz`
-
-For purpouse of this article I've registered domain `happy-bunny.xyz` it cost me `$1.99` but renewal is `$9` so I'll not be renewing this domain next year.
-So if you reading this in 2020 chances are that there is something else hosted on that domain.
-
-![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-buy-domain.png)
 
 
 In my TIL note [website on S3 with AWS CLI](https://blog.eq8.eu/til/create-aws-s3-bucket-as-static-website-with-cli.html) I showed you how to set up AWS S3 Bucket using [AWS CLI](https://aws.amazon.com/cli/)
@@ -132,7 +127,7 @@ aws s3api create-bucket --bucket www.happy-bunny.xyz --region eu-west-1  --creat
 
 
 * be sure you replace `/tmp/SOURCE_FOLDER` with where your keep your files on your computer
-* be sure you reploace `s3://www.happy-bunny.xyz/` with the name of your bucket
+* be sure you replace `s3://www.happy-bunny.xyz/` with the name of your bucket
 
 
 And run the file with `bash /tmp/create_bucket.sh`
@@ -140,18 +135,23 @@ And run the file with `bash /tmp/create_bucket.sh`
 > If any errors pls check [this](2019-11-18-create-aws-s3-bucket-as-static-website-with-cli.md) TIL note (debugging section)
 
 
-Once successfull we have it hosted: <http://www.happy-bunny.xyz.s3-website-eu-west-1.amazonaws.com/>
+Once successful we have it hosted here: <http://www.happy-bunny.xyz.s3-website-eu-west-1.amazonaws.com/>
 
 In our `happy-bunny.xyz` domain we will create DNS record `CNAME`  to point `www` to `www.happy-bunny.xyz.eu.s3-website-eu-west-1.amazonaws.com`
 
+![add DNS record for domain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-websites-domain-works.png)
+
 Website works now on: <http://www.happy-bunny.xyz/>
 
-![add DNS record for domain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-websites-domain-works.png)
+> NOTE: For purpose of this article I've registered domain `happy-bunny.xyz` it cost me `$1.99` but renewal is `$9` so I'll not be renewing this domain next year.
+> So if you reading this in 2020 chances are that there is something else hosted on that domain.
+
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-buy-domain.png)
 
 
 #### Naked domain
 
-So great our `www` subdomain works. But what about the "Nake domain" `happy-bunny.xyz` (without the www in front) ?
+So great our `www` subdomain works. But what about the "Naked domain" `happy-bunny.xyz` (without the `www` in front) ?
 
 I would recommend to just use [wwwizer](http://wwwizer.com/naked-domain-redirect). All you need to do is point your DNS root `A` record to `174.129.25.170` and when
 someone loads `http://happy-bunny.xyz` he/she will get redirected to `http://www.happy-bunny.xyz`
@@ -170,8 +170,8 @@ In order to get https for free on your website I would recommend to
 create [Cloudflare](https://cloudflare.com/) account and transfer your
 DNS nameserver records (NS records) for your domain to Cloudflare
 
-> No worries this is NOT "transfering doamin". You will only point DNS
-> name servers to different location
+> No worries this is NOT "transfer domain". You will only point DNS
+> name servers (NS) to different location
 
 ![add DNS record for domain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-cloudflare.png)
 
@@ -187,7 +187,7 @@ You can go one step further and configure "Always Use HTTPS" (in `SSL/TLS > Edge
 
 An additional benefit of Cloudflare is that it will provide caching for your static files on DNS level.
 
-Becase you pay for AWS S3 bucket depending how much data you store but
+Because you pay for AWS S3 bucket depending how much data you store but
 also "how much data is transfered" you may get slightly bigger bill if
 large files are requested too often (e.g. someone created script pulling
 large image from your website in infinite loop)
@@ -205,3 +205,5 @@ deployments (think about how will the cache get invalidated)
 
 * [AWS docs - Setting Up a Static Website Using a Custom Domain](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)
 * <https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html>
+
+### Discussion
