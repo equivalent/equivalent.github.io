@@ -81,7 +81,8 @@ Now we will create `CNAME`  DNS record on domain `eq8.eu`  to point `happy-bunny
 > way where you host your DNS records in [AWS Route 53](https://console.aws.amazon.com/route53/) and point A Records to buckets. I don't like this solution as I like to use
 >  [Cloudflare](https://cloudflare.com/) for free `https://`. More on that in section bellow.
 
-And it works <https://happy-bunny.eq8.eu/>
+
+**And it works !!! <https://happy-bunny.eq8.eu/>**
 
 
 ![happy-bunny.eq8.eu subdomain works](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-subdomain-works.png)
@@ -184,6 +185,9 @@ This way you will end up with:
 
 You can go one step further and configure "Always Use HTTPS" (in `SSL/TLS > Edge Certificates > Always Use HTTPS > ON`) this way when someone goes to 
 `http://www.happy-bunny.xyz` he/she will get redirected to `https://www.happy-bunny.xyz`
+
+
+![add DNS record for domain](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-websiteshttps.png)
 
 An additional benefit of Cloudflare is that it will provide caching for your static files on DNS level.
 
