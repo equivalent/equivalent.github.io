@@ -234,7 +234,8 @@ Really interesting book on this topic is <https://pragprog.com/book/brapps/serve
 **Easier solutions**
 
 * <https://pages.github.com/>
-* <https://zeit.co/> (this one is extremly cool: CDN, free HTTPs, unlimited websites)
+* <https://zeit.co/> (my FE colleague recommends this)
+* <https://www.netlify.com/>
 * <https://surge.sh/>
 * You can also host static website on Microsoft Azure Blob storage (e.g. if you are forced to use Azure) Read more [here](https://azure.microsoft.com/sv-se/blog/static-websites-on-azure-storage-now-generally-available/)  and if you want to see some example done by me: <https://github.com/equivalent/derren> 
 
