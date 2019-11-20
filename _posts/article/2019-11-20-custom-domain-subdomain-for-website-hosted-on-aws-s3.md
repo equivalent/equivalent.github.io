@@ -34,6 +34,7 @@ So lets use the "script" from that article:
 
 > If you want to do it from Web interface check this [AWS docs - static website on S3 webinterface](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html)
 
+Create a new file in: `/tmp/create_bucket.sh`
 
 ```bash
 #!/bin/bash
@@ -56,11 +57,14 @@ aws s3api create-bucket --bucket happy-bunny.eq8.eu --region eu-west-1  --create
   && aws s3 website s3://happy-bunny.eq8.eu/ --index-document index.html --error-document error.html
 ```
 
-Note:
-
 * be sure you replace `/tmp/SOURCE_FOLDER` with where your keep your files on your computer
 * be sure you reploace `s3://happy-bunny.eq8.eu/` with the name of your bucket
-* for debugging pls check [this](2019-11-18-create-aws-s3-bucket-as-static-website-with-cli.md) TIL note (debugging section)
+
+And run the file with `bash /tmp/create_bucket.sh`
+
+> If any errors pls check [this](2019-11-18-create-aws-s3-bucket-as-static-website-with-cli.md) TIL note (debugging section)
+
+
 
 Once successfull we have it hosted: <http://happy-bunny.eq8.eu.s3-website-eu-west-1.amazonaws.com/>
 
@@ -94,6 +98,44 @@ So lets use the "script" from that article:
 
 > If you want to do it from Web interface check this [AWS docs - static website on S3 webinterface](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html)
 
+
+Create a new file in: `/tmp/create_bucket.sh`
+
+```bash
+#!/bin/bash
+
+echo '{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::www.happy-bunny.xyz/*"
+        }
+    ]
+}' > /tmp/bucket_policy.json
+
+aws s3api create-bucket --bucket www.happy-bunny.xyz --region eu-west-1  --create-bucket-configuration LocationConstraint=eu-west-1 --profile equivalent \
+  && aws s3api put-bucket-policy --bucket www.happy-bunny.xyz --policy file:///tmp/bucket_policy.json --profile equivalent \
+  && aws s3 sync /tmp/SOURCE_FOLDER s3://www.happy-bunny.xyz/  --profile equivalent \
+  && aws s3 website s3://www.happy-bunny.xyz/ --index-document index.html --error-document error.html --profile equivalent
+```
+
+
+* be sure you replace `/tmp/SOURCE_FOLDER` with where your keep your files on your computer
+* be sure you reploace `s3://www.happy-bunny.xyz/` with the name of your bucket
+
+
+And run the file with `bash /tmp/create_bucket.sh`
+
+> If any errors pls check [this](2019-11-18-create-aws-s3-bucket-as-static-website-with-cli.md) TIL note (debugging section)
+
+
+Once successfull we have it hosted: <http://www.happy-bunny.xyz.s3-website-eu-west-1.amazonaws.com/>
+
+In our `happy-bunny.xyz` domain we will create DNS record `CNAME`  to point `www` to `www.happy-bunny.xyz.eu.s3-website-eu-west-1.amazonaws.com`
 
 
 
