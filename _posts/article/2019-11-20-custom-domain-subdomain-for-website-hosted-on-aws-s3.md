@@ -18,9 +18,9 @@ In this Article I'll show you how to set AWS S3 bucket:
 2. AWS S3 bucket as a Custom Domain website
 3. How to secure it with `https://`
 
-> Storing files on AWS S3 is super cheap. Price depends on "how much
+> Storing files on AWS S3 is super cheap ([pricing](https://aws.amazon.com/s3/pricing/)). Price depends on how much
 > data you store (around $0.03 per GB) and Data transfer (like $0.09
-> per GB) [pricing](https://aws.amazon.com/s3/pricing/) If you configure it the right
+> per GB). If you configure it the right
 > way the cost of hosting your website will be less than `$0.1` per month
 
 The core principle is that you need to name your S3 bucket same way how
