@@ -244,3 +244,4 @@ If you looking for [Microsoft Azure Blob storage static website SPA example](htt
 * <https://www.reddit.com/r/programming/comments/dz3e7b/custom_domain_subdomain_for_website_hosted_on_aws/>
 * <https://www.reddit.com/r/javascript/comments/dz3q3y/static_website_hosted_on_aws_s3_good_for_cheap/>
 * <https://www.reddit.com/r/ruby/comments/dz3otg/custom_domain_subdomain_for_website_hosted_on_aws/>
+* <https://www.reddit.com/r/serverless/comments/dz3wld/custom_domain_subdomain_for_website_hosted_on_aws/>
