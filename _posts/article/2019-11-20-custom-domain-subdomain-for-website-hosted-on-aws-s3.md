@@ -1,7 +1,7 @@
 ---
 layout: til_post
 title:  "Custom domain / subdomain for website hosted on AWS S3"
-categories: til
+categories: article
 disq_id: 58
 description:
   You can use AWS S3 bucket to host static websites. In this article
@@ -10,9 +10,9 @@ description:
 ---
 
 
-On AWS S3 you can host static websites (e.g. SPA, static HTML+CSS+JavaScript) 
+You can configure Amazon Web Services (AWS) [S3](https://aws.amazon.com/s3/) buckets to  host static websites (e.g. static HTML+CSS+JavaScript website or Single Page Apps (SPA) Frontend )
 
-In this Article I'll show you how to set up custom domanin / subdomain
+In this Article I'll show you how to set S3 bucket for custom domanin / subdomain.
 
 
 The core principle is that you need to name yout S3 bucket same way how
@@ -25,15 +25,14 @@ If you want to have subdomain on existing domain e.g.
 `happy-bunny.eq8.eu` then you create AWS S3 bucket `happy-bunny.eq8.eu`
 
 
-
-### Creating AWS S3 website as Subdomain
+### Creating AWS S3 bucket website as Subdomain
 
 We will create static website on `happy-bunny.eq8.eu`
 
-In my TIL note [website on S3 with AWS CLI](https://blog.eq8.eu/til/create-aws-s3-bucket-as-static-website-with-cli.html) I showed you how to do it with [AWS CLI](https://aws.amazon.com/cli/)
+In my TIL note [website on S3 with AWS CLI](https://blog.eq8.eu/til/create-aws-s3-bucket-as-static-website-with-cli.html) I showed you how to set up AWS S3 Bucket using [AWS CLI](https://aws.amazon.com/cli/).
+So lets use the "script" from that article:
 
 > If you want to do it from Web interface check this [AWS docs - static website on S3 webinterface](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html)
-
 
 
 ```bash
@@ -76,7 +75,26 @@ And it works <https://happy-bunny.eq8.eu/>
 
 ![happy-bunny.eq8.eu subdomain works](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-subdomain-works.png)
 
-> Reason why I have `https://` is because I have my DNS records on [Cloudflare](https://cloudflare.com/)
+> Reason why I have `https://` is because I have my DNS records on [Cloudflare](https://cloudflare.com/) more on that bellow
+
+
+
+### Creating AWS S3 bucket website as a Custom Domain
+
+We will create static website on `www.happy-bunny.xyz`
+
+For purpouse of this article I've registered domain `happy-bunny.xyz` it cost me `$1.99` but renewal is `$9` so I'll not be renewing this domain next year.
+So if you reading this in 2020 chances are that there is something else hosted on that domain.
+
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2019/aws-s3-static-website-buy-domain.png)
+
+
+In my TIL note [website on S3 with AWS CLI](https://blog.eq8.eu/til/create-aws-s3-bucket-as-static-website-with-cli.html) I showed you how to set up AWS S3 Bucket using [AWS CLI](https://aws.amazon.com/cli/)
+So lets use the "script" from that article:
+
+> If you want to do it from Web interface check this [AWS docs - static website on S3 webinterface](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html)
+
+
 
 
 ### Sources
