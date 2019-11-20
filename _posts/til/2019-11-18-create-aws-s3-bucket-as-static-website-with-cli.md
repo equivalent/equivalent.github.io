@@ -107,6 +107,8 @@ Website will be:
 Everything together in one script
 
 ```bash
+#!/bin/bash
+
 echo '{
     "Version": "2012-10-17",
     "Statement": [
@@ -120,10 +122,10 @@ echo '{
     ]
 }' > /tmp/bucket_policy.json
 
-aws s3api create-bucket --bucket happy-bunny --region eu-west-1  --create-bucket-configuration LocationConstraint=eu-west-1 --profile equivalent
-aws s3api put-bucket-policy --bucket happy-bunny --policy file:///tmp/bucket_policy.json --profile equivalent
-aws s3 sync /home/t/git/equivalent/happy-bunny s3://happy-bunny/  --profile equivalent
-aws s3 website s3://happy-bunny/ --index-document index.html --error-document error.html --profile equivalent
+aws s3api create-bucket --bucket happy-bunny --region eu-west-1  --create-bucket-configuration LocationConstraint=eu-west-1 --profile equivalent \
+  && aws s3api put-bucket-policy --bucket happy-bunny --policy file:///tmp/bucket_policy.json --profile equivalent \
+  && aws s3 sync /home/tomas/folder-where-you-keep-your-projects/happy-bunny s3://happy-bunny/  --profile equivalent \
+  && aws s3 website s3://happy-bunny/ --index-document index.html --error-document error.html --profile equivalent
 ```
 
 
