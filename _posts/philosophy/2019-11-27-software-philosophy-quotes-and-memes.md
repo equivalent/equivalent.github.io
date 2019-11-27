@@ -8,6 +8,14 @@ description:
 ---
 
 
+### Conway's law
+
+> [Conway's law](https://en.wikipedia.org/wiki/Conway%27s_law) is an adage stating that organizations design systems that mirror their own communication structure.
+
+If project you work for has 3 different teams that communicate in
+isolation, you will end up with 3 different versions of same Software
+those teams suppose to be building.
+
 
 ### Agile
 
