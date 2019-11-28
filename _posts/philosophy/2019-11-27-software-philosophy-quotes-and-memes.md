@@ -8,6 +8,15 @@ description:
 ---
 
 
+### Testing
+
+![unit-test](/assets/2019/unit-test.jpg)
+
+
+### Language speed
+
+![unit-test](/assets/2019/language-speed.jpg)
+
 ### Conway's law
 
 > [Conway's law](https://en.wikipedia.org/wiki/Conway%27s_law) is an adage stating that organizations design systems that mirror their own communication structure.
