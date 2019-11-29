@@ -60,6 +60,6 @@ If the whole `Agile` thing confuse you rather focuse on
 
 ### Good quality code
 
-![Pain Is Temporary, Suck Is Forever](/assets/2019/box.jpg)
+![Pain Is Temporary, Suck Is Forever](/assets/2019/pain-suck.jpg)
 
 
