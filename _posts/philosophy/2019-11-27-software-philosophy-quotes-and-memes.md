@@ -13,6 +13,11 @@ description:
 ![unit-test](/assets/2019/unit-test.jpg)
 
 
+### Thinking outside the box
+
+![Thinking outside the box is useful only when you fully understand what was inside the box](/assets/2019/box.jpg)
+
+
 ### Language speed
 
 ![unit-test](/assets/2019/language-speed.jpg)
