@@ -67,5 +67,9 @@ If the whole `Agile` thing confuse you rather focuse on
 ![Good software is not about  perfect programming language it's about how good are you using it](/assets/2019/javascript-good-parts.jpg)
 
 
+### Good security
+
+![security](/assets/2019/admin.jpg)
+
 
 
