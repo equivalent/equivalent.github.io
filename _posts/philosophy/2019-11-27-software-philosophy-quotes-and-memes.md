@@ -13,10 +13,6 @@ description:
 ![unit-test](/assets/2019/unit-test.jpg)
 
 
-### Thinking outside the box
-
-![Thinking outside the box is useful only when you fully understand what was inside the box](/assets/2019/box.jpg)
-
 
 ### Language speed
 
@@ -56,5 +52,14 @@ because "that big company I've read about is using this"
 If the whole `Agile` thing confuse you rather focuse on
 
 ![practcal web development](/assets/2019/practical-web-development.jpeg)
+
+### Thinking outside the box
+
+![Thinking outside the box is useful only when you fully understand what was inside the box](/assets/2019/box.jpg)
+
+
+### Good quality code
+
+![Pain Is Temporary, Suck Is Forever](/assets/2019/box.jpg)
 
 
