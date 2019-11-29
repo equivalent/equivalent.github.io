@@ -57,6 +57,8 @@ If the whole `Agile` thing confuse you rather focuse on
 
 ![Thinking outside the box is useful only when you fully understand what was inside the box](/assets/2019/box.jpg)
 
+![](https://pbs.twimg.com/media/DOnV-zWWkAABrCM.jpg:large)
+
 
 ### Good quality code
 
@@ -70,6 +72,7 @@ If the whole `Agile` thing confuse you rather focuse on
 ### Good security
 
 ![security](/assets/2019/admin.jpg)
+![](https://pbs.twimg.com/media/DCyiZCMWsAACK2P.jpg)
 
 
 ### Teamwork is important
@@ -77,9 +80,18 @@ If the whole `Agile` thing confuse you rather focuse on
 Teamwork is important on all layers of software
 
 ![Teamwork is important on all layers of software](/assets/2019/be-fe.jpg)
+![](https://pbs.twimg.com/media/C5GdqpGWQAAgzqL.jpg)
+![domain language](/assets/2019/domain-language.jpg)
+![brainstorm](/assets/2019/brainstorm.jpg)
+![deployment on friday](/assets/2019/deployment-friday.jpg)
+
 
 
 ### GDPR
 
 ![gdpr](/assets/2019/gdpr.jpg)
+![](https://pbs.twimg.com/media/DOKwBZkX0AE3_F2.jpg)
 
+### Startup
+
+![](/assets/2019/success.jpg)
