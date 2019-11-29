@@ -72,4 +72,14 @@ If the whole `Agile` thing confuse you rather focuse on
 ![security](/assets/2019/admin.jpg)
 
 
+### Teamwork is important
+
+Teamwork is important on all layers of software
+
+![Teamwork is important on all layers of software](/assets/2019/be-fe.jpg)
+
+
+### GDPR
+
+![gdpr](/assets/2019/gdpr.jpg)
 
