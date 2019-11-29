@@ -62,4 +62,10 @@ If the whole `Agile` thing confuse you rather focuse on
 
 ![Pain Is Temporary, Suck Is Forever](/assets/2019/pain-suck.jpg)
 
+![liskov substitution principle](/assets/2019/lsp.jpg)
+
+![Good software is not about  perfect programming language it's about how good are you using it](/assets/2019/javascript-good-parts.jpg)
+
+
+
 
