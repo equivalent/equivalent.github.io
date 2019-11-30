@@ -216,6 +216,23 @@ So solution was to check not only Inbound rules of EC2 security groups
 but also Outbound rules of AWS Elastic Loadbalancer
 
 
+## EC2 instance cannot pull docker image from ECR
+
+You are able to configure your docker container to be AWS ECR as descirbed [here](https://blog.eq8.eu/til/elastic-beanstalk-docker-using-aws-ec2-container-registry-ecr.html)
+
+It use to work out of the box before but since 2019 docker on EB EC2
+instance require docker login
+
+To do it for each deployemnt you need to provide [Elasticbeanstalk deployment hook](https://blog.eq8.eu/article/aws-elasticbeanstalk-hooks.html)
+
+```ruby
+cat  .ebextensions/91_login_to_aws_ecr.config
+commands:
+  20_login_to_aws_ecr_before_pull:
+    command: sudo $(sudo aws ecr get-login --no-include-email )
+```
+
+
 ## Common server issues when docker is not starting
 
 Let say for no good reason (or after deployment) docker containers seems
