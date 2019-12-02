@@ -87,7 +87,7 @@ the Visualized  workspaces flow.
 To disable this:
 
 ```
-Menu > Keyboard > Window Manager Tweaks > Focus Tab > 
+Menu > Window Manager Tweaks > Focus Tab > 
 
 set: "When a window raises itself"
 to: "Do nothing"
