@@ -53,6 +53,9 @@ If the whole `Agile` thing confuse you rather focuse on
 
 ![practcal web development](/assets/2019/practical-web-development.jpeg)
 
+
+![side projects](/assets/2019/sideproject.jpg)
+
 ### Thinking outside the box
 
 ![Thinking outside the box is useful only when you fully understand what was inside the box](/assets/2019/box.jpg)
@@ -68,6 +71,7 @@ If the whole `Agile` thing confuse you rather focuse on
 
 ![Good software is not about  perfect programming language it's about how good are you using it](/assets/2019/javascript-good-parts.jpg)
 
+![quality vs speed vs cost](/assets/2019/quality.jpg)
 
 ### Good security
 
