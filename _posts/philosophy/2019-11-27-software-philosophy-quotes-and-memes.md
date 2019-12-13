@@ -22,7 +22,7 @@ description:
 
 ![If project you work for has 3 different teams that communicate in
 isolation, you will end up with 3 different versions of same Software
-those teams suppose to be building.](conways-law.jpg)
+those teams suppose to be building.](/assets/2019/conways-law.jpg)
 
 > [Conway's law](https://en.wikipedia.org/wiki/Conway%27s_law) is an adage stating that organizations design systems that mirror their own communication structure.
 
