@@ -109,6 +109,7 @@ but I like how dynamic assert_select feels. You can do stuff like this:
 
 ```ruby
 assert_select "form:match('action', ?):match('method', ?)", "/books/#{book.id}/submit_review", 'post'
+assert_select 'div.card-panel.red', "Cupon Expired"
 ```
 
 

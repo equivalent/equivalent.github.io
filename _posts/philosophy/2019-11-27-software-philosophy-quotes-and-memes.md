@@ -73,6 +73,9 @@ If the whole `Agile` thing confuse you rather focuse on
 
 ![quality vs speed vs cost](/assets/2019/quality.gif)
 
+![false positive](/assets/2020/false-positive.jpg)
+
+> [source](https://www.reddit.com/r/funny/comments/epywxx/a_science_textbook_illustration_that_looks_like_a/?utm_medium=android_app&utm_source=share)
 ### Good security
 
 ![security](/assets/2019/admin.jpg)
