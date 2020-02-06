@@ -83,9 +83,9 @@ I want to visualize:
 `I need to go from "Server stuff workspace" to "Company communication"`
 
 > Same as in a house you don't think of I need to go out of this room, go
-> down the hallway, take the vacuum cleaner go out of this room go  left and
-> vacuum clean that room. You rather think: "I need from Living room to Storage
-> room grab a vacuum cleaner and go clean the Bedroom"
+> down the hallway, take the vacum cleaner go out of this room go  left and
+> vacum clean that room. You rather think: "I need from Living room to Storage
+> room grab a vacum cleaner and go clean the Bedroom"
 
 So in order to achieve this you need to set up instant "go to workspaces" navigation
 shortcuts in your laptop. For example you can set shortcuts:
@@ -242,7 +242,7 @@ productivity method.
 * [how to setup workspaces in Cinnamon for workspace flow](https://blog.eq8.eu/til/cinnamon-workspaces.html)
 * [how to setup workspaces in Manjaro linux 18 - XFCE](https://blog.eq8.eu/til/xfce-workspaces.html)
 * [how to setup workspaces in  Ubuntu XFCE and Xubuntu 18.04 ](https://blog.eq8.eu/til/xfce-workspaces-xubuntu.html)
-* [how to setup workspaces in  Ubuntu 18.04 (native Ubunntu Unity)  ](https://blog.eq8.eu/til/visualized-desktop-workspace-flow-in-ubuntu-1804.html)
+* [how to setup workspaces in  Ubuntu 18.04 (native Ubuntu Unity)  ](https://blog.eq8.eu/til/visualized-desktop-workspace-flow-in-ubuntu-1804.html)
 
 If you want to present this to your collegues here are [presentation slides](https://github.com/equivalent/equivalent.github.io/blob/master/assets/2019/visualized-workspaces-flow.odg)
 
