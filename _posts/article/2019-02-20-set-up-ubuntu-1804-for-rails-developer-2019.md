@@ -306,6 +306,7 @@ sudo npm install -g n
 example usage:  `sudo n 10.16.0`  more info:
 <https://github.com/tj/n#installing-node-versions>
 
+> get current version `node -v` 
 
 #### YARN
 
