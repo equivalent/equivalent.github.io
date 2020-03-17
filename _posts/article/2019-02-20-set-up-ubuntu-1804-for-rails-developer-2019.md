@@ -300,10 +300,10 @@ If you need to install different version you can use `n` Node version
 manager <https://github.com/tj/n>
 
 ```bash
-npm install -g n
+sudo npm install -g n
 ```
 
-example usage:  `n 10.16.0`  more info:
+example usage:  `sudo n 10.16.0`  more info:
 <https://github.com/tj/n#installing-node-versions>
 
 
