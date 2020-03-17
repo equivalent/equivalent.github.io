@@ -331,6 +331,19 @@ sudo apt install -y  vim vim-gnome
 sudo apt install p7zip-full
 ```
 
+#### Visualized Workspaces
+
+[Visualized Workspaces](https://blog.eq8.eu/article/visualized-desktop-workspaces-flow.html) is a flow I've invented and makes me super productive. Recommending to everyone
+
+
+```bash
+sudo apt install gnome-tweek-tool
+```
+
+follow instructions on <https://blog.eq8.eu/til/visualized-desktop-workspace-flow-in-ubuntu-1804.html>
+
+
+
 #### Janus Vim
 
 Janus Vim is powerful extension of Vim to give it IDE like experienc
