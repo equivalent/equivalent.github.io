@@ -282,6 +282,31 @@ sudo apt install ansible
 > note this install ansible-vault as well
 
 
+#### Node & NPM
+
+
+```bash
+sudo apt-get update
+sudo apt install nodejs
+sudo apt install npm
+
+```
+
+<https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04>
+
+This way you will install Node 8.10
+
+If you need to install different version you can use `n` Node version
+manager <https://github.com/tj/n>
+
+```bash
+npm install -g n
+```
+
+example usage:  `n 10.16.0`  more info:
+<https://github.com/tj/n#installing-node-versions>
+
+
 #### YARN
 
 <https://yarnpkg.com/lang/en/docs/install/#debian-stable>
