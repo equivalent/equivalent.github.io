@@ -745,6 +745,52 @@ They map your application requirements and your domain language. When your
 requirements change they must be super easy to change as well, otherwise
 you missed something and you are doing it wrong.*
 
+## Dude Policy gem
+
+2020-04-13 I've relased a gem [Dude Policy](https://github.com/equivalent/dude_policy) which provides a way to do Policy Objects
+from perspective of a current_user current_account
+
+```ruby
+# rails console
+article = Article.find(123)
+review  = Review.find(123)
+current_user = User.find(432) # e.g. Devise on any authentication solution
+
+current_user.dude.able_to_edit_article?(article)
+# => true
+
+current_user.dude.able_to_add_article_review?(article)
+# => true
+
+current_user.dude.able_to_delete_review?(review)
+# => false
+```
+
+```ruby
+# spec/any_file_spec.rb
+RSpec.describe 'short demo' do
+  let(:author_user)  { User.create }
+  let(:article) { Article.create(author: author_user) }
+  let(:different_user)  { User.create }
+
+  # you write tests like this:
+  it { expect(author_user.able_to_edit_article?(article)).to be_truthy }
+
+  # or you can take advantage of native `be_` RSpec matcher that converts any questionmark ending method to matcher
+  it { expect(author_user).to be_able_to_edit_article(article) }
+  it { expect(different_user).not_to be_able_to_edit_article(article) }
+  it { expect(author_user).not_to be_able_to_add_article_review(article) }
+  it { expect(different_user).to be_able_to_add_article_review(article) }
+  it { expect(author_user).not_to be_able_to_delete_review(article) }
+  it { expect(different_user).to be_able_to_add_article_review(article) }
+end
+```
+
+
+I'm doing policy objects this way for couple of years now and I highly
+recommend this as a solution for Policy Objects as it [solves many
+problems ](https://github.com/equivalent/dude_policy#philospophy)
+
 ## Related articles
 
 mine:
@@ -777,5 +823,6 @@ Reddit discussion on article:
   skip explaining reasons and just show you how to do advanced stuff.
    I'm preparing more detailed step by step article where I'll explain my reasons more.
 * 2017-05-24 added an `able_to_delete?` and `able_to_delete_resource?` to  "Domain logic not CRUD" section
+* 2020-04-13 added `dude_policy` gem section
 
 
