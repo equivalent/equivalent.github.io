@@ -38,6 +38,12 @@ c
 #=> [1, 2, 3, 4
 ```
 
+This is not really a issue. It's how Ruby works.
+
+![](https://meme.eq8.eu/feature.jpg)
+
+## Explanation
+
 
 In Ruby lang  variables are assigned as a reference - they point to same
 object ([source](https://www.ruby-lang.org/en/documentation/faq/4/#assignment))
@@ -70,7 +76,7 @@ b  ------/
 ```
 
 
-## It's not just Array
+### It's not just Array
 
 This doesn't really have anything to do with Array, specifically. Ruby assigns by reference, so any method call that changes its receiver in-place has the potential to manifest this behavior.
 
@@ -171,7 +177,20 @@ a
 # => [1, 2, 3]
 ```
 
-#### Freeze your array
+Same for other objects
+
+```ruby
+a = 'abcd'
+b = a.gsub('ab', 'xx')
+
+a
+# => 'abcd'
+
+b
+# => 'xxcd'
+```
+
+## Freeze your Object
 
 In order to prevent your Junior developers to do this mistake you may
 want to freeze the Array
