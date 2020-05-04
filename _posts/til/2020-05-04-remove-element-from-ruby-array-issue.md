@@ -25,7 +25,7 @@ a
 #=> [1, 3]
 ```
 
-Simmilar problem:
+Similar problem:
 
 
 
@@ -44,15 +44,20 @@ c
 
 ## WTF? Why ?!
 
-There is a good reason why this exist and that is **Performance**.
+There is a good reason why this exist and that reason is **Performance**.
 
 ![](https://meme.eq8.eu/feature.jpg)
 
 
 > I'll try to explain this best to my knowledge but as I've lerned about this like 10 years ago. So my explanation may not be 100% accurate.
 
+Ruby is not the fastest language so in some places core developers used
+pragmatic solution to gain performance.
+
 If I remmember correctly Ruby delegates Array calculations to underlying `C` lang lib. This is so that
-Array logic is faster.
+Array logic will be faster compared to if it was written in pure Ruby.
+
+> Same approach take several gems. Take gem [MiniMagic](https://github.com/minimagick/minimagick) for image manipulation. It's using [ImageMagic](https://imagemagick.org/index.php) C lib for heavy lifting.
 
 
 So think  about it this way.  When Ruby creates new array (`Array.new` or `[]`) it's really
