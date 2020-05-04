@@ -148,5 +148,5 @@ a
 
 #### Discussion
 
-* https://www.reddit.com/r/ruby/comments/gdagcf/issue_with_removingdeleting_element_from_ruby/
-* https://www.rubyflow.com/p/cnkxko-issue-with-removingdeleting-element-from-ruby-array
+* <https://www.reddit.com/r/ruby/comments/gdagcf/issue_with_removingdeleting_element_from_ruby/>
+* <https://www.rubyflow.com/p/cnkxko-issue-with-removingdeleting-element-from-ruby-array>
