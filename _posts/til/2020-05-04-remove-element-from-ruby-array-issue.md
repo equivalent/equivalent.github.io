@@ -6,10 +6,7 @@ disq_id: til-74
 ---
 
 
-
-
-There is a famous dangerous Ruby Array issue when removing/deleting
-element from Array
+Imagine this situation:
 
 
 ```ruby
@@ -25,8 +22,7 @@ a
 #=> [1, 3]
 ```
 
-Similar problem:
-
+Similar situation:
 
 
 ```ruby
@@ -42,36 +38,21 @@ c
 #=> [1, 2, 3, 4
 ```
 
-## WTF? Why ?!
 
-There is a good reason why this exist and that reason is **Performance**.
-
-![](https://meme.eq8.eu/feature.jpg)
+In Ruby lang  variables are assigned as a reference - they point to same
+object ([source](https://www.ruby-lang.org/en/documentation/faq/4/#assignment))
 
 
-> I'll try to explain this best to my knowledge but as I've lerned about this like 10 years ago my explanation may not be 100% accurate.
-
-Ruby is not the fastest language so in some places core developers used
-pragmatic solution to gain performance.
-
-If I remmember correctly Ruby delegates Array calculations to underlying `C` lang lib. This is so that
-Array logic will be faster compared to if it was written in pure Ruby.
-
-> Same approach take several gems. Take gem [MiniMagic](https://github.com/minimagick/minimagick) for image manipulation. It's using [ImageMagic](https://imagemagick.org/index.php) C lib for heavy lifting.
-
-
-So think  about it this way.  When Ruby creates new array (`Array.new` or `[]`) it's really
-just a pointer to C lang representation of the Array with all it's caviats.
 
 ```ruby
 a = []
 ```
 
 ```
-a  --------->   C Array logic.
+a  --------->  object
 ```
 
-Therefore `a` is just pointer to object in computer memmory not really Array
+Therefore `a` is just reference to object in computer memory
 
 When you do
 
@@ -79,22 +60,85 @@ When you do
 a = b
 ```
 
-You really set in `b` the same pointer as `a` is pointing to
+You really set in `b` the same reference as `a` is pointing to
 
 
 ```
 a  ------\
-          >----> C Array logic.
+          >----> object
 b  ------/
+```
+
+
+## It's not just Array
+
+This doesn't really have anything to do with Array, specifically. Ruby assigns by reference, so any method call that changes its receiver in-place has the potential to manifest this behavior.
+
+
+Hash example:
+
+```ruby
+x = {id: 1, name: 'allisio', skill: 'pro' }
+y = x
+y.delete(:id)
+
+y
+# => {:name=>"allisio", :skill=>"pro"}
+
+x
+# => {:name=>"allisio", :skill=>"pro"}
+
+y[:lang] = 'ruby'
+
+y
+# => {:name=>"allisio", :skill=>"pro", :lang=>"ruby"}
+
+y
+# => {:name=>"allisio", :skill=>"pro", :lang=>"ruby"}
+```
+
+String example:
+
+```ruby
+a = 'abcd'
+b = a
+
+b.gsub!('ab', 'xx')
+
+b
+# => 'xxcd'
+
+a
+# => 'xxcd'
+```
+
+Custom object example:
+
+```ruby
+class Foo
+  attr_accessor :value
+end
+
+foo = Foo.new
+foo.value = 1
+
+bar = foo
+bar.value =2
+
+bar.value
+# => 2
+
+foo.value
+# => 2
 ```
 
 
 ## Solution
 
-Here are few options how to get around this problem:
+Here are few options how to tell Ruby to reference a new object
 
 
-#### Clone the array
+#### Clone the object
 
 ```ruby
 a = [1,2,3]
@@ -129,8 +173,8 @@ a
 
 #### Freeze your array
 
-In order to prevent your Junior developres to do this mistake you may
-want to freeze the array
+In order to prevent your Junior developers to do this mistake you may
+want to freeze the Array
 
 ```ruby
 a = [1,2,3].freeze
@@ -146,10 +190,26 @@ a
 # => [1,2,3]
 ```
 
+## Special Thanks
+
+In first version of the article I've described the problem from wrong
+perspective
+
+Thank you [allisio](https://www.reddit.com/user/allisio/) for the [help](https://www.reddit.com/r/ruby/comments/gdagcf/issue_with_removingdeleting_element_from_ruby/fpg7t8m?utm_source=share&utm_medium=web2x) on describing the problem correctly
+
 ## Related Articles
+
+
+Here are some article that goes deeper into this topic:
+
+* <https://launchschool.com/blog/object-passing-in-ruby>
+* <https://launchschool.com/blog/references-and-mutability-in-ruby>
+
+Similar topics:
 
 * [Ruby Array](https://blog.eq8.eu/til/ruby-array.html)
 * [Ruby Enumerable, Enumerator, Lazy and domain specific collection objects](https://blog.eq8.eu/article/ruby-enumerable-enumerator-lazy-and-domain-specific-collections.html))
+
 
 ## Discussion
 
