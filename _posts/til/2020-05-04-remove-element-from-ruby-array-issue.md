@@ -146,7 +146,12 @@ a
 # => [1,2,3]
 ```
 
-#### Discussion
+## Related Articles
+
+* [Ruby Array](https://blog.eq8.eu/til/ruby-array.html)
+* [Ruby Enumerable, Enumerator, Lazy and domain specific collection objects](https://blog.eq8.eu/article/ruby-enumerable-enumerator-lazy-and-domain-specific-collections.html))
+
+## Discussion
 
 * <https://www.reddit.com/r/ruby/comments/gdagcf/issue_with_removingdeleting_element_from_ruby/>
 * <https://www.rubyflow.com/p/cnkxko-issue-with-removingdeleting-element-from-ruby-array>
