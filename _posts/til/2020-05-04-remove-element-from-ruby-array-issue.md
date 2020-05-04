@@ -46,6 +46,8 @@ c
 
 There is a good reason why this exist and that is **Performance**.
 
+![](https://meme.eq8.eu/feature.jpg)
+
 
 > I'll try to explain this best to my knowledge but as I've lerned about this like 10 years ago. So my explanation may not be 100% accurate.
 
