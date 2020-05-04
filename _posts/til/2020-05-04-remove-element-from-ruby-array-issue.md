@@ -49,7 +49,7 @@ There is a good reason why this exist and that reason is **Performance**.
 ![](https://meme.eq8.eu/feature.jpg)
 
 
-> I'll try to explain this best to my knowledge but as I've lerned about this like 10 years ago. So my explanation may not be 100% accurate.
+> I'll try to explain this best to my knowledge but as I've lerned about this like 10 years ago my explanation may not be 100% accurate.
 
 Ruby is not the fastest language so in some places core developers used
 pragmatic solution to gain performance.
