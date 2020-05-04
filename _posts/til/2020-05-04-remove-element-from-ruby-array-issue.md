@@ -22,7 +22,7 @@ a
 #=> [1, 3]
 ```
 
-Similar situation:
+Similar dangerous situation happens when you add elements to Array:
 
 
 ```ruby
