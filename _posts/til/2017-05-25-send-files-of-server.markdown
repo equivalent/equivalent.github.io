@@ -92,7 +92,7 @@ sudo apt install xclip
 ```
 
 1.  ssh / connect to bash of server.
-2. Output some results to console (e.g `echo /tmp/myfile.csv`)
+2. Output some results to console (e.g `cat /tmp/myfile.csv`)
 3. Just copy the console output (select and `SHIFT+CTRL+c`)
 4. In other terminal (you laptop) type `xclip -o /tmp/mylocalcopy.csv`
 
