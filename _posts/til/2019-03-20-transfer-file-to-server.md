@@ -135,6 +135,33 @@ gpg /tmp/my-file.csv.gpg
 ```
 
 
+## Simmilar problems:
+
+#### Copy outut paste clipboard with `xclip`
+
+This is quite a lazy but really effective way for 95% of cases wher you
+need to copy some output **from server to your laptop**
+
+> works on Ubuntu not sure about OsX
+
+You need `xclip` command
+
+```bash
+sudo apt install xclip
+```
+
+1.  ssh / connect to bash of server.
+2. Output some results to console (e.g `echo /tmp/myfile.csv`)
+3. Just copy the console output (select and `SHIFT+CTRL+c`)
+4. In other terminal (you laptop) type `xclip -o /tmp/mylocalcopy.csv`
+
+Chances are you will also pase some clipboard junk so open the file and remove stuff you don't need
+
+Now reason why you don't want to use just paste (e.g. with `ctrl+shift+v` in Vim is that it is time expensive
+
+#### Send files from server
+
+<https://blog.eq8.eu/til/send-files-of-server.html>
 
 
 ## sources
