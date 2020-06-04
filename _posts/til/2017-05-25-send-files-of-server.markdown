@@ -100,7 +100,11 @@ Chances are you will also pase some clipboard junk so open the file and remove s
 
 Now reason why you don't want to use just paste (e.g. with `ctrl+shift+v` in Vim is that it is time expensive
 
+## Transfer large files to server
+
+<https://blog.eq8.eu/til/send-files-of-server.html>
+
 #### Sources
 
-* https://github.com/equivalent/scrapbook2/blob/master/linux.md
-* https://superuser.com/questions/370389/how-do-i-password-protect-a-tgz-file-with-tar-in-unix
+* <https://github.com/equivalent/scrapbook2/blob/master/linux.md>
+* <https://superuser.com/questions/370389/how-do-i-password-protect-a-tgz-file-with-tar-in-unix>
