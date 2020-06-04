@@ -78,7 +78,7 @@ gpg -o fileToTar.tgz.gpg --symmetric fileToTar.tgz
 gpg fileToTar.tgz.gpg
 ```
 
-## Lazy solution - Copy outut paste clipboard with `xclip`
+## Lazy solution - Copy output & paste clipboard with `xclip`
 
 This is quite a lazy but really effective way for 95% of cases where you
 need to copy some output **from server to your laptop**

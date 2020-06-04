@@ -137,7 +137,7 @@ gpg /tmp/my-file.csv.gpg
 
 ## Simmilar problems:
 
-#### Copy outut paste clipboard with `xclip`
+#### Copy output & paste clipboard with `xclip`
 
 This is quite a lazy but really effective way for 95% of cases wher you
 need to copy some output **from server to your laptop**
