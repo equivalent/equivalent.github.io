@@ -102,7 +102,7 @@ Now reason why you don't want to use just paste (e.g. with `ctrl+shift+v` in Vim
 
 ## Transfer large files to server
 
-<https://blog.eq8.eu/til/send-files-of-server.html>
+<https://blog.eq8.eu/til/transfer-file-to-server.html>
 
 #### Sources
 
