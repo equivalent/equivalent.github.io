@@ -99,7 +99,7 @@ end
 If all goes ok after there are no ActiveJobs left to be process that means all your records are processed.  You can be
 sure about that by checking `Work.where(fx_script_processed: false).count == 0`
 
-> e.g. you can check [Sidekiq dashboard](https://github.com/mperham/sidekiq/wiki/Monitoring#web-ui)) 
+> How do I know if ActiveJobs tasks finished? With Sidekiq you can check [Sidekiq web UI](https://github.com/mperham/sidekiq/wiki/Monitoring#web-ui)) 
 
 If you discover the main `FxJob` job died prematurely you can just
 retrigger it  with `FxJob.perform_now`. You don't have to be worried
@@ -112,7 +112,7 @@ It may feel like an overkill but this is the best way how to ensure your
 data was processed (if it's important data)
 
 But in lot of cases you don't need to introduce extra db field (as you
-are able to detect it from the DB results.
+are able to detect it from the DB results)
 
 Also there is no particular reason to introduce separate job file if you
 are able to place all of the logic in one ActiveJob file. It really depends how
@@ -148,6 +148,9 @@ end
 
 ...and trigger `LazyFxJob.perform_later`
 
+> Rails `#find_each` will load results to memorry in chunks of 1000. So
+> it's better to use it instead of `#each` if you have many thousand
+> records to load
 
 
 ### Paginated script scenario
@@ -162,8 +165,9 @@ definitely kill that limit.
 At the same time you want to exit/finish your jobs as soon as possible (so
 they don't time out)
 
-Way ho to get around this is  to trigger a job that will enqueue itself after finishing
-single call:
+Way how to get around this is  to trigger a job that will enqueue itself after finishing
+single call.
+
 
 
 ```ruby
@@ -201,18 +205,21 @@ class SyncOutdatedProductDescriptionsJob < ActiveJob::Base
 end
 ```
 
-trigger with `SyncOutdatedProductDescriptionsJob.perform_later`
+trigger with: `SyncOutdatedProductDescriptionsJob.perform_later`
+
+
+> It's like paginated book. You finish one page with one job. Then you process  another page with another job.
 
 Script above will process 3 unprocessed products (fetching their external API
 description and saving it) and requeue itself so it process another 3
 products.
 
 If you discover the scripts are killing your API limit you can decrease
-how many items it will process in one go by `SyncOutdatedProductDescriptionsJob.perform_later(limit: 1)`
+how many items it will process by triggering `SyncOutdatedProductDescriptionsJob.perform_later(limit: 1)` instead.
 
-Or if it's too slow `SyncOutdatedProductDescriptionsJob.perform_later(limit: 9)`
+Or if script is too slow increase like: `SyncOutdatedProductDescriptionsJob.perform_later(limit: 9)`
 
-Yes it's not ideal as if your job dies, other will not get queued and
+Yes it's not ideal as if your job dies, other set of data will not get queued and
 therefore not processed. But again it can be retriggered without fear we
 will process already processed items.
 
@@ -237,7 +244,7 @@ class SyncOutdatedMailchimpMembersJob < ActiveJob::Base
   def perform(user_id: )
     user = User.find_by!(id: user_id)
 
-    user.check_if_user_ready || raise(UserNotReadyYet)
+    user.is_user_ready? || raise(UserNotReadyYet)
     # ...
   end
 end
@@ -247,4 +254,5 @@ I have entire TIL note on this <https://blog.eq8.eu/til/retry-active-job-sidekiq
 
 ## Discussion
 
+<https://www.reddit.com/r/ruby/comments/gx2jzd/run_rails_script_as_an_activejob_job/>
 
