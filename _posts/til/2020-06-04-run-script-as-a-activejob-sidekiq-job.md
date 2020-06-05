@@ -1,37 +1,39 @@
 ---
 layout: til_post
-title:  "Run script as a ActiveJob (Sidekiq) job"
+title:  "Run Rails script as an ActiveJob job"
 categories: til
 disq_id: til-75
 ---
 
+> ...or how to run Ruby on Rails script as a Sidekiq job, delayed_job job, ...
+
 How do you run scripts on your production Ruby on Rails server ?
 
-In most small/medium projects it's enough just to `ssh`  to server and
-run `rake` task with a script.
+In most small/medium projects it's enough just to `ssh`  to a server and
+run `rake` task with  the script.
 
 > or just do `heroku run rake mytask` if you are on Heroku
 
 But :
 
-* What if you have loadbalanced environment where the node running the long running script may get removed?
+* What if you have loadbalanced environment where the node/vm/container running the long running script may get removed?
 * What if your DevOps dude configured the `ssh` timeout to be just couple of minutes ?
 * What if your DevOps configured your stack so that you are not able to `ssh` to production in first place ?
 
-And even if none of the above apply to you, what if you have couple of
-hundred thousand records that the script needs to update? Will you wait till the `rake`
+And even if none of the above apply to you: what if you have couple of
+hundred thousand records that the script needs to update couple of hours? Will you wait till the `rake`
 task finish ?
 
 ## Solution
 
-Create a [ActiveJob](https://guides.rubyonrails.org/active_job_basics.html) job that will process individual records (e.g.: `FxSingleJob`).
-In order to call it introduce another ActiveJob job (e.g.:`FxJob`)  that will enqueue those records
+Create a [ActiveJob](https://guides.rubyonrails.org/active_job_basics.html) job that will process individual records (`FxSingleJob` in an example bellow).
+In order to call it introduce another ActiveJob job (`FxJob` in an example bellow)  that will enqueue those records
 in the first place.
 
 This way you will just ssh to server, run `bin/rails c` and run `FxJob.perform_later` (or create rake task that will trigger it as `perform_later`)
 
 Point is that you want to exist soon as possible from the `ssh`
-connection so that Worker takes the job
+connection so that Worker takes over and do a chunk of a script as a job
 
 > Don't forget that you want to keep your ActiveJobs (background jobs) small so they execute and exit as soon as possible.
 
@@ -40,7 +42,7 @@ records were enqueued / processed. There are couple of ways to do it but the eas
 is just to introduce a db field that gets marked as processed.
 
 
-## Best Example
+## Example
 
 step 1: Introduce a field that would indicate what records were processed
 
@@ -106,7 +108,7 @@ that it will reprocess same records again due to `Work.where(fx_script_processed
 
 ### Lazy solution example
 
-It may feel like overkill but this is the best way how to ensure your
+It may feel like an overkill but this is the best way how to ensure your
 data was processed (if it's important data)
 
 But in lot of cases you don't need to introduce extra db field (as you
@@ -241,5 +243,8 @@ class SyncOutdatedMailchimpMembersJob < ActiveJob::Base
 end
 ```
 
-
 I have entire TIL note on this <https://blog.eq8.eu/til/retry-active-job-sidekiq-when-exception.html> if you want to learn more
+
+## Discussion
+
+
