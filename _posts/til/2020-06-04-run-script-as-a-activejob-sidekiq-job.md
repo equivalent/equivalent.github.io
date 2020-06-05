@@ -175,9 +175,14 @@ class SyncOutdatedProductDescriptionsJob < ActiveJob::Base
   queue_as :script
 
   def perform(limit: 3)
-    products = Product
-      .where("last_automated_description_update_at < ?", Date.today)
-      .sample(limit) # random items
+    # products that yet not been updated
+    products = Product.where("last_automated_description_update_at < ?", Date.today) 
+
+    # random sample of data (works in PostgreSQL)
+    products = products.order(Arel.sql('RANDOM()'))
+
+    # limited by `limit` resuls
+    products = products .limit(limit)
 
     if products.any?
       products.each do |product|
