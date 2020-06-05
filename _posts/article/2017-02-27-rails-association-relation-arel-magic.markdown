@@ -424,6 +424,16 @@ Comment.order(Comment.arel_table['created_at'].desc)
 
 #### Random order
 
+**Rails 6**
+
+```ruby
+Work.order(Arel.sql('RANDOM()')).limit(3)
+# SELECT "works".* FROM "works" WHERE "works"."deleted_at" IS NULL ORDER BY RANDOM() LIMIT 3
+```
+
+
+**Rails 5 and bellow**
+
 workes in Postgres, not sure about other DB
 
 ```ruby

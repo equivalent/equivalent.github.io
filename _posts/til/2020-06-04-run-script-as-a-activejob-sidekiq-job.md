@@ -178,11 +178,11 @@ class SyncOutdatedProductDescriptionsJob < ActiveJob::Base
     # products that yet not been updated
     products = Product.where("last_automated_description_update_at < ?", Date.today) 
 
-    # random sample of data (works in PostgreSQL)
+    # random sample of data (works in PostgreSQL & Rails6)
     products = products.order(Arel.sql('RANDOM()'))
 
     # limited by `limit` resuls
-    products = products .limit(limit)
+    products = products.limit(limit)
 
     if products.any?
       products.each do |product|
