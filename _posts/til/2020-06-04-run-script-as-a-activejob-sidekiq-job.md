@@ -254,5 +254,5 @@ I have entire TIL note on this <https://blog.eq8.eu/til/retry-active-job-sidekiq
 
 ## Discussion
 
-<https://www.reddit.com/r/ruby/comments/gx2jzd/run_rails_script_as_an_activejob_job/>
-
+* <https://www.reddit.com/r/ruby/comments/gx2jzd/run_rails_script_as_an_activejob_job/>
+* <https://www.rubyflow.com/p/5diwn3-run-rails-script-as-an-activejob-job>
