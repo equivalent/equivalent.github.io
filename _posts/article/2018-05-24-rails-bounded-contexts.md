@@ -735,3 +735,7 @@ may inspire you too
 Mentioned in:
 
 * <https://rubyweekly.com/issues/453>
+
+Mirror:
+
+* <https://medium.com/@tomas.valent/ruby-on-rails-bounded-contexts-via-interface-objects-4fd61738acaa>
