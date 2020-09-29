@@ -2,7 +2,7 @@
 layout: til_post
 title:  "Ruby array"
 categories: til
-disq_id: til-99
+disq_id: til-74
 ---
 
 Here is some list of Ruby Array operations and examples.
