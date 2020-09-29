@@ -7,12 +7,7 @@ disq_id: til-76
 
 
 
-[official guide](https://edgeguides.rubyonrails.org/active_storage_overview.htm)
-
-
-Active Storage  image [variants](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html) can run on two different engines: MiniMagic/Imagemagic  or ruby-vips/`libvips` which variant options have different syntax.
-
-The following will work for **MiniMagic/Imagemagic** setup:
+[Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.htm) image [variants](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html) can run on two different engines: MiniMagic/Imagemagic  or ruby-vips/`libvips` which variant options have different syntax. The following will work for **MiniMagic/Imagemagic** setup:
 
 > tested on Rails 6.0.3.2 Ruby 2.7.1 on 2020-09-29
 
@@ -64,3 +59,7 @@ medium.image.variant({:combine_options=>{:auto_orient=>true, :rotate=>"0", :grav
 
 As For `libvips` yes you can do the same thing but I don't have code to
 paste here. I'll update this article once I have.
+
+### Discussion
+
+* <https://www.reddit.com/r/ruby/comments/j21kv8/rails_activestorage_resize_and_crop_image_variant/>
