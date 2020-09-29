@@ -50,7 +50,7 @@ medium.image.variant({ combine_options: { crop: '400x300+0+0', resize: "400x300^
 If you want to center
 
 ```ruby
-medium.image.variant({:combine_options=>{:gravity=>"Center", :resize=>"400x300^", :crop=>"400x300+0+0" }}}
+medium.image.variant({:combine_options=>{:gravity=>"Center", :resize=>"400x300^", :crop=>"400x300+0+0" }})
 ```
 
 ![Result](/assets/2020/as-crop-resize-3.jpg)
@@ -59,8 +59,8 @@ medium.image.variant({:combine_options=>{:gravity=>"Center", :resize=>"400x300^"
 If you need to rotate/auto-orient image:
 
 ```ruby
-medium.image.variant({:combine_options=>{:gravity=>"Center", :resize=>"400x300^", :crop=>"400x300+0+0", :rotate=>"0", :auto_orient=>true}}}
+medium.image.variant({:combine_options=>{:auto_orient=>true, :rotate=>"0", :gravity=>"Center", :resize=>"400x300^", :crop=>"400x300+0+0" }})
 ```
 
 As For `libvips` yes you can do the same thing but I don't have code to
-paste here. I'll update once I will
+paste here. I'll update this article once I have.
