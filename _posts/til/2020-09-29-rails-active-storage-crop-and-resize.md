@@ -10,7 +10,7 @@ disq_id: til-76
 [official guide](https://edgeguides.rubyonrails.org/active_storage_overview.htm)
 
 
-Active Storage  image [variants](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html) can run on two different engines: MiniMagic/Imagemagic  or `libvips` which have different syntax.
+Active Storage  image [variants](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html) can run on two different engines: MiniMagic/Imagemagic  or ruby-vips/`libvips` which variant options have different syntax.
 
 The following will work for **MiniMagic/Imagemagic** setup:
 
