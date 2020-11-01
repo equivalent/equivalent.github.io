@@ -14,7 +14,7 @@ file: `snake_case.js` identifier: `kebab-case`
 
 > Always use dashes in `data-controller` values for multi-word controller identifiers. [source](https://github.com/stimulusjs/stimulus/blob/1522e4620120594e93cd1e4b0c9e2577ae94c530/INSTALLING.md#using-webpack)
 
-`app/javascript/controllers/entries_search_controller.js` (or `app/javascript/controllers/entries-search-controller.js`)
+`app/javascript/controllers/entries_search_controller.js` (or `entries-search-controller.js`)
 
 
 ```js
@@ -53,7 +53,6 @@ export default class extends Controller {
 
 ```html
 <div data-action="click->entries-search#makeRequestNow"></div>
-
 
 <div data-action="click->entries-search#makeRequestNow" class="chip hoverable"></div>
 ```
