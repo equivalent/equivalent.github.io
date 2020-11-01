@@ -67,8 +67,6 @@ div data-action="click->entries-search#makeRequest"
 
 
 
-
-
 ## How to fetch data values
 
 ```js
@@ -103,12 +101,183 @@ div data-controller="entries-search" data-entries-search-categories-load-path="/
 ```
 
 
+## How to use `Rails.ajax` to async replace HTML content with Stimulus JS
+
+There is 2 ways how to do it. The RJS way or the `render_to_string` way.
+Both are equally fine, it's just matter of taste
+
+#### `Rails.ajax` the `render_to_string` way
+
+```ruby
+# /app/controllers/entries_search_controller.rb
+class EntriesSearchController < ApplicationController
+  def load_sub_category
+    @main_category = Category.find(params[:main_category_id])
+
+    render json: { html: render_to_string(partial: 'entries_search/categories') }
+  end
+end
+```
+
+```ruby
+# config/routes.rb
+# ...
+resources :entries_search, only: [] do
+  post :load_sub_category, on: :collection
+end
+# ...
+```
+
+```slim
+-# /app/views/entries_search/index.html.slim
+div data-controller="entries-search" data-entries-search-categories-load-path="#{load_sub_categories_entries_search_index_path}"
+  div data-target="entries-search.categories"
+
+.chip.hoverable data-action="click->entries-search#loadSubCategories" data-main-category-id="123"
+   | Load "Puppies" Sub Categories
+.chip.hoverable data-action="click->entries-search#loadSubCategories" data-main-category-id="345"
+   | Load "Kittens" Sub Categories
+```
+
+> note: `load_sub_categories_entries_search_index_path` is being translated to  `/entries_search/load_sub_categories` by Rails routes
+
+```slim
+-# /app/views/entries_search/_categories.html.slim
+- @main_category.sub_categories.each do |sub_category|
+  .chip= sub_category.title
+```
+
+```js
+//packaje.json
+{
+  "dependencies": {
+    # ...
+    "@rails/ujs": "^6.0.0-alpha",
+    "stimulus": "^1.1.1",
+    # ...
+  }
+}
+
+```
+
+```js
+import { Controller } from "stimulus"
+import Rails from "@rails/ujs";
+
+export default class extends Controller {
+  static targets = [ "categories" ]
+
+  loadSubCategories(e) {
+    let categoriesLoadPath = this.data.get('categories-load-path');
+    let mainCategoryId = e.currentTarget.dataset.mainCategoryId;
+    let categoriesTargetDiv = this.categoriesTarget;
+
+    Rails.ajax({
+      type: "post",
+      url: categoriesLoadPath,
+      data: `main_category_id=${mainCategoryId}`,
+      success: function(data) { categoriesTargetDiv.innerHTML = data.html; }
+    })
+  }
+}
+```
 
 
-### Sources
+
+#### `Rails.ajax` the RJS (`format.js') way
+
+
+```ruby
+# /app/controllers/entries_search_controller.rb
+class EntriesSearchController < ApplicationController
+  def load_sub_category
+    @main_category = Category.find(params[:main_category_id])
+
+    respond_to do |format|
+      format.js { render  'load_sub_category' }
+    end
+  end
+end
+```
+
+```ruby
+# config/routes.rb
+# ...
+resources :entries_search, only: [] do
+  post :load_sub_category, on: :collection
+end
+# ...
+```
+
+```slim
+-# /app/views/entries_search/index.html.slim
+div data-controller="entries-search" data-entries-search-categories-load-path="#{load_sub_categories_entries_search_index_path}"
+  #sub-categories
+    -# here the response will get loaded
+
+.chip.hoverable data-action="click->entries-search#loadSubCategories" data-main-category-id="123"
+   | Load "Puppies" Sub Categories
+.chip.hoverable data-action="click->entries-search#loadSubCategories" data-main-category-id="345"
+   | Load "Kittens" Sub Categories
+```
+
+> note: `load_sub_categories_entries_search_index_path` is being translated to  `/entries_search/load_sub_categories` by Rails routes
+
+```slim
+-# /app/views/entries_search/_categories.html.slim
+- @main_category.sub_categories.each do |sub_category|
+  .chip= sub_category.title
+```
+
+```erb
+// /app/views/entries_search/load_sub_categories.js.erb
+$('#sub-categories').html("<%= j(render('entries_search/categories')) %>");
+```
+
+```js
+//package.json
+{
+  "dependencies": {
+    # ...
+    "@rails/ujs": "^6.0.0-alpha",
+    "stimulus": "^1.1.1",
+    # ...
+  }
+}
+
+```
+
+```js
+import { Controller } from "stimulus"
+import Rails from "@rails/ujs";
+
+export default class extends Controller {
+  static targets = [ "categories" ]
+
+  loadSubCategories(e) {
+    let categoriesLoadPath = this.data.get('categories-load-path');
+    let mainCategoryId = e.currentTarget.dataset.mainCategoryId;
+    let categoriesTargetDiv = this.categoriesTarget;
+
+    Rails.ajax({
+      type: "post",
+      url: categoriesLoadPath,
+      data: `main_category_id=${mainCategoryId}`,
+    })
+  }
+}
+```
+
+
+
+
+
+## Sources
 
 * [How to use Rails.ajax in Stimulus Controllers](https://mikerogers.io/2020/01/29/how-to-use-rails-ujs-in-stimulus-controllers.html)
 * [Stimulus case covention table](https://github.com/stimulusjs/stimulus/issues/70#issuecomment-359991756)
 * alternative [Stimulous JS Cheat Sheet](https://gist.github.com/mrmartineau/a4b7dfc22dc8312f521b42bb3c9a7c1e)
 * [difference between event.target and event.currentTarget](https://discourse.stimulusjs.org/t/how-to-get-the-current-element-triggered/440)
 * [accessing data on currentTarget (dataset)](https://discourse.stimulusjs.org/t/accessing-data-on-targets/602)
+
+* [how to use Rails.ajax](https://www.rubyguides.com/2019/03/rails-ajax/)
