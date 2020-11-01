@@ -1,4 +1,4 @@
---
+---
 layout: til_post
 title:  "Stimulus JS Cheat Sheet"
 categories: til
@@ -76,3 +76,4 @@ div data-action="click->entries-search#makeRequest"
 ### Sources
 
 * [Stimulus case covention table](https://github.com/stimulusjs/stimulus/issues/70#issuecomment-359991756)
+* alternative [Stimulous JS Cheat Sheet](https://gist.github.com/mrmartineau/a4b7dfc22dc8312f521b42bb3c9a7c1e)
