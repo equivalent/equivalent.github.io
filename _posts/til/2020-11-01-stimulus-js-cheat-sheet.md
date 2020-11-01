@@ -74,5 +74,6 @@ div data-action="click->entries-search#makeRequest"
 
 ### Sources
 
+* [How to use Rails.ajax in Stimulus Controllers](https://mikerogers.io/2020/01/29/how-to-use-rails-ujs-in-stimulus-controllers.html)
 * [Stimulus case covention table](https://github.com/stimulusjs/stimulus/issues/70#issuecomment-359991756)
 * alternative [Stimulous JS Cheat Sheet](https://gist.github.com/mrmartineau/a4b7dfc22dc8312f521b42bb3c9a7c1e)
