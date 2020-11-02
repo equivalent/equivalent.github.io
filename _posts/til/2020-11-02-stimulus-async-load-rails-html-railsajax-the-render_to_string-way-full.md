@@ -29,9 +29,9 @@ end
 # /app/controllers/entries_search_controller.rb
 class EntriesSearchController < ApplicationController
   def load_sub_category
-    @main_category = Category.find(params[:main_category_id])
+    main_category = Category.find(params[:main_category_id])
 
-    render json: { html: render_to_string(partial: 'entries_search/categories') }
+    render json: { html: render_to_string(partial: 'entries_search/categories', locals: { main_category:  main_category}) }
   end
 end
 ```
@@ -51,7 +51,7 @@ div data-controller="entries-search" data-entries-search-categories-load-path="#
 
 ```slim
 -# /app/views/entries_search/_categories.html.slim
-- @main_category.sub_categories.each do |sub_category|
+- main_category.sub_categories.each do |sub_category|
   .chip= sub_category.title
 ```
 

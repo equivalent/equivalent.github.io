@@ -56,7 +56,7 @@ div data-controller="entries-search" data-entries-search-categories-load-path="#
 
 ```slim
 -# /app/views/entries_search/_categories.html.slim
-- @main_category.sub_categories.each do |sub_category|
+- main_category.sub_categories.each do |sub_category|
   .chip= sub_category.title
 ```
 
@@ -64,7 +64,7 @@ div data-controller="entries-search" data-entries-search-categories-load-path="#
 // /app/views/entries_search/load_sub_categories.js.erb
 
 if @main_category
-  $('#sub-categories').html("<%= j(render('entries_search/categories')) %>");
+$('#sub-categories').html("<%= j(render('entries_search/categories', locals: {  main_category: @main_category})) %>");
 else
   alert('Error: no Category match this ID');
 end
