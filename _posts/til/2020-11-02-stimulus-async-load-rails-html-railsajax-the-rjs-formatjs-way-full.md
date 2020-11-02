@@ -91,12 +91,9 @@ import { Controller } from "stimulus"
 import Rails from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = [ "categories" ]
-
   loadSubCategories(e) {
     let categoriesLoadPath = this.data.get('categories-load-path');
     let mainCategoryId = e.currentTarget.dataset.mainCategoryId;
-    let categoriesTargetDiv = this.categoriesTarget;
 
     Rails.ajax({
       type: "post",

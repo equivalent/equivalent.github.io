@@ -88,7 +88,7 @@ export default class extends Controller {
       url: categoriesLoadPath,
       data: `main_category_id=${mainCategoryId}`,
       success: function(data) { categoriesTargetDiv.innerHTML = data.html; },
-      error: function(data) { alert('Error: no Category match this ID') },
+      error: function(data) { alert('Error: no Category match this ID') }
     })
   }
 }
