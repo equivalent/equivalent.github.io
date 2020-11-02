@@ -122,6 +122,8 @@ RSpec.describe Medium, type: :model do
     medium = create :medium, :with_typed_image  # How to do FactoryBot traits with file attachement, check out: https://blog.eq8.eu/til/factory-bot-trait-for-active-storange-has_attached.html
 
     if medium.image.attached?
+      puts "\n"
+
       k = medium.image.key.slice(0..3)
       folders = [k[0..1], k[2..4]].join('/')
       puts Rails.root.join('tmp', 'storage', folders).to_s
