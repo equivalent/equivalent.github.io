@@ -6,6 +6,7 @@ disq_id: til-79
 ---
 
 or: How to load Rails HTML content with Stimulus JS using good old Rails format.js, .js.erb files  without any JSON woodoo
+or: Stimulous with SJR (Server-Generated Javascript)
 
 
 This is subarticle of [Stimulus JS Cheat Sheet](https://blog.eq8.eu/til/stimulus-js-cheat-sheet.html)
@@ -97,6 +98,7 @@ export default class extends Controller {
 
     Rails.ajax({
       type: "post",
+      dataType: 'script',
       url: categoriesLoadPath,
       data: `main_category_id=${mainCategoryId}`,
     })

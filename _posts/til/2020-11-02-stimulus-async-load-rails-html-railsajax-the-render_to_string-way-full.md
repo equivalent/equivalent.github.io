@@ -85,6 +85,7 @@ export default class extends Controller {
 
     Rails.ajax({
       type: "post",
+      dataType: 'json',
       url: categoriesLoadPath,
       data: `main_category_id=${mainCategoryId}`,
       success: function(data) { categoriesTargetDiv.innerHTML = data.html; },
@@ -94,10 +95,13 @@ export default class extends Controller {
 }
 ```
 
+> note: Yes you can just use  [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)  like shown [in this article](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch). I just like use `Rails.ajax` as show in [this article](https://www.rubyguides.com/2019/03/rails-ajax/). 
+
 
 ### Other sources
 
 * <https://www.rubyguides.com/2019/03/rails-ajax/>
+* <https://medium.com/swlh/build-a-dynamic-search-with-stimulus-js-and-rails-6-56b537a44579>
 * [Stimulus JS Cheat Sheet](https://blog.eq8.eu/til/stimulus-js-cheat-sheet.html)
 * [`Rails.ajax` the `render_to_string`way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-render_to_string-way-full.html)
 * [`Rails.ajax` the RJS (`format.js`) way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-rjs-formatjs-way-full.html)

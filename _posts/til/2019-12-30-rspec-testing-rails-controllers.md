@@ -108,6 +108,8 @@ is native Rails test thing and RSpec has [has_tag](https://github.com/dcuddeback
 but I like how dynamic assert_select feels. You can do stuff like this:
 
 ```ruby
+assert_select 'div#tags .card-content small', "This pic has no tags"
+
 assert_select "form:match('action', ?):match('method', ?)", "/books/#{book.id}/submit_review", 'post'
 assert_select 'div.card-panel.red', "Cupon Expired"
 ```
