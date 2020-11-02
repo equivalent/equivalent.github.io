@@ -104,11 +104,12 @@ div data-controller="entries-search" data-entries-search-categories-load-path="/
 ## How to use `Rails.ajax` to async replace HTML content with Stimulus JS
 
 There is 2 ways how to do it. The RJS way or the `render_to_string` way.
-Both are equally fine, it's just matter of taste
+Both are equally fine, it's just matter of taste.
 
-### `Rails.ajax` the `render_to_string` way
+I wrote separate notes explaining how to do each approach:
 
-#### `Rails.ajax` the RJS (`format.js') way
+* [`Rails.ajax` the `render_to_string`way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-render_to_string-way-full.html)
+* [`Rails.ajax` the RJS (`format.js`) way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-rjs-formatjs-way-full.html)
 
 
 

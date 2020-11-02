@@ -5,6 +5,16 @@ categories: til
 disq_id: til-79
 ---
 
+or: How to load Rails HTML content with Stimulus JS using good old Rails format.js, .js.erb files  without any JSON woodoo
+
+
+This is subarticle of [Stimulus JS Cheat Sheet](https://blog.eq8.eu/til/stimulus-js-cheat-sheet.html)
+
+
+I also wrote [`Rails.ajax` the `render_to_string`way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-render_to_string-way-full.html)
+
+
+
 ### Rails stuff
 
 ```ruby

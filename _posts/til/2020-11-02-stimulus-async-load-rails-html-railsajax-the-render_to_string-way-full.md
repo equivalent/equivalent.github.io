@@ -5,6 +5,14 @@ categories: til
 disq_id: til-78
 ---
 
+or: How to load Rails HTML content with Stimulus JS with `Rails.ajax` without using RJS
+
+
+This is subarticle of [Stimulus JS Cheat Sheet](https://blog.eq8.eu/til/stimulus-js-cheat-sheet.html)
+
+
+I also wrote [`Rails.ajax` the RJS (`format.js`) way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-rjs-formatjs-way-full.html) (so exact oposit of this solution)
+
 
 ### Rails stuff
 
@@ -90,3 +98,6 @@ export default class extends Controller {
 ### Other sources
 
 * https://www.rubyguides.com/2019/03/rails-ajax/
+* [Stimulus JS Cheat Sheet](https://blog.eq8.eu/til/stimulus-js-cheat-sheet.html)
+* [`Rails.ajax` the `render_to_string`way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-render_to_string-way-full.html)
+* [`Rails.ajax` the RJS (`format.js`) way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-rjs-formatjs-way-full.html)
