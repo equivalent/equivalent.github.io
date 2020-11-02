@@ -27,7 +27,7 @@ medium = Medium.create(params.require(:medium).permit(:image))
 > Here is the [original image](/assets/2020/as-crop-original.jpg). Size is `1024x4246`
 
 ```ruby
-medium.image.variant({ combine_options: { resize: "400x300^",  crop: '400x300+0+0' }})
+medium.image.variant(resize: "400x300^", crop: '400x300+0+0')
 ```
 
 ![Result](/assets/2020/as-crop-resize-1.jpg)
@@ -36,7 +36,7 @@ medium.image.variant({ combine_options: { resize: "400x300^",  crop: '400x300+0+
 Order of combine options does matter !!! If I swap resize and crop this will happen
 
 ```ruby
-medium.image.variant({ combine_options: { crop: '400x300+0+0', resize: "400x300^" }})
+medium.image.variant(crop: '400x300+0+0', resize: "400x300^")
 ```
 
 ![Result](/assets/2020/as-crop-resize-2.jpg)
@@ -45,7 +45,7 @@ medium.image.variant({ combine_options: { crop: '400x300+0+0', resize: "400x300^
 If you want to center
 
 ```ruby
-medium.image.variant({:combine_options=>{:gravity=>"Center", :resize=>"400x300^", :crop=>"400x300+0+0" }})
+medium.image.variant(:gravity=>"Center", resize: "400x300^", crop: '400x300+0+0')
 ```
 
 ![Result](/assets/2020/as-crop-resize-3.jpg)
@@ -54,11 +54,113 @@ medium.image.variant({:combine_options=>{:gravity=>"Center", :resize=>"400x300^"
 If you need to rotate/auto-orient image:
 
 ```ruby
-medium.image.variant({:combine_options=>{:auto_orient=>true, :rotate=>"0", :gravity=>"Center", :resize=>"400x300^", :crop=>"400x300+0+0" }})
+medium.image.variant(auto_orient: true, rotate: 0, resize: "400x300^", crop: '400x300+0+0')
 ```
 
+Need some blur ?
+
+```ruby
+medium.image.variant(auto_orient: true, rotate: 0, resize: "400x300^", crop: '400x300+0+0', gaussian_blur: ['0x1.5'])
+```
+
+### libvips
+
 As For `libvips` yes you can do the same thing but I don't have code to
-paste here. I'll update this article once I have.
+paste here. I'll update this article once I have time to test it out.
+
+
+### `combine_options` is depreciated and will be removed in Rails 6.1
+
+In Rails 6.1 `:combine_options` will not be supported anymore
+
+
+Rails warn message:
+
+```
+DEPRECATION WARNING: Active Storage's ImageProcessing transformer doesn't support :combine_options, as it always generates a single ImageMagick command. Passing :combine_options will not be supported in Rails 6.1.
+```
+
+So this will no longer work in future:
+
+```ruby
+# this is now depricated !!
+medium.image.variant({:combine_options=>{:gravity=>"Center", :resize=>"400x300^", :crop=>"400x300+0+0" }})
+# this is now depricated !!
+```
+
+* [source](https://github.com/rails/rails/commit/697f4a93ad386f9fb7795f0ba68f815f16ebad0f)
+* [solution from SO](https://stackoverflow.com/questions/59593069/deprecation-of-combine-options-in-active-storages-imageprocessing-transformer)
+
+
+### How to debug this ?
+
+One thing to realize is it takes some time to get the options
+right. It's quite pain to always reload web-browser with the Active
+Storage blob variant endpoint.
+
+What I do instead is that I just look up how the images are generated in
+test environment looking them up with file manager.
+
+> note: no this NOT how to test generated images! This is how to debug right variant options
+
+```
+# app/models/medium.rb
+class Medium < ApplicationRecord
+  has_one_attached :image
+
+  def thumb
+    image.variant(auto_orient: true, rotate: 0, resize: "400x300^", crop: '400x300+0+0')
+  end
+end
+```
+
+```ruby
+# spec/model/medium_spec.rb
+require 'rails_helper'
+RSpec.describe Medium, type: :model do
+  it 'should not throw error' do
+    medium = create :medium, :with_typed_image  # How to do FactoryBot traits with file attachement, check out: https://blog.eq8.eu/til/factory-bot-trait-for-active-storange-has_attached.html
+
+    if medium.image.attached?
+      k = medium.image.key.slice(0..3)
+      folders = [k[0..1], k[2..4]].join('/')
+      puts Rails.root.join('tmp', 'storage', folders).to_s
+      # => "/home/myuser/name_of_my_rails_project/tmp/storage/ks/cl"
+
+      variant = medium.thumb.processed  # `.processed` is important!
+      ## ...or if you want to play with options inside test:
+      # variant = medium.variant(auto_orient: true, rotate: 0, resize: "400x300^", crop: '400x300+0+0').processed
+
+      puts Rails.root.join('tmp', 'storage', 'va', 'ri', variant.key).to_s
+      # => /home/myuser/name_of_my_rails_project/tmp/storage/va/ri/variants/y0u5bhq109zzi1h3n8pa5v7p5f7u/500b88c14897d627f68fdd949ec32081f48593b82bdff4b4efed2fb1194d10d4
+
+      binding.irb # to stop the execution as your project may be set up to wipe out images after test finish
+    else
+      raise 'image was not attached?'
+    end
+  end
+end
+```
+
+This way I'm able to open up the image easily with my file manager. E.g.
+in ubuntu I open up `nautilus` with
+
+```
+nautilus /home/myuser/name_of_my_rails_project/tmp/storage/va/ri/variants/y0u5bhq109zzi1h3n8pa5v7p5f7u/500b88c14897d627f68fdd949ec32081f48593b82bdff4b4efed2fb1194d10d4
+```
+
+I just check what was generated by my eye.
+
+Once I'm done I just comment out this test
+
+
+### Sources
+
+* [Full API variant docs](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html)
+
+#### Related articles
+
+* [how to attach file in FactoryBot/FactoryGirl](https://blog.eq8.eu/til/factory-bot-trait-for-active-storange-has_attached.html)
 
 ### Discussion
 
