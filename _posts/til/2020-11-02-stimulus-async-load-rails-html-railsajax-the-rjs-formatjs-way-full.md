@@ -11,7 +11,7 @@ or: How to load Rails HTML content with Stimulus JS using good old Rails format.
 This is subarticle of [Stimulus JS Cheat Sheet](https://blog.eq8.eu/til/stimulus-js-cheat-sheet.html)
 
 
-I also wrote [`Rails.ajax` the `render_to_string`way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-render_to_string-way-full.html)
+I also wrote [`Rails.ajax` the `render_to_string`way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-render_to_string-way-full.html) (so exact oposit of this solution)
 
 
 
@@ -116,4 +116,10 @@ e.g. if there is success `.js.erb` file relpace the HTML content of element with
 independent JS execution outside Stimulous controller. Same apply for errors response.
 
 
+
+### Other sources
+
+* [Stimulus JS Cheat Sheet](https://blog.eq8.eu/til/stimulus-js-cheat-sheet.html)
+* [`Rails.ajax` the `render_to_string`way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-render_to_string-way-full.html)
+* [`Rails.ajax` the RJS (`format.js`) way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-rjs-formatjs-way-full.html)
 

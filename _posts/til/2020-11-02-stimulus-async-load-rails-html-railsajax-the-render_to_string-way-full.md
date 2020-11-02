@@ -97,7 +97,8 @@ export default class extends Controller {
 
 ### Other sources
 
-* https://www.rubyguides.com/2019/03/rails-ajax/
+* <https://www.rubyguides.com/2019/03/rails-ajax/>
 * [Stimulus JS Cheat Sheet](https://blog.eq8.eu/til/stimulus-js-cheat-sheet.html)
 * [`Rails.ajax` the `render_to_string`way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-render_to_string-way-full.html)
 * [`Rails.ajax` the RJS (`format.js`) way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-rjs-formatjs-way-full.html)
+

@@ -123,3 +123,9 @@ I wrote separate notes explaining how to do each approach:
 * [accessing data on currentTarget (dataset)](https://discourse.stimulusjs.org/t/accessing-data-on-targets/602)
 
 * [how to use Rails.ajax](https://www.rubyguides.com/2019/03/rails-ajax/)
+
+* <https://www.rubyguides.com/2019/03/rails-ajax/>
+* [Stimulus JS Cheat Sheet](https://blog.eq8.eu/til/stimulus-js-cheat-sheet.html)
+* [`Rails.ajax` the `render_to_string`way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-render_to_string-way-full.html)
+* [`Rails.ajax` the RJS (`format.js`) way](https://blog.eq8.eu/til/stimulus-async-load-rails-html-railsajax-the-rjs-formatjs-way-full.html)
+
