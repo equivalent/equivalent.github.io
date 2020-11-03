@@ -100,7 +100,7 @@ export default class extends Controller {
       type: "post",
       dataType: 'script',
       url: categoriesLoadPath,
-      data: `main_category_id=${mainCategoryId}`,
+      data: `main_category_id=${mainCategoryId}&location=Slovakia`,
     })
   }
 }
@@ -114,6 +114,34 @@ from Rails controller response.
 e.g. if there is success `.js.erb` file relpace the HTML content of element with
 independent JS execution outside Stimulous controller. Same apply for errors response.
 
+
+### Stringify query
+
+as you may notice `Rails.ajax` is using stringified query as the `data` parameter
+
+if you want to stringify the query from hash object, with IE6 you can do:
+
+```js
+
+import { Controller } from "stimulus"
+import Rails from "@rails/ujs";
+const querystring = require('querystring');
+
+export default class extends Controller {
+  loadSubCategories(e) {
+
+    let data = {chip_type: 'category', chip_id: 1234}
+    let queryStr = querystring.stringify(data)  // chip_type=category&chip_id=1234
+
+    Rails.ajax({
+      type: "post",
+      dataType: 'script',
+      url: categoriesLoadPath,
+      data: queryStr
+    })
+  }
+}
+```
 
 
 ### Other sources
