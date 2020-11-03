@@ -65,9 +65,72 @@ div data-action="click->entries-search#makeRequest"
 .chip.hoverable data-action="click->entries-search#makeRequest"
 ```
 
+### Target names
+
+`cammelCase`
 
 
-## How to fetch data values
+```js
+// app/javascript/controllers/entries_search_controller.js
+import { Controller } from "stimulus"
+
+export default class extends Controller {
+  static targets = [ "awesomeBands" ]
+
+  fillAwesomeBands() {
+    this.awesomeBands.innerHTML = "Atreyu, Deadlock, Trivium';
+  }
+}
+```
+
+
+```html
+<div data-target="entries-search.awesomeBands">
+<div data-action="click->entries-search#fillAwesomeBands">Want to know awesome bands?</div>
+```
+
+```slim
+div data-action="click->entries-search#makeRequest"
+
+.chip.hoverable data-action="click->entries-search#makeRequest"
+```
+
+
+### Lifecycle
+
+```js
+import { Controller } from "stimulus"
+
+export default class extends Controller {
+
+  initialize () {
+    // is called once per controller
+  }
+
+  connect () {
+    // is called evvery time the controller is connected to the DOM.
+  }
+
+  disconnect () {
+    // called when controller element is removed from the document:
+  }
+}
+```
+
+sources:
+* [Stimulus initialize vs connect](https://github.com/stimulusjs/stimulus/issues/75#issuecomment-361255170)
+
+
+
+## Set data on controller
+
+* `this.data.has("melodicDeathMetalBand")` returns true if the controller’s element has a `data-entries-search-melodic-death-metal-band` attribute
+* `this.data.get("melodicDeathMetalBand")` returns the string value of the element’s `data-entries-search-melodic-death-metal-band` attribute
+* `this.data.set("melodicDeathMetalBand", "Deadlock")`     sets the element’s `data-entries-search-melodic-death-metal-band` attribute to the string value of "Deadlock"
+
+stolen from: [Stimulus cheatsheet by mrmartineau](https://gist.github.com/mrmartineau/a4b7dfc22dc8312f521b42bb3c9a7c1e#data-api)
+
+## How to fetch data values on various levels
 
 ```js
 // app/javascript/controllers/entries_search_controller.js
@@ -76,8 +139,10 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   giveMeSomeData(event) {
     // Access the Controller data
-    console.log(this.data.get('categories-load-path'));
+    console.log(this.data.get('categoriesLoadPath'));
     // => /band_search
+    //
+    // note: `console.log(this.data.get('categories-load-path'));` also works
 
 
     // Access data on currently clicekd element
