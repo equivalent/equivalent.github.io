@@ -1,6 +1,6 @@
 ---
 layout: til_post
-title:  "How to store Image Width Height in Rails ActiveStorage"
+title:  "How to store image width & height in Rails ActiveStorage"
 categories: til
 disq_id: til-80
 ---
@@ -35,7 +35,7 @@ image.file.metadata['height']
 
 So your model can look like:
 
-```
+```ruby
 class Image < ApplicationRecord
   has_one_attached :file
 
@@ -91,7 +91,7 @@ class Image < ApplicationRecord
 end
 ```
 
-> Note: there is a good reason why this is done async in a Job. Responses of your request will be slightly slower due to this extra code execution needs to happen. So you need to have a good reason to "save dimensions now"
+> Note: there is a good reason why this is done async in a Job. Responses of your request will be slightly slower due to this extra code execution. So unless you have a good reason don't save_dimensions_now
 
 
 ### Test
@@ -136,7 +136,7 @@ end
 ### More solutions
 
 I was originally answering [this StackOverflow](https://blog.eq8.eu/til/factory-bot-trait-for-active-storange-has_attached.html) question.
-As a part of my answer I've posted this and anoter DYI solution using `ActiveStorage::Analyzer::ImageAnalyzer.new(file).metadata` saving to model DB columns if you are interested.
+As a part of my answer I've posted this and anoter DYI solution using `ActiveStorage::Analyzer::ImageAnalyzer.new(file).metadata` via `after_commit :xxx, on: :create` saving to model DB columns if you are interested.
 
 ### Sources
 
