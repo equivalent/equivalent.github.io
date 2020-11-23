@@ -148,3 +148,5 @@ As a part of my answer I've posted this and anoter DYI solution using `ActiveSto
 
 ### Discussion
 
+* <https://www.reddit.com/r/ruby/comments/jzpu2o/how_to_store_image_width_height_in_rails/>
+
