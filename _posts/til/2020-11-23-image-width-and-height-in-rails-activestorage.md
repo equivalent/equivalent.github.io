@@ -135,7 +135,7 @@ end
 
 ### More solutions
 
-I was originally answering [this StackOverflow](https://blog.eq8.eu/til/factory-bot-trait-for-active-storange-has_attached.html) question.
+I was originally answering [this StackOverflow](https://stackoverflow.com/questions/60130926/activestorage-get-image-dimensions-after-upload/64929222#64929222) question.
 As a part of my answer I've posted this and anoter DYI solution using `ActiveStorage::Analyzer::ImageAnalyzer.new(file).metadata` via `after_commit :xxx, on: :create` saving to model DB columns if you are interested.
 
 ### Sources
