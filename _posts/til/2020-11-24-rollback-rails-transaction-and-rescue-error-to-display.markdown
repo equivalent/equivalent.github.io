@@ -151,4 +151,6 @@ Want better explanation ? Good guide is this article: <https://medium.com/@krist
 * <https://www.honeybadger.io/blog/database-transactions-rails-activerecord/>
 
 
+### Discussion
 
+<https://www.reddit.com/r/ruby/comments/k09ccr/rollback_rails_transaction_and_rescue_error_and/>
