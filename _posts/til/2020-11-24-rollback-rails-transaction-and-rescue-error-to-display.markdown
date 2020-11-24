@@ -170,6 +170,7 @@ ActiveRecord::Base.transaction do
 end
 ```
 
+Want better explanation ? Good guide is this article: <https://medium.com/@kristenrogers.kr75/rails-transactions-the-complete-guide-7b5c00c604fc>
 
 #### Avoid nested transactions
 
@@ -221,7 +222,6 @@ full_user_update!(user: user, name: 'Tomas', email: 'equivalent@eq8.eu') # execu
 
 
 
-Want better explanation ? Good guide is this article: <https://medium.com/@kristenrogers.kr75/rails-transactions-the-complete-guide-7b5c00c604fc>
 
 
 ### sources:
