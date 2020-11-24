@@ -47,6 +47,34 @@ end
 puts error_for_user || "Success"
 ```
 
+So much better would be if you define your own error classes and rescue
+those like this:
+
+
+```ruby
+MyErrors = Class.new(StandardError)
+MySpecificError = Class.new(MySpecificError)
+
+record = MyModel.last
+error_for_user = nil
+
+begin
+  ActiveRecord::Base.transaction do
+    # ...
+    record.save!
+    raise MySpecificError if record.has_some_issue?
+  end
+rescue ActiveRecord::RecordInvalid, MyErrors => e
+  # do something with exception here
+  error_for_user = "Sorry your transaction failed. Reason: #{e}"
+end
+
+puts error_for_user || "Success"
+```
+
+
+##### wrong:
+
 Following code is wrong!
 
 ```ruby
