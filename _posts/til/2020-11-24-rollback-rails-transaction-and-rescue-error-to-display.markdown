@@ -120,14 +120,14 @@ puts error_for_user || "Success"
 Because `ActiveRecord::StatementInvalid < ActiveRecord::ActiveRecordError < StandardError` Therefore to rescue `StandardError` you rescue any children classes including `ActiveRecord::StatementInvalid`   same reason as described before
 
 
-### Triggering rollback manually / Abort transaction
+## Triggering rollback manually / Abort transaction
 
 this is fine:
 
 ```ruby
 def add_bonus(tomas)
   ActiveRecord::Base.transaction do
-    raise ActiveRecord::Rollback if john.is_not_valid?
+    raise ActiveRecord::Rollback if john.is_not_cool?
     tomas.update!(money: tomas.money + 100)
   end
 end
@@ -143,7 +143,10 @@ end
 
 > [source](https://www.honeybadger.io/blog/database-transactions-rails-activerecord/), [source2](https://www.honeybadger.io/blog/database-transactions-rails-activerecord/)
 
-### More Rails Transaction notes
+## More Rails Transaction notes
+
+
+#### Different aliases
 
 there is no difference between `#transaction`, `MyModel.transaction` and
 `ActiveRecord::Base.transaction`. All 3 examples are the same:
@@ -166,6 +169,57 @@ ActiveRecord::Base.transaction do
   my_model.save!
 end
 ```
+
+
+#### Avoid nested transactions
+
+Nested transactions are possible but really hard to get right
+([docs](https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html#module-ActiveRecord::Transactions::ClassMethods-label-Nested+transactions)). My
+recommendation is to avoid them.
+
+If you are ever in situation you need to use method with transaction
+inside another method with transaction rewrite your code so that the transaction is optional. Example:
+
+
+```ruby
+def partial_update_user!(user:, name:, own_transaction: true)
+  user.name = name
+  user.initial = name.to_s[0]
+
+  persist_logic = ->(u){ u.save! } # lambda
+
+  if own_transaction
+    ActiveRecord::Base.transaction do
+      persist_logic.call(user)
+    end
+  else
+    persist_logic.call(user)
+  end
+end
+
+
+def full_user_update!(user:, name:, email:)
+  email_identity = user.email_identity
+  email_identity.email= email
+
+  ActiveRecord::Base.transaction do
+    partial_update_user!(user: user, name: name, own_transaction: false)
+    email_identity.save!
+
+    raise ActiveRecord::Rollback if user.is_not_cool?
+  end
+end
+
+
+user = User.last
+
+partial_update_user!(user: user, name: 'Tomas') # executed with 1 transaction
+
+full_user_update!(user: user, name: 'Tomas', email: 'equivalent@eq8.eu') # executed with 1 transaction
+```
+
+
+
 
 Want better explanation ? Good guide is this article: <https://medium.com/@kristenrogers.kr75/rails-transactions-the-complete-guide-7b5c00c604fc>
 
