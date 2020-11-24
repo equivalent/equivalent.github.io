@@ -73,7 +73,7 @@ puts error_for_user || "Success"
 ```
 
 
-##### wrong:
+#### wrong:
 
 Following code is wrong!
 
