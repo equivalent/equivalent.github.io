@@ -143,7 +143,7 @@ end
 
 > [source](https://www.honeybadger.io/blog/database-transactions-rails-activerecord/), [source2](https://www.honeybadger.io/blog/database-transactions-rails-activerecord/)
 
-## More Rails Transaction notes
+## More Rails transaction notes
 
 
 #### Different aliases
