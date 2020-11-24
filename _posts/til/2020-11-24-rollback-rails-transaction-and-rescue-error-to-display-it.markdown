@@ -1,8 +1,8 @@
-layout: til_post
 ---
 title:  "Rollback Rails transaction and rescue error to display it"
 categories: til
 disq_id: til-81
+layout: til_post
 ---
 
 
@@ -149,3 +149,6 @@ Want better explanation ? Good guide is this article: <https://medium.com/@krist
 * <https://medium.com/@kristenrogers.kr75/rails-transactions-the-complete-guide-7b5c00c604fc>
 * <https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html>
 * <https://www.honeybadger.io/blog/database-transactions-rails-activerecord/>
+
+
+
