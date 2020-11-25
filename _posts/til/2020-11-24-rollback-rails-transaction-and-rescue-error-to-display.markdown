@@ -1,10 +1,13 @@
 ---
-title:  "Rollback Rails transaction and rescue error to display it"
+title:  "Pitfalls of Rails db transactions"
 categories: til
 disq_id: til-81
 layout: til_post
 ---
 
+## Rollback Rails transaction and rescue error to display it
+
+#### good:
 
 This is fine
 
@@ -143,10 +146,8 @@ end
 
 > [source](https://www.honeybadger.io/blog/database-transactions-rails-activerecord/), [source2](https://www.honeybadger.io/blog/database-transactions-rails-activerecord/)
 
-## More Rails transaction notes
 
-
-#### Different aliases
+## Different aliases
 
 there is no difference between `#transaction`, `MyModel.transaction` and
 `ActiveRecord::Base.transaction`. All 3 examples are the same:
@@ -172,11 +173,30 @@ end
 
 Want better explanation ? Good guide is this article: <https://medium.com/@kristenrogers.kr75/rails-transactions-the-complete-guide-7b5c00c604fc>
 
-#### Avoid nested transactions
+## Avoid nested transactions
 
 Nested transactions are possible but really hard to get right
-([docs](https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html#module-ActiveRecord::Transactions::ClassMethods-label-Nested+transactions)). My
-recommendation is to avoid them.
+([docs](https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html#module-ActiveRecord::Transactions::ClassMethods-label-Nested+transactions)). 
+
+For exapmle:
+
+```ruby
+User.count # => 0
+
+ActiveRecord::Base.transaction do
+  User.create!(name: "Foo")
+  ActiveRecord::Base.transaction do
+    User.create!(name: "Bar")
+    raise ActiveRecord::Rollback
+  end
+end
+
+User.count # => 2
+```
+
+...that means you end up with 2 Users
+
+My recommendation is to avoid them.
 
 If you are ever in situation you need to use method with transaction
 inside another method with transaction rewrite your code so that the transaction is optional. Example:
@@ -219,6 +239,49 @@ partial_update_user!(user: user, name: 'Tomas') # executed with 1 transaction
 full_user_update!(user: user, name: 'Tomas', email: 'equivalent@eq8.eu') # executed with 1 transaction
 ```
 
+
+## Avoid transaction to take lot of time
+
+Once you do a transaction block you are creating DB transaction => you
+hold the DB
+
+Try to move any non DB update/create/delete code calls
+outside transaction block
+
+bad:
+
+```ruby
+def some_method_that_takes_lot_of_time
+  report_result = 'some long running result' # e.g. download and process CSV
+  sleep 1
+  report_result
+end
+
+ActiveRecord::Base.transaction do
+  user  = User.find 123
+  report_result = some_method_that_takes_lot_of_time
+  user.performance = report_result
+  user.save!
+end
+```
+
+good
+
+```ruby
+def some_method_that_takes_lot_of_time
+  report_result = 'some long running result' # e.g. download and process CSV
+  sleep 1
+  report_result
+end
+
+user  = User.find 123
+report_result = some_method_that_takes_lot_of_time
+user.performance = report_result
+
+ActiveRecord::Base.transaction do
+  user.save!
+end
+```
 
 
 
