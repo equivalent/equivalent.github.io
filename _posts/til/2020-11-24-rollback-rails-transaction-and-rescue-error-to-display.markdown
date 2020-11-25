@@ -178,6 +178,7 @@ Want better explanation ? Good guide is this article: <https://medium.com/@krist
 Nested transactions are possible but really hard to get right
 ([docs](https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html#module-ActiveRecord::Transactions::ClassMethods-label-Nested+transactions)). 
 
+
 For example:
 
 ```ruby
@@ -195,6 +196,10 @@ User.count # => 2
 ```
 
 ...that means you end up with 2 Users
+
+
+> Special thank to Reddit user [Linupe](https://www.reddit.com/r/ruby/comments/k09ccr/rollback_rails_transaction_and_rescue_error_and/gdhdo9i/?utm_source=reddit&utm_medium=web2x&context=3) for contributing this example
+
 
 My recommendation is to avoid them.
 
