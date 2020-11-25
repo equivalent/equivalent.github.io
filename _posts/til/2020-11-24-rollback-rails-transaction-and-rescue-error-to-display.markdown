@@ -178,7 +178,7 @@ Want better explanation ? Good guide is this article: <https://medium.com/@krist
 Nested transactions are possible but really hard to get right
 ([docs](https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html#module-ActiveRecord::Transactions::ClassMethods-label-Nested+transactions)). 
 
-For exapmle:
+For example:
 
 ```ruby
 User.count # => 0
