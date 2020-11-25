@@ -288,9 +288,64 @@ ActiveRecord::Base.transaction do
 end
 ```
 
+## Transactions on a single record
+
+There is no reason to do
+
+```ruby
+ActiveRecord::Base.transaction do
+  user.save!
+end
+```
+
+as:
+
+> Both #save and #destroy come wrapped in a transaction that ensures
+> that whatever you do in validations or callbacks will happen under its
+> protected cover  [source](https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html#module-ActiveRecord::Transactions::ClassMethods-label-save+and+destroy+are+automatically+wrapped+in+a+transaction)
+
+
+That means when dealing with single record update you are fine with just
+
+```ruby
+user.save!
+```
+
+Where Rails transaction blocks are needed is when you are
+creating/updating/deleting
+mulitple records and fail of one of them needs to rever all. Like:
+
+
+```ruby
+ActiveRecord::Base.transaction do
+  order = Order.create!
+  user.latest_order.destroy! if user.latest_order
+  user.latest_order = order
+  user.save!
+end
+```
+
+Trough out this article you may have notice I was using transactions on a  single record
+
+
+```ruby
+ActiveRecord::Base.transaction do
+  user.save!
+end
+```
+
+That's because I don't have time creating exapmles that would be both clear and follow this rule. I'm expeting you understand what Rails transactions are for and  I just want to show you some interesting pitfalls.
 
 
 
+### Other pitfals
+
+This is not a comprehencive guide of "what can go wrong" with Rails
+transactions. I just covered some examples me and my team encounter in
+past couple of years.
+
+Please read trought
+[Active Record Transactions](https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html) for more examples
 
 ### sources:
 
