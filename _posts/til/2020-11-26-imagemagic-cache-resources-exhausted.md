@@ -104,3 +104,5 @@ ADD ./config/docker_imagemagic_policy.xml /etc/ImageMagick-6/policy.xml
 * <https://stackoverflow.com/questions/31407010/cache-resources-exhausted-imagemagick>
 
 ### Discussion
+
+* <https://www.reddit.com/r/ruby/comments/k1fy63/108_megapixel_camera_phones_your_activestorage/>
