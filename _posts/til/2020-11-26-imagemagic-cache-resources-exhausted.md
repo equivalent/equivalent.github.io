@@ -50,7 +50,8 @@ read more <https://imagemagick.org/script/security-policy.php>
 
 ### Ruby on Rails - Active Storage error
 
-ImageMagic (`convert` command) is used by `MiniMagic` gem and thus this error will happen to
+
+[ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html) is using ImageMagic (`convert` command as a part of `MiniMagic` gem). Therefore  this error will happen to
 your production box (with same solution, increase the `disk` value in `/etc/ImageMagick-6/policy.xml`
 
 
