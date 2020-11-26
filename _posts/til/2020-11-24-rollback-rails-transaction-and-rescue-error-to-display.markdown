@@ -341,7 +341,7 @@ That's because I don't have time creating exapmles that would be both clear and 
 ### Other pitfals
 
 This is not a comprehencive guide of "what can go wrong" with Rails
-transactions. I just covered some examples me and my team encounter in
+transactions. I just covered some examples me and my collegues encounter in
 past couple of years.
 
 Please read trought
