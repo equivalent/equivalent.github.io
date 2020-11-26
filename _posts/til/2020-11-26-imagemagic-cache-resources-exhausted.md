@@ -11,6 +11,9 @@ will see user uploading 108 Megapixel images and your ImageMagic
 crushing when processing it.
 
 
+![](https://user-images.githubusercontent.com/721990/100261456-0a7dc780-2f4b-11eb-8e04-e79e9854cffa.png)
+
+
 ```bash
 
 convert source.jpg  -auto-orient -auto-orient -rotate 0 -resize 1024x1024 destination.jpg
@@ -57,6 +60,26 @@ issue
 ```
 MiniMagick::Error:  `convert /tmp/ActiveStorage-351753-20201125-8-169rgj7.jpg[0] -auto-orient -auto-orient -rotate 0 -resize 1024x1024 /tmp/image_processing20201125-8-1t1nncq.jpg` failed with error: convert-im6.q16: cache resources exhausted `/tmp/ActiveStorage-351753-20201125-8-169rgj7.jpg' @ error/cache.c/OpenPixelCache/4083.
 ```
+
+
+These files are usually large (like 17MB) so if your Web app has some
+hard limit on maximum file size e.g. 8MB you should be fine.
+
+E.g. if you use [active_storage_validations gem](https://github.com/igorkasyanchuk/active_storage_validations):
+
+```ruby
+class Image < ApplicationRecord
+  has_one_attached :file
+
+  # validations by active_storage_validations
+  validates :file, attached: true,
+    size: { less_than: 9.megabytes , message: 'image too large', message: 'needs to be up to 8MB' },
+    content_type: { in: ['image/png', 'image/jpg', 'image/jpeg'], message: 'needs to be an PNG or JPEG image' }
+```
+
+
+But chances are you want to support uploads from phone and you have to
+accept the fact that 20 MB Images will end up on your platform.
 
 ### Docker solution
 
