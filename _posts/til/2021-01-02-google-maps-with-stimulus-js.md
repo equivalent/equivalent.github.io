@@ -55,3 +55,5 @@ module MapHelper
   end
 end
 ```
+
+> This solution will also work with [Hotwire](http://hotwire.dev/) turbo frames loads
