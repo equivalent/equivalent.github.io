@@ -24,7 +24,7 @@ export default class extends Controller {
 ```
 
 ```css
-/* app/assets/stylesheets/application.css
+/* app/assets/stylesheets/application.css */
 
 .map {
   height: 250px;
