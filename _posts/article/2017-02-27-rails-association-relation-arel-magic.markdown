@@ -35,6 +35,9 @@ Arel / `ActiveRecord::Relation`.
 > Each time I stumble upon new example I'll add it here (suggestions
 > welcome, you can PR this article).
 
+
+> NOTE: many of these examples were written back when Rails 4 was a thing. Some may be out of date with better ways how to do them
+
 ## Beginner
 
 > This artile may be too long, therefore
@@ -350,6 +353,21 @@ More on caching:
 
 #### How to do OR
 
+##### Rails 5 and up
+
+
+```ruby
+Post.where(id: 1).or(Post.where(title: 'Learn Rails'))
+# SELECT "posts".* FROM "posts" WHERE ("posts"."id" = ? OR "posts"."title" = ?)  [["id", 1], ["title", "Learn Rails"]]
+=> <ActiveRecord::Relation [#<Post id: 1, title: 'Rails'>]>
+```
+
+> stolen from  <https://bigbinary.com/blog/rails-5-adds-or-support-in-active-record>
+
+
+##### Rails 4 and under
+
+
 ```ruby
 # | type                        | owner_id | owner_type|
 # | global                      | nil      | User      |
@@ -381,6 +399,9 @@ Comment.with_owner_ids_or_global(User, 1,2,3,4)
 
 ...basically just more complex SQL query with OR statement where brackets will
 separate the desired domain context:
+
+
+> note this applies for older Rails. Rails now have `or` [source](https://bigbinary.com/blog/rails-5-adds-or-support-in-active-record)
 
 ```ruby
 # app/model/candy.rb
