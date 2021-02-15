@@ -6,6 +6,7 @@ disq_id: til-86
 ---
 
 
+
 Steps:
 
 
@@ -20,6 +21,10 @@ to Rails credentials)
    reload the page so it appears)
 
 
+> Best practices for AWS are that for every Rails app enviroment you should have own user and own bucket.
+> That means for production create s3 bucket `my-project-prod` and IAM user
+> `my-project-prod` and for staging s3 bucket `my-project-stg` and IAM user
+> `my-project-stg`. Same for develop if you are planing to use S3 there
 
 ## AWS Policy
 
@@ -46,7 +51,9 @@ guide](https://kylekeesling.dev/posts/2020/01/activestorage-s3-permissions)
     {
       "Effect": "Allow",
       "Action": "s3:ListBucket",
-      "Resource": "arn:aws:s3:::REPLACE_WITH_BUCKET_NAME"
+      "Resource": [
+        "arn:aws:s3:::REPLACE_WITH_BUCKET_NAME"
+      ]
     }
   ]
 }
