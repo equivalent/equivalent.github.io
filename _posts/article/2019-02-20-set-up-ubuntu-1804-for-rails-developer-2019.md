@@ -123,6 +123,33 @@ If you want Mongo DB v 4 check <https://docs.mongodb.com/manual/tutorial/install
 
 ## Install Elasticsearch
 
+
+#### ES 7
+
+<https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-18-04>
+
+```bash
+sudo apt-get update
+
+# install java
+sudo apt-get install default-jre  default-jdk
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+sudo apt update
+sudo apt install elasticsearch
+
+sudo systemctl status elasticsearch.service  # status
+sudo systemctl start elasticsearch.service   # start server
+sudo systemctl stop elasticsearch.service    # stop server
+
+curl -X GET "localhost:9200"
+```
+
+
+
+
+#### ES 6
+
 <https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-18-04>
 
 ```bash
