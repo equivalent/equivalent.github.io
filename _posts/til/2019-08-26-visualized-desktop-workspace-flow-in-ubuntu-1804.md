@@ -14,10 +14,10 @@ This setup should probably work also for Ubuntu with manually installed XFCE
 
 
 
-## install tweek tools
+## install tweak tools
 
 ```
-sudo apt install gnome-tweek-tool
+sudo apt install gnome-tweak-tool
 
 ```
 

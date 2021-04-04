@@ -364,7 +364,7 @@ sudo apt install p7zip-full
 
 
 ```bash
-sudo apt install gnome-tweek-tool
+sudo apt install gnome-tweak-tool
 ```
 
 follow instructions on <https://blog.eq8.eu/til/visualized-desktop-workspace-flow-in-ubuntu-1804.html>
