@@ -122,4 +122,4 @@ Rails.application.config.active_job.queue_adapter = :async
 Rails.application.config.active_job.queue_adapter = :sidekiq
 ```
 
-To lern more about [Active Job adapters](https://api.rubyonrails.org/classes/ActiveJob/QueueAdapters.html)
+To learn more about [Active Job adapters](https://api.rubyonrails.org/classes/ActiveJob/QueueAdapters.html)
