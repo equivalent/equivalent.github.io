@@ -89,7 +89,6 @@ files:
           sudo docker ps
           sudo docker exec -it xxxxxxx bin/rails c
           sudo docker exec -it $( sudo docker ps | grep v3 | awk '{print $1;}' | tail -n 1) bin/rails c
-      test33
 
       EOF
 
