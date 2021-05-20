@@ -82,13 +82,13 @@ files:
 
           sudo docker ps
           sudo docker exec -it xxxxxxx bash
-          sudo docker exec -it $( sudo docker ps | grep v3 | awk '{print $1;}' | tail -n 1) bash
+          sudo docker exec -it \$( sudo docker ps | grep v3 | awk '{print \$1;}' | tail -n 1) bash
 
       To execute Ruby on Rails console:
 
           sudo docker ps
           sudo docker exec -it xxxxxxx bin/rails c
-          sudo docker exec -it $( sudo docker ps | grep v3 | awk '{print $1;}' | tail -n 1) bin/rails c
+          sudo docker exec -it \$( sudo docker ps | grep v3 | awk '{print \$1;}' | tail -n 1) bin/rails c
 
       EOF
 
