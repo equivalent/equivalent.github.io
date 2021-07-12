@@ -92,8 +92,8 @@ E.g. if your app is `https://www.myapp.com` CDN origin will point to `https://ww
 
 ## Sources
 
-* https://discuss.rubyonrails.org/t/putting-a-cdn-in-front-of-activestorage/76948/4
-* https://github.com/rails/rails/issues/35926
-* https://github.com/rails/rails/pull/42305
-* https://github.com/rails/rails/pull/42363/files
-* https://lipanski.com/posts/activestorage-cdn-rails-direct-route out of date article (don't use)
+* <https://discuss.rubyonrails.org/t/putting-a-cdn-in-front-of-activestorage/76948/4>
+* <https://github.com/rails/rails/issues/35926>
+* <https://github.com/rails/rails/pull/42305>
+* <https://github.com/rails/rails/pull/42363/files>
+* <https://lipanski.com/posts/activestorage-cdn-rails-direct-route> out of date article (don't use)
