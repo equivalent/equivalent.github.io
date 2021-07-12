@@ -10,7 +10,7 @@ Ruby on Rails  Active Storage  there is posibility to configure CDN.
 ### Set up Rails
 
 ```ruby
-# config/environments/production.rb
+# config/environments/staging.rb
 Rails.application.configure do
   # ...
   config.x.cdn_host = 'https://myapp-stg.b-cdn.net'
@@ -20,7 +20,7 @@ Rails.application.configure do
 
 
 ```ruby
-# config/environments/staging.rb
+# config/environments/production.rb
 Rails.application.configure do
   # ...
   config.x.cdn_host = 'https://myapp-prod.b-cdn.net'
