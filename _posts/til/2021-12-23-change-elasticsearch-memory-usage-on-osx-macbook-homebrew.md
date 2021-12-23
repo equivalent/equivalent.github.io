@@ -29,7 +29,9 @@ ES conf files are located is:
 /opt/homebrew/Cellar/elasticsearch-full/7.16.2/libexec/config/jvm.options
 ```
 
-Now I need to add following lines to the file:
+(your path to this file may be different)
+
+Now I need to add following lines to the `jvm.options` file:
 
 ```
 # ...
@@ -41,7 +43,7 @@ Now I need to add following lines to the file:
 This will use 1 GB of Ram
 
 
-if I want even less I can do 
+if I want even less memory consumption I can do 
 
 
 ```
