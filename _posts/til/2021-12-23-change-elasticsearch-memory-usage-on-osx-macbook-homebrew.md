@@ -54,5 +54,13 @@ if I want even less I can do
 to use 300 MB of memory
 
 
+Remember to stop/start your ES service in order for this to take any
+effect
+
+```bash
+brew services stop  elasticsearch-full
+brew services start elasticsearch-full
+```
+
 If you googled this note and you are using Ubuntu check my older note: [change Ubuntu elasticsearch memory consumption](https://blog.eq8.eu/til/change-memory-size-for-elasticsearch-jvm-heap.html)
 
