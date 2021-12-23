@@ -147,12 +147,16 @@ module MyRakeHelper
 
   def self.create_dummy_medium
     img = Rails.root.join('db/data/dummy-work.jpg')
-    img = fixture_file_upload(img.to_s, 'image/jpg')
+    img = dummy_file_uplod(img.to_s, 'image/jpg')
 
     ## ...or:
-    # img = fixture_file_upload(img.to_s, Rack::Mime.mime_type(img.extname))
+    # img = dummy_file_uplod(img.to_s, Rack::Mime.mime_type(img.extname))
 
     Medium.upload_via_controller(img) # we want to reuse existing logic in our raketask
+  end
+
+  def self.dummy_file_uplod(file_fixture_path, type)
+    Rack::Test::UploadedFile.new(file_fixture_path, type)
   end
 end
 
@@ -160,6 +164,32 @@ task create_dummy_images: :environment do
   MyRakeHelper.create_dummy_medium
 end
 ```
+
+
+Note: For tests you could use: 
+
+```ruby
+# spec/my_spec.rb
+# require 'action_dispatch/testing/test_proces' # may be needed
+
+module UploadHelper
+  extend ActionDispatch::TestProcess::FixtureFile # rails 6
+  # extend ActionDispatch::TestProcess  # order Rails like rails 3.2
+
+  def upload(img)
+    fixture_file_upload(img.to_s, Rack::Mime.mime_type(img.extname))
+  end
+end
+
+it do
+  img = UploadHelper.upload( Rails.root.join('spec/fixtures/myimg.jpg) )
+  medium = Medium.create(image: img)
+  # ...
+end
+```
+
+* <https://api.rubyonrails.org/classes/ActionDispatch/TestProcess/FixtureFile.html>
+* <https://github.com/rails/rails/blob/83217025a171593547d1268651b446d3533e2019/actionpack/lib/action_dispatch/testing/test_process.rb#L19>
 
 ### Sources
 
