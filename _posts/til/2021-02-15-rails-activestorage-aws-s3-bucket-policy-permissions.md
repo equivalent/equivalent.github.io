@@ -114,6 +114,10 @@ In AWS go to S3 > click on bucket >  "Permissions" tab > down at the bottom "Cro
 > which is under same "Permissions" tab
 
 
+> note2: You DON'T need to enable access in the "Block public access (bucket settings)". That means Block all public access can stay set to
+> "On" and direct upload will still work. That setting is confusingly
+> for something else
+
 sources: 
 
 * <https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html>
