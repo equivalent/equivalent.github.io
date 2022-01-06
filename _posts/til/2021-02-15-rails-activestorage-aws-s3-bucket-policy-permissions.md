@@ -72,6 +72,12 @@ Sources
 If you want to use [Direct upload](https://edgeguides.rubyonrails.org/active_storage_overview.html#direct-uploads)
 you need to configure the CORS on AWS S3 bucket
 
+
+In AWS go to S3 > click on bucket >  "Permissions" tab > down at the bottom "Cross-origin resource sharing (CORS) section"  > edit
+
+
+
+
 ```
 [
     {
@@ -104,4 +110,12 @@ you need to configure the CORS on AWS S3 bucket
 ```
 
 
+> note: You want "Cross-origin resource sharing (CORS)" not the  "Bucket policy"
+> which is under same "Permissions" tab
 
+
+sources: 
+
+* <https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html>
+* <https://docs.sevenbridges.com/docs/enabling-cross-origin-resource-sharing-cors>
+* <https://edgeguides.rubyonrails.org/active_storage_overview.html#cross-origin-resource-sharing-cors-configuration>
