@@ -371,6 +371,164 @@ giving up native ActiveStorage has_many_attached features that come
 default in Rails (like no sweat direct upload). If that's not a big deal
 for you then no problem.
 
+### RSpec specs
+
+```ruby
+# spec/model/entry_spec.rb
+require 'rails_helper'
+
+RSpec.describe Entry, type: :model do
+  describe 'ordered_pictures' do
+    let!(:entry) { create :entry, :with_pictures }
+
+    before do
+      @pic1, @pic2, @pic3 = entry.pictures
+    end
+
+    context 'when no exact order' do
+      it do
+        expect(entry.ordered_pictures).to eq([@pic1, @pic2, @pic3])
+      end
+
+      describe 'up' do
+        it do
+          expect(entry.ordered_pictures).to eq([@pic1, @pic2, @pic3])
+
+          entry.ordered_picture_move_up!(@pic3)
+          expect(entry.ordered_pictures).to eq([@pic1, @pic3, @pic2])
+
+          entry.ordered_picture_move_up!(@pic3)
+          expect(entry.ordered_pictures).to eq([@pic3, @pic1, @pic2])
+
+          entry.ordered_picture_move_up!(@pic3)
+          expect(entry.ordered_pictures).to eq([@pic3, @pic1, @pic2])
+
+          entry.ordered_picture_move_up!(@pic2)
+          expect(entry.ordered_pictures).to eq([@pic3, @pic2, @pic1])
+        end
+
+        it 'check type' do
+          expect { entry.ordered_picture_move_up!(@pic2.blob) }
+            .to raise_exception(TypeError, /ActiveStorage::Blob/)
+          expect(entry.ordered_pictures).to eq([@pic1, @pic2, @pic3])
+        end
+      end
+
+      describe 'down' do
+        it do
+          expect(entry.ordered_pictures).to eq([@pic1, @pic2, @pic3])
+
+          entry.ordered_picture_move_down!(@pic1)
+          expect(entry.ordered_pictures).to eq([@pic2, @pic1, @pic3])
+
+          entry.ordered_picture_move_down!(@pic1)
+          expect(entry.ordered_pictures).to eq([@pic2, @pic3, @pic1])
+
+          entry.ordered_picture_move_down!(@pic1)
+          expect(entry.ordered_pictures).to eq([@pic2, @pic3, @pic1])
+
+          entry.ordered_picture_move_down!(@pic2)
+          expect(entry.ordered_pictures).to eq([@pic3, @pic2, @pic1])
+        end
+
+        it 'check type' do
+          expect { entry.ordered_picture_move_down!(2) }
+            .to raise_exception(TypeError, "2 must be a ActiveStorage::Attachment")
+          expect(entry.ordered_pictures).to eq([@pic1, @pic2, @pic3])
+        end
+      end
+    end
+
+    context 'when order' do
+      it do
+        entry.ordered_picture_ids = [@pic2.id, @pic3.id, @pic1.id]
+        expect(entry.ordered_pictures).to eq([@pic2, @pic3, @pic1])
+      end
+    end
+
+    context 'when order with mistakes' do
+      it do
+        entry.ordered_picture_ids = [@pic2.id, nil, @pic3.id, 'poop', @pic1.id]
+        expect(entry.ordered_pictures).to eq([@pic2, @pic3, @pic1])
+      end
+    end
+
+    context 'when order but element missing' do
+      it do
+        entry.ordered_picture_ids = [@pic2.id, @pic1.id]
+        expect(entry.ordered_pictures).to eq([@pic2, @pic1, @pic3])
+      end
+    end
+
+    context 'when order but element missing' do
+      it do
+        entry.ordered_picture_ids = [@pic2.id]
+        expect(entry.ordered_pictures).to eq([@pic2, @pic1, @pic3])
+      end
+    end
+  end
+end
+```
+
+```ruby
+# spec/lib/array_element_move_spec.rb
+require 'rails_helper'
+RSpec.describe ArrayElementMove do
+  let(:arr) { [1,2,3,4,5,6] }
+
+  it do
+    ArrayElementMove.up!(arr, 4)
+    expect(arr).to eq([1,2,4,3,5,6])
+
+    expect(ArrayElementMove.up!(arr, 4)).to eq([1,4,2,3,5,6])
+    expect(arr).to eq([1,4,2,3,5,6])
+
+    ArrayElementMove.up!(arr, 4)
+    expect(arr).to eq([4,1,2,3,5,6])
+
+    ArrayElementMove.up!(arr, 4)
+    expect(arr).to eq([4,1,2,3,5,6])
+  end
+
+  it do
+    ArrayElementMove.down!(arr, 4)
+    expect(arr).to eq([1,2,3,5,4,6])
+
+    expect(ArrayElementMove.down!(arr, 4)).to eq([1,2,3,5,6,4])
+    expect(arr).to eq([1,2,3,5,6,4])
+
+    expect(ArrayElementMove.down!(arr, 4)).to eq([1,2,3,5,6,4])
+    expect(arr).to eq([1,2,3,5,6,4])
+  end
+
+  context 'when non uniq array' do
+    let(:arr) { [1,4,2,3,4,5,6] }
+
+    it do
+      expect { ArrayElementMove.down!(arr, 3) }.to raise_exception(ArrayElementMove::MustBeUniqArray)
+      expect(arr).to eq([1,4,2,3,4,5,6])
+    end
+
+    it do
+      expect { ArrayElementMove.down!(arr, 3) }.to raise_exception(ArrayElementMove::MustBeUniqArray)
+      expect(arr).to eq([1,4,2,3,4,5,6])
+    end
+  end
+
+  context 'when non existing item' do
+    it do
+      expect { ArrayElementMove.up!(arr, 9) }.to raise_exception(ArrayElementMove::ItemNotInArray)
+      expect(arr).to eq([1,2,3,4,5,6])
+    end
+
+    it do
+      expect { ArrayElementMove.up!(arr, 9) }.to raise_exception(ArrayElementMove::ItemNotInArray)
+      expect(arr).to eq([1,2,3,4,5,6])
+    end
+  end
+end
+```
+
 
 ### Related articles
 
