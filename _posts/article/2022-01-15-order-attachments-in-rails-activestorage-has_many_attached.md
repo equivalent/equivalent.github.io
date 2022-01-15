@@ -547,4 +547,5 @@ end
 
 ### Discussion
 
+* [Reddit](https://www.reddit.com/r/ruby/comments/s4w02y/how_to_change_order_of_attachments_in_rails/)
 
