@@ -148,6 +148,9 @@ With this technology a really elegant solution would be to have buttons that wou
 change order of attachments **Up** or **Down** within same turbo frame. Let's have a look how
 this would look like:
 
+
+![result](/assets/2022/reorder.gif)
+
 #### Model
 
 First let's introduce methods for moving attachement picture:
@@ -318,7 +321,6 @@ end
 
 ```
 
-![result](/assets/2022/reorder.gif)
 
 
 That's it
