@@ -8,13 +8,13 @@ description:
 ---
 
 Ruby on Rails [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html)  introduced
-bunch of cool features for uploading files. One large adventage is
-simple way how to store mupltiple attachments for a model with
+bunch of cool features for uploading files. One large advantage is a
+simple way how to store multiple attachments for a model with
 [has_many_attached](https://edgeguides.rubyonrails.org/active_storage_overview.html#has-many-attached) but also 
 ability to upload  files with [direct upload](https://edgeguides.rubyonrails.org/active_storage_overview.html#direct-uploads)
 
-However cool  as `has_many_attached` feature is developers may feels like it's
-missing one critical feature: changing order of attachments.
+`has_many_attached` is a cool feature but developers may feels like it's
+missing one critical feature: change order of attachments.
 
 In this article I'll show you one simple way how to order attachments of
 a simple Entry model that has many pictures.
@@ -22,7 +22,7 @@ a simple Entry model that has many pictures.
 
 > To limit the scope of this article I'll  assume your application have a basic setup of
 > [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html)
-> such as `bin/rails active_storage:install`  set up in your application.
+> such as `bin/rails active_storage:install`
 
 
 ## Basic solution
@@ -50,7 +50,7 @@ in order:
 ...we can store the ids `[1,2,3]` in any order we want see them appear in e.g.: `[3,1,2]`
 
 Assuming we use **PostgreSQL database** lets add a `json` field to our
-database which defalts to empty Array
+database which defalts to an empty Array
 
 ```ruby
 class AddOrderedPictureIdsToEntries < ActiveRecord::Migration[6.1]
@@ -81,8 +81,6 @@ entry.ordered_picture_ids
 # => [3,1,2]
 ```
 
-Ok our `#ordered_picture_ids` feld does exist and it's empty Array by
-default.
 
 Now we will intreduce method `#ordered_pictures` which will return
 `#pictures` ordered by the values in `#ordered_picture_ids`
@@ -106,7 +104,7 @@ class Entry < ApplicationRecord
 end
 ```
 
-> reason why we do `|| (pic.id*100)` is so that we pre-order record without explicit order (E.g stuff that was uploaded before we start changing order).  Please have a look at RSpec specs bellow to fully understand edgecases
+> reason why we do `|| (pic.id*100)` is so that we give default order to records without explicit order (E.g stuff that was uploaded before we start changing order).  Please have a look at RSpec specs bellow to fully understand edgecases
 
 Great now when you call `entry.ordered_pictures` you will get attached
 pictures in order you like:
@@ -121,7 +119,7 @@ pictures in order you like:
 ```
 
 
-Now if you use some JavaScript solution (e.g drag and drop sort) that will send you the Array of ids to your backend
+If you use some JavaScript solution (e.g drag and drop sort) that will send  an Array of ids to your backend then
 this is all you need. Just update your controller to allow our new `#ordered_picture_ids` property in `params`
 
 ```ruby
@@ -146,9 +144,9 @@ Rails 7 introduced [Hotwire Turbo](https://turbo.hotwired.dev/) which
 makes developers that prefere  to write as little of JavaScript as
 possible (like me) extremly happy.
 
-In this case really elegant solution would be to have buttons that would
+With this technology a really elegant solution would be to have buttons that would
 change order of attachments **Up** or **Down** within same turbo frame. Let's have a look how
-this would look like.
+this would look like:
 
 #### Model
 
@@ -206,9 +204,9 @@ this field
 
 > For details please see RSpec specs at the bottom of this article
 
-Tricky bit here is how to move items up and down in Ruby Array (in `#ordered_picture_ids`). As far
-as I'm aware of there is no built in feature directly in Ruby so I
-needed to create small helper `ArrayElementMove` to do that:
+Tricky bit here is how to move items up and down in a Ruby Array. As far
+as I'm aware there is no built in feature directly in Ruby so I
+ created a small helper `ArrayElementMove` to do that:
 
 
 ```ruby
@@ -332,10 +330,16 @@ further. I just want to close this article with some opinions.
 
 #### Why ActiveStorage has_many_attached don't have built in ordering ?
 
-I don't know why but I personally think this feature is missing from ActiveStorage by design
-because your application may have different iterpretation of how to
-order attachments than my (Maybe your application is ordering PDFs in front of
-images)
+I don't know.
+
+I personally think this feature is missing from ActiveStorage by design
+because your application may have a different iterpretation on how to
+order attachments.
+
+For example maybe within same has_many_attached your application is ordering PDFs in front of
+images.
+
+So it sounds straight forward but order logic may have many meanings
 
 #### Wouldn't be custom Picture model better ?
 
