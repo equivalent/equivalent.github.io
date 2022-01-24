@@ -1,10 +1,18 @@
 ---
 layout: til_post
-title:  "How to test performance of caching on individual tests Rails RSpec"
+title:  "How to test performance of caching with RSpec in Rails"
 categories: til
 disq_id: til-94
 ---
 
+e.g.: if you implemeted fragment caching or russian doll caching
+
+```
+account = Account.last
+Rails.cache.fetch ['posts', account] do
+  # ....
+end
+```
 
 ### how to enable cache on single test
 
