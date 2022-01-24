@@ -14,7 +14,20 @@ Rails.cache.fetch ['posts', account] do
 end
 ```
 
-### how to enable cache on single test
+### how to enable cache in single test
+
+NOTE by default caching is disabled in test enviroment (which is a good
+thing). You **don't** need to change default `null_store` caching
+
+```ruby
+# config/environments/test.rb
+Rails.application.configure do
+  # ...
+  config.cache_store = :null_store #  feel free to keep this as it is
+```
+
+What we want is enable the caching only for particular test:
+
 
 ```ruby
 # spec/any_spec.rb
@@ -41,21 +54,12 @@ end
 ```
 
 
-NOTE  you **don't** need to change default `null_store` caching
-
-```ruby
-# config/environments/test.rb
-Rails.application.configure do
-  # ...
-  config.cache_store = :null_store #  feel free to keep this as it is
-```
 
 
-Credit goes to Emanuel De and his article
-[How to: Rails cache for individual rspec tests](https://makandracards.com/makandra/46189-how-to-rails-cache-for-individual-rspec-tests) Consider this as a mirror note
+> Credit for this part of article goes to Emanuel De and his article [How to: Rails cache for individual rspec tests](https://makandracards.com/makandra/46189-how-to-rails-cache-for-individual-rspec-tests) Consider this as a mirror article
 
 
-### how to test performance
+### how to test performance of implemented caching
 
 Gem  [db-query-matchers](https://github.com/civiccc/db-query-matchers)
 will help you test how many SQL calls the request has made
