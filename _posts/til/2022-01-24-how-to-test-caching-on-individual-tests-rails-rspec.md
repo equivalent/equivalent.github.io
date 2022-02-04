@@ -54,9 +54,72 @@ end
 ```
 
 
-
-
 > Credit for this part of article goes to Emanuel De and his article [How to: Rails cache for individual rspec tests](https://makandracards.com/makandra/46189-how-to-rails-cache-for-individual-rspec-tests) Consider this as a mirror article
+
+### RSpec tag to mark which tests should enable cache
+
+we can go step further and enable cache only on tests with specific  RSpec tag / filters
+
+
+```ruby
+# spec/support/test_file_caching_helper.rb
+module TestFileCachingHelper
+  def self.cache
+    return @file_cache if @file_cache
+    path = "tmp/test#{ENV['TEST_ENV_NUMBER']}/cache"
+    FileUtils::mkdir_p(path)
+    @file_cache = ActiveSupport::Cache.lookup_store(:file_store, path)
+    @file_cache
+  end
+end
+```
+
+```ruby
+# spec/rails_helper.rb
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
+RSpec.configure do |config|
+  # ...
+
+  # tests that use Rails cache https://blog.eq8.eu/til/how-to-test-caching-on-individual-tests-rails-rspec.html
+  config.before(:example, :cache_enabled) do
+    Rails.cache.clear
+    allow(Rails).to receive(:cache).and_return(TestFileCachingHelper.cache)
+  end
+  # ...
+end
+
+```
+
+
+```ruby
+# spec/any_spec.rb
+require 'rails_helper'
+RSpec.describe 'Anything' do
+  it 'should behave like test without cache enabled'
+    # ...
+  end
+
+  it 'should behave like test with enabled cache', :cache_enabled
+    # ...
+  end
+
+  context 'entire section under influence of cache', :cache_enabled do
+    it 'should behave like test with cache enabled' do
+      # ...
+    end
+
+    it do
+      Rails.cache.fetch 'hello' { 123 }
+      expect(Rails.cache.fetch('hello').to eq 123
+    end
+  end
+end
+```
+
+
+
 
 
 ### how to test performance of implemented caching
