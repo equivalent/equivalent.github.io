@@ -145,12 +145,7 @@ RSpec.describe AccountsController do
     get :index
   end
 
-  before do
-    allow(Rails).to receive(:cache).and_return(TestFileCachingHelper.cache)
-    Rails.cache.clear
-  end
-
-  it 'is performant' do
+  it 'is performant', :cache_enabled do
     #First call
     expect { trigger }.to make_database_queries(count: 420..430)
 
@@ -158,6 +153,9 @@ RSpec.describe AccountsController do
     expect { trigger }.to make_database_queries(count: 7)
   end
 ```
+
+> note don't use let(:trigger) { get :index } as that will memoize the
+> call => second call will not trigger
 
 ### sources
 
