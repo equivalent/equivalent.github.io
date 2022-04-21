@@ -1,9 +1,11 @@
 ---
 layout: til_post
-title:  "Content-Type application/json by default in Rails 5"
+title:  "Content-Type application/json by default in Ruby on Rails "
 categories: til
 disq_id: til-47
 ---
+
+> note solution in this article works in Rails 5 (tested), Rails 6 (tested) Rails 7 (tested)
 
 Imagine you generate Rails API only app (`rails new --api`) and now you want all the requset
 been considered as JSON content-type (even if the header is not present in the request)
@@ -78,6 +80,28 @@ class ConsiderAllRequestJsonMiddleware
 end
 ```
 
+### what if I don't want api only
+
+You may want to limit it only for certain path e.g. `/api/anything`
+while keeping the rest of the app as it is
+
+```ruby
+class ConsiderAllRequestJsonMiddleware
+  def initialize app
+    @app = app
+  end
+
+  def call(env)
+    if env['PATH_INFO'].match(/\A\/api\/.*/) # if match /api/*
+      if env["CONTENT_TYPE"] == 'application/x-www-form-urlencoded'
+        env["CONTENT_TYPE"] = 'application/json'
+      end
+    end
+
+    @app.call(env)
+  end
+end
+```
 
 
 ### Notes for myself
