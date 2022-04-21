@@ -78,3 +78,26 @@ class ConsiderAllRequestJsonMiddleware
 end
 ```
 
+
+
+### Notes for myself
+
+
+In normal circumstances browser don't send any header with GET
+but sends header "application/x-www-form-urlencoded" when POST PUT
+
+When browser submits a form with file it sends  header "multipart/form-data"
+
+
+Rails will parse `request.body` to `params` according to Content-Type.
+So when you use value `application/json` body `{"hello":"value"}` will end up parsed
+to `params` while with default `application/x-www-form-urlencoded` it
+will end up ignored
+
+So that's why FE/Browser don't necessary needs to send Content-Tye header with GET but definitelly needs to send header Content-Type=application/json with POST PUT data submissions to API (beside other things Rails  knows how that it needs to parse  request.body to JSON)
+
+JSON is not designed to send files in the format  - we cannot do `{"file":"x03...BINARY....x4O"}`
+
+> well we could but it would have to involve  some FE voodoo converting file to binary string == not worh it
+
+That's why when submitting files to JSON API the format should stay "multipart/form-data"
