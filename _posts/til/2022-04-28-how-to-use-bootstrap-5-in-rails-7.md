@@ -158,5 +158,6 @@ survive that 5 min downtime.
 
 ### Discussion
 
+* <https://www.reddit.com/r/ruby/comments/udtsz8/how_to_use_bootstrap_5_in_rails_7_importmaps/>
 
 
