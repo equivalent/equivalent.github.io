@@ -41,7 +41,7 @@ $ bin/importmap pin bootstrap
 
 Then you need to just import bootstrap in your `application.js`
 
-```
+```js
 // app/javascript/application.js
 // ...
 import 'bootstrap'
@@ -51,7 +51,7 @@ import 'bootstrap'
 > Note: For some reason popperjs acts broken in my Rails7 project  when I load it from
 > default `ga.jspm.io` CDN. That's why I recommend to load it from `unpkg.com`:
 
-```
+```ruby
 pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.1.3/dist/js/bootstrap.esm.js"
 pin "@popperjs/core", to: "https://unpkg.com/@popperjs/core@2.11.2/dist/esm/index.js" # use unpkg.com as ga.jspm.io contains a broken popper package
 ```
@@ -75,7 +75,7 @@ and `bundle install`
 
 Then just edit your `app/assets/stylesheets/application.scss`
 
-```
+```scss
 // app/assets/stylesheets/application.scss
 // ...
 @import "bootstrap";
@@ -86,7 +86,7 @@ Then just edit your `app/assets/stylesheets/application.scss`
 If you want to change some variables:
 
 
-```
+```scss
 // app/assets/stylesheets/application.scss
 // ...
 $primary: #c11;
@@ -104,10 +104,10 @@ $primary: #c11;
 Make sure your layout (`app/views/application.html.erb`) contains:
 
 ```erb
-  <%# ... %>
-  <head>
-    <%# ... %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>  <%# this loads Sprockets/Rails asset pipeline %>
+<%# ... %>
+<head>
+<%# ... %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>  <%# this loads Sprockets/Rails asset pipeline %>
     <%= javascript_importmap_tags %> <%#  this loads JS from importmaps %>
     <%# ... %>
   </head>
