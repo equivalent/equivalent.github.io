@@ -19,21 +19,6 @@ Let's make life easy again
 
 ### Instalation of Bootstrap 5 in Rails 7
 
-make sure your layout contains:
-
-```erb
-<%# in app/views/application.html.erb %>
-  <!-- ... -->
-  <head>
-    <!-- ... -->
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>  <!--  this loads Sprockets/Rails asset pipeline -->
-    <%= javascript_importmap_tags %> <!--  this loads JS from importmaps -->
-    <!-- ... -->
-  </head>
-  <!-- ... -->
-```
-
-
 #### JavaScript (JS)
 
 If you don't have [importmaps](https://github.com/rails/importmap-rails) yet in your Rails project: 
@@ -111,6 +96,24 @@ $primary: #c11;
 
 * [list of all variables](https://github.com/twbs/bootstrap-rubygem/blob/master/assets/stylesheets/bootstrap/_variables.scss)
 * [advanced way how to change variables](https://github.com/twbs/bootstrap-rubygem/issues/210)
+
+
+#### Layout files
+
+
+Make sure your layout (`app/views/application.html.erb`) contains:
+
+```erb
+  <%# ... %>
+  <head>
+    <%# ... %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>  <%# this loads Sprockets/Rails asset pipeline %>
+    <%= javascript_importmap_tags %> <%#  this loads JS from importmaps %>
+    <%# ... %>
+  </head>
+  <!-- ... -->
+```
+
 
 
 ### Alternative solutions
