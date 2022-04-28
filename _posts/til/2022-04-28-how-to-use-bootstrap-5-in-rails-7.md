@@ -118,10 +118,11 @@ Make sure your layout (`app/views/application.html.erb`) contains:
 
 ### Alternative solutions
 
+* [gem bootstrap and importmaps to load vendor javascript in the gem](https://dev.to/coorasse/rails-7-bootstrap-5-and-importmaps-without-nodejs-4g8) - good solution if you want to avoid CDN
 * you can use the `rails new --css bootstrap` option but that will
 require `esbuild` which requires all the JS shenanigans in your laptop this article wants to
 avoid
-* [gem bootstrap and importmaps to load vendor javascript in the gem](https://dev.to/coorasse/rails-7-bootstrap-5-and-importmaps-without-nodejs-4g8) - good solution if you want to avoid CDN
+* you can use [webpacker](https://guides.rubyonrails.org/webpacker.html) but again you need node,yarn,... So, have fun
 
 ### counterarguments
 
