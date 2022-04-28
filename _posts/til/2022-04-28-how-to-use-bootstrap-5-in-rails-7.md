@@ -125,15 +125,15 @@ avoid
 
 ### counterarguments
 
-* "but this way you load a gem and you don't use the JS bit of it"
+> "but this way you load a gem and you don't use the JS bit of it"
 
 So what? Like if there's no single gem in your project you don't use at 100%. I love "vanilla Rails" approach and
 love to avoid 3rd party gems as much as I can but this will save you so
 much hustle, especially if you are a beginner new to Rails or you are
-starting a sideproject (there's always time for refactor later if you
-really need it)
+starting a sideproject (there's always a time to refactor if you really
+need to)
 
-* "but Sprockets are no longer used"
+> "but Sprockets are no longer used"
 
 Yes they are. There was a period of time with RoR 5.2 & 6.x where webpacker
 was taking over and developers were ditching Rails asset pipeline but
@@ -141,16 +141,15 @@ this new importmaps approach is fresh breath to bring gems with scss
 back. Basecamp (& DHH) were quite clear about it that Sprockets will not
 disappear  anyday soon.
 
-* but `--css` (esbuild) is there to replace sprockets
+> but `--css` (esbuild) is there to replace sprockets
 
 No it's not, same way how webpacker didn't replace it
 
-* But what if CDN provider goes down, then my application JS will not
-work
+> But what if CDN provider goes down, then my application JS will not work
 
-Yes and rest of the internet as and billion of websites as well.  If your project is a bank then yeah sure use your
-own CDN (honestly but maybe importmaps is not ideal for you in first place). But if your project is
-startup to sell T-shirts online then I'm pretty sure everyone will
+Yes you and other billion websites as well.  If your project is a bank then yeah sure use your
+own CDN or load from vendor. But if your project is
+startup to sell T-shirts  then I'm pretty sure everyone will
 survive that 5 min downtime.
 
 ### Sources
