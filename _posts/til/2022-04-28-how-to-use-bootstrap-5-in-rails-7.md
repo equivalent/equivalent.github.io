@@ -87,6 +87,9 @@ Then just edit your `app/assets/stylesheets/application.scss`
 ```
 
 
+> note: be sure you replace your application.**css** with application.**scss**.
+> That means `app/assets/stylesheets/application.css` should not exist!
+
 If you want to change some variables:
 
 
