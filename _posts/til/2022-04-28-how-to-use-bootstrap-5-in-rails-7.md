@@ -17,9 +17,9 @@ Well there is good old  Sprockets (a.k.a [Rails asset pipeline](https://guides.r
 
 Let's make life easy again
 
-### Instalation of Bootstrap 5 in Rails 7
+## Instalation of Bootstrap 5 in Rails 7
 
-#### JavaScript (JS)
+### JavaScript (JS)
 
 If you don't have [importmaps](https://github.com/rails/importmap-rails) yet in your Rails project: 
 
@@ -47,7 +47,7 @@ Then you need to just import bootstrap in your `application.js`
 import 'bootstrap'
 ```
 
-##### Quick Note:
+#### Quick Note:
 
 > For some reason popperjs acts broken in my Rails7 project  when I load it from
 > default `ga.jspm.io` CDN. That's why I recommend to load it from `unpkg.com`:
@@ -61,7 +61,7 @@ pin "@popperjs/core", to: "https://unpkg.com/@popperjs/core@2.11.2/dist/esm/inde
 ```
 
 
-#### CSS (JS)
+### CSS (JS)
 
 To install official
 [Bootstrap 5 Ruby gem](https://github.com/twbs/bootstrap-rubygem) 
@@ -105,7 +105,7 @@ $primary: #c11;
 * [advanced way how to change variables](https://github.com/twbs/bootstrap-rubygem/issues/210)
 
 
-#### Layout files
+### Layout files
 
 
 Make sure your layout (`app/views/application.html.erb`) contains:
@@ -123,7 +123,7 @@ Make sure your layout (`app/views/application.html.erb`) contains:
 
 
 
-### Alternative solutions
+## Alternative solutions
 
 * [gem bootstrap and importmaps to load vendor javascript in the gem](https://dev.to/coorasse/rails-7-bootstrap-5-and-importmaps-without-nodejs-4g8) - good solution if you want to avoid CDN
 * you can use the `rails new --css bootstrap` option but that will
@@ -131,7 +131,7 @@ require `esbuild` which requires all the JS shenanigans in your laptop this arti
 avoid
 * you can use [webpacker](https://guides.rubyonrails.org/webpacker.html) but again you need node,yarn,... So, have fun
 
-### counterarguments
+## counterarguments
 
 > "but this way you load a gem and you don't use the JS bit of it"
 
@@ -160,11 +160,11 @@ own CDN or load from vendor. But if your project is
 startup to sell T-shirts  then I'm pretty sure everyone will
 survive that 5 min downtime.
 
-### Sources
+## Sources
 
 * [Learn more on importmaps - DHH video](https://www.youtube.com/watch?v=PtxZvFnL2i0)
 
-### Discussion
+## Discussion
 
 * <https://www.reddit.com/r/ruby/comments/udtsz8/how_to_use_bootstrap_5_in_rails_7_importmaps/>
 
