@@ -148,8 +148,21 @@ need to)
 Yes they are. There was a period of time with RoR 5.2 & 6.x where webpacker
 was taking over and developers were ditching Rails asset pipeline but
 this new importmaps approach is fresh breath to bring gems with scss
-back. Basecamp (& DHH) were quite clear about it that Sprockets will not
-disappear  anyday soon.
+back.
+
+~~Basecamp (& DHH) were quite clear about it that Sprockets will not
+disappear  anyday soon.~~
+
+**update** Well actually I was wrong. Sprockets will probably be
+replaced by [Propshaft](https://github.com/rails/propshaft) in Rails 8.
+[source of this claim](https://rubyrogues.com/propshaft-with-david-heinemeier-hansson-dhh-ruby-542)
+
+But still Sprockets are the most convinient way how to use CSS in
+Rails7
+
+> what about DartSass
+
+if you decide to configure [DartSass Rails](https://github.com/rails/dartsass-rails) go for it.
 
 > but `--css` (esbuild) is there to replace sprockets
 
