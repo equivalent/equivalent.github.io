@@ -5,6 +5,8 @@ categories: til
 disq_id: til-95
 ---
 
+![](https://images.unsplash.com/photo-1615752865424-62638daceeae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80)
+
 
 Rails 7 is a breath of fresh air. Thanks to
 [importmaps](https://github.com/rails/importmap-rails) everything is
@@ -163,6 +165,8 @@ survive that 5 min downtime.
 ## Sources
 
 * [Learn more on importmaps - DHH video](https://www.youtube.com/watch?v=PtxZvFnL2i0)
+
+Photo by Pablo Arroyo via [unsplash](https://unsplash.com/photos/_SEbdtH4ZLM)
 
 ## Discussion
 
