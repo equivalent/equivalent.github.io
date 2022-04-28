@@ -2,7 +2,7 @@
 layout: til_post
 title:  "How to use Bootstrap 5 in Rails 7 - importmaps & sprockets"
 categories: til
-disq_id: til-99
+disq_id: til-95
 ---
 
 
