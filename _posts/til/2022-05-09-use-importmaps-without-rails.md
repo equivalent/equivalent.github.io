@@ -69,3 +69,5 @@ Looking for Hotwire Stimulus examples ?
 * <https://github.com/rails/importmap-rails>
 
 ### Discussion
+
+* <https://www.reddit.com/r/rails/comments/ulq85p/use_importmaps_without_rails_pure_html_example/>
