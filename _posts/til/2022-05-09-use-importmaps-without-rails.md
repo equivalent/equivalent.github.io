@@ -45,6 +45,8 @@ If you wonder how to use importmap in plain HTML here is an example:
 </html>
 ```
 
+> to see the example in action check [this JS fiddle](https://jsfiddle.net/8oa9fjbs/)
+
 
 Example uses importmap to loads <a href="https://www.npmjs.com/package/local-time">local-time js</a>
 that converts `<time>` HTML elements from UTC to the browser's local time (<a href="https://github.com/basecamp/local_time">more info</a>).
