@@ -5,6 +5,8 @@ categories: til
 disq_id: til-96
 ---
 
+![](https://images.unsplash.com/photo-1621839673705-6617adf9e890?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80)
+
 Rails 7 embraced the use of [Import maps](https://github.com/rails/importmap-rails) and they are awesome.
 
 If you wonder how to use importmap in plain HTML here is an example:
@@ -56,3 +58,14 @@ that converts `<time>` HTML elements from UTC to the browser's local time (<a hr
 
 Looking for Hotwire Stimulus examples ?
 * Some can be found in [stimulus-autocomplete gem examples](https://github.com/afcapel/stimulus-autocomplete/tree/main/examples)
+
+
+### Source
+
+* Photo by Jackson So via [unsplash](https://unsplash.com/photos/_t-l5FFH8VA)
+* <https://www.npmjs.com/package/local-time>
+* <https://github.com/basecamp/local_time>
+* <https://github.com/afcapel/stimulus-autocomplete/tree/main/examples>
+* <https://github.com/rails/importmap-rails>
+
+### Discussion
