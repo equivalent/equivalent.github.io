@@ -49,15 +49,15 @@ Whatever the case you need to be responsible with anything you introduce. You wa
 
 So what if my company doesn’t allow me to experiment? Should I just experiment in my free time without anyone paying me for it ? …well, yes.
 
-Creative process
+### Creative process
 
-I’ve heard music producer Rick Rubin  talk about the creative process of Eminem:
+I’ve heard music producer [Rick Rubin](https://en.wikipedia.org/wiki/Rick_Rubin) talk about the creative process of Eminem:
 
 > 99% of what he writes is never used. He does this just to stay engaged in the creative process of writing and finding new ways to write. He does this so that when he needs it, it just comes.
 
 Look at my [Github profile](https://github.com/equivalent?tab=repositories). It’s a mess! At the time of writing this article I have around 180 public repos of which 89 are sources (I have many many more private ones). I honestly really need like 10%  but the rest are about the process.
 
-New design pattern? Create a dummy project to test it out. Interesting deployment solution? Create a dummy project and try it out. New programming language I would like to try? …
+New design pattern? Create a dummy project to test it out. Interesting deployment solution? Create a dummy project and try it out. New programming language I would like to try? ...
 
 I create all that mess so that once I’m paid to deliver a solution I already done the drafts and it’s time to bring real rhymes.
 
@@ -84,3 +84,5 @@ So remember next time the lead engineer in your company doesn't allow you to ins
 The convention is sometimes better than what’s cool.
 
 
+
+### Discussion
