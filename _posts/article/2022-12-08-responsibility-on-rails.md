@@ -89,8 +89,11 @@ The convention is sometimes better than what's cool.
 
 ### Discussion
 
-* [Reddit discussion - Ruby](https://www.reddit.com/r/ruby/comments/zftjxq/responsibility_on_rails/)
-* [Reddit discussion - Rails](https://www.reddit.com/r/rails/comments/zfvf8n/responsibility_on_rails_projects/)
+* Reddit discussion
+  * [r/ruby](https://www.reddit.com/r/ruby/comments/zftjxq/responsibility_on_rails/)
+  * [r/rails](https://www.reddit.com/r/rails/comments/zfvf8n/responsibility_on_rails_projects/)
+  * [r/programming](https://www.reddit.com/r/programming/comments/zfw8su/learning_learning_responsibility/)
+  * [r/webdev](https://www.reddit.com/r/webdev/comments/zfvjyr/learning_learning_responsibility/)
 * [Article mirror on Dev.to](https://dev.to/equivalent/responsibility-on-rails-3091)
 * [RubyFlow](https://rubyflow.com/p/jpfve5-responsibility-on-rails)
 
