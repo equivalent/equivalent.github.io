@@ -75,7 +75,7 @@ You need to realize that some companies or teams are about consistency with thei
 
 For example look at what [DHH](https://dhh.dk/) and good folks at [37 Signals](https://dev.37signals.com/) (creators of Ruby on Rails) have been preaching about all these years. [Monolith over microservices](https://m.signalvnoise.com/the-majestic-monolith/), [limit the use of service objects](https://dev.37signals.com/vanilla-rails-is-plenty/), [limit the use of JavaScript](https://hotwired.dev/), ...
 
-They know about code designs, SOLID principles. popular architecture opinions and all the cool JS libraries out there. However they've deliberately chosen to limit their toolset so that everyone using vanilla Rails is on the same page.
+They know about code designs, SOLID principles, popular architecture opinions and all the cool JS libraries out there. However they've deliberately chosen to limit their toolset so that everyone using vanilla Rails is on the same page.
 
 This is not just for some idealistic open source strategy. They've decided to stick with this convention so that a junior developer creating his first Ruby on Rails project has the same tools for success as what they use on their products ([Basecamp](https://basecamp.com/) & [Hey](https://www.hey.com/)). My friends, that takes a lot of courage!
 
