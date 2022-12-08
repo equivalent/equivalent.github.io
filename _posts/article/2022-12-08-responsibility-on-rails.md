@@ -10,6 +10,7 @@ description:
   But remember with great benefits comes great responsibility.
 ---
 
+![](/assets/2022/responsibility.jpeg)
 
 November 2022 I’ve celebrated 13 years of being a Ruby on Rails developer. It just feels like a good time to get something off my chest. Here's the story:
 
@@ -64,9 +65,9 @@ Same applies to my attitude towards OpenSource projects. Many times I fork a rep
 
 Look if you are doing this 9 to 5 just to get paid I have no more arguments for you. I'm surprised you made it this far reading this. I'm surprised you are reading an article no one is paying you to read.
 
-Throughout my career I've met true web developer artists both in Frontend and Backend. People who enjoy what they create and love the craft (I salute you)
+Throughout my career I've met true web developer artists both in Frontend and Backend. People who enjoy what they create and love the craft. I salute to all of you.
 
-For the rest of you at least think about it
+For the rest of you at least think about it.
 
 ### Convention
 
