@@ -10,7 +10,7 @@ description:
   But remember with great benefits comes great responsibility.
 ---
 
-![](/assets/2022/responsibility.jpeg)
+![](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2022/responsibility.jpeg)
 
 November 2022 I’ve celebrated 13 years of being a Ruby on Rails developer. It just feels like a good time to get something off my chest. Here's the story:
 
@@ -88,3 +88,6 @@ The convention is sometimes better than what's cool.
 
 
 ### Discussion
+
+* <https://www.reddit.com/r/ruby/comments/zftjxq/responsibility_on_rails/>
+* <https://rubyflow.com/p/jpfve5-responsibility-on-rails>
