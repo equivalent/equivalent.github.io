@@ -90,7 +90,7 @@ The convention is sometimes better than what's cool.
 ### Discussion
 
 * [Reddit discussion - Ruby](https://www.reddit.com/r/ruby/comments/zftjxq/responsibility_on_rails/)
-* [Reddit discussion - Rails](https://www.reddit.com/r/rubyonrails/comments/zfu0bp/responsibility_on_rails/)
+* [Reddit discussion - Rails](https://www.reddit.com/r/rails/comments/zfvf8n/responsibility_on_rails_projects/)
 * [Article mirror on Dev.to](https://dev.to/equivalent/responsibility-on-rails-3091)
 * [RubyFlow](https://rubyflow.com/p/jpfve5-responsibility-on-rails)
 
