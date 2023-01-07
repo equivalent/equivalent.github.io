@@ -76,5 +76,5 @@ export default class extends Controller {
 
 ### Sources
 
-* https://www.youtube.com/watch?v=ZT5vwF6Ooig
-* https://stimulus.hotwired.dev/handbook/managing-state
+* <https://www.youtube.com/watch?v=ZT5vwF6Ooig>
+* <https://stimulus.hotwired.dev/handbook/managing-state>
