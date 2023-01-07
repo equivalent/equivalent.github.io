@@ -5,6 +5,10 @@ categories: til
 disq_id: til-98
 ---
 
+![screenshot](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2022/tailwind-stimulous-navbar-lg.png)
+![screenshot](https://raw.githubusercontent.com/equivalent/equivalent.github.io/master/assets/2022/tailwind-stimulous-navbar.png)
+
+
 ```html
 <!-- app/views/layouts/_navbar.html.erb -->
 
