@@ -58,12 +58,10 @@ export default class extends Controller {
 
     if (this.stateValue) {
       this.openMenu()
-      this.xTarget.classList.remove("hidden")
-      this.barsTarget.classList.add("hidden")
+      this.showX()
     } else {
       this.closeMenu()
-      this.xTarget.classList.add("hidden")
-      this.barsTarget.classList.remove("hidden")
+      this.showBars()
     }
   }
 
@@ -73,6 +71,16 @@ export default class extends Controller {
 
   closeMenu() {
     this.menuTarget.classList.add("hidden");
+  }
+
+  showBars() {
+    this.xTarget.classList.add("hidden")
+    this.barsTarget.classList.remove("hidden")
+  }
+
+  showX() {
+    this.xTarget.classList.remove("hidden")
+    this.barsTarget.classList.add("hidden")
   }
 }
 ```
