@@ -33,6 +33,7 @@ guide](https://kylekeesling.dev/posts/2020/01/activestorage-s3-permissions)
 
 >  The core features of Active Storage require the following permissions: `s3:ListBucket`, `s3:PutObject`, `s3:GetObject`, and `s3:DeleteObject.` If you have additional upload options configured such as setting ACLs then additional permissions may be required.
 
+
 ```json
 {
   "Version": "2012-10-17",
@@ -42,7 +43,9 @@ guide](https://kylekeesling.dev/posts/2020/01/activestorage-s3-permissions)
       "Action": [
           "s3:PutObject",
           "s3:GetObject",
-          "s3:DeleteObject"
+          "s3:DeleteObject",
+          "s3:PutObjectAcl",
+          "s3:ListBucket"
       ],
       "Resource": [
           "arn:aws:s3:::REPLACE_WITH_BUCKET_NAME/*"
