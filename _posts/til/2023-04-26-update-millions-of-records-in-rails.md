@@ -112,24 +112,7 @@ Recommendation here is not to schedule all 500 M records. But try to schedule 10
 
 You are enqueuing a LOT of jobs. Be sure you have a way to kill those jobs if something goes wrong.
 
-#### Killswitch flag
-
-Exit a job if ENV variable is set or if you use [Flipper](https://github.com/jnunemaker/flipper) you can exit a job if a flag is set, etc...
-
-
-```ruby
-# app/workers/update_addresses_worker.rb
-class UpdateAddressesWorker
-  # ...
-
-  def perform(min_id, max_id, batch_size = 1_000)
-    return if ENV['KILLSWITCH'].present?    # optional
-    return if Flipper[:killswitch].enabled? # optional
-    
-    #...
-```
-
-#### Separate worker for script jobs
+#### Option 1 - Separate worker for script jobs
 
 You don't need to add any special killswitch code for exit a job.
 
@@ -145,6 +128,29 @@ Benefit is that if something goes wrong you can just scale these worker VMs to 0
 ```
 
 > note: the "MANUAL_MAX_THREADS" ENV variable, you can use this to scale the number of threads for your Sidekiq worker that would be running this script jobs. For example if you have 30 dynos for this worker you can set this to 5 and you will have 150 threads running in parallel.
+
+
+#### Option 2 - Killswitch flag
+
+If Option 1 is not possible for you, you can implement a killswitch flag in your worker code.
+
+If you use something like [Flipper](https://github.com/jnunemaker/flipper) you can exit a job if a flag is set, etc...
+
+
+```ruby
+# app/workers/update_addresses_worker.rb
+class UpdateAddressesWorker
+  # ...
+
+  def perform(min_id, max_id, batch_size = 1_000)
+    return if Flipper[:killswitch].enabled? # optional
+    # ...or `return if ENV['KILLSWITCH'].present?`
+    # ...or just deploy updated worker with `return` on beginning of this method
+
+    #...
+```
+
+> e.g. in Heroku when you change ENV variable dyno will reinstantiate . So you can set e.g. `KILLSWITCH` ENV variable.
 
 
 ### How long did it take?
