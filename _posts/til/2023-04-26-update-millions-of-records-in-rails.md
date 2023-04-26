@@ -151,6 +151,8 @@ Benefit is that if something goes wrong you can just scale these worker VMs to 0
 
 For our setup/task (just update few fields on a table) the process of probing different batch sizes & Sidekiq thread numbers with couple of thousands/millions records took about 5 hours. We ended up with 5 threads on 40 Standard 2x Heroku dynos. Then the actual run of the script with rest of the  half a billion records was finished by the morning (I've run it like 11 PM, I've checked 7AM next day and all was finished).
 
+> We use [Judoscale](https://elements.heroku.com/addons/judoscale) so the dyno number was back to 0 by the morning.
+
 Again this is very specific to our setup. Your setup will be different. You need to monitor and adjust accordingly.
 Also our DB was not under heavy load during the night. If you have a lot of other apps using the same DB you need to be more careful.
 
