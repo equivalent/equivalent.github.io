@@ -28,7 +28,7 @@ class UpdateAddressesWorker
 end
 ```
 
-> note: my queue name is _manual_ you can use _default_ or whatever you use in your app.
+> note: my queue name is "_manual_" you can use "_default_" or whatever you use in your app.
 
 
 ### Service
@@ -93,9 +93,7 @@ Because we are dealing with several hundred millions of records it's not easy to
 
 Maybe your worker will consume all the memmory and you need to schedule smaller batches. Maybe you need to increase memory on the underlying VM running your Sidekiq workers
 
-> For example Heroku Standard 1x Dyno has only 512MB, maybe increase it to Standard 2x Dyno (1GB could be enough), or in some cases it make sense to go Performance-M Dyno with 2,5GB. More in [heroku dynos](https://devcenter.heroku.com/articles/dyno-types)
-
-https://judoscale.com/guides/how-many-dynos
+> For example Heroku Standard 1x Dyno has only 512MB, maybe increase it to Standard 2x Dyno (1GB could be enough), or in some cases it make sense to go Performance-M Dyno with 2,5GB. More in [heroku dynos](https://devcenter.heroku.com/articles/dyno-types) and [common dyno type issues](https://judoscale.com/guides/how-many-dynos)
 
 Maybe your worker will be underutilized and therefore you can increase `worker_batch_size` or **number of threads for your Sidekiq worker**
 
@@ -143,6 +141,8 @@ Benefit is that if something goes wrong you can just scale these worker VMs to 0
 :queues:
   - [manual, 4]
 ```
+
+> note: the "MANUAL_MAX_THREADS" ENV variable, you can use this to scale the number of threads for your Sidekiq worker that would be running this script jobs. For example if you have 30 dynos for this worker you can set this to 5 and you will have 150 threads running in parallel.
 
 
 ### Credits
