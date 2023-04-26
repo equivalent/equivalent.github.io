@@ -89,9 +89,11 @@ end
 
 ### Figure out the best for you
 
-Because we are dealing with several hundred millions of records it's not easy to get those numbers right. You need to schedule few thousand record samples and **monitor** how well/bad will your worker perform.
+Because we are dealing with several hundred millions of records it's not easy to get those numbers right. You need to schedule few thousand record samples and **monitor** how well/bad will your worker perform
 
-Maybe your worker will consume all the memmory and you need to schedule smaller batches. Maybe you need to increase memory on the underlying VM running your Sidekiq workers
+> e.g in Heroku monitor your worker dyno Memory usage, in tool like NewRelic or AppSignal monitor DB Load & I/O Operations, In Sidekiq Web UI monitor number of jobs in queue and how long the job takes to finish (aim for "finish fast" jobs - up to 2 minutes was my goal)
+
+Maybe your worker will consume all the memory and you need to schedule smaller batches. Maybe you need to increase memory on the underlying VM running your Sidekiq workers
 
 > For example Heroku Standard 1x Dyno has only 512MB, maybe increase it to Standard 2x Dyno (1GB could be enough), or in some cases it make sense to go Performance-M Dyno with 2,5GB. More in [heroku dynos](https://devcenter.heroku.com/articles/dyno-types) and [common dyno type issues](https://judoscale.com/guides/how-many-dynos)
 
