@@ -169,3 +169,9 @@ Full credit for this solution goes to  [Matt Bertino](https://github.com/mbberti
 * <https://blog.kiprosh.com/rails-7-adds-new-options-to-upsert_all/>
 * <https://judoscale.com/guides/how-many-dynos>
 
+
+### Discussion
+
+* <https://www.reddit.com/r/rubyonrails/comments/12zo2pp/update_millions_of_records_in_rails_fast/>
+* <https://www.reddit.com/r/ruby/comments/12zmxkb/update_millionsbillions_of_records_in_rails/>
+* <https://www.reddit.com/r/rails/comments/12zmw17/update_millionsbillions_of_records_in_rails/>
