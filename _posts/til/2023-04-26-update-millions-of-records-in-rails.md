@@ -81,9 +81,9 @@ Address.in_batches(of: 1_000, start: 300_000_000, finish: 300_010_000) do |addre
    UpdateAddressesWorker.perform_async(min_id, max_id, worker_batch_size)
 end
 
-# 300_000_000 - 300_002_000  [200]
-# 300_002_001 - 300_004_029  [200]
-# 300_004_030 - 300_006_567  [200]
+# 300_000_000 - 300_002_000  [250]
+# 300_002_001 - 300_004_029  [250]
+# 300_004_030 - 300_006_567  [250]
 # ...
 ```
 
@@ -145,17 +145,18 @@ Benefit is that if something goes wrong you can just scale these worker VMs to 0
 > note: the "MANUAL_MAX_THREADS" ENV variable, you can use this to scale the number of threads for your Sidekiq worker that would be running this script jobs. For example if you have 30 dynos for this worker you can set this to 5 and you will have 150 threads running in parallel.
 
 
+
 ### Credits
 
 Full credit for this solution goes to  [Matt Bertino](https://github.com/mbbertino) who taught me this. He is a true PostgeSQL & Ruby on Rails wizard 🧙‍♂️.
 
 ### Source
 
-* https://github.com/zdennis/activerecord-import#introduction
-* https://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-upsert_all
-* https://apidock.com/rails/v6.0.0/ActiveRecord/Persistence/ClassMethods/upsert_all
-* https://blog.kiprosh.com/rails-7-adds-new-options-to-upsert_all/
-* https://judoscale.com/guides/how-many-dynos
+* <https://github.com/zdennis/activerecord-import#introduction>
+* <https://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-upsert_all>
+* <https://apidock.com/rails/v6.0.0/ActiveRecord/Persistence/ClassMethods/upsert_all>
+* <https://blog.kiprosh.com/rails-7-adds-new-options-to-upsert_all/>
+* <https://judoscale.com/guides/how-many-dynos>
 
 
 332401330 - 332403402  [400]
