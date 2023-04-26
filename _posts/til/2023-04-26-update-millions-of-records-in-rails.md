@@ -91,7 +91,7 @@ end
 
 Because we are dealing with several hundred millions of records it's not easy to get those numbers right. You need to schedule few thousand record samples and **monitor** how well/bad will your worker perform
 
-> e.g in Heroku monitor your worker dyno Memory usage, in tool like NewRelic or AppSignal monitor DB Load & I/O Operations, In Sidekiq Web UI monitor number of jobs in queue and how long the job takes to finish (aim for "finish fast" jobs - up to 2 minutes was my goal)
+> e.g in Heroku monitor your worker dyno Memory usage, in tool like NewRelic or AppSignal monitor DB Load & I/O Operations, Monitor errors, In Sidekiq Web UI monitor number of jobs in queue and how long the job takes to finish (aim for "finish fast" jobs - up to 2 minutes was my goal)
 
 Maybe your worker will consume all the memory and you need to schedule smaller batches. Maybe you need to increase memory on the underlying VM running your Sidekiq workers
 
@@ -154,7 +154,7 @@ For our setup/task (just update few fields on a table) the process of probing di
 > We use [Judoscale](https://elements.heroku.com/addons/judoscale) so the dyno number was back to 0 by the morning.
 
 Again this is very specific to our setup. Your setup will be different. You need to monitor and adjust accordingly.
-Also our DB was not under heavy load during the night. If you have a lot of other apps using the same DB you need to be more careful.
+Also our DB was not under heavy load during the night. If you have a lot of usage on your DB you need to be more careful.
 
 
 ### Credits
