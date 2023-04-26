@@ -158,8 +158,3 @@ Full credit for this solution goes to  [Matt Bertino](https://github.com/mbberti
 * <https://blog.kiprosh.com/rails-7-adds-new-options-to-upsert_all/>
 * <https://judoscale.com/guides/how-many-dynos>
 
-
-332401330 - 332403402  [400]
-332403403 - 332407591  [400]
-332407592 - 332412157  [400]
-332412158 - 332414157  [400]
