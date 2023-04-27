@@ -35,10 +35,13 @@ end
 
 For simplicity `MyService` will just downcase `city` name & `state` for entire batch of Address objects
 
+> yes this can be done with simle SQL query but this is just an example (If you're willing to lock entire table for couple of minutes). The real **script we executed was more complex and have directly involve business logic**.
+
 In this example I'm using gem [activerecord-import](https://github.com/zdennis/activerecord-import) in order to update/insert multiple records with *one SQL query* (including validations).
 
-> Vanilla Rails has [.upsert_all](https://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-upsert_all) that serves simmilar purpouse.
-> Reason why I use `activerecord-import` instead is that the project I work for already uses this gem == well tested solution for our case.
+> Vanilla Rails has [.upsert_all](https://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-upsert_all) that serves similar purpose. Reason why I use `activerecord-import` instead is that the project I work for already uses this gem == well tested solution for our use case.
+
+> Also note `upsert` SQL operation is pretty much "insert or update" = is slower than `update` operation where you already know the IDs and you don't expect conflict (Thank you [Seuros](https://www.reddit.com/r/ruby/comments/12zmxkb/comment/jhtp201/?utm_source=share&utm_medium=web2x&context=3) for pointing this out).
 
 
 ```ruby
@@ -89,7 +92,7 @@ end
 
 ### Figure out the best for you
 
-Because we are dealing with several hundred millions of records it's not easy to get those numbers right. You need to schedule few thousand record samples and **monitor** how well/bad will your worker perform
+Because we ([PostPilot](https://www.postpilot.com/)) are dealing with several hundred millions of records it's not easy to get those numbers right. You need to schedule few thousand record samples and **monitor** how well/bad will your worker perform
 
 > e.g in Heroku monitor your worker dyno Memory usage, in tool like NewRelic or AppSignal monitor DB Load & I/O Operations, Monitor errors, In Sidekiq Web UI monitor number of jobs in queue and how long the job takes to finish (aim for "finish fast" jobs - up to 2 minutes was my goal)
 
@@ -157,7 +160,7 @@ class UpdateAddressesWorker
 
 For our setup/task (just update few fields on a table) the process of probing different batch sizes & Sidekiq thread numbers with couple of thousands/millions records took about 5 hours. We ended up with 5 threads on 40 Standard 2x Heroku dynos. Then the actual run of the script with rest of the  half a billion records was finished by the morning (I've run it like 11 PM, I've checked 7AM next day and all was finished).
 
-> We use [Judoscale](https://elements.heroku.com/addons/judoscale) so the dyno number was back to 0 by the morning.
+> We ([PostPilot](https://www.postpilot.com/)) use [Judoscale](https://elements.heroku.com/addons/judoscale) so the dyno number was back to 0 by the morning.
 
 Again this is very specific to our setup. Your setup will be different. You need to monitor and adjust accordingly.
 Also our DB was not under heavy load during the night. If you have a lot of usage on your DB you need to be more careful.
@@ -166,6 +169,8 @@ Also our DB was not under heavy load during the night. If you have a lot of usag
 ### Credits
 
 Full credit for this solution goes to  [Matt Bertino](https://github.com/mbbertino) who taught me this. He is a true PostgeSQL & Ruby on Rails wizard 🧙‍♂️.
+
+Check our project out [postpilot.com](https://www.postpilot.com/)
 
 ### Source
 
