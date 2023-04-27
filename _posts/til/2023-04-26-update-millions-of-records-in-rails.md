@@ -8,6 +8,9 @@ disq_id: til-100
 
 How to update half a billion entries on a PostgreSQL table with Ruby on Rails & [Sidekiq](https://github.com/sidekiq/sidekiq)
 
+TL;DR: create a Sidekiq job that would construct a single UPSERT (or UPDATE) fields SQL call for that batch of records given your business rules. Then schedle the job in small batches and monitor how fast job finis. Tweek the batch size and number of threads for your Sidekiq worker until you find the sweet spot. Then schedule it by  millions.
+
+Longer version:
 
 ### Worker
 
