@@ -172,7 +172,7 @@ Also our DB was not under heavy load during the night. If you have a lot of usag
 
 Full credit for this solution goes to  [Matt Bertino](https://github.com/mbbertino) who taught me this. He is a true PostgeSQL & Ruby on Rails wizard 🧙‍♂️.
 
-Check our project out [postpilot.com](https://www.postpilot.com/)
+Do you want to see what we do? Check us out at [postpilot.com](https://www.postpilot.com/)
 
 ### Source
 
@@ -185,6 +185,7 @@ Check our project out [postpilot.com](https://www.postpilot.com/)
 
 ### Discussion
 
-* <https://www.reddit.com/r/rubyonrails/comments/12zo2pp/update_millions_of_records_in_rails_fast/>
-* <https://www.reddit.com/r/ruby/comments/12zmxkb/update_millionsbillions_of_records_in_rails/>
-* <https://www.reddit.com/r/rails/comments/12zmw17/update_millionsbillions_of_records_in_rails/>
+* [Reddit r/rubyonrails](https://www.reddit.com/r/rubyonrails/comments/12zo2pp/update_millions_of_records_in_rails_fast/)
+* [Reddit r/ruby](https://www.reddit.com/r/ruby/comments/12zmxkb/update_millionsbillions_of_records_in_rails/)
+* [Reddit r/rails](https://www.reddit.com/r/rails/comments/12zmw17/update_millionsbillions_of_records_in_rails/)
+* <https://news.ycombinator.com/item?id=35717344>
