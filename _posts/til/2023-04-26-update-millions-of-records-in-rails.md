@@ -53,6 +53,7 @@ Reason why the article is not using `.upsert_all` is because I didn't used it in
 class MyService
   def call(address_batch)
     addresses = address_batch.map do |address|
+      # some real business logic code here manipulating the address object state, this is just an example
       address.city.downcase!
       address.state.downcase!
       address
@@ -73,6 +74,8 @@ end
 
 
 Notice [on_duplicate_key_update](https://github.com/zdennis/activerecord-import#duplicate-key-update) options which takes care of updates of `city` & `state` (columns) when `addresses` db row matching the `id` (conflict_target) already exist.
+
+> Given the scenario you may do this even faster by avoiding ActiveRecord and constructing (& calling) a custom SQL query within this service (check [BiackPanda's](https://www.reddit.com/r/ruby/comments/12zmxkb/comment/jhwmgkc/?utm_source=share&utm_medium=web2x&context=3) comment). Depends on your use case.
 
 ### How to schedule this
 
