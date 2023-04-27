@@ -35,14 +35,15 @@ end
 
 For simplicity `MyService` will just downcase `city` name & `state` for entire batch of Address objects.
 
-> Yes this can be done with single SQL query (If you can afford to lock entire table for couple of minutes)
-> Please consider  **this is just an example** and the real script where you want to use this will be more complex  with  business logic code directly involved.
+> Yes this can be done with a single SQL query (If you can afford to lock entire table for couple of minutes)
+> Please consider  **this is just an example** and the real script where you want to use this will be more complex  with  **business logic code directly involved**.
 
-In this example I'm using gem [activerecord-import](https://github.com/zdennis/activerecord-import) in order to update/insert multiple records with *one SQL query* (including validations).
+In this example I'm using gem [activerecord-import](https://github.com/zdennis/activerecord-import) in order to update/insert multiple records with *one SQL query* (including validations). Project I work for already uses this gem so it's well tested solution for our use case.
 
-> Vanilla Rails has [.upsert_all](https://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-upsert_all) that serves similar purpose. Reason why I use `activerecord-import` instead is that the project I work for already uses this gem == well tested solution for our use case.
+**However** Vanilla Rails has [.upsert_all](https://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-upsert_all) that serves similar purpose and you can achieve the same result with it.
+Reason why the article is not using `.upsert_all` is because I didn't used it in production yet  so I'm not going to recommend something I didn't truly use 😉. But it's worth checking it out.
 
-> Also note `upsert` SQL operation is pretty much "insert or update" = is slower than `update` operation where you already know the IDs and you don't expect conflict (Thank you [Seuros](https://www.reddit.com/r/ruby/comments/12zmxkb/comment/jhtp201/?utm_source=share&utm_medium=web2x&context=3) for pointing this out).
+> Note `upsert` SQL operation is pretty much "insert or update" = is slower than `update` operation where you already know the IDs and you don't expect conflict (Thank you [Seuros](https://www.reddit.com/r/ruby/comments/12zmxkb/comment/jhtp201/?utm_source=share&utm_medium=web2x&context=3) for pointing this out).
 
 
 ```ruby
