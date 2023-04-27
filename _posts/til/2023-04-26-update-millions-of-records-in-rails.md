@@ -160,7 +160,11 @@ class UpdateAddressesWorker
 
 ### How long did it take?
 
-For our setup/task (just update few fields on a table) the process of probing different batch sizes & Sidekiq thread numbers with couple of thousands/millions records took about 5 hours. We ended up with 5 threads on 40 Standard 2x Heroku dynos. Then the actual run of the script with rest of the  half a billion records was finished by the morning (I've run it like 11 PM, I've checked 7AM next day and all was finished).
+The service had a quite fast business logic code resulting in constructing a SQL that would update couple of fields on a table.
+
+The process of probing different batch sizes & Sidekiq thread numbers with couple of thousands/millions records took about 5 hours. We ended up with 5 threads on 40 Standard 2x Heroku dynos. 
+
+Then the actual run of the script with rest of the  half a billion records was finished by the morning (I've run it like 11 PM, I've checked 7AM next day and all was finished).
 
 > We ([PostPilot](https://www.postpilot.com/)) use [Judoscale](https://elements.heroku.com/addons/judoscale) so the dyno number was back to 0 by the morning.
 
