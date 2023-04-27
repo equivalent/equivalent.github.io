@@ -33,9 +33,10 @@ end
 
 ### Service
 
-For simplicity `MyService` will just downcase `city` name & `state` for entire batch of Address objects
+For simplicity `MyService` will just downcase `city` name & `state` for entire batch of Address objects.
 
-> yes this can be done with simle SQL query but this is just an example (If you're willing to lock entire table for couple of minutes). The real **script we executed was more complex and have directly involve business logic**.
+> Yes this can be done with single SQL query (If you can afford to lock entire table for couple of minutes)
+> Please consider  **this is just an example** and the real script where you want to use this will be more complex  with  business logic code directly involved.
 
 In this example I'm using gem [activerecord-import](https://github.com/zdennis/activerecord-import) in order to update/insert multiple records with *one SQL query* (including validations).
 
