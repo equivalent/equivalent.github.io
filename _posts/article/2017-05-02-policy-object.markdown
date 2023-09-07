@@ -789,7 +789,7 @@ end
 
 I'm doing policy objects this way for couple of years now and I highly
 recommend this as a solution for Policy Objects as it [solves many
-problems ](https://github.com/equivalent/dude_policy#philospophy)
+problems ](https://github.com/equivalent/dude_policy#philosophy)
 
 ## Related articles
 
