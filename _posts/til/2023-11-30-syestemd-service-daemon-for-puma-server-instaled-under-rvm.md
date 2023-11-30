@@ -68,8 +68,8 @@ journalctl -u myapp_puma -e -f
 > Note: any time you change ruby version or gemset you need to recreate the RVM wrapper
 
 source:
-* https://github.com/puma/puma/blob/master/docs/systemd.md
-* https://rvm.io/deployment/init-d
+* <https://github.com/puma/puma/blob/master/docs/systemd.md>
+* <https://rvm.io/deployment/init-d>
 
 Rails 7.1, Ruby 3.2, Puma 6, RVM rvm 1.29.12, Ubuntu 22.04. Created 2023-11-30
 
