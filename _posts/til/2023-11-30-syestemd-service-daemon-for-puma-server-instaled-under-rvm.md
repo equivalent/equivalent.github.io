@@ -17,7 +17,7 @@ rvm current                                   # e.g.: ruby-3.2.2@myapp_2023
 rvm alias create myapp ruby-3.2.2@myapp_2023  # rybyversion@gemsetname
 ```
 
-this creates a wrapper in `/usr/share/rvm/wrappers/myapp` that you  can refer in systemd service file
+Depending where is your RVM instaled (check with `which rvm`) this creates a wrapper in RVM folder. Mine is `/usr/share/rvm/wrappers/myapp` . This you  can refer in systemd service file. (RVM wrapper is something similar to  aias or symbolic link)
 
 ```
 # /etc/systemd/system/myapp_puma.service
