@@ -1,6 +1,6 @@
 ---
 layout: til_post
-title:  "Syestem.d service (daemon) for Puma server instaled under RVM (Rails)"
+title:  "System.d service (daemon) for Puma server instaled under RVM (Rails)"
 categories: til
 disq_id: til-101
 ---
