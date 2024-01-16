@@ -5,6 +5,8 @@ categories: til
 disq_id: til-102
 ---
 
+![](https://images.unsplash.com/photo-1506729623306-b5a934d88b53?w=800)
+
 SVG image/icon has the benefit that it can be rendered as a part
 of HTML rendering
 
@@ -166,6 +168,12 @@ image `app/assets/images/my_test_svg_image.svg`:
 ### why bother with SVGs
 
 <https://www.adobe.com/creativecloud/file-types/image/comparison/png-vs-svg.html>
+
+### Sources
+
+* Photo by Harpal Singh on [Unsplash](https://unsplash.com/photos/white-paper-_zKxPsGOGKg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+* [SO thread](https://stackoverflow.com/questions/36986925/how-do-i-display-svg-image-in-rails)
+
 
 
 
