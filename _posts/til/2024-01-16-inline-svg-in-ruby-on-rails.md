@@ -9,7 +9,7 @@ SVG image/icon has the benefit that it can be rendered as a part
 of HTML rendering
 
 ```html
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>SVG can be inline</title>
@@ -39,10 +39,12 @@ of HTML rendering
 </html>
 ```
 
+So how to render SVG images inline in Ruby on Rails?
+
+
 ### Solution 1 - gem
 
-So how to render SVG images inline in Ruby on Rails. Well the best choice
- is to use old but very relevant and well maintained gem [inline_svg](https://github.com/jamesmartin/inline_svg)
+ Best choice is to use old but very relevant and maintained gem [inline_svg](https://github.com/jamesmartin/inline_svg)
 
 ```erb
 <%= inline_svg_tag("my_svg_image", height: 50, class: "red-icon" ) %>
@@ -67,7 +69,8 @@ just render it from partial
 ```
 
 But once you have more icons you will find out this is difficult to maintain
-as you cannot preview the icons from partials, you need to edit every partial where SVG  needs to accept HTML argument (e.g. height)
+as you cannot preview the icons from partials (browser, IDE,..).
+Also you need to edit every partial where SVG  needs to accept HTML argument (e.g. height)
 
 
 ### Solution 2
