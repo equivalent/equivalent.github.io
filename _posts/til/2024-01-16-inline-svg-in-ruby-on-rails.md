@@ -22,9 +22,18 @@ of HTML rendering
     <path stroke-linecap="round" stroke-linejoin="round" d="M9 9.563C9 9.252 9.252 9 9.563 9h4.874c.311 0 .563.252.563.563v4.874c0 .311-.252.563-.563.563H9.564A.562.562 0 0 1 9 14.437V9.564Z" />
   </svg>
 
-  <h2>Here is a SVG rendered as a image 😐 (non-inline)</h2>
+  <p>Solution will save us extra HTTP call </p>
+
+
+  <h2>Here is a SVG rendered as a regular image 😐 (non-inline)</h2>
 
   <img src="/assets/images/my_svg_image.svg">
+
+  <p>
+     Solution is not as good as it will create extra HTTP call.
+     In 2024 not that a big deal (browser cache, CDNs, HTTP2) but still
+     if you have lot of SVG images (icons) it's nice to avoid it
+  </p>
 
 </body>
 </html>
@@ -147,9 +156,12 @@ image `app/assets/images/my_test_svg_image.svg`:
 </svg>
 ```
 
-
-
 > SVG in example is outline `stop-circle` icon from <https://heroicons.com>
+
+### why bother with SVGs
+
+<https://www.adobe.com/creativecloud/file-types/image/comparison/png-vs-svg.html>
+
 
 
 
