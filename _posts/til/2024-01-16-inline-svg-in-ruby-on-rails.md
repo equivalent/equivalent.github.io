@@ -5,7 +5,7 @@ categories: til
 disq_id: til-102
 ---
 
-![](https://images.unsplash.com/photo-1506729623306-b5a934d88b53?w=800)
+![](https://images.unsplash.com/photo-1506729623306-b5a934d88b53?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY4MTM2NzQ3MA&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600)
 
 SVG image/icon has the benefit that it can be rendered as a part
 of HTML rendering
