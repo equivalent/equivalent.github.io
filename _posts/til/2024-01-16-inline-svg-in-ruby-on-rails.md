@@ -73,9 +73,11 @@ as you cannot preview the icons from partials (browser, IDE,..).
 Also you need to edit every partial where SVG  needs to accept HTML argument (e.g. height)
 
 
-### Solution 2
+### Solution 3
 
 So here is a solution where no extra gem is needed (given your project already uses Nokogiri) & you can preview SVG images & you can pass HTML arguments
+
+You will load SVG content and ouutput it in ERB and if any SVG HTML tag arguments require addition/alteration you do that with Nokogiri
 
 
 ```ruby
