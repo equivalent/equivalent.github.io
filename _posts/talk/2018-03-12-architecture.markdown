@@ -7,9 +7,7 @@ disq_id: talk-3
 ---
 
 
-* **>>[TALK Video](https://skillsmatter.com/skillscasts/11594-lrug-march)<<**
-
-* [TALK Video Mirror](https://youtu.be/fn17nojYa-I)
+* **[TALK Video](https://youtu.be/fn17nojYa-I)**
 
 
 * [Slides](https://docs.google.com/presentation/d/15-o7Cos6UAmYn0AW0lfyBvyyC3_LdE7kF6TnxXBE3p0/edit)
