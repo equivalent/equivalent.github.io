@@ -86,8 +86,8 @@ You will load SVG content and ouutput it in ERB and if any SVG HTML tag argument
 module SvgHelper
   SVGFileNotFoundError = Class.new(StandardError)
 
-  def inline_svg_tag(path, options = {})
-    path = Rails.root.join("app/assets/images/#{path}.svg")
+  def inline_svg_tag(svg_path, options = {})
+    path = Rails.root.join("app/assets/images/#{svg_path}.svg")
     File.exist?(path) || raise(SVGFileNotFoundError, "SVG image file does not exist: #{path}")
     svg_file_content = File.binread(path)
 
@@ -164,6 +164,37 @@ image `app/assets/images/my_test_svg_image.svg`:
 ```
 
 > SVG in example is outline `stop-circle` icon from <https://heroicons.com>
+
+#### Bonus: Don't raise on Production
+
+- Don't raise on Production as typos happen
+- notify your Error manager (e.g Airbrake, Appsignal, ...)
+- render html comment instead
+
+
+
+```ruby
+def inline_svg_tag(svg_path, options = {})
+  # ...
+rescue SVGFileNotFoundError => error
+  if Rails.env.production?
+    Appsignal.send_error(error)
+    return raw("<!-- SVG file missing: #{svg_path}.svg -->")
+  else
+    raise error
+  end
+end
+```
+
+```ruby
+   # ...
+it "when the file does not exist in production sends an error to Appsignal and output a comment" do
+  expect(Rails).to receive_message_chain(:env, :production?).and_return(true)
+  expect(Appsignal).to receive(:send_error)
+  result = helper.inline_svg_tag("icons/does-not-exist")
+  expect(result).to eq("<!-- SVG file missing: icons/does-not-exist.svg -->")
+end
+```
 
 ### why bother with SVGs
 
