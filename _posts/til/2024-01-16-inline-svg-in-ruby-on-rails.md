@@ -70,9 +70,12 @@ just render it from partial
 <%= render "my_svg_image", height: 50 %>
 ```
 
+Obvious benefit is that these are just partials = your IDE will provide same benefits (e.g. RubyMine has feature "find usage" and you will find every line of code loading the partial/svg file)
+
 But once you have more icons you will find out this is difficult to maintain
 as you cannot preview the icons from partials (browser, IDE,..).
-Also you need to edit every partial where SVG  needs to accept HTML argument (e.g. height)
+
+But more important you need to edit every partial where SVG  needs to accept HTML argument (e.g. height)
 
 
 ### Solution 3
